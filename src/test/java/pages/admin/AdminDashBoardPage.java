@@ -1,6 +1,5 @@
 package pages.admin;
 
-import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -48,7 +47,7 @@ public class AdminDashBoardPage {
 
     //Route sayfasının sağ üstündeki "Add New" butonu
     @FindBy(xpath = "//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn']")
-    public WebElement addNewButton;
+    public WebElement routeAddNewButton;
 
     // Create Route sayfasındaki Name kutusu
     @FindBy(xpath = "(//input[@class='form-control'])[1]")
@@ -72,8 +71,8 @@ public class AdminDashBoardPage {
 
     // Create Route sayfasındaki "Save" butonu
     @FindBy(xpath = "//button[@class='btn btn--primary btn-block btn-lg']")
-    public WebElement saveButton;
-=======
+    public WebElement routeSaveButton;
+
     // Admin Dashboard >>  "Counter" linki
     @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[9]/a/span")
     public WebElement linkCounter;
@@ -120,7 +119,7 @@ public class AdminDashBoardPage {
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Add New
     @FindBy(xpath = "//div[contains(@class, 'mt-3')]")
-    public WebElement addNewButton;
+    public WebElement counterAddNewButton;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Add New >> Name TextBox
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[1]/input")
@@ -140,7 +139,7 @@ public class AdminDashBoardPage {
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Add New >> Save Button
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[2]/button[2]")
-    public WebElement saveButton;
+    public WebElement counterSaveButton;
 
 
 }
