@@ -34,4 +34,42 @@ public class AdminDashBoardPage {
     // Admin dashboard sayfasının sidebar'ındaki "Manage Trips" linki altındaki "Assigned Vehicle" item'i
     @FindBy(xpath = "//*[text()='Assigned Vehicle']")
     public WebElement assignedVehicleElement;
+
+    //-------
+
+    // Route sayfasındaki son rotanın ismi
+    @FindBy(xpath = "(//tr/td)[134]")
+    public WebElement lastRouteName;
+
+    // Route sayfasındaki ilk rotanın ismi
+    @FindBy(xpath = "(//tr/td)[1]")
+    public WebElement firstRouteName;
+
+    //Route sayfasının sağ üstündeki "Add New" butonu
+    @FindBy(xpath = "//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn']")
+    public WebElement addNewButton;
+
+    // Create Route sayfasındaki Name kutusu
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement nameOfTheNewRouteBox;
+
+    // Create Route sayfasındaki "Start From" kutusu
+    @FindBy(id = "select2-start_from-ou-container")
+    public WebElement startFromBox;
+
+    // Create Route sayfasındaki "End To" kutusu
+    @FindBy(id = "select2-end_to-gr-container")
+    public WebElement endToBox;
+
+    // Create Route sayfasındaki "Time" kutusu
+    @FindBy(xpath = "(//input[@class='form-control'])[2]")
+    public WebElement timeOfTheNewRoute;
+
+    // Create Route sayfasındaki "Distance" kutusu
+    @FindBy(xpath = "(//input[@class='form-control'])[3]")
+    public WebElement distanceOfTheNewRoute;
+
+    // Create Route sayfasındaki "Save" butonu
+    @FindBy(xpath = "//button[@class='btn btn--primary btn-block btn-lg']")
+    public WebElement saveButton;
 }
