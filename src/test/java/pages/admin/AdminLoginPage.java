@@ -10,6 +10,7 @@ public class AdminLoginPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+
     // Admin login sayfasındaki Username Kutusu
     @FindBy(id = "username")
     public WebElement usernameBox;
@@ -21,6 +22,5 @@ public class AdminLoginPage {
     // Admin login sayfasındaki Login butonu
     @FindBy(xpath = "//button[@class='submit-btn mt-25 b-radius--capsule']")
     public WebElement loginButton;
-
 
 }
