@@ -13,4 +13,10 @@ public class EasyBusTicketPage {
     public WebElement cookiesButton;
     @FindBy(className = "sign-in")
     public WebElement signInButton;
+
+    @FindBy(xpath = "//a[text()='Contact']")
+    public WebElement contactButton;
+
+    @FindBy (xpath = "//h2[@class='title']")
+    public WebElement contactUsText;
 }
