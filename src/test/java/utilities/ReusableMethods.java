@@ -3,6 +3,9 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import pages.admin.AdminLoginPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -385,5 +388,16 @@ public class ReusableMethods {
 
     public static void waitAndClickLocationText(WebElement element, String value) {
         Driver.getDriver().findElement(By.xpath("//*[text()='" + value + "']")).click();
+    }
+
+    @Test
+    @BeforeClass
+    public static void adminLoginMethod(String adminUsername, String adminPassword){
+        AdminLoginPage adminLoginPage = new AdminLoginPage();
+        Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
+        adminLoginPage.usernameBox.click();
+        adminLoginPage.usernameBox.sendKeys(adminUsername + Keys.TAB);
+        adminLoginPage.passwordBox.sendKeys(adminPassword);
+        adminLoginPage.loginButton.click();
     }
 }
