@@ -1,21 +1,15 @@
 package tests.ahmed.US32;
 
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.AdminDashBoardPage;
 import pages.admin.AdminLoginPage;
-import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class TC02 {
 
@@ -53,7 +47,7 @@ public class TC02 {
         actions.sendKeys(Keys.PAGE_UP).perform();
 
         ReusableMethods.wait(2);
-        adminDashBoardPage.addNewButton.sendKeys(Keys.ENTER);
+        adminDashBoardPage.counterAddNewButton.sendKeys(Keys.ENTER);
         adminDashBoardPage.nameOfTheNewRouteBox.click();
         adminDashBoardPage.nameOfTheNewRouteBox.sendKeys("Alex Rider");
         ReusableMethods.wait(2);
@@ -67,7 +61,7 @@ public class TC02 {
         adminDashBoardPage.timeOfTheNewRoute.sendKeys("3 Hours");
         adminDashBoardPage.distanceOfTheNewRoute.click();
         adminDashBoardPage.distanceOfTheNewRoute.sendKeys("165 Miles");
-        adminDashBoardPage.saveButton.click();
+        adminDashBoardPage.counterSaveButton.click();
 
 
 
