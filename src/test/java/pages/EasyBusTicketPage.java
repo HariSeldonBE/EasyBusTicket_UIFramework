@@ -13,4 +13,6 @@ public class EasyBusTicketPage {
     public WebElement cookiesButton;
     @FindBy(className = "sign-in")
     public WebElement signInButton;
+    @FindBy(xpath = "//*[text()=\"Every Journey is an Adventure, Every Ticket is a Story\"]")
+    public WebElement EveryJourneyisanAdventureEveryTicketisaStoryYazisi;
 }
