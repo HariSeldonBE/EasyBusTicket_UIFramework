@@ -43,10 +43,10 @@
 
 ### Isimlendirmelerde dikaat edilecekler
 ***
-| Element Türü   | Variable name |
+| Element Türü   | Variable name|
 |----------------|--------------|
 | Button         | signInButton |    
-| Logo           | logoX         |
+| Logo           | logoX        |
 | icon           | iconX        |
 | Sadece text    | labelX       |
 | Drop down      | dropDownX    |
@@ -54,6 +54,6 @@
 | Check box      | checkBoxX    |
 | Tablo Sütünu   | columnX      |
 | Tablo Satiri   | rowX         |
-| Kisi Resimleri | imageProfileX |
-| ürün resimleri | imageProductX |
+| Kisi Resimleri | imageProfileX|
+| ürün resimleri | imageProductX|
 | Linkler        | linkX        |
