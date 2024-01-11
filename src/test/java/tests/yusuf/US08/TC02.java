@@ -1,6 +1,8 @@
 package tests.yusuf.US08;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
@@ -21,16 +23,20 @@ public class TC02 {
         easyBusTicketPage.contactButton.click();
 
         ContactPage contactPage=new ContactPage();
+        ReusableMethods.wait(1);
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.wait(2);
 
-
-
-    //4 - "Let's get in touch" yazısı altında "Our Address" kutucuğu,
+        //4 - "Let's get in touch" yazısı altında "Our Address" kutucuğu,
     // ikonu ve bilgisi görüntülendiği doğrulanır.
 
+
         SoftAssert softAssert = new SoftAssert();
+      softAssert.assertTrue(contactPage.ourAdressText.isDisplayed(),"Our Adress butonu goruntulenemedi");
 
 
-        softAssert.assertTrue(contactPage.ourAdressText.isDisplayed(),"Our Address yazisi goruntulenemedi");
+
 
         // 5 - "Let's get in touch" yazısı altında "Call Us" kutucuğu, ikonu ve bilgisi görüntülendiği doğrulanır.
         softAssert.assertTrue(contactPage.callUsText.isDisplayed(),"Call Us yazisi goruntulenemedi ");
@@ -43,9 +49,10 @@ public class TC02 {
 
         softAssert.assertTrue(contactPage.emailbutton.isEnabled(),"Email butonu aktif degil ");
 
+        softAssert.assertAll();
         ReusableMethods.wait(2);
 
-
+Driver.closeDriver();
 
 
 
