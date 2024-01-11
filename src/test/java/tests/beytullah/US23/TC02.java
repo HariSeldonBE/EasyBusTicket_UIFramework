@@ -1,9 +1,9 @@
 package tests.beytullah.US23;
 
-import Pages.admin.AdminDashBoardPage;
-import Utilities.ConfigReader;
-import Utilities.Driver;
-import Utilities.ReusableMethods;
+import pages.admin.AdminDashBoardPage;
+import utilities.ConfigReader;
+import utilities.Driver;
+import utilities.ReusableMethods;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
