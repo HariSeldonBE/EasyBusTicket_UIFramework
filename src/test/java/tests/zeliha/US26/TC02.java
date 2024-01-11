@@ -16,7 +16,11 @@ public class TC02 {
 
     @Test
     public void PendingTicketLinki() {
-/*
+    /*
+    TC02 - Admin Dashboard sayfasında "Booking History" Linki altında,
+    "Pending Ticket" Linki aktif olmalı ve içerdiği bilgiler görüntülenebilmeli
+
+    STEPLER
         1 - Browser açılır
         2 -	URL'e gidilir.
         3 -	Admin olarak giriş yapılır.
