@@ -1,13 +1,10 @@
 package tests.ilteris.US01;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.EasyBusTicketPage;
-import pages.ziyaretci.EasyBusTicketHomePage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.ReusableMethods;
 
 public class TC01 {
     @Test
@@ -29,8 +26,7 @@ public class TC01 {
         String actualUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(exceptedUrl,actualUrl);
 
-        Assert.assertTrue(EasyBusTicketPage);
-        easyBusTicketPage.EveryJourneyisanAdventureEveryTicketisaStoryYazisi.isDisplayed();
+        Assert.assertTrue(easyBusTicketPage.EveryJourneyisanAdventureEveryTicketisaStoryYazisi.isDisplayed());
 
 
 
