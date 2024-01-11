@@ -256,6 +256,87 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[2]/button[2]")
     public WebElement counterSaveButton;
 
+
+    // Admin Dashboard  >> "Booking History" Button
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[4]/a/span")
+    public WebElement bookingHistoryButton;
+
+    // Admin Dashboard  >> Booking History >>  Pending Ticket
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[4]/div/ul/li[1]/a/span")
+    public WebElement pendingTicketButton;
+
+    // Admin Dashboard  >> Booking History >>  Booked Ticket Button
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[4]/div/ul/li[2]/a/span")
+    public WebElement bookedTicketButton;
+
+    // Admin Dashboard  >> Booking History >> Rejected Ticket Button
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[4]/div/ul/li[3]/a/span")
+    public WebElement rejectedTicketButton;
+
+    // Admin Dashboard  >> Booking History >> All Ticket Button
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[4]/div/ul/li[4]/a/span")
+    public WebElement allTicketButton;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> Pending Ticket Başligi
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[1]/div[1]/h6")
+    public WebElement headerPendingTicket;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> Arama Kutusu
+    @FindBy(xpath = "//input[@type='text']")
+    public WebElement aramaKutusu;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> Arama Enter ikonu
+    @FindBy(xpath = "//button[@class='btn btn--primary']")
+    public WebElement aramaButtonu;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> User tablo başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thUser;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> PNR Number tablo başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thPNRNumber;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> JourneyDate tablo başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thJourneyDate;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> Trip tablo başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thTrip;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> PickupPoint tablo başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thPickupPoint;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> DroppingPoint tablo başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thDroppingPoint;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> Status tablo başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[7]")
+    public WebElement thStatus1;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> TicketCount tablo başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[8]")
+    public WebElement thTicketCount;
+
+    // Admin Dashboard >> Booking History >> Pending Ticket >> Fare tablo başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[9]")
+    public WebElement thFare;
+
+
+
+    
+
+
+
+
+    // "//*[text()='Assigned Vehicle']"
+    //  @FindBy(id = "username")
+
+
+
     //    -----Admin Dashboard  >>  Manage Users DDM-------
     // Admin Dashboard  >> "Manage Users" DDM
     @FindBy(xpath= "(//a[@href='javascript:void(0)'])[1]")
@@ -279,8 +360,10 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/send-email']")
     public WebElement linkEmailToAll;
 
+
     @FindBy(xpath = "//span[@class='menu-badge pill bg--primary ml-auto']")
     public List<WebElement> listSayiManageUsers;
     @FindBy(xpath = "//input[@type='text']")
     public WebElement inputAramaKutusu;
 }
+

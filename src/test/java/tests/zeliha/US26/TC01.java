@@ -13,15 +13,15 @@ public class TC01 {
     public void BookingHistoryLinki(){
          /*
 
-       Browser açılır
-       URL'e gidilir.
-       Admin olarak giriş yapılır.
-       Dashboard sayfasının solunda "Booking History" linkinin görünür olduğu doğrulanır.
-       "Booking History" linki tıklanır.
-       "Booking History" Linkine tıklandığında, "Pending Ticket" linkinin görünür ve aktif olduğu doğrulanır.
-       "Booking History" Linkine tıklandığında, "Booked Ticket" linkinin görünür ve aktif olduğu doğrulanır.
-       "Booking History" Linkine tıklandığında, "Rejected Ticket" linkinin görünür ve aktif olduğu doğrulanır.
-       "Booking History" Linkine tıklandığında, "All Ticket" linkinin görünür ve aktif olduğu doğrulanır.
+        1 - Browser açılır
+        2 -	URL'e gidilir.
+        3 -	Admin olarak giriş yapılır.
+        4 -	Dashboard sayfasının solunda "Booking History" linkinin görünür olduğu doğrulanır.
+        5 -	"Booking History" linki tıklanır.
+        6 -	"Booking History" Linkine tıklandığında, "Pending Ticket" linkinin görünür ve aktif olduğu doğrulanır.
+        7 -	"Booking History" Linkine tıklandığında, "Booked Ticket" linkinin görünür ve aktif olduğu doğrulanır.
+        8 -	"Booking History" Linkine tıklandığında, "Rejected Ticket" linkinin görünür ve aktif olduğu doğrulanır.
+        9 -	"Booking History" Linkine tıklandığında, "All Ticket" linkinin görünür ve aktif olduğu doğrulanır.
 
        */
 
@@ -48,7 +48,6 @@ public class TC01 {
         softAssert.assertTrue(adminDashBoardPage.allTicketButton.isDisplayed(),"All Ticket linki Görüntülenemedi.");
         softAssert.assertTrue(adminDashBoardPage.allTicketButton.isEnabled(),"All Ticket linki Aktif Değil.");
 
-        softAssert.assertAll();
         Driver.quitDriver();
 
 
