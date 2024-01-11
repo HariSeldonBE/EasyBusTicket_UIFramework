@@ -29,6 +29,28 @@ public class ContactPage {
 @FindBy(xpath = "//*[@style='z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;']")
     public WebElement map;
 
+@FindBy(xpath = "//*[text()='Have any Questions?']")
+    public WebElement haveAnyQuestionsText;
+
+@FindBy( id="name")
+    public WebElement nameTextBox;
+@FindBy(id="email")
+    public WebElement emailTextBox;
+
+    @FindBy(id="subject")
+    public WebElement subjectTextBox;
+
+
+    @FindBy(id="msg")
+    public WebElement messageTextBox;
+
+    @FindBy(xpath = "//button[@class='contact-button']")
+    public WebElement sendUsButton;
+
+
+
+
+
 
 
 
