@@ -55,10 +55,10 @@ public class TC03 {
         int ilkDakika = faker.number().numberBetween(10,59);
         int ikinciSaat = faker.number().numberBetween(12,23);
         int ikinciDakika = faker.number().numberBetween(10,59);
-        adminDashBoardPage.scheduleAddNewStartFromBox.sendKeys(ilkSaat+":"+ilkDakika);
+        adminDashBoardPage.scheduleAddNewStartFromBox.sendKeys(ilkSaat+":"+ilkDakika+Keys.ENTER);
         adminDashBoardPage.scheduleAddNewEndAtBox.sendKeys(ikinciSaat+":"+ikinciDakika+Keys.ENTER);
-        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowStartFromElement.getText().contains("09:55"));
-        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowStartFromElement.getText().contains("12:55"));
+        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowStartFromElement.getText().contains(ilkSaat+":"+ilkDakika));
+        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowEndAtElement.getText().contains(ikinciSaat+":"+ikinciDakika));
 
         adminDashBoardPage.scheduleFirstRowPenButton.click();
         adminDashBoardPage.scheduleupdatePopUpStartFromBox.click();
