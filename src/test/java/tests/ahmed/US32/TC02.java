@@ -1,5 +1,6 @@
 package tests.ahmed.US32;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -46,23 +47,37 @@ public class TC02 {
         softAssert.assertTrue(adminDashBoardPage.lastRouteName.isDisplayed());
         actions.sendKeys(Keys.PAGE_UP).perform();
 
+        Faker faker = new Faker();
+        String routeName = faker.gameOfThrones().house();
         ReusableMethods.wait(2);
-        adminDashBoardPage.counterAddNewButton.sendKeys(Keys.ENTER);
+        adminDashBoardPage.routeAddNewButton.sendKeys(Keys.ENTER);
         adminDashBoardPage.nameOfTheNewRouteBox.click();
-        adminDashBoardPage.nameOfTheNewRouteBox.sendKeys("Alex Rider");
+        adminDashBoardPage.nameOfTheNewRouteBox.sendKeys(routeName);
         ReusableMethods.wait(2);
-        adminDashBoardPage.startFromBox.click();
-        Select select1 = new Select(adminDashBoardPage.startFromBox);
+        adminDashBoardPage.startFromBox.sendKeys(Keys.ENTER);
+        Select select1 = new Select(adminDashBoardPage.selectStartFromBox);
         select1.selectByVisibleText("Houston");
-        adminDashBoardPage.endToBox.click();
-        Select select2 = new Select(adminDashBoardPage.endToBox);
+        ReusableMethods.wait(2);
+        adminDashBoardPage.endToBox.sendKeys(Keys.ENTER);
+        Select select2 = new Select(adminDashBoardPage.selectEndToBox);
         select2.selectByVisibleText("Austin");
         adminDashBoardPage.timeOfTheNewRoute.click();
-        adminDashBoardPage.timeOfTheNewRoute.sendKeys("3 Hours");
+        adminDashBoardPage.timeOfTheNewRoute.sendKeys("a few hours:)");
         adminDashBoardPage.distanceOfTheNewRoute.click();
-        adminDashBoardPage.distanceOfTheNewRoute.sendKeys("165 Miles");
-        adminDashBoardPage.counterSaveButton.click();
+        adminDashBoardPage.distanceOfTheNewRoute.sendKeys("a few miles");
+        adminDashBoardPage.routeSaveButton.click();
+        adminDashBoardPage.routeAddNewGoBackButton.click();
 
+        adminDashBoardPage.routeIlkRotaKalemButton.click();
+        softAssert.assertTrue(adminDashBoardPage.routeInfoNameBox.getText().equals(routeName));
+        softAssert.assertTrue(adminDashBoardPage.routeInfoTimeBox.getText().equals("a few hours:)"));
+        softAssert.assertTrue(adminDashBoardPage.routeInfoDistanceBox.getText().equals("a few miles"));
+        adminDashBoardPage.routeUpdateGoBackButton.click();
+
+        softAssert.assertTrue(adminDashBoardPage.routeActiveStatusElement.isDisplayed());
+        adminDashBoardPage.routeFirstRowDisableButton.click();
+        adminDashBoardPage.routedisablePopUpButton.click();
+        softAssert.assertTrue(adminDashBoardPage.routeDisableStatusElement.isDisplayed());
 
 
         ReusableMethods.wait(2);
