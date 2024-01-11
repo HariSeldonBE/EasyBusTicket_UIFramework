@@ -4,13 +4,10 @@ import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.EasyBusTicketPage;
 import pages.admin.AdminDashBoardPage;
 import pages.admin.AdminLoginPage;
-import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.ReusableMethods;
 
 public class TC03 {
     @Test
@@ -31,11 +28,11 @@ public class TC03 {
         // Açılan sayfada "Add New" butonunu görüntüler
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(adminDashBoardPage.addNewButton.isDisplayed(),"Add New butonu görünmüyor");
+        softAssert.assertTrue(adminDashBoardPage.counterAddNewButton.isDisplayed(),"Add New butonu görünmüyor");
 
         // "Add New" butonuna tıklar
 
-        adminDashBoardPage.addNewButton.click();
+        adminDashBoardPage.counterAddNewButton.click();
 
         // İstenen bilgileri (Name, City, Location, Mobile) girer
         Faker faker = new Faker();
@@ -46,8 +43,8 @@ public class TC03 {
          adminDashBoardPage.inputMobile.sendKeys(faker.phoneNumber().phoneNumber());
 
         // Pencerenin altındaki "Save" butonunu görür ve tıklar
-        softAssert.assertTrue(adminDashBoardPage.saveButton.isDisplayed());
-        adminDashBoardPage.saveButton.click();
+        softAssert.assertTrue(adminDashBoardPage.counterSaveButton.isDisplayed());
+        adminDashBoardPage.counterSaveButton.click();
 
         // Sayfanın en altına iner ve yeni Counter açtığını görür, Counter bigilerini görüntüler
 
