@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class AdminDashBoardPage {
     public AdminDashBoardPage(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -137,9 +139,37 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[4]/input")
     public WebElement inputMobile;
 
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Add New >> Save Button
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[2]/button[2]")
     public WebElement counterSaveButton;
+
+    //    -----Admin Dashboard  >>  Manage Users DDM-------
+    // Admin Dashboard  >> "Manage Users" DDM
+    @FindBy(xpath= "(//a[@href='javascript:void(0)'])[1]")
+    public WebElement dropDownManageUsers;
+    // Admin Dashboard  >> "Manage Users" DDM >> AllUsers
+    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users']")
+    public WebElement linkAllUsers;
+    // Admin Dashboard  >> "Manage Users" DDM >> ActiveUsers
+    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users/active']")
+    public WebElement linkActiveUsers;
+    // Admin Dashboard  >> "Manage Users" DDM >> BannedUsers
+    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users/banned']")
+    public WebElement linkBannedUsers;
+    // Admin Dashboard  >> "Manage Users" DDM >> EmailUnverified
+    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users/email-unverified']")
+    public WebElement linkEmailUnverified;
+    // Admin Dashboard  >> "Manage Users" DDM >> SmsUnverified
+    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users/sms-unverified']")
+    public WebElement linkSmsUnverified;
+    // Admin Dashboard  >> "Manage Users" DDM >> EmailToAll
+    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/send-email']")
+    public WebElement linkEmailToAll;
+
+    @FindBy(xpath = "//span[@class='menu-badge pill bg--primary ml-auto']")
+    public List<WebElement> listSayiManageUsers;
+    @FindBy(xpath = "//input[@type='text']")
+    public WebElement inputAramaKutusu;
+}
 
 
 }
