@@ -166,23 +166,33 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//input[@class='form-control'])[4]")
     public WebElement scheduleupdatePopUpEndAtBox;
 
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki start from boxuna basinca cikan clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[11]")
-    public WebElement scheduleUpdatePopUpStartFromClockPickerElement;
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki start from boxuna basinca cikan 2. clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[36]")
-    public WebElement scheduleUpdatePopUpStartFromSecondClockPickerElement;
-
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki End At boxuna basinca cikan ilk clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[51]")
-    public WebElement scheduleUpdatePopUpEndAtClockPickerElement;
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki End At boxuna basinca cikan 2. clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[72]")
-    public WebElement scheduleUpdatePopUpEndAtSecondClockPickerElement;
-
     // schedule sayfasındaki Update schedule pop-up sayfasındaki Update
     @FindBy(xpath = "(//button[@class='btn btn--primary'])[2]")
     public WebElement scheduleUpdatePopUpUpdateButton;
+
+    // schedule sayfasındaki Update schedule pop-up sayfasındaki Close button
+    @FindBy(xpath = "(//button[@class='close'])[2]")
+    public WebElement scheduleUpdatePopUpCloseButton;
+
+    // schedule sayfasındaki ilk sıradaki active yazısı
+    @FindBy(xpath = "(//span[text()='Active'])[1]")
+    public WebElement scheduleFirstRowActiveElement;
+
+    //schedule sayfasindaki disable pop-up sayfasındaki disable butonu
+    @FindBy(xpath = "//button[@class='btn btn--danger']")
+    public WebElement scheduleDisablePopUpDisableButton;
+
+    // schedule sayfasındaki action kısmındaki disable butonu ilk satır
+    @FindBy(xpath = "(//button[@class='icon-btn btn--danger ml-1 disableBtn '])[1]")
+    public WebElement scheduleFirstRowDisableButton;
+
+    // schedule sayfasındaki status kısmındaki disable yazısı
+    @FindBy(xpath = "(//span[text()='Disabled'])[1]")
+    public WebElement scheduleFirstRowDisabledElement;
+
+    // admin dashboard sayfasındaki sağ üstteki admin isim ve foto ddm butonu
+    @FindBy(xpath = "(//button[@type='button'])[6]")
+    public WebElement adminDashboardProfileButton;
 
 
 
@@ -210,23 +220,23 @@ public class AdminDashBoardPage {
     public WebElement thLocation;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Status
-   @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[5]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[5]")
     public WebElement thStatus;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Name başlığı >> Name elementi
-     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[1]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[1]")
     public WebElement tdName;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> MobileNumber başlığı >> MobilNumber elementi
-     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[2]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[2]")
     public WebElement tdMobileNumber;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> City başlığı >> City elementi
-     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[3]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[3]")
     public WebElement tdCity;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Location başlığı >> Location elementi
-      @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[4]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[4]")
     public WebElement tdLocation;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Status başlığı >> Status elementi
@@ -325,108 +335,9 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[9]")
     public WebElement thFare;
 
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Booking Ticket Butonu
-    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[4]/div/ul/li[2]/a/span")
-    public WebElement bookedTicketButton2;
 
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Booking Ticket başlığı
-    @FindBy(xpath = "Find/html/body/div/div[2]/div/div[1]/div[1]/h6")
-    public WebElement headerBookedTicked;
-    
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Arama Kutusu Textbox
-    @FindBy(xpath = "//input[@type='text']")
-    public WebElement aramaKutusu2;
 
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Arama Kutusu ikonu
-    @FindBy(xpath = "//i[@class='fa fa-search']")
-    public WebElement aramaKutusuIconu;
 
-    // Admin Dashboard >> Booking History >> Booking Ticket >> User tablo başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
-    public WebElement thUser2;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> User data
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]/span[1]")
-    public WebElement UserData1;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> User data Name linki
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]/span[2]/a")
-    public WebElement UserDataname1;
-    
-    // Admin Dashboard >> Booking History >> Booking Ticket >> PNR Number tablo başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
-    public WebElement thNumber;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> PNR Number data
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]/span")
-    public WebElement spanPywm1;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Journey Data tablo başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
-    public WebElement thJourneyDate2;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Journey Data Data
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
-    public WebElement tdJourneyDate;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Trip tablo başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
-    public WebElement thTrip2;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Trip Data başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/span[2]")
-    public WebElement tripData1;
-    
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Pickup Point tablo başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
-    public WebElement thPickupPoint2;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Pickup Point data
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]")
-    public WebElement tdPickupPoint;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Dropping Point tablo başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
-    public WebElement thDroppingPoint2;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Dropping Point data
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[6]")
-    public WebElement tdDroppingPoint;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Status tablo başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[7]")
-    public WebElement thStatus2;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Status data
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[7]")
-    public WebElement tdStatus2;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Ticket Count tablo başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[8]")
-    public WebElement thTicketCount2;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Ticket Count data
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[8]")
-    public WebElement tdTicketCount;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Fare tablo başlığı
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[9]")
-    public WebElement thFare2;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Fare Data
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[9]")
-    public WebElement tdFare;
-
-    // Admin Dashboard >> Booking History >> Booking Ticket >> Sayfa değiştirme 2 butonu
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/nav/ul/li[2]/a")
-    public WebElement sayfadeğiştirme2butonu;
-    
- 
-
-   
-
-    
-    
 
 
 

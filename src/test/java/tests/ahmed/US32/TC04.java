@@ -15,6 +15,7 @@ import java.util.List;
 
 public class TC04 {
 
+    //Ticket price sayfasında bilet fiyatlarını görüntüleyebilmeliyim,yeni ekleyebilmeli, eklediğimi düzenleyebilmeli ve silebilmeliyim
     @Test
     public void test01(){
         SoftAssert softAssert = new SoftAssert();
@@ -23,6 +24,7 @@ public class TC04 {
 
         ReusableMethods.adminLoginMethod("admin13","123123123");
 
+        ReusableMethods.wait(2);
         Driver.quitDriver();
     }
 }
