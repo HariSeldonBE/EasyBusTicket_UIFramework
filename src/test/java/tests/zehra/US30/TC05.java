@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.admin.AdminDashBoardPage;
+import pages.admin.AdminDashBoard_CounterPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -19,7 +20,7 @@ public class TC05 {
     //   Browser'ı açar
     //   URL'e gider
 
-        AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
+        AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
         Faker faker = new Faker();
         Actions actions = new Actions(Driver.getDriver());
@@ -27,16 +28,16 @@ public class TC05 {
         ReusableMethods.adminLoginMethod("admin11","123123123");
 
         // "Counter" linkine tıklar
-        adminDashBoardPage.linkCounter.click();
+        adminDashBoard_counterPage.linkCounter.click();
 
         //   Açılan sayfanın en altına iner
         actions.sendKeys(Keys.PAGE_DOWN)
                 .sendKeys(Keys.PAGE_DOWN).perform();
 
         //  Yeni Counter'ın sağ tarafındaki kalem ikonunu görür ve tıklar
-        softAssert.assertTrue(adminDashBoardPage.kalemİkon.isDisplayed(),"kalem ikonu görünmüyor");
+        softAssert.assertTrue(adminDashBoard_counterPage.kalemİkon.isDisplayed(),"kalem ikonu görünmüyor");
        ReusableMethods.wait(3);
-        ReusableMethods.doubleClick(adminDashBoardPage.kalemİkon);
+        ReusableMethods.doubleClick(adminDashBoard_counterPage.kalemİkon);
 
         //   İstenen bilgileri (Name, City, Location, Mobile) günceller
         String fakerName = faker.name().firstName();
@@ -45,7 +46,7 @@ public class TC05 {
         int fakerPhone = faker.number().randomDigit();
 
         ReusableMethods.wait(2);
-        actions.click( adminDashBoardPage.counterUpdateNameTextBox)
+        actions.click( adminDashBoard_counterPage.counterUpdateNameTextBox)
                 .sendKeys(fakerName)
                 .sendKeys(Keys.TAB)
                 .sendKeys(fakerAddress)
@@ -56,10 +57,10 @@ public class TC05 {
                 .perform();
 
         //   Pencerenin altındaki "Update" butonuna basar
-        adminDashBoardPage.counterUpdateButton.click();
+        adminDashBoard_counterPage.counterUpdateButton.click();
 
         //   Değişikliklerin yapıldığını görür
-        String actualUpdateMessage = adminDashBoardPage.counterHata.getText();
+        String actualUpdateMessage = adminDashBoard_counterPage.counterHata.getText();
         String expectedUpdateMessage = "Counter update successfully.";
         softAssert.assertEquals(actualUpdateMessage,expectedUpdateMessage,"Update edilmedi");
 

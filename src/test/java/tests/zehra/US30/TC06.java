@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.AdminDashBoardPage;
+import pages.admin.AdminDashBoard_CounterPage;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -14,7 +15,8 @@ public class TC06 {
     public void test01(){
 //    Browser'ı açar
 //    URL'e gider
-        AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
+
+        AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
         Faker faker = new Faker();
         Actions actions = new Actions(Driver.getDriver());
@@ -22,14 +24,14 @@ public class TC06 {
         ReusableMethods.adminLoginMethod("admin11","123123123");
 
         // "Counter" linkine tıklar
-        adminDashBoardPage.linkCounter.click();
+        adminDashBoard_counterPage.linkCounter.click();
 
         // Açılan sayfanın en altına iner
         actions.sendKeys(Keys.PAGE_DOWN)
                 .sendKeys(Keys.PAGE_DOWN).perform();
 
         // Eklenen Counter'ın sağ tarafındaki Active/Disable ikonu görür
-           softAssert.assertTrue(adminDashBoardPage.ikonCounterActiveDisable.isDisplayed());
+           softAssert.assertTrue(adminDashBoard_counterPage.ikonCounterActiveDisable.isDisplayed());
 
         //
 
