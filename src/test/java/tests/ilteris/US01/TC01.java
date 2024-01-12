@@ -1,8 +1,5 @@
 package tests.ilteris.US01;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.openqa.selenium.interactions.Actions;;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import utilities.ConfigReader;
@@ -35,6 +32,7 @@ public class TC01 {
 
 
         Driver.closeDriver();
+
 
 
     }
