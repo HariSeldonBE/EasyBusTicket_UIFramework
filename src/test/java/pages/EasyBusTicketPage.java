@@ -24,4 +24,7 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "//*[text()=\"Every Journey is an Adventure, Every Ticket is a Story\"]")
     public WebElement EveryJourneyisanAdventureEveryTicketisaStoryYazisi;
 
+    @FindBy(xpath = "//a[@class='sign-up']")
+    public WebElement signUpButton2;
+
 }
