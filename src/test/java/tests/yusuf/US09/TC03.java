@@ -1,5 +1,7 @@
 package tests.yusuf.US09;
 
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.EasyBusTicketPage;
@@ -24,8 +26,17 @@ public class TC03 {
         easyBusTicketPage.cookiesButton.click();
         easyBusTicketPage.signUpButton.click();
         SignUpPage signUpPage = new SignUpPage();
+        ReusableMethods.wait(2);
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
         signUpPage.acceptCheckButon.click();
+
         signUpPage.signUpbutton.click();
+
+
         ReusableMethods.wait(1);
         Assert.assertTrue(signUpPage.firstnameTextBox.isDisplayed());
         ReusableMethods.wait(4);
