@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.admin.AdminDashBoardPage;
+import pages.admin.AdminDashBoard_CounterPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -25,7 +26,8 @@ public class TC04 {
       // Browser'ı açar
       // URL'e gider
 
-        AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
+
+        AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
         Faker faker = new Faker();
         Actions actions = new Actions(Driver.getDriver());
@@ -33,10 +35,10 @@ public class TC04 {
         ReusableMethods.adminLoginMethod("admin11","123123123");
 
       // "Counter" linkine tıklar
-        adminDashBoardPage.linkCounter.click();
+        adminDashBoard_counterPage.linkCounter.click();
 
       // "Add New" butonuna tıklar
-        adminDashBoardPage.counterAddNewButton.click();
+        adminDashBoard_counterPage.counterAddNewButton.click();
 
       // İstenen bilgileri  "Name'e, City'e Location'a rakam, özel karakter; Mobile Number'a eksi işareti girer
         int fakerName = faker.number().randomDigit();
@@ -45,7 +47,7 @@ public class TC04 {
         int fakerPhone = faker.number().randomDigit();
 
         ReusableMethods.wait(2);
-        actions.click( adminDashBoardPage.nameTextBox)
+        actions.click( adminDashBoard_counterPage.nameTextBox)
                 .sendKeys(""+fakerName)
                 .sendKeys(Keys.TAB)
                 .sendKeys(fakerAddress)
@@ -56,16 +58,16 @@ public class TC04 {
                 .perform();
 
         // Pencerenin altındaki "Save"butonuna tıklar
-        adminDashBoardPage.counterSaveButton.click();
+        adminDashBoard_counterPage.counterSaveButton.click();
 
       // Hata mesajı görür
     ;
-       System.out.println(adminDashBoardPage.counterHata.getText());
-       softAssert.assertNotEquals( "Counter save successfully.",adminDashBoardPage.counterHata.getText(),"hatalı bilgiler kaydedilmiş");
+       System.out.println(adminDashBoard_counterPage.counterHata.getText());
+       softAssert.assertNotEquals( "Counter save successfully.",adminDashBoard_counterPage.counterHata.getText(),"hatalı bilgiler kaydedilmiş");
 
       // Sayfanın en altına iner ve yeni Counter açmadığını görür
         actions.sendKeys(Keys.PAGE_DOWN).perform();
-        WebElement lastRow = adminDashBoardPage.tbodyCounterTablo.findElement(By.xpath(".//tr[last()]"));
+        WebElement lastRow = adminDashBoard_counterPage.tbodyCounterTablo.findElement(By.xpath(".//tr[last()]"));
         String rowData = lastRow.getText();
         // System.out.println("Last row data: " + rowData);
         String[] rowDataArray = rowData.split(" ");

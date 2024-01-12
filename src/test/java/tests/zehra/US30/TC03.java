@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.AdminDashBoardPage;
 
+import pages.admin.AdminDashBoard_CounterPage;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -20,7 +21,7 @@ public class TC03 {
         // Browser'ı açar
         // URL'e gider
 
-        AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
+        AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
         Faker faker = new Faker();
         Actions actions = new Actions(Driver.getDriver());
@@ -28,13 +29,13 @@ public class TC03 {
         ReusableMethods.adminLoginMethod("admin11","123123123");
 
         // "Counter" linkine tıklar
-        adminDashBoardPage.linkCounter.click();
+        adminDashBoard_counterPage.linkCounter.click();
 
         // Açılan sayfada "Add New" butonunu görüntüler
-        softAssert.assertTrue(adminDashBoardPage.counterAddNewButton.isDisplayed(),"Add New butonu görünmüyor");
+        softAssert.assertTrue(adminDashBoard_counterPage.counterAddNewButton.isDisplayed(),"Add New butonu görünmüyor");
 
         // "Add New" butonuna tıklar
-        adminDashBoardPage.counterAddNewButton.click();
+        adminDashBoard_counterPage.counterAddNewButton.click();
 
         // İstenen bilgileri (Name, City, Location, Mobile) girer
         String fakerName = faker.name().firstName();
@@ -43,7 +44,7 @@ public class TC03 {
         int fakerPhone = faker.number().randomDigit();
 
         ReusableMethods.wait(2);
-        actions.click( adminDashBoardPage.nameTextBox)
+        actions.click( adminDashBoard_counterPage.nameTextBox)
                 .sendKeys(fakerName)
                 .sendKeys(Keys.TAB)
                 .sendKeys(fakerAddress)
@@ -55,14 +56,14 @@ public class TC03 {
 
 
         // Pencerenin altındaki "Save" butonunu görür ve tıklar
-        softAssert.assertTrue(adminDashBoardPage.counterSaveButton.isDisplayed());
-        adminDashBoardPage.counterSaveButton.click();
+        softAssert.assertTrue(adminDashBoard_counterPage.counterSaveButton.isDisplayed());
+        adminDashBoard_counterPage.counterSaveButton.click();
 
         // Sayfanın en altına iner ve yeni Counter açtığını görür,
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-        WebElement lastRow = adminDashBoardPage.tbodyCounterTablo.findElement(By.xpath(".//tr[last()]"));
+        WebElement lastRow = adminDashBoard_counterPage.tbodyCounterTablo.findElement(By.xpath(".//tr[last()]"));
         String rowData = lastRow.getText();
        // System.out.println("Last row data: " + rowData);
         String[] rowDataArray = rowData.split(" ");
