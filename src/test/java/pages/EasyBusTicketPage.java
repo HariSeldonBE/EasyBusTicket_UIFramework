@@ -23,7 +23,7 @@ public class EasyBusTicketPage {
 
     @FindBy(xpath = "//*[text()=\"Every Journey is an Adventure, Every Ticket is a Story\"]")
     public WebElement EveryJourneyisanAdventureEveryTicketisaStoryYazisi;
-
+/*
     //EasyBusTicket Home page header kısmının solundaki "MobileNumber"
     @FindBy(xpath = "//html/body//div[3]//div//div//a")
     public WebElement headerMobileNumberLinki;
@@ -75,5 +75,5 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//div[@class='form--group'])[4]")
     public WebElement homePageFindTicketButton;
 
-
+*/
 }
