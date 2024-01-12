@@ -15,7 +15,7 @@ public class EasyBusTicketPage {
     public WebElement signInButton;
 
 
-    @FindBy(xpath = "//a[text()='Contact']")
+    @FindBy(xpath = "(//a[text()='Contact'])[1]")
     public WebElement contactButton;
 
     @FindBy (xpath = "//h2[@class='title']")
@@ -24,7 +24,7 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "//*[text()=\"Every Journey is an Adventure, Every Ticket is a Story\"]")
     public WebElement EveryJourneyisanAdventureEveryTicketisaStoryYazisi;
 
-    @FindBy(xpath = "//a[@class='sign-up']")
-    public WebElement signUpButton2;
+    @FindBy(className = "sign-up")//(xpath = "//a[@class='sign-up']")
+    public WebElement signUpButton;
 
 }
