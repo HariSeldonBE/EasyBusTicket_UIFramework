@@ -1,5 +1,7 @@
 package tests.zeliha.US26;
 
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.AdminDashBoardPage;
@@ -7,6 +9,10 @@ import pages.admin.AdminLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeListener;
 
 public class TC03 {
 
@@ -18,7 +24,7 @@ public class TC03 {
         "Booked Ticket" Linki aktif olmalı ve içerdiği bilgiler görüntülenebilmeli.
 
         STEPLER
-        1 - Browser açılır
+        1 - Browser açılır.
         2 -	URL'e gidilir.
         3 -	Admin olarak giriş yapılır.
         4 -	"Booking History" linki tıklanır.
@@ -40,6 +46,7 @@ public class TC03 {
 
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
         AdminLoginPage adminLoginPage = new AdminLoginPage();
+        Actions actions = new Actions(Driver.getDriver());
         adminLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("admin20"));
         adminLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("adminPass"));
         adminLoginPage.loginButton.click();
@@ -50,7 +57,7 @@ public class TC03 {
         softAssert.assertTrue(adminDashBoardPage.bookingHistoryButton.isDisplayed(), "Booking History linki Görüntülenemedi.");
         adminDashBoardPage.bookingHistoryButton.click();
 
-        //softAssert.assertTrue(adminDashBoardPage.bookingHistoryButton.isDisplayed(),"Booking History linki Görüntülenemedi.");
+        softAssert.assertTrue(adminDashBoardPage.bookedTicketButton2.isDisplayed(),"Booking History linki Görüntülenemedi.");
         adminDashBoardPage.bookedTicketButton2.click();
 
         softAssert.assertTrue(adminDashBoardPage.thUser2.isDisplayed(), "User Başlığı Görüntülenemedi.");
@@ -82,21 +89,21 @@ public class TC03 {
 
         softAssert.assertTrue(adminDashBoardPage.aramaKutusu2.isDisplayed(), "Arama Kutusu Görüntülenemedi.");
         adminDashBoardPage.aramaKutusu2.click();
-        ReusableMethods.wait(2);
+        ReusableMethods.wait(1);
         adminDashBoardPage.aramaKutusu2.sendKeys("deneme");
         adminDashBoardPage.aramaKutusuIconu.click();
         ReusableMethods.wait(1);
         Driver.getDriver().navigate().back();
 
-/*
-        softAssert.assertTrue(adminDashBoardPage.sayfadeğiştirme2butonu.isDisplayed(), "Sayfa Değiştirme Butonu Görüntülenemedi.");
-        softAssert.assertTrue(adminDashBoardPage.sayfadeğiştirme2butonu.isEnabled(),"Buton Çalışmıyor");
-*/
+        Driver.getDriver().navigate().refresh();
+
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.wait(2);
+        softAssert.assertTrue(adminDashBoardPage.sayfadegistirme2butonu.isDisplayed(), "Sayfa Değiştirme Butonu Görüntülenemedi.");
+        softAssert.assertTrue(adminDashBoardPage.sayfadegistirme2butonu.isEnabled(),"Buton Çalışmıyor");
 
 
-
-
-                Driver.quitDriver();
+        Driver.quitDriver();
 
 
     }

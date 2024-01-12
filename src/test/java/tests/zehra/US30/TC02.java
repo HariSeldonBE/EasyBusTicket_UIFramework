@@ -1,17 +1,14 @@
 package tests.zehra.US30;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.EasyBusTicketPage;
-import pages.admin.AdminDashBoardPage;
+
 import pages.admin.AdminDashBoard_CounterPage;
 import pages.admin.AdminLoginPage;
-import pages.user.UserDashBoardPage;
-import pages.user.UserLoginPage;
+
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.ReusableMethods;
+
 
 public class TC02 {
 

@@ -3,7 +3,7 @@ package tests.zehra.US30;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import pages.admin.AdminDashBoardPage;
+
 import pages.admin.AdminDashBoard_CounterPage;
 import pages.admin.AdminLoginPage;
 import utilities.ConfigReader;
