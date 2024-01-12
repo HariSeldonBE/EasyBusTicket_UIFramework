@@ -184,77 +184,10 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//button[@class='btn btn--primary'])[2]")
     public WebElement scheduleUpdatePopUpUpdateButton;
 
-
-
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody")
-    public WebElement counterNamesList;
-
-    // Admin Dashboard >>  "Counter" linki
-    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[9]/a/span")
-    public WebElement linkCounter;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> name
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[1]")
-    public WebElement thName;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> MobileNumber
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[2]")
-    public WebElement thMobileNumber;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> City
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[3]")
-    public WebElement thCity;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Location
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[4]")
-    public WebElement thLocation;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Status
-   @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[5]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[5]")
     public WebElement thStatus;
 
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Name başlığı >> Name elementi
-     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[1]")
-    public WebElement tdName;
 
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> MobileNumber başlığı >> MobilNumber elementi
-     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[2]")
-    public WebElement tdMobileNumber;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> City başlığı >> City elementi
-     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[3]")
-    public WebElement tdCity;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Location başlığı >> Location elementi
-      @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[4]")
-    public WebElement tdLocation;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Status başlığı >> Status elementi
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[5]")
-    public WebElement tdStatus;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Add New
-    @FindBy(xpath = "//div[contains(@class, 'mt-3')]")
-    public WebElement counterAddNewButton;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Add New >> Name TextBox
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[1]/input")
-    public WebElement inputName;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Add New >> City TextBox
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[2]/input")
-    public WebElement inputCity;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Add New >> Location TextBox
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[3]/textarea")
-    public WebElement inputLocation;
-
-    // Admin Dashboard  >> "Counter" linki >> All Counter >> Add New >> Mobile TextBox
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[4]/input")
-    public WebElement inputMobile;
-
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[2]/button[2]")
-    public WebElement counterSaveButton;
 
 
     // 
