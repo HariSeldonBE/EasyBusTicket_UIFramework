@@ -7,8 +7,9 @@ import pages.SignUpPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC02 {
+public class TC02 extends TestBaseRapor {
     @Test
     public void signUpformDogrulama(){
         // 1- http://qa.easybusticket.com homepage go

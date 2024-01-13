@@ -10,8 +10,9 @@ import pages.user.ContactPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC02 {
+public class TC02 extends TestBaseRapor {
     @Test
             public void contactus(){
         // 1- http://qa.easybusticket.com homepage go

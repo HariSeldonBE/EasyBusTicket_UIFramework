@@ -7,8 +7,9 @@ import pages.SignUpPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC01 {
+public class TC01 extends TestBaseRapor {
 
     @Test
     public void SignUpButton(){

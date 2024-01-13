@@ -48,5 +48,17 @@ public class SignUpPage {
     public WebElement signUpbutton;
 
 
+    @FindBy(xpath = "//small[@class='text-danger usernameExist']")
+   public WebElement usernameAlreadyExist;
+
+    @FindBy(xpath ="//p[@class='iziToast-message slideIn']" )
+      public WebElement Theusernamehasalreadybeentaken;
+
+    @FindBy(xpath = "//a[text()='Sign In']")
+    public WebElement signInButton;
+
+    @FindBy(xpath = "//span[text()='Sign In your Account']") //Normalde SignIn sayfasinda ama tek locate için class açmak istemedim.
+    public WebElement SignInYourAccountText;
+
 
 }
