@@ -23,4 +23,7 @@ public class AdminLoginPage {
     @FindBy(xpath = "//button[@class='submit-btn mt-25 b-radius--capsule']")
     public WebElement loginButton;
 
+    @FindBy(xpath = "//span[text()='admin12']")
+    public WebElement admin12Navbar;
+
 }
