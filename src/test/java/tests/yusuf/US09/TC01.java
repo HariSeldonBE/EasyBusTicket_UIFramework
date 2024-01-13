@@ -1,6 +1,5 @@
 package tests.yusuf.US09;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
@@ -25,7 +24,7 @@ public class TC01 {
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
-        easyBusTicketPage.signUpButton2.click();
+        easyBusTicketPage.signUpButton.click();
         ReusableMethods.wait(1);
         SoftAssert softAssert=new SoftAssert();
         SignUpPage signUpPage=new SignUpPage();
