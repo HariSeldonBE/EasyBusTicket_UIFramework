@@ -25,6 +25,6 @@ public class EasyBusTicketPage {
     public WebElement EveryJourneyisanAdventureEveryTicketisaStoryYazisi;
 
     @FindBy(className = "sign-up")//(xpath = "//a[@class='sign-up']")
-    public WebElement signUpButton2;
+    public WebElement signUpButton;
 
 }

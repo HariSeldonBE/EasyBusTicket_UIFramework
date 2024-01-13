@@ -24,7 +24,7 @@ public class TC03 {
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
-        easyBusTicketPage.signUpButton2.click();
+        easyBusTicketPage.signUpButton.click();
         SignUpPage signUpPage = new SignUpPage();
         ReusableMethods.wait(2);
 
