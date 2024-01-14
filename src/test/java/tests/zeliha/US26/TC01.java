@@ -12,8 +12,11 @@ public class TC01 {
     @Test
     public void BookingHistoryLinki(){
          /*
+        TC01 - Admin olarak giriş yapıldığında
+        "Booking History" menüsü görüntülenebilmeli.
 
-        1 - Browser açılır
+        STEPLER
+        1 - Browser açılır.
         2 -	URL'e gidilir.
         3 -	Admin olarak giriş yapılır.
         4 -	Dashboard sayfasının solunda "Booking History" linkinin görünür olduğu doğrulanır.
