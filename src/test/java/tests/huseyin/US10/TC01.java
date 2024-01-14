@@ -31,6 +31,7 @@ public class TC01 {
         softAssert.assertTrue(easyBusTicketPage.cookiesButton.isDisplayed(),"Cookies Button Button is not displayed");
         // Home Page Sign-in Button Enable Test
         softAssert.assertTrue(easyBusTicketPage.cookiesButton.isEnabled(),"Cookies Button is not enabled");
+        ReusableMethods.wait(1);
 
         easyBusTicketPage.cookiesButton.click();
 

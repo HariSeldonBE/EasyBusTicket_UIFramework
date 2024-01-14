@@ -35,6 +35,7 @@ public class TC02 {
         // Home Page Sign-in Button Enable Test
         softAssert.assertTrue(easyBusTicketPage.cookiesButton.isEnabled(),"Cookies Button is not enabled");
 
+        ReusableMethods.wait(1);
         easyBusTicketPage.cookiesButton.click();
 
         // Home Page Sign-in Button Display Test
@@ -69,6 +70,7 @@ public class TC02 {
         // Enter Username and Password then Click to the Login button
         userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
         userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
+        ReusableMethods.wait(1);
         userLoginPage.loginButton.click();
 
         String actualUserDBUrl = Driver.getDriver().getCurrentUrl();

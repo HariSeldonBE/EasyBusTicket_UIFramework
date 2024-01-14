@@ -33,6 +33,7 @@ public class TC05 {
         // Home Page Sign-in Button Enable Test
         softAssert.assertTrue(easyBusTicketPage.cookiesButton.isEnabled(),"Cookies Button is not enabled");
 
+        ReusableMethods.wait(3);
         easyBusTicketPage.cookiesButton.click();
 
         // Home Page Sign-in Button Display Test
@@ -40,6 +41,7 @@ public class TC05 {
         // Home Page Sign-in Button Enable Test
         softAssert.assertTrue(easyBusTicketPage.signInButton.isEnabled(),"Sign-In Button is not enabled");
 
+        ReusableMethods.wait(1);
         easyBusTicketPage.signInButton.click();
 
         String actualUrl = Driver.getDriver().getCurrentUrl();
@@ -67,13 +69,14 @@ public class TC05 {
         // Enter Invalid Username and Invalid Password then Click to the Login button
         userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("invalidUserName"));
         userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("invalidPass"));
+        ReusableMethods.wait(1);
         userLoginPage.loginButton.click();
+        ReusableMethods.wait(1);
 
         // Invalid Login Notification Display Test at the Tap Right of teh Page
         softAssert.assertTrue(userLoginPage.slideInBox.isDisplayed(), "Invalid Login Notification is not displayed");
 
         softAssert.assertAll();
-        ReusableMethods.wait(1);
         Driver.closeDriver();
     }
 }
