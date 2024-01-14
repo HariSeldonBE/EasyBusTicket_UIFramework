@@ -1,4 +1,4 @@
-package tests.zehra.US33;
+package tests.mehmet.US16;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,7 +8,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TC05 {
+public class TC03 {
     @Test
     public void test01(){
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
@@ -16,7 +16,7 @@ public class TC05 {
         UserLoginPage userLoginPage = new UserLoginPage();
         easyBusTicketPage.cookiesButton.click();
         easyBusTicketPage.signInButton.click();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("invalidUserName"));
+        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
         userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("invalidPass"));
         userLoginPage.loginButton.click();
         Assert.assertTrue(userLoginPage.slideInBox.isDisplayed());
