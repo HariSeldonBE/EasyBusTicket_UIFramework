@@ -51,7 +51,7 @@ public class TC03 {
                 .sendKeys(Keys.TAB)
                 .sendKeys(fakerLocation)
                 .sendKeys(Keys.TAB)
-                .sendKeys("0"+fakerPhone)
+                .sendKeys(""+fakerPhone)
                 .perform();
 
 
