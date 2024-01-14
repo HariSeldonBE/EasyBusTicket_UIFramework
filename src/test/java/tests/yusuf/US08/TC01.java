@@ -9,8 +9,9 @@ import pages.user.ContactPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC01 {
+public class TC01 extends TestBaseRapor {
     @Test
     public void Contact(){
 
@@ -19,16 +20,22 @@ public class TC01 {
         // 3 - Click on "Contact" ButtonLink from the home page.
         // 4 - It is verified that the "Contact Us" cover text is displayed on the Contact page.
 
+
+        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+        extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
         ContactPage contactPage=new ContactPage();
         easyBusTicketPage.cookiesButton.click();
+        extentTest.info("User presses the contact button");
         easyBusTicketPage.contactButton.click();
         ReusableMethods.wait(1);
 
         Assert.assertTrue(contactPage.contactUsText.isDisplayed());
+        extentTest.pass("Tests the visibility of the 'Contact Us' text");
 
         Driver.closeDriver();
+        extentTest.info("Closed page");
 
 
 

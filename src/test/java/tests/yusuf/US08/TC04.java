@@ -9,8 +9,9 @@ import pages.user.ContactPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC04 {
+ public class TC04 extends TestBaseRapor {
     @Test
     public void iletisimform(){
 

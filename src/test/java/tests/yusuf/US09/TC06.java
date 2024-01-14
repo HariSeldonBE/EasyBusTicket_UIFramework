@@ -10,15 +10,16 @@ import pages.SignUpPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC06 {
+public class TC06 extends TestBaseRapor {
     @Test
     public void emailsecurity(){
         // 1- http://qa.easybusticket.com homepage go
         // 2- Cookies  accepted
         // 3- Click on "signUp" ButtonLink from the home page.
         // 4- The page scrolls down
-        // 5- In the registration window, it is verified that the Firstname, Last name, Email, Country, Mobile, Username, Email,   text boxes are active and visible.
+        // 5- In the registration window, it is verified that the Firstname, Last name,  Country, Mobile, Username text boxes are active and visible.
         // 6- An invalid email is entered in the email.
         // 7- Sign Up button is pressed.
         // 9- Verify that the firstname textBox appears on the same page

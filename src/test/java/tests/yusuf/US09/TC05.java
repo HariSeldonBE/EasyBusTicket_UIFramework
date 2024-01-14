@@ -10,8 +10,9 @@ import pages.SignUpPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC05 {
+public class TC05 extends TestBaseRapor {
 
     @Test
 
@@ -20,7 +21,7 @@ public class TC05 {
         // 2- Cookies  accepted
         // 3- Click on "signUp" ButtonLink from the home page.
         // 4- The page scrolls down
-        // 5- In the registration window, it is verified that the Firstname, Last name, Email, Country, Mobile, Username, Email,   text boxes are active and visible.
+        // 5- Registration procedures: Name, Surname, Email, Country, Mobile Phone, User Name, Email,  Confirm , text boxes are filled with the appropriate criteria and the register button is pressed.
         // 6- Password textBox is written in lowercase letters that do not meet the criteria
         // 7- Confirm password textbox is written the same as what is written in the password textBox.
         // 8- Sign Up button is pressed
