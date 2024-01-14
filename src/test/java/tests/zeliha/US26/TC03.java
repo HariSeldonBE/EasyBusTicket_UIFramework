@@ -10,9 +10,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
+
 
 public class TC03 {
 
