@@ -16,7 +16,7 @@ import utilities.ReusableMethods;
 
 public class TC05 {
     @Test
-    public void test01(){
+    public void updateTest(){
     //   Browser'ı açar
     //   URL'e gider
 

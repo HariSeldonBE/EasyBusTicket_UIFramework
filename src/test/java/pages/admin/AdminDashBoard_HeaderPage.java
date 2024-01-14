@@ -28,8 +28,8 @@ public class AdminDashBoard_HeaderPage {
     @FindBy(xpath = "//*[@id='navbar_search_result_area']")
     public WebElement navbarSearchResult;
 
-    @FindBy(xpath = "//a[text()='About Us']")
-    public WebElement labelSearchAbout;
+    @FindBy(xpath = "//a[text()='Booked Ticket']")
+    public WebElement labelSearchBookedTicket;
 
     // Admin Dashboard >> Header >> Search sonucunda gidilen sayfanın başlık kısmı
     @FindBy(xpath = "//div[contains(@class, 'align-items-center')]")
@@ -50,13 +50,24 @@ public class AdminDashBoard_HeaderPage {
     @FindBy(xpath = "//h6[@class='page-title']")
     public  WebElement bildirimTitle;
 
- @FindBy(xpath = "//div[@class='dropdown-menu__header']")
- public WebElement ddmNotificationUnread;
+    @FindBy(xpath = "/html/body/div/nav/div[2]/ul/li[2]/div/div[2]/div[1]/a[1]/div/div[2]")
+    public WebElement divNewSupportTicketHas;
 
-    @FindBy(xpath = "//div[@class='navbar-notifi']")
-    public WebElement ddmNewMemberRegisteredSeconds;
+    @FindBy(xpath = "//div[contains(@class, 'show')]")
+    public WebElement ddmBildirimPenceresi;
 
-    @FindBy(xpath = "//button[@data-id='62']")
-    public WebElement ikonCounterActiveDisable;
+   @FindBy(xpath = "//a[@class='view-all-message']")
+   public WebElement ddmViewAllNotification;
+
+   @FindBy(xpath = "//a[@class='btn btn--primary']")
+   public WebElement buttonTümüOkundu;
+
+  @FindBy(xpath = "//div[@class='iziToast-texts']")
+    public WebElement alertTümBildirimlerOkundu;
+
+    
+
+    
+    
 
 }
