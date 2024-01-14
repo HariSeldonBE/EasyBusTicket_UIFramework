@@ -43,7 +43,7 @@ public class TC03 {
         // Home Page Sign-in Button Enable Test
         softAssert.assertTrue(easyBusTicketPage.signInButton.isEnabled(),"Sign-In Button is not enabled");
 
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(0);
         easyBusTicketPage.signInButton.click();
 
         String actualUrl = Driver.getDriver().getCurrentUrl();
