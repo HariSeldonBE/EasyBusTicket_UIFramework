@@ -42,9 +42,6 @@ public class TC02 {
 
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
-        softAssert.assertTrue(adminDashBoardPage.bookingHistoryButton.isDisplayed(),"Booking History linki Görüntülenemedi.");
-        adminDashBoardPage.bookingHistoryButton.click();
-
         softAssert.assertTrue(adminDashBoardPage.spanPaymentGateways.isDisplayed(),"Pending Ticket linki Görüntülenemedi.");
         adminDashBoardPage.spanPaymentGateways.click();
         adminDashBoardPage.spanAutomaticGateways.click();

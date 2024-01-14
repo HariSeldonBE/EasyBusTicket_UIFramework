@@ -1,5 +1,6 @@
 package pages.admin;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -7,9 +8,11 @@ import utilities.Driver;
 
 import java.util.List;
 
+import static utilities.Driver.getDriver;
+
 public class AdminDashBoardPage {
-    public AdminDashBoardPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public AdminDashBoardPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     // Admin dashboard sayfasının side bar'ındaki "Manage trips" linki
@@ -185,7 +188,6 @@ public class AdminDashBoardPage {
     public WebElement scheduleUpdatePopUpUpdateButton;
 
 
-
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody")
     public WebElement counterNamesList;
 
@@ -210,23 +212,23 @@ public class AdminDashBoardPage {
     public WebElement thLocation;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Status
-   @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[5]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/thead/tr/th[5]")
     public WebElement thStatus;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Name başlığı >> Name elementi
-     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[1]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[1]")
     public WebElement tdName;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> MobileNumber başlığı >> MobilNumber elementi
-     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[2]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[2]")
     public WebElement tdMobileNumber;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> City başlığı >> City elementi
-     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[3]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[3]")
     public WebElement tdCity;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Location başlığı >> Location elementi
-      @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[4]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody/tr[1]/td[4]")
     public WebElement tdLocation;
 
     // Admin Dashboard  >> "Counter" linki >> All Counter >> Status başlığı >> Status elementi
@@ -260,7 +262,7 @@ public class AdminDashBoardPage {
     // 
     // ====================== BOOKING HISTORY ================================= //
     //
-    
+
     // Admin Dashboard  >> "Booking History" Button
     @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[4]/a/span")
     public WebElement bookingHistoryButton;
@@ -336,7 +338,7 @@ public class AdminDashBoardPage {
     // 
     // ====================== BOOKING HISTORY >> BOOKED TICKET ================================= //
     //
-    
+
     // Admin Dashboard >> Booking History >> Booking Ticket >> Booking Ticket Butonu
     @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[4]/div/ul/li[2]/a/span")
     public WebElement bookedTicketButton2;
@@ -344,7 +346,7 @@ public class AdminDashBoardPage {
     // Admin Dashboard >> Booking History >> Booking Ticket >> Booking Ticket başlığı
     @FindBy(xpath = "Find/html/body/div/div[2]/div/div[1]/div[1]/h6")
     public WebElement headerBookedTicked;
-    
+
     // Admin Dashboard >> Booking History >> Booking Ticket >> Arama Kutusu Textbox
     @FindBy(xpath = "//input[@type='text']")
     public WebElement aramaKutusu2;
@@ -364,7 +366,7 @@ public class AdminDashBoardPage {
     // Admin Dashboard >> Booking History >> Booking Ticket >> User data Name linki
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]/span[2]/a")
     public WebElement UserDataname1;
-    
+
     // Admin Dashboard >> Booking History >> Booking Ticket >> PNR Number tablo başlığı
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
     public WebElement thNumber;
@@ -388,7 +390,7 @@ public class AdminDashBoardPage {
     // Admin Dashboard >> Booking History >> Booking Ticket >> Trip Data başlığı
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/span[2]")
     public WebElement tripData1;
-    
+
     // Admin Dashboard >> Booking History >> Booking Ticket >> Pickup Point tablo başlığı
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
     public WebElement thPickupPoint2;
@@ -432,33 +434,26 @@ public class AdminDashBoardPage {
     // Admin Dashboard >> Booking History >> Booking Ticket >> Sayfa değiştirme 2 butonu
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/nav/ul/li[2]/a")
     public WebElement sayfadegistirme2butonu;
-    
- 
-
-
-
-
-
 
 
     //    -----Admin Dashboard  >>  Manage Users DDM-------
     // Admin Dashboard  >> "Manage Users" DDM
-    @FindBy(xpath= "(//a[@href='javascript:void(0)'])[1]")
+    @FindBy(xpath = "(//a[@href='javascript:void(0)'])[1]")
     public WebElement dropDownManageUsers;
     // Admin Dashboard  >> "Manage Users" DDM >> AllUsers
-    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users']")
+    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users']")
     public WebElement linkAllUsers;
     // Admin Dashboard  >> "Manage Users" DDM >> ActiveUsers
-    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users/active']")
+    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/active']")
     public WebElement linkActiveUsers;
     // Admin Dashboard  >> "Manage Users" DDM >> BannedUsers
-    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users/banned']")
+    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/banned']")
     public WebElement linkBannedUsers;
     // Admin Dashboard  >> "Manage Users" DDM >> EmailUnverified
-    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users/email-unverified']")
+    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/email-unverified']")
     public WebElement linkEmailUnverified;
     // Admin Dashboard  >> "Manage Users" DDM >> SmsUnverified
-    @FindBy(xpath= "//a[@href='https://qa.easybusticket.com/admin/users/sms-unverified']")
+    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/sms-unverified']")
     public WebElement linkSmsUnverified;
     // Admin Dashboard  >> "Manage Users" DDM >> EmailToAll
     @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/send-email']")
@@ -476,7 +471,7 @@ public class AdminDashBoardPage {
     // Admin Dashboard >> Booking History >> Rejected Ticket >> User Başlığı
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
     public WebElement thUser3;
-    
+
     // Admin Dashboard >> Booking History >> Rejected Ticket >> PNR Number Başlığı
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
     public WebElement thNumber2;
@@ -492,7 +487,7 @@ public class AdminDashBoardPage {
     // Admin Dashboard >> Booking History >> Rejected Ticket >> Pickup Point Başlığı
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
     public WebElement thPickupPoint3;
-    
+
     // Admin Dashboard >> Booking History >> Rejected Ticket >> Dropping Point Başlığı
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
     public WebElement thDroppingPoint3;
@@ -558,7 +553,6 @@ public class AdminDashBoardPage {
     public WebElement iSearch;
 
 
-
     //
     // ====================== BOOKING HISTORY >> All TICKET ================================= //
     //
@@ -602,7 +596,7 @@ public class AdminDashBoardPage {
     // Admin Dashboard >> Booking History >> All Ticket >> User üst  data
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]/span[1]")
     public WebElement spanFontBold;
-    
+
     // Admin Dashboard >> Booking History >> All Ticket >> PNR Number data
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]/span")
     public WebElement spanPywm;
@@ -630,11 +624,11 @@ public class AdminDashBoardPage {
     // Admin Dashboard >> Booking History >> All Ticket >> Ticket count  data
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[8]")
     public WebElement tdTicketCount3;
- 
+
     // Admin Dashboard >> Booking History >> All Ticket >> fare data
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[9]")
     public WebElement tdFare3;
-    
+
     // Admin Dashboard >> Booking History >> All Ticket >> Arama Kutusu
     @FindBy(xpath = "//input[@type='text']")
     public WebElement inputSearch2;
@@ -659,7 +653,7 @@ public class AdminDashBoardPage {
     public WebElement spanManualGateways;
 
     //
-    // ====================== AUTOMATIC GATEWAYS ================================= //
+    // ====================== PAYMENT GATEWAYS >> AUTOMATIC GATEWAYS ================================= //
     //
 
     // Admin Dashboard >> Payment Gateways >> Automatic Gateways >> Gateway Başlığı
@@ -699,24 +693,211 @@ public class AdminDashBoardPage {
     public WebElement inputSearchTable;
 
 
+    //
+    // ====================== PAYMENT GATEWAYS >> MANUAL GATEWAYS ================================= //
+    //
+
+    // Admin Dashboard >> Payment Gateways >> Manual Gateways >> Gateway Başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/thead/tr/th[1]")
+    public WebElement thGateway2;
+
+    // Admin Dashboard >> Payment Gateways >> Manual Gateways >> Status Başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/thead/tr/th[2]")
+    public WebElement thStatus6;
+
+    // Admin Dashboard >> Payment Gateways >> Manual Gateways >> Action Başlığı
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/thead/tr/th[3]")
+    public WebElement thAction;
+
+    // Admin Dashboard >> Payment Gateways >> Manual Gateways >> Gateway data
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[1]/td[1]/div/span")
+    public WebElement spanDeneme;
+
+    // Admin Dashboard >> Payment Gateways >> Manual Gateways >> Status data
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[1]/td[2]/span")
+    public WebElement spanDisabled;
+
+    // Admin Dashboard >> Payment Gateways >> Manual Gateways >> Arama kutusu
+    @FindBy(xpath = "//input[@type='text']")
+    public WebElement inputSearchTable2;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new butonu
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[1]/div[2]/a")
+    public WebElement iPlus;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> resim ekleme butonu
+    @FindBy(xpath = "//label[@for='image']")
+    public WebElement resimEklemeButonu;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> Gateway Name textbox
+    @FindBy(xpath = "//input[@class='form-control ']")
+    public WebElement GatewayNameTextbox;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> Cuurency textbox
+    @FindBy(xpath = "//input[@name='currency']")
+    public WebElement CurrencyTextbox;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> Rate textbox
+    @FindBy(xpath = "//input[@name='rate']")
+    public WebElement rateTextbox;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> Minimum Amount textbox
+    @FindBy(xpath = "//input[@name='min_limit']")
+    public WebElement minAmountTextbox;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> Maximum Amount textbox
+    @FindBy(xpath = "//input[@name='max_limit']")
+    public WebElement maxAmountTextbox;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> Fixed Charge Amount textbox
+    @FindBy(xpath = "//input[@name='fixed_charge']")
+    public WebElement fixedCharge;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> Percent Charge Amount textbox
+    @FindBy(xpath = "//input[@name='percent_charge']")
+    public WebElement percentCharge;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> Açıklama Amount textbox
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/form/div[1]/div/div[2]/div/div[3]/div/div/div/div[2]/div")
+    public WebElement aciklamaTextbox;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >>Add Butonu
+    @FindBy(xpath = "//button[contains(@class, 'btn-block')]")
+    public WebElement saveMethodButtonu;
+
+    //Admin Dashboard >> Payment Gateways >> Manual Gateways  >>  add new >> Go Back Butonu
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[1]/div[2]/a")
+    public WebElement goBackButonu;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[1]/td[3]/a[1]")
+    public WebElement duzenleButonu;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[1]/td[3]/a[1]/i")
+    public WebElement iPencil;
+
+    // boşluk
+    @FindBy(xpath = "//div[@class='bodywrapper__inner']")
+    public WebElement divNewManualGatewayBack;
+
+
+    //  @FindBy(xpath = "//*[@text='Add New']")
+    //   tagName[@attributeIsmi=‘attributeValue']
+    //    @FindBy(xpath = "//*[@id='navbar-search__field']")
+
+
+    //
+    // ====================== REPORTS ================================= //
+    //
+
+    //Admin Dashboard >> Reports Butonu
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[7]/a")
+    public WebElement reportButton;
+
+    //Admin Dashboard >> Reports Butonu >> Login History Butonu
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[7]/div/ul/li[1]/a/span")
+    public WebElement spanLoginHistory;
+
+    //Admin Dashboard >> Reports Butonu >> Email History Butonu
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[7]/div/ul/li[2]/a/span")
+    public WebElement spanEmailHistory;
+
+
+    //
+    // ====================== REPORTS >> LOGIN HISTORY================================= //
+    //
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thUser5;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thLogin;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement th;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thLocation2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thBrowser;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]/span[1]")
+    public WebElement spanAzimKaya;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tdLogin;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
+    public WebElement td;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]")
+    public WebElement tdLocation2;
+
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]/span/a")
+    public WebElement itdLocationLink;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]")
+    public WebElement tdBrowser;
+
+    @FindBy(xpath = "//input[@type='text']")
+    public WebElement inputSearch3;
+    
+    // ip location sayfasında 
+    
+    @FindBy(xpath = "//button[@id='btn-click'][1]")
+    public WebElement locationbuttonClick;
+
+    // ip location sayfasında sonuç bilgisi
+    @FindBy(xpath = "/html/body/div[2]/div/div[1]/div[3]/div/div[3]/div/div/div[1]/div/table/tbody/tr[6]/td")
+    public WebElement td2;
+
+    
+
+    //
+    // ====================== REPORTS >> EMAıl HISTORY================================= //
+    //
+
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thUser6;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thSent;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thMailSender;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thSubject;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thAction2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]/span[1]")
+    public WebElement spanFontBold2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tdSent;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
+    public WebElement tdMailSender;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]")
+    public WebElement tdSubject;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]/a/i")
+    public WebElement iDesktop;
+
 
 
 
     
     
-
-
-    
-
-
-
-
-
-
-
 
 
 
 
 }
+
 
