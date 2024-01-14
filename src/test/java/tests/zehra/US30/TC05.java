@@ -3,14 +3,12 @@ package tests.zehra.US30;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
+
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.EasyBusTicketPage;
-import pages.admin.AdminDashBoardPage;
+
 import pages.admin.AdminDashBoard_CounterPage;
-import pages.user.UserLoginPage;
-import utilities.ConfigReader;
+
 import utilities.Driver;
 import utilities.ReusableMethods;
 

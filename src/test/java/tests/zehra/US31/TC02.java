@@ -1,22 +1,16 @@
 package tests.zehra.US31;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
+
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.EasyBusTicketPage;
-import pages.admin.AdminDashBoard_ManageFleetsPage;
-import pages.user.UserDashBoardPage;
-import pages.user.UserLoginPage;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.JSUtilities;
-import utilities.ReusableMethods;
 
-public class TC02 {
+import pages.admin.AdminDashBoard_ManageFleetsPage;
+
+import utilities.*;
+
+public class TC02 extends TestBaseRapor {
     @Test
-    public void test01(){
+    public void test01() {
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
 
@@ -29,6 +23,7 @@ public class TC02 {
 
        // Seat Layouts'a tıklar
         JSUtilities.clickWithJS(Driver.getDriver(), adminDashBoard_manageFleetsPage.linkSeatLayouts);
+        ReusableMethods.wait(2);
 
         // Açılan "Seat Layouts" sayfasında "S.N., Layout, Action" başlıklarını, içeriğini görüntüler
         softAssert.assertTrue(adminDashBoard_manageFleetsPage.labelSN.isDisplayed());

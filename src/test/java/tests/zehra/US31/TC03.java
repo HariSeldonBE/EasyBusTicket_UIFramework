@@ -3,13 +3,12 @@ package tests.zehra.US31;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
+
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.EasyBusTicketPage;
+
 import pages.admin.AdminDashBoard_ManageFleetsPage;
-import pages.user.UserLoginPage;
-import utilities.ConfigReader;
+
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
