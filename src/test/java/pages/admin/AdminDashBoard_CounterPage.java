@@ -93,6 +93,16 @@ public class AdminDashBoard_CounterPage {
     @FindBy(xpath = "//button[@data-id='62']")
     public WebElement ikonCounterActiveDisable;
 
+
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[5]/div/div/form/div[2]/button[2]")
+    public WebElement buttonActive;
+
+    @FindBy(xpath = "//button[@class='btn btn--danger']")
+    public WebElement buttonDisable;
+
+
+
 }
 
 

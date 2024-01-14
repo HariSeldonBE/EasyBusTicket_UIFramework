@@ -39,11 +39,13 @@ public class TC02 {
 
        // 7-Search placeholder'ına yazılan sayfaya gittiği doğrulanır
         adminDashBoard_headerPage.navbarSearchField.click();
-        actions.sendKeys("about").perform();
-        actions.moveToElement(adminDashBoard_headerPage.labelSearchAbout)
-                .doubleClick(adminDashBoard_headerPage.labelSearchAbout)
+        actions.sendKeys("booked ticket").perform();
+        actions.moveToElement(adminDashBoard_headerPage.labelSearchBookedTicket)
+                .doubleClick(adminDashBoard_headerPage.labelSearchBookedTicket)
                 .perform();
-        softAssert.assertTrue(adminDashBoard_headerPage.labelSayfaBaşlıkları.getText().toLowerCase().contains("about"));
+        String expectedUrl = "https://qa.easybusticket.com/admin/ticket/booked";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedUrl,"aranan sayfaya ulaşamadı");
 
         softAssert.assertAll();
         ReusableMethods.wait(2);

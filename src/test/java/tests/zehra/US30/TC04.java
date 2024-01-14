@@ -21,7 +21,7 @@ import java.util.Arrays;
 
 public class TC04 {
     @Test
-    public void test01(){
+    public void negatifTest(){
 
       // Browser'ı açar
       // URL'e gider

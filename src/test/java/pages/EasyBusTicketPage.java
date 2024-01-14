@@ -9,21 +9,30 @@ public class EasyBusTicketPage {
     public EasyBusTicketPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+    // Homepage >> Cookies Button  -->Huseyin_US10
     @FindBy(className = "cookies-btn") //(xpath = "(//*[@name=\"cookieAccept\"])")
     public WebElement cookiesButton;
+
+    // Homepage >> Sign-in Button  -->Huseyin_US10
     @FindBy(className = "sign-in")
     public WebElement signInButton;
 
+    // Homepage >> Contact Button
     @FindBy(xpath = "(//a[text()='Contact'])[1]")
     public WebElement contactButton;
 
+    // Homepage >> Contact Us Text
     @FindBy (xpath = "//h2[@class='title']")
     public WebElement contactUsText;
 
+    // Homepage >> Banner area text
     @FindBy(xpath = "//*[text()=\"Every Journey is an Adventure, Every Ticket is a Story\"]")
     public WebElement EveryJourneyisanAdventureEveryTicketisaStoryYazisi;
 
-    @FindBy(className = "sign-up")//(xpath = "//a[@class='sign-up']")
+
+    // Homepage >> Sign-up Button
+    @FindBy(className = "sign-up")      //(xpath = "//a[@class='sign-up']")
     public WebElement signUpButton;
 
     // "Forgot Password?" link -->kevser_US20_TC01

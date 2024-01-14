@@ -13,7 +13,7 @@ import utilities.ReusableMethods;
 
 public class TC03 {
     @Test
-    public void test01(){
+    public void bildirimTest(){
 
         AdminDashBoard_HeaderPage adminDashBoard_headerPage = new AdminDashBoard_HeaderPage();
         SoftAssert softAssert = new SoftAssert();
@@ -33,7 +33,9 @@ public class TC03 {
         adminDashBoard_headerPage.ikonBildirim.click();
         String okunmamisBildirimSayisiYazisi = adminDashBoard_headerPage.pUnreadNotification.getText();
         String okunmamisBildirimSayisistr= okunmamisBildirimSayisiYazisi.replaceAll("\\D","");
+        System.out.println(okunmamisBildirimSayisistr);
         int okunmamisBildirimSayisi = Integer.parseInt(okunmamisBildirimSayisistr);
+        System.out.println(okunmamisBildirimSayisi);
         softAssert.assertTrue(okunmamisBildirimSayisi>0);
 
         // 6-Bildirim butonuna tıklandığında son bildirimden geriye doğru tüm okunmamış bildirimlerin
@@ -43,10 +45,13 @@ public class TC03 {
 
         // 7-Kutucukların da aktif olup tıklandığında bildirimin olduğu sayfaya götürdüğü doğrulanır
         softAssert.assertTrue(adminDashBoard_headerPage.ddmNewMemberRegisteredHours.isEnabled());
+
+        String expectedBildirimYazisi = adminDashBoard_headerPage.divNewSupportTicketHas.getText();
         adminDashBoard_headerPage.ddmNewMemberRegisteredHours.click();
-        String expectedBildirimYazisi = adminDashBoard_headerPage.ddmNewMemberRegisteredSeconds.getText();
         String expectedAcilanBildirimSayfasi = adminDashBoard_headerPage.bildirimTitle.getText();
-        //softAssert.assertEquals("New member registered",expectedBildirimYazisi);
+        System.out.println(expectedBildirimYazisi);
+        System.out.println(expectedAcilanBildirimSayfasi);
+
         softAssert.assertEquals("User Detail",expectedAcilanBildirimSayfasi,"ilk");
         softAssert.assertEquals("Booked Ticket",expectedAcilanBildirimSayfasi,"iki");
         softAssert.assertEquals("Reply Request",expectedAcilanBildirimSayfasi,"üç");
