@@ -18,4 +18,5 @@ public class UserLoginPage {
     @FindBy(xpath= "//*[@class='iziToast-message slideIn']")
     public WebElement slideInBox;
 
+
 }
