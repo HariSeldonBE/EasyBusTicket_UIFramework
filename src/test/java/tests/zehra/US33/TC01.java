@@ -2,9 +2,9 @@ package tests.zehra.US33;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.EasyBusTicketPage;
+
 import pages.admin.AdminDashBoard_HeaderPage;
-import utilities.ConfigReader;
+
 import utilities.Driver;
 import utilities.ReusableMethods;
 

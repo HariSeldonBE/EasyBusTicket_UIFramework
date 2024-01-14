@@ -1,12 +1,16 @@
 package tests.zehra.US31;
 
+
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.EasyBusTicketPage;
+
 import pages.admin.AdminDashBoard_ManageFleetsPage;
-import utilities.ConfigReader;
+
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
+
+
 
 public class TC01 {
     @Test
@@ -22,10 +26,13 @@ public class TC01 {
          softAssert.assertTrue(adminDashBoard_manageFleetsPage.labelTransportManager.isDisplayed());
 
        // Manage Fleets DDM'i görür
-         softAssert.assertTrue(adminDashBoard_manageFleetsPage.linkManageFleets.isDisplayed());
+        JSUtilities.scrollToElement(Driver.getDriver(),adminDashBoard_manageFleetsPage.linkManageFleets);
+        softAssert.assertTrue(adminDashBoard_manageFleetsPage.linkManageFleets.isDisplayed());
 
         // Manage Fleets'e tıklar
         adminDashBoard_manageFleetsPage.linkManageFleets.click();
+        JSUtilities.scrollToElement(Driver.getDriver(),adminDashBoard_manageFleetsPage.linkManageFleets);
+        ReusableMethods.wait(2);
 
        // DDM açılır ve "Seat Layouts, Fleet Type, Vehicles" linklerini görür
          softAssert.assertTrue(adminDashBoard_manageFleetsPage.linkSeatLayouts.isDisplayed());
