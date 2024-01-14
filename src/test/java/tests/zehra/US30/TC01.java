@@ -3,7 +3,8 @@ package tests.zehra.US30;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import pages.admin.AdminDashBoardPage;
+
+import pages.admin.AdminDashBoard_CounterPage;
 import pages.admin.AdminLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -26,8 +27,8 @@ public class TC01 {
         adminLoginPage.loginButton.click();
 
         SoftAssert softAssert = new SoftAssert();
-        AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
-        softAssert.assertTrue(adminDashBoardPage.linkCounter.isDisplayed(),"Counter linki Görünmüyor");
+       AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
+        softAssert.assertTrue(adminDashBoard_counterPage.linkCounter.isDisplayed(),"Counter linki Görünmüyor");
         softAssert.assertAll();
         Driver.quitDriver();
         
