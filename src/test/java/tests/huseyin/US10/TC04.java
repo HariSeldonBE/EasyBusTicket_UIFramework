@@ -34,7 +34,7 @@ public class TC04 {
         // Home Page Sign-in Button Enable Test
         softAssert.assertTrue(easyBusTicketPage.cookiesButton.isEnabled(),"Cookies Button is not enabled");
 
-        ReusableMethods.wait(2);
+        ReusableMethods.wait(1);
         easyBusTicketPage.cookiesButton.click();
 
         // Home Page Sign-in Button Display Test
@@ -42,7 +42,7 @@ public class TC04 {
         // Home Page Sign-in Button Enable Test
         softAssert.assertTrue(easyBusTicketPage.signInButton.isEnabled(),"Sign-In Button is not enabled");
 
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(0);
         easyBusTicketPage.signInButton.click();
 
         String actualUrl = Driver.getDriver().getCurrentUrl();
