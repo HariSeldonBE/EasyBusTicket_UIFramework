@@ -11,7 +11,7 @@ public class EasyBusTicketPage {
     }
 
     // Homepage >> Cookies Button
-    1@FindBy(className = "cookies-btn") //(xpath = "(//*[@name=\"cookieAccept\"])")
+    @FindBy(className = "cookies-btn") //(xpath = "(//*[@name=\"cookieAccept\"])")
     public WebElement cookiesButton;
 
     // Homepage >> Sign-in Button
