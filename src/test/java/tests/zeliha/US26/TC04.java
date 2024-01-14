@@ -1,6 +1,6 @@
 package tests.zeliha.US26;
 
-import org.openqa.selenium.Keys;
+
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;

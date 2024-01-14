@@ -1,8 +1,6 @@
 package tests.zeliha.US27;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -11,9 +9,6 @@ import pages.admin.AdminLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-
-import static utilities.Driver.driver;
-import static utilities.Driver.getDriver;
 
 public class TC03 {
 
