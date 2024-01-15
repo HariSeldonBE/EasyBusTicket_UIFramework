@@ -8,7 +8,7 @@ import utilities.Driver;
 
 public class TC02 {
 
-   /* @Test
+    @Test
     public void headerSosyalMedyaIconlarıGörüntülemeVeDogrulamaTesti(){
 
         //https://easybusticket.com/ anasayfasina gidin
@@ -16,6 +16,12 @@ public class TC02 {
 
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        easyBusTicketPage.cookiesButton.click();
+
+        //url'in https://easybusticket.com/ oldugunu test edin
+        String exceptedUrl = "https://qa.easybusticket.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,exceptedUrl);
 
         //Sosyal Medya icon'larının görüntülendiğini doğrulayın
         softAssert.assertTrue(easyBusTicketPage.xIcon.isDisplayed());
@@ -58,5 +64,5 @@ public class TC02 {
         Driver.closeDriver();
 
 
-    }*/
+    }
 }

@@ -1,28 +1,39 @@
 package tests.zehra.US31;
 
-import org.testng.Assert;
+
 import org.testng.annotations.Test;
-import pages.EasyBusTicketPage;
-import pages.user.UserDashBoardPage;
-import pages.user.UserLoginPage;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.ReusableMethods;
+import org.testng.asserts.SoftAssert;
 
-public class TC02 {
+import pages.admin.AdminDashBoard_ManageFleetsPage;
+
+import utilities.*;
+
+public class TC02  {
     @Test
-    public void test01(){
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        UserLoginPage userLoginPage = new UserLoginPage();
-        UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
-        easyBusTicketPage.cookiesButton.click();
-        easyBusTicketPage.signInButton.click();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        userLoginPage.loginButton.click();
-        Assert.assertTrue(userDashBoardPage.labelDashBoard.isDisplayed());
+    public void test01() {
+        SoftAssert softAssert = new SoftAssert();
+        AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
 
+        // Browser'ı açar
+       // URL'e gider
+        ReusableMethods.adminLoginMethod("admin11","123123123");
+
+        // Manage Fleets'e tıklar
+        adminDashBoard_manageFleetsPage.linkManageFleets.click();
+
+       // Seat Layouts'a tıklar
+        JSUtilities.clickWithJS(Driver.getDriver(), adminDashBoard_manageFleetsPage.linkSeatLayouts);
+        ReusableMethods.wait(2);
+
+        // Açılan "Seat Layouts" sayfasında "S.N., Layout, Action" başlıklarını, içeriğini görüntüler
+        softAssert.assertTrue(adminDashBoard_manageFleetsPage.labelSN.isDisplayed());
+        softAssert.assertTrue(adminDashBoard_manageFleetsPage.labelLayout.isDisplayed());
+        softAssert.assertTrue(adminDashBoard_manageFleetsPage.labelAction.isDisplayed());
+        softAssert.assertTrue(adminDashBoard_manageFleetsPage.tdSN.isDisplayed());
+        softAssert.assertTrue(adminDashBoard_manageFleetsPage.tdLayout.isDisplayed());
+        softAssert.assertTrue(adminDashBoard_manageFleetsPage.tdAction.isDisplayed());
+
+        softAssert.assertAll();
         ReusableMethods.wait(2);
         Driver.closeDriver();
 

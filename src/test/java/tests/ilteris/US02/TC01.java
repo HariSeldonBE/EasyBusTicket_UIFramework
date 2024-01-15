@@ -7,8 +7,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 
 public class TC01 {
-
-  /*  @Test
+    @Test
     public void headerIletisimBilgileriGörüntülemeVeDogrulamaTesti(){
 
         //https://easybusticket.com/ anasayfasina gidin
@@ -16,6 +15,14 @@ public class TC01 {
 
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        easyBusTicketPage.cookiesButton.click();
+
+        //url'in https://easybusticket.com/ oldugunu test edin
+        String exceptedUrl = "https://qa.easybusticket.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,exceptedUrl);
+
+
 
         //Iletisim bilgilerinin görünürlügünü test edin
         softAssert.assertTrue(easyBusTicketPage.headerMobileNumberLinki.isDisplayed(),"Mobile Number görünüyor");
@@ -36,5 +43,6 @@ public class TC01 {
         Driver.closeDriver();
 
 
-    }*/
+    }
+
 }

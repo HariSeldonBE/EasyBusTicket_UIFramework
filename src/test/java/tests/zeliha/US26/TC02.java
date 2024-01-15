@@ -1,8 +1,6 @@
 package tests.zeliha.US26;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.AdminDashBoardPage;
@@ -21,7 +19,7 @@ public class TC02 {
     "Pending Ticket" Linki aktif olmalı ve içerdiği bilgiler görüntülenebilmeli
 
     STEPLER
-        1 - Browser açılır
+        1 - Browser açılır.
         2 -	URL'e gidilir.
         3 -	Admin olarak giriş yapılır.
         4 -	"Booking History" linki tıklanır.
@@ -65,17 +63,15 @@ public class TC02 {
         softAssert.assertTrue(adminDashBoardPage.thTicketCount.isDisplayed(),"Ticket Count Başlığı  Görüntülenemedi.");
         softAssert.assertTrue(adminDashBoardPage.thFare.isDisplayed(),"Fare Başlığı Görüntülenemedi.");
 
-
         softAssert.assertTrue(adminDashBoardPage.aramaKutusu.isDisplayed(),"Arama Kutusu Görüntülenemedi.");
         adminDashBoardPage.aramaKutusu.click();
         ReusableMethods.wait(2);
 
-        /*
-        adminDashBoardPage.aramaKutusu.sendKeys(ConfigReader.getProperty("test"));
+        adminDashBoardPage.aramaKutusu.sendKeys("deneme");
         adminDashBoardPage.aramaButtonu.click();
         ReusableMethods.wait(1);
         Driver.getDriver().navigate().back();
-        */
+
 
 
         Driver.quitDriver();

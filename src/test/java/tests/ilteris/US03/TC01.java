@@ -6,16 +6,24 @@ import pages.EasyBusTicketPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class TC01 {
+public class    TC01 {
 
-  /*  @Test
-    public void chooseYourTicketPanelGörüntülemeVeAktiflikTesti() {
+
+    @Test
+    public void chooseYourTicketPanelGörüntülemeTesti() {
+
 
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        easyBusTicketPage.cookiesButton.click();
+
+        //url'in https://easybusticket.com/ oldugunu test edin
+        String exceptedUrl = "https://qa.easybusticket.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,exceptedUrl);
 
 
         //Choose Your Ticket Panelinin görünür olduğunu test edin
@@ -37,5 +45,7 @@ public class TC01 {
 
 
 
-    }*/
+
+
+    }
 }
