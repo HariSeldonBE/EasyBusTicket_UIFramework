@@ -31,11 +31,7 @@ public class TC01 {
    */
 
         
-        
-        
-        String[] webelementlerlistesi = AdminDashBoardPage.spanDifferentTimesTheYear.getText().split(" ");
-
-        System.out.println(webelementlerlistesi);
+        g
     }
 
 
