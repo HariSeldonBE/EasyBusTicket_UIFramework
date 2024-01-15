@@ -149,17 +149,9 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//input[@class='form-control'])[2]")
     public WebElement scheduleAddNewEndAtBox;
 
-    // schedule sayfasındaki Add New Pop-up sayfasındaki "Save" butonu
-    @FindBy(xpath = "(//button[@class='btn btn--primary'])[1]")
-    public WebElement scheduleAddNewSaveButton;
-
     // schedule sayfasındaki Listenin 1. satırındaki Kalem butonu
     @FindBy(xpath = "(//button[@class='icon-btn ml-1 editBtn'])[1]")
     public WebElement scheduleFirstRowPenButton;
-
-    // schedule sayfasındaki Listenin 1. satırındaki disable butonu
-    @FindBy(xpath = "(//button[@class='icon-btn btn--danger ml-1 disableBtn '])[1]")
-    public WebElement scheduleFirstRawDisableButton;
 
     // schedule sayfasındaki Update schedule pop-up sayfasındaki "Start From" input boxu
     @FindBy(xpath = "(//input[@class='form-control'])[3]")
@@ -169,23 +161,29 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//input[@class='form-control'])[4]")
     public WebElement scheduleupdatePopUpEndAtBox;
 
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki start from boxuna basinca cikan clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[11]")
-    public WebElement scheduleUpdatePopUpStartFromClockPickerElement;
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki start from boxuna basinca cikan 2. clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[36]")
-    public WebElement scheduleUpdatePopUpStartFromSecondClockPickerElement;
-
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki End At boxuna basinca cikan ilk clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[51]")
-    public WebElement scheduleUpdatePopUpEndAtClockPickerElement;
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki End At boxuna basinca cikan 2. clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[72]")
-    public WebElement scheduleUpdatePopUpEndAtSecondClockPickerElement;
-
     // schedule sayfasındaki Update schedule pop-up sayfasındaki Update
     @FindBy(xpath = "(//button[@class='btn btn--primary'])[2]")
     public WebElement scheduleUpdatePopUpUpdateButton;
+
+    // admin dashboard sayfasının sağ üstündeki profile butonu
+    @FindBy(xpath = "(//button[@type='button'])[6]")
+    public WebElement adminDashboardProfileButton;
+
+    // schedule sayfasındaki listenin 1. satırındaki status'taki active elementi
+    @FindBy(xpath = "(//span[text()='Active'])[1]")
+    public WebElement scheduleFirstRowActiveElement;
+
+    // schedule sayfasındaki listenin 1. satırındaki action kısmındaki disable butonu
+    @FindBy(xpath = "(//button[@class='icon-btn btn--danger ml-1 disableBtn '])[1]")
+    public WebElement scheduleFirstRowDisableButton;
+
+    // schedule sayfasındaki disable butonuna basilinca cikan pop-up sayfadaki disable butonu
+    @FindBy(xpath = "(//button[@class='btn btn--danger'])[1]")
+    public WebElement scheduleDisablePopUpDisableButton;
+
+    // schedule sayfasındaki listenin 1. satırındaki status'taki disabled elementi
+    @FindBy(xpath = "(//span[text()='Disabled'])[1]")
+    public WebElement scheduleFirstRowDisabledElement;
 
 
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody")

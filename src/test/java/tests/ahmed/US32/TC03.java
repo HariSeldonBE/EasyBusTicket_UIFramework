@@ -27,7 +27,7 @@ public class TC03 {
         AdminLoginPage adminLoginPage = new AdminLoginPage();
         AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
 
-        ReusableMethods.adminLoginMethod("admin13","123123123");
+        ReusableMethods.adminLoginMethod("admin13", "123123123");
 
         //Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
         //adminLoginPage.usernameBox.click();
@@ -51,22 +51,22 @@ public class TC03 {
 
         adminDashBoardPage.scheduleAddNewButton.click();
         Faker faker = new Faker();
-        int ilkSaat = faker.number().numberBetween(1,11);
-        int ilkDakika = faker.number().numberBetween(10,59);
-        int ikinciSaat = faker.number().numberBetween(12,23);
-        int ikinciDakika = faker.number().numberBetween(10,59);
+        int ilkSaat = faker.number().numberBetween(1, 11);
+        int ilkDakika = faker.number().numberBetween(10, 59);
+        int ikinciSaat = faker.number().numberBetween(12, 23);
+        int ikinciDakika = faker.number().numberBetween(10, 59);
         adminDashBoardPage.scheduleAddNewStartFromBox.click();
         ReusableMethods.wait(2);
-        adminDashBoardPage.scheduleAddNewStartFromBox.sendKeys("11:11"+Keys.TAB);
-        adminDashBoardPage.scheduleAddNewEndAtBox.sendKeys(ikinciSaat+":"+ikinciDakika);
+        adminDashBoardPage.scheduleAddNewStartFromBox.sendKeys("11:11" + Keys.TAB);
+        adminDashBoardPage.scheduleAddNewEndAtBox.sendKeys(ikinciSaat + ":" + ikinciDakika);
         actions.sendKeys(Keys.ENTER).perform();
-        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowStartFromElement.getText().contains("11:11"),"Start from saati dogru eklenmis mi listeye");
-        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowEndAtElement.getText().contains((ikinciSaat-12)+":"+ikinciDakika),"End At saati dogru eklenmis mi listeye");
+        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowStartFromElement.getText().contains("11:11"), "Start from saati dogru eklenmis mi listeye");
+        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowEndAtElement.getText().contains((ikinciSaat - 12) + ":" + ikinciDakika), "End At saati dogru eklenmis mi listeye");
 
         ReusableMethods.wait(2);
         Faker faker2 = new Faker();
-        int ikinciSaat2 = faker2.number().numberBetween(12,23);
-        int ikinciDakika2 = faker2.number().numberBetween(10,59);
+        int ikinciSaat2 = faker2.number().numberBetween(12, 23);
+        int ikinciDakika2 = faker2.number().numberBetween(10, 59);
         adminDashBoardPage.scheduleFirstRowPenButton.click();
         adminDashBoardPage.scheduleupdatePopUpStartFromBox.click();
         adminDashBoardPage.scheduleupdatePopUpStartFromBox.sendKeys(Keys.BACK_SPACE);
@@ -74,12 +74,12 @@ public class TC03 {
         adminDashBoardPage.scheduleupdatePopUpStartFromBox.sendKeys(Keys.BACK_SPACE);
         adminDashBoardPage.scheduleupdatePopUpStartFromBox.sendKeys(Keys.BACK_SPACE);
         adminDashBoardPage.scheduleupdatePopUpStartFromBox.sendKeys(Keys.BACK_SPACE);
-        adminDashBoardPage.scheduleupdatePopUpStartFromBox.sendKeys("10:59"+Keys.TAB);
-        adminDashBoardPage.scheduleupdatePopUpEndAtBox.sendKeys(ikinciSaat2+":"+ikinciDakika2+Keys.ENTER);
-        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowStartFromElement.getText().contains("10:59"),"Start from saati dogru guncellenmis mi listeye");
-        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowEndAtElement.getText().contains((ikinciSaat2-12)+":"+ikinciDakika2),"End At saati dogru guncellenmis mi listeye");
+        adminDashBoardPage.scheduleupdatePopUpStartFromBox.sendKeys("10:59" + Keys.TAB);
+        adminDashBoardPage.scheduleupdatePopUpEndAtBox.sendKeys(ikinciSaat2 + ":" + ikinciDakika2 + Keys.ENTER);
+        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowStartFromElement.getText().contains("10:59"), "Start from saati dogru guncellenmis mi listeye");
+        softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowEndAtElement.getText().contains((ikinciSaat2 - 12) + ":" + ikinciDakika2), "End At saati dogru guncellenmis mi listeye");
         ReusableMethods.wait(1);
-        softAssert.assertTrue(adminDashBoardPage.scheduleUpdatePopUpUpdateButton.isEnabled(),"Update pop-up update butonu aktif degil");
+        softAssert.assertTrue(adminDashBoardPage.scheduleUpdatePopUpUpdateButton.isEnabled(), "Update pop-up update butonu aktif degil");
 
         softAssert.assertTrue(adminDashBoardPage.scheduleFirstRowActiveElement.isDisplayed());
         adminDashBoardPage.scheduleFirstRowDisableButton.click();

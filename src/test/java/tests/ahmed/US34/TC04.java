@@ -1,6 +1,8 @@
 package tests.ahmed.US34;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -15,7 +17,6 @@ public class TC04 {
     @Test
     public void test01(){
         SoftAssert softAssert = new SoftAssert();
-        Actions actions = new Actions(Driver.getDriver());
         AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
 
         ReusableMethods.adminLoginMethod("admin13","123123123");
