@@ -27,7 +27,7 @@ public class EasyBusTicketPage {
     public WebElement contactUsText;
 
     // Homepage >> Banner area text
-    @FindBy(xpath = "//*[text()=\"Every Journey is an Adventure, Every Ticket is a Story\"]")
+    @FindBy(xpath = "//*[text()='Every Journey is an Adventure, Every Ticket is a Story']")
     public WebElement EveryJourneyisanAdventureEveryTicketisaStoryYazisi;
 
 
@@ -46,10 +46,10 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//h4[@class='title'])[1]")
     public WebElement homePageChooseYourTicketPanelText;
 
-    @FindBy(xpath = "(//span[@class='selection'])[1]")
+    @FindBy(xpath = "(//span[@class='select2-selection__arrow'])[1]")
     public WebElement homePagePickUpPointContainer;
 
-    @FindBy(xpath = "(//span[@class='selection'])[2]")
+    @FindBy(xpath = "(//span[@class='select2-selection__arrow'])[2]")
     public WebElement homePageDroppingPointContainer;
 
 
@@ -140,8 +140,68 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//div[@class='logo'])[2]")
     public WebElement easyBusTicketFooterLogo;
 
+    //EasyBusTicket Home page header kısmının solundaki "MobileNumber"
+    @FindBy(xpath = "//html/body//div[3]//div//div//a")
+    public WebElement headerMobileNumberLinki;
+
+    //EasyBusTicket Home page header kısmının solundaki "Email Adresi"
+    @FindBy(xpath = "//html/body//div[3]//div//div//li[2]//a")
+    public WebElement headerEmail;
+
+    //EasyBusTicket Home page header kısmının sagındaki "X icon'u"
+    @FindBy(xpath = "//html/body//div[3]//div//div//div//li[1]//a")
+    public WebElement xIcon;
+
+    //EasyBusTicket Home page header kısmının sagındaki "Facebook icon'u"
+    @FindBy(xpath = "//html/body//div[3]//div//div//div//li[2]//a")
+    public WebElement facebookIcon;
+
+    //EasyBusTicket Home page header kısmının sagındaki "Youtube icon'u"
+    @FindBy(xpath = "//html/body//div[3]//div//div//div//li[3]//a")
+    public WebElement youtubeIcon;
+
+    //EasyBusTicket Home page header kısmının sagındaki "Instagram icon'u"
+    @FindBy(xpath = "//html/body//div[3]//div//div//div//li[4]//a")
+    public WebElement instagramIcon;
+
     // "Forgot Password?" link -->kevser_US20_TC01
     @FindBy(xpath = "//*[text()='Forgot Password?']")
     public WebElement forgotPasswordLink;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a")
+    public WebElement footerXIcon;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[2]/a")
+    public WebElement footerFacebookIcon;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[3]/a")
+    public WebElement footerYoutubeIcon;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[4]/a")
+    public WebElement footerInstagramIcon;
+
+    @FindBy(xpath = "(//*[text()='About'])[2]")
+    public WebElement footerAboutButton;
+
+    @FindBy(xpath = "(//*[text()='FAQs'])[2]")
+    public WebElement footerFAQsButton;
+
+    @FindBy(xpath = "(//*[text()='Blog'])[2]")
+    public WebElement footerBlogButton;
+
+    @FindBy(xpath = "(//*[text()='Contact'])[2]")
+    public WebElement footerContactButton;
+
+    @FindBy(xpath = "//*[text()='Privacy Policy']")
+    public WebElement footerPrivacyPolicyButton;
+
+    @FindBy(xpath = "//*[text()='Terms and Conditions']")
+    public WebElement footerPrivacyTermsConditionsButton;
+
+    @FindBy(xpath = "//*[text()='Ticket Policies']")
+    public WebElement footerTicketPoliciesButton;
+
+
+
 
 }
