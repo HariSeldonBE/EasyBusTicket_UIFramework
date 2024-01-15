@@ -10,6 +10,7 @@ import org.testng.asserts.SoftAssert;
 import pages.admin.AdminDashBoard_CounterPage;
 
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 public class TC05 {
@@ -35,13 +36,25 @@ public class TC05 {
         //  Yeni Counter'ın sağ tarafındaki kalem ikonunu görür ve tıklar
         softAssert.assertTrue(adminDashBoard_counterPage.kalemİkon.isDisplayed(),"kalem ikonu görünmüyor");
        ReusableMethods.wait(3);
-        ReusableMethods.doubleClick(adminDashBoard_counterPage.kalemİkon);
+        JSUtilities.clickWithJS(Driver.getDriver(),adminDashBoard_counterPage.kalemİkon);
 
         //   İstenen bilgileri (Name, City, Location, Mobile) günceller
-        String fakerName = faker.name().firstName();
+        String fakerName = faker.name().name();
         String fakerAddress = faker.address().city();
         String fakerLocation = faker.address().cityName();
-        int fakerPhone = faker.number().randomDigit();
+
+        // Faker ile rastgele telefon numarası oluştur
+        String phoneNumberString = faker.phoneNumber().cellPhone();
+        System.out.println("Rastgele Telefon Numarası (String): " + phoneNumberString);
+        // String tipindeki telefon numarasını int tipine çevir
+        int phoneNumberInt = convertPhoneNumberToIntAlternative(phoneNumberString);
+
+        // Sonucu yazdır
+
+        System.out.println("Rastgele Telefon Numarası (int): " + phoneNumberInt);
+
+
+
 
         ReusableMethods.wait(2);
         actions.click( adminDashBoard_counterPage.counterUpdateNameTextBox)
@@ -51,7 +64,7 @@ public class TC05 {
                 .sendKeys(Keys.TAB)
                 .sendKeys(fakerLocation)
                 .sendKeys(Keys.TAB)
-                .sendKeys("0"+fakerPhone)
+                .sendKeys(""+phoneNumberInt)
                 .perform();
 
         //   Pencerenin altındaki "Update" butonuna basar
@@ -66,5 +79,16 @@ public class TC05 {
         ReusableMethods.wait(2);
         Driver.closeDriver();
 
+    }       // Telefon numarasını stringten int'e çeviren alternatif metod
+    private static int convertPhoneNumberToIntAlternative(String phoneNumberString) {
+        // Sadece sayısal karakterleri al ve int'e çevir
+        StringBuilder numericChars = new StringBuilder();
+        for (char c : phoneNumberString.toCharArray()) {
+            if (Character.isDigit(c)) {
+                numericChars.append(c);
+            }
+        }
+
+        return Integer.parseInt(numericChars.toString());
     }
 }

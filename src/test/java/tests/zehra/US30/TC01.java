@@ -20,7 +20,7 @@ public class TC01 extends TestBaseRapor {
         // Login butonuna tıklar
         // Trasport Manager menüsündeki Counter linkini görüntüler
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("CounterLinki TEST", " admin tests counterlinki ");
 
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
         AdminLoginPage adminLoginPage = new AdminLoginPage();
@@ -32,7 +32,7 @@ public class TC01 extends TestBaseRapor {
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         softAssert.assertTrue(adminDashBoard_counterPage.linkCounter.isDisplayed(),"Counter linki Görünmüyor");
-        extentTest.pass("");
+        extentTest.pass("counter linki görünüyor");
 
         softAssert.assertAll();
         Driver.quitDriver();

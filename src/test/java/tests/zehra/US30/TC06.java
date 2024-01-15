@@ -43,7 +43,7 @@ public class TC06 {
         // System.out.println("Last row data: " + rowData);
         String[] rowDataArray = rowData.split(" ");
         System.out.println(rowData);
-        if (rowDataArray[5].equals("Active")) {
+        if (rowDataArray[6].equals("Active")) {
             // softAssert.assertEquals(rowDataArray[4],"Active","Disabled");
 
             // Active ikonuna tıklar ve açılan pencereden Disable butonuna tıklar
@@ -60,7 +60,7 @@ public class TC06 {
             String[] rowDataArray1 = rowData1.split(" ");
             System.out.println(rowData1);
 
-            softAssert.assertEquals(rowDataArray1[5],"Disabled","Active");
+            softAssert.assertEquals(rowDataArray1[6],"Disabled","Active");
 
         }else { adminDashBoard_counterPage.ikonCounterActiveDisable.click();
             adminDashBoard_counterPage.buttonActive.click();
@@ -75,7 +75,7 @@ public class TC06 {
             String[] rowDataArray1 = rowData1.split(" ");
             System.out.println(rowData1);
 
-            softAssert.assertEquals(rowDataArray1[5],"Active","Disabled");
+            softAssert.assertEquals(rowDataArray1[6],"Active","Disabled");
         }
 
 

@@ -27,7 +27,8 @@ public class TC04 {
 
         // 4- Bildirim butonuna tıklandığında son bildirimden geriye doğru tüm okunmamış
         // bildirimlerin alt alta kutucuklar içinde gösterildiği pencere açıldığı doğrulanır
-        softAssert.assertTrue(adminDashBoard_headerPage.ddmBildirimPenceresi.isDisplayed());
+        ReusableMethods.wait(2);
+        softAssert.assertTrue(adminDashBoard_headerPage.ddmBildirimPenceresi.isDisplayed(),"pencere görünmüyor");
 
          // 6-Pencerenin en altında "Tüm bildirimleri görüntüle" linkine tıklandığında
          // tüm bildirimlerin olduğu sayfaya götürdüğü doğrulanır
@@ -39,7 +40,9 @@ public class TC04 {
          // 7-Bildirim sayfasının sağ üst köşesinde bulunan "Tümünü okundu olarak işaretle " butonuna
          // tıklandığında "Bildirimler başarıyla okundu" alertinin görüldüğü doğrulanır.
          adminDashBoard_headerPage.buttonTümüOkundu.click();
-         softAssert.assertTrue(adminDashBoard_headerPage.alertTümBildirimlerOkundu.isDisplayed());
+
+         ReusableMethods.wait(2);
+         softAssert.assertTrue(adminDashBoard_headerPage.alertTümBildirimlerOkundu.isDisplayed(),"alert okunamadı");
 
          softAssert.assertAll();
          ReusableMethods.wait(2);

@@ -43,7 +43,8 @@ public class TC02 {
         String expectedUrl = "https://qa.easybusticket.com/admin/ticket/booked";
         String actualUrl = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(actualUrl,expectedUrl,"aranan sayfaya ulaşamadı");
-
+        System.out.println(expectedUrl);
+        System.out.println(actualUrl);
         softAssert.assertAll();
         ReusableMethods.wait(2);
         Driver.quitDriver();

@@ -8,9 +8,10 @@ import pages.admin.AdminLoginPage;
 
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.TestBaseRapor;
 
 
-public class TC02 {
+public class TC02 extends TestBaseRapor {
 
 
     @Test
@@ -18,6 +19,8 @@ public class TC02 {
 
         // Browser'ı açar
         // URL'e gider
+
+        extentTest=extentReports.createTest("CounterElementleri TEST", " admin tests counterlinki ");
 
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
         AdminLoginPage adminLoginPage = new AdminLoginPage();
