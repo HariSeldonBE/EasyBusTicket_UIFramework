@@ -8,9 +8,9 @@ import utilities.Driver;
 
 public class TC01 {
 
-    @Test
+  /*  @Test
     public void headerIletisimBilgileriGörüntülemeVeDogrulamaTesti(){
-/*
+
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
@@ -39,8 +39,11 @@ public class TC01 {
 
         Driver.closeDriver();
 
-*/
+
     }
 
+
+
+    }*/
 
 }

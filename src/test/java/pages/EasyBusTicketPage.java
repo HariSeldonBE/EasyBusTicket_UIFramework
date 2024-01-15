@@ -9,44 +9,27 @@ public class EasyBusTicketPage {
     public EasyBusTicketPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+    // Homepage >> Cookies Button  -->Huseyin_US10
     @FindBy(className = "cookies-btn") //(xpath = "(//*[@name=\"cookieAccept\"])")
     public WebElement cookiesButton;
+
+    // Homepage >> Sign-in Button  -->Huseyin_US10
     @FindBy(className = "sign-in")
     public WebElement signInButton;
 
-
-    @FindBy(xpath = "//a[text()='Contact']")
+    // Homepage >> Contact Button
+    @FindBy(xpath = "(//a[text()='Contact'])[1]")
     public WebElement contactButton;
 
+    // Homepage >> Contact Us Text
     @FindBy (xpath = "//h2[@class='title']")
     public WebElement contactUsText;
 
+    // Homepage >> Banner area text
     @FindBy(xpath = "//*[text()=\"Every Journey is an Adventure, Every Ticket is a Story\"]")
     public WebElement EveryJourneyisanAdventureEveryTicketisaStoryYazisi;
 
-    //EasyBusTicket Home page header kısmının solundaki "MobileNumber"
-    @FindBy(xpath = "//html/body//div[3]//div//div//a")
-    public WebElement headerMobileNumberLinki;
-
-    //EasyBusTicket Home page header kısmının solundaki "Email Adresi"
-    @FindBy(xpath = "//html/body//div[3]//div//div//li[2]//a")
-    public WebElement headerEmail;
-
-    //EasyBusTicket Home page header kısmının sagındaki "X icon'u"
-    @FindBy(xpath = "//html/body//div[3]//div//div//div//li[1]//a")
-    public WebElement xIcon;
-
-    //EasyBusTicket Home page header kısmının sagındaki "Facebook icon'u"
-    @FindBy(xpath = "//html/body//div[3]//div//div//div//li[2]//a")
-    public WebElement facebookIcon;
-
-    //EasyBusTicket Home page header kısmının sagındaki "Youtube icon'u"
-    @FindBy(xpath = "//html/body//div[3]//div//div//div//li[3]//a")
-    public WebElement youtubeIcon;
-
-    //EasyBusTicket Home page header kısmının sagındaki "Instagram icon'u"
-    @FindBy(xpath = "//html/body//div[3]//div//div//div//li[4]//a")
-    public WebElement instagramIcon;
 
     //EasyBusTicket Home page header kısmının solundaki "EasyBusTicketLogo"
     @FindBy(xpath = "(//div[@class='logo'])[1]")
@@ -161,5 +144,13 @@ public class EasyBusTicketPage {
 
 
 
+
+    // Homepage >> Sign-up Button
+    @FindBy(className = "sign-up")      //(xpath = "//a[@class='sign-up']")
+    public WebElement signUpButton;
+
+    // "Forgot Password?" link -->kevser_US20_TC01
+    @FindBy(xpath = "//*[text()='Forgot Password?']")
+    public WebElement forgotPasswordLink;
 
 }

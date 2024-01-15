@@ -8,9 +8,11 @@ import utilities.Driver;
 
 public class    TC01 {
 
+/*
     @Test
     public void chooseYourTicketPanelGörüntülemeTesti() {
-/*
+
+
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
@@ -42,6 +44,5 @@ public class    TC01 {
 
 
 
- */
-    }
+    }*/
 }

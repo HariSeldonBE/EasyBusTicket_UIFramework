@@ -1,6 +1,5 @@
 package tests.ilteris.US02;
 
-import org.junit.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
@@ -9,9 +8,9 @@ import utilities.Driver;
 
 public class TC02 {
 
-    @Test
+   /* @Test
     public void headerSosyalMedyaIconlarıGörüntülemeVeDogrulamaTesti(){
-/*
+
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
@@ -63,7 +62,5 @@ public class TC02 {
         Driver.closeDriver();
 
 
- */
-
-    }
+    }*/
 }

@@ -1,6 +1,8 @@
 package tests.ilteris.US01;
 
-import org.junit.Test;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import utilities.ConfigReader;
@@ -9,9 +11,11 @@ import utilities.ReusableMethods;
 
 public class TC01 {
 
+    /*
     @Test
+
     public void EasyBusTicketAnaSayfaErişebilmeTesti(){
-        /*
+        
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
@@ -39,7 +43,8 @@ public class TC01 {
 
 
 
-     */
+
 
     }
+    */
 }

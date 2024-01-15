@@ -8,14 +8,14 @@ import utilities.Driver;
 
 public class TC03 {
 
-    @Test
+    /*@Test
     public void headerSignInVeSignUpButonTestleri() {
-/*
+
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
-        SoftAssert softAssert = new SoftAssert();
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+       // SoftAssert softAssert = new SoftAssert();
+        //EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
 
         String exceptedUrl = "https://easybusticket.com/";
         String actualUrl = Driver.getDriver().getCurrentUrl();
@@ -44,6 +44,5 @@ public class TC03 {
         Driver.closeDriver();
 
 
- */
-    }
+    }*/
 }
