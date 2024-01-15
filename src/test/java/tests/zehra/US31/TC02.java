@@ -8,7 +8,7 @@ import pages.admin.AdminDashBoard_ManageFleetsPage;
 
 import utilities.*;
 
-public class TC02 extends TestBaseRapor {
+public class TC02  {
     @Test
     public void test01() {
         SoftAssert softAssert = new SoftAssert();

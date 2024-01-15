@@ -53,7 +53,7 @@ public class AdminDashBoard_HeaderPage {
     @FindBy(xpath = "/html/body/div/nav/div[2]/ul/li[2]/div/div[2]/div[1]/a[1]/div/div[2]")
     public WebElement divNewSupportTicketHas;
 
-    @FindBy(xpath = "//div[contains(@class, 'show')]")
+    @FindBy(xpath = "//div[@class='dropdown-menu dropdown-menu--md p-0 border-0 box--shadow1 dropdown-menu-right show']")
     public WebElement ddmBildirimPenceresi;
 
    @FindBy(xpath = "//a[@class='view-all-message']")

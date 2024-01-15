@@ -12,14 +12,17 @@ import org.testng.asserts.SoftAssert;
 import pages.admin.AdminDashBoard_CounterPage;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.util.Arrays;
 
-public class TC03 {
+public class TC03 extends TestBaseRapor {
     @Test
     public void test01(){
         // Browser'ı açar
         // URL'e gider
+
+        extentTest=extentReports.createTest("CounterLinki TEST", " admin tests counterlinki ");
 
         AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
@@ -30,6 +33,8 @@ public class TC03 {
 
         // "Counter" linkine tıklar
         adminDashBoard_counterPage.linkCounter.click();
+
+        extentTest.info("Easybusticket/admin/homepage");
 
         // Açılan sayfada "Add New" butonunu görüntüler
         softAssert.assertTrue(adminDashBoard_counterPage.counterAddNewButton.isDisplayed(),"Add New butonu görünmüyor");
@@ -74,7 +79,7 @@ public class TC03 {
         //System.out.println(adminDashBoardPage.counterHata.getText());//Counter save successfully.
         softAssert.assertAll();
         Driver.quitDriver();
-
+        extentTest.pass("counter linki görünüyor");
     }
 
 }
