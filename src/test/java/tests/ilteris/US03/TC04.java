@@ -10,16 +10,18 @@ public class TC04 {
 
     @Test
     public void homePageBannerKismiBastanSonaGorunurlukTesti(){
-/*
+
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        easyBusTicketPage.cookiesButton.click();
 
-        String expectedURl="https://easybusticket.com/";
-        String actualUrl=Driver.getDriver().getCurrentUrl();
-        softAssert.assertEquals(actualUrl,expectedURl);
+        //url'in https://easybusticket.com/ oldugunu test edin
+        String exceptedUrl = "https://qa.easybusticket.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,exceptedUrl);
 
         softAssert.assertTrue(easyBusTicketPage.inJust3SimpleStepsGetYourBusTicketText.isDisplayed());
         softAssert.assertTrue(easyBusTicketPage.lookingForABusLogo.isDisplayed());
@@ -45,6 +47,6 @@ public class TC04 {
         Driver.closeDriver();
 
 
- */
+
     }
 }

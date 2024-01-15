@@ -9,7 +9,7 @@ import utilities.Driver;
 
 public class TC04 {
 
-   /* @Test
+    @Test
     public void headerBuyTicketsButonDoğrulamaVeAktiflikTesti() {
 
         //https://easybusticket.com/ anasayfasina gidin
@@ -17,15 +17,21 @@ public class TC04 {
 
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        easyBusTicketPage.cookiesButton.click();
+
+        //url'in https://easybusticket.com/ oldugunu test edin
+        String exceptedUrl = "https://qa.easybusticket.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,exceptedUrl);
 
         //Buy Tickets buton'unun görünürlüğünü doğrulayın
         softAssert.assertTrue(easyBusTicketPage.buyTicketsButton.isDisplayed());
 
         //Buy Tickets buton'unun aktifliğini doğrulayın
         easyBusTicketPage.buyTicketsButton.click();
-        String exceptedUrl = "https://easybusticket.com/tickets";
-        String actualUrl = Driver.getDriver().getCurrentUrl();
-        softAssert.assertEquals(exceptedUrl,actualUrl);
+        String exceptedTicketPageUrl = "https://qa.easybusticket.com/tickets";
+        String actualTicketPageUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualTicketPageUrl,exceptedTicketPageUrl);
 
         softAssert.assertAll();
 
@@ -36,5 +42,5 @@ public class TC04 {
 
 
 
-    }*/
+    }
 }
