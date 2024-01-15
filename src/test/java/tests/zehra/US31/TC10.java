@@ -10,9 +10,11 @@ import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
-public class TC08 {
+public class TC10 {
     @Test
     public void test01(){
+
+
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
         Actions actions = new Actions(Driver.getDriver());
@@ -24,48 +26,51 @@ public class TC08 {
         // Manage Fleets'e tıklar
         adminDashBoard_manageFleetsPage.linkManageFleets.click();
 
-       // "Fleet Type" linkine tıklar
+        // "Fleet Type" linkine tıklar
         JSUtilities.clickWithJS(Driver.getDriver(), adminDashBoard_manageFleetsPage.linkFleetTyp);
         ReusableMethods.wait(2);
 
-       // Sayfada "+Add New" butonunu görür
-         softAssert.assertTrue(adminDashBoard_manageFleetsPage.ButtonAddNew_FleetType.isDisplayed());
-
-       // "+Add New" butonuna tıklar
+        // "+Add New" butonuna tıklar
         adminDashBoard_manageFleetsPage.ButtonAddNew_FleetType.click();
         ReusableMethods.wait(2);
 
-       // "Add Fleet Type" penceresi açılır
-        softAssert.assertTrue(adminDashBoard_manageFleetsPage.popapAddFleetType.isDisplayed(),"pencere görünmedi");
+        // "Add Fleet Type" penceresindeki "Seats of Deck" kısmına
+        // 9'dan küçük 50'ten büyük bir sayı girer
 
-       // İstenen bilgileri girer ve "save" butonuna tıklar
-         adminDashBoard_manageFleetsPage.inputName.click();
-         actions.sendKeys("w bus").perform();
+        adminDashBoard_manageFleetsPage.inputName.click();
+        actions.sendKeys("f bus").perform();
         Select select1 = new Select(adminDashBoard_manageFleetsPage.selectSeat);
         select1.selectByVisibleText("2 x 2");
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).sendKeys("1")
-                .sendKeys(Keys.TAB).sendKeys("11")
+                .sendKeys(Keys.TAB).sendKeys("100")
                 .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
                 .perform();
         ReusableMethods.wait(1);
         adminDashBoard_manageFleetsPage.buttonACStatus.click();
         adminDashBoard_manageFleetsPage.buttonAddFleetSave2.click();
 
-
-        // Sayfada yeni Fleet Type eklendiğini görür
+        // Hata mesajı görür
         String expectedAlertMesaj = "Fleet type saved successfully";
-        System.out.println(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText());
-       softAssert.assertEquals(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText(),expectedAlertMesaj,"alert mesajı eşit değil");
-
-
-
-
-
-
+        softAssert.assertFalse(expectedAlertMesaj.contains(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText()),"başarıyla kaydedilmemesi gerekiyordu");
 
         softAssert.assertAll();
         ReusableMethods.wait(2);
         Driver.closeDriver();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
