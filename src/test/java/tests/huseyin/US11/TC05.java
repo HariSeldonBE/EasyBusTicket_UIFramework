@@ -9,8 +9,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TC01 {
-
+public class TC05 {
     @Test
     public void test01(){
 
@@ -77,6 +76,16 @@ public class TC01 {
 
         // User Dashboard Page Url Test
         softAssert.assertEquals(actualUserDBUrl,expectedUserDBUrl, "User Dashboard Url is not confirmed");
+        // User Dashboard Page Easy Bus Ticket Logo Display Test
+        softAssert.assertTrue(userDashBoardPage.eBTLogo.isDisplayed(), "Login Button is not displayed");
+        // User Dashboard Page Easy Bus Ticket Logo Enable Test
+        softAssert.assertTrue(userDashBoardPage.eBTLogo.isEnabled(), "Login Button Box is not enabled");
+
+        userDashBoardPage.eBTLogo.click();
+
+        // Easy Bus Ticket Home Page Url Test
+        softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
+
 
         softAssert.assertAll();
         Driver.closeDriver();
