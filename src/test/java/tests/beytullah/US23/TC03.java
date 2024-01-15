@@ -29,7 +29,6 @@ public class TC03 {
 
         // "Manage Users" DDM'ye tıklar
         manageUsersDDM.dropDownManageUsers.click();
-
         List<String> kullaniciAdlari = new ArrayList<>();
         for (WebElement element : manageUsersDDM.columnKullaniciAdi) {
             String kullaniciAdi = kullaniciAdiCikar(element.getText());
@@ -123,6 +122,7 @@ public class TC03 {
         manageUsersDDM.inputAramaKutusu.sendKeys(emailller.get(4) + Keys.ENTER);
         Driver.getDriver().navigate().back();
         Thread.sleep(2000);
+        Driver.closeDriver();
     }
 
     private String kullaniciAdiCikar(String metin) {

@@ -69,5 +69,6 @@ public class TC02 {
         String actualUrl6 = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(expectedUrl6, actualUrl6);
         ReusableMethods.wait(3);
+        Driver.closeDriver();
     }
 }

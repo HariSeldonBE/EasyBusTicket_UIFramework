@@ -1,7 +1,10 @@
 package tests.beytullah.US24;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -50,63 +53,126 @@ public class TC02 {
 
         Faker faker=new Faker();
         Actions actions=new Actions(Driver.getDriver());
+        manageUsersDDM.inputFirstName.clear();
         actions.click(manageUsersDDM.inputFirstName)
                         .sendKeys(faker.name().firstName()).sendKeys(Keys.TAB)
                         .sendKeys(faker.name().lastName()).sendKeys(Keys.TAB)
                         .sendKeys(faker.internet().emailAddress()).sendKeys(Keys.TAB)
-                        .sendKeys(faker.phoneNumber().cellPhone()).sendKeys(Keys.TAB)
+                        .sendKeys(faker.phoneNumber().phoneNumber()).sendKeys(Keys.TAB)
                         .sendKeys(faker.address().fullAddress()).sendKeys(Keys.TAB)
                         .sendKeys(faker.address().city()).sendKeys(Keys.TAB)
                         .sendKeys(faker.address().state()).sendKeys(Keys.TAB)
                         .sendKeys(faker.address().zipCode()).sendKeys(Keys.TAB).perform();
         Select selectUlke = new Select(manageUsersDDM.dropDownCountry);
         selectUlke.selectByIndex(5);
-        //JavascriptExecutor javascriptExecutor = (JavascriptExecutor)Driver.getDriver();
-       // javascriptExecutor.executeScript("arguments[0].scrollIntoView();",manageUsersDDM.buttonStatus);
 
-        actions.sendKeys(Keys.PAGE_DOWN);
+        scrollToElement(Driver.getDriver(), manageUsersDDM.buttonSaveChanges);
+        ReusableMethods.wait(2);
+       /* if (manageUsersDDM.buttonStatusActive.getText().equals("Active")){
+            manageUsersDDM.buttonStatusBanned.click();
+        }
+        */
+        if (manageUsersDDM.buttonEmailVerified.getText().equals("Verified")){
+            manageUsersDDM.buttonEmailUnVerified.click();
+        }else {
+            manageUsersDDM.buttonEmailVerified.click();
+        }
+        if (manageUsersDDM.buttonSmsVerified.getText().equals("Verified")){
+            manageUsersDDM.buttonSmsUnVerified.click();
+        }else {
+            manageUsersDDM.buttonSmsVerified.click();
+        }
+        // "Save Changes" butonuna tıklar
+
+
+        manageUsersDDM.buttonSaveChanges.click();
+
+        //--------------------------------------------------------------------------------
+
+        // "Active Users" linkine tıklar
+        manageUsersDDM.linkActiveUsers.click();
+        // Herhangi bir kullanıcıya tıklar
+        manageUsersDDM.linkFakeKullanici.click();
+        // "Information" panelindeki her kutucuğa tıklar ve  bilgileri değiştirir
+        manageUsersDDM.inputFirstName.clear();
+        actions.click(manageUsersDDM.inputFirstName)
+                .sendKeys(faker.name().firstName()).sendKeys(Keys.TAB)
+                .sendKeys(faker.name().lastName()).sendKeys(Keys.TAB)
+                .sendKeys(faker.internet().emailAddress()).sendKeys(Keys.TAB)
+                .sendKeys(faker.phoneNumber().cellPhone()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().fullAddress()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().city()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().state()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().zipCode()).sendKeys(Keys.TAB).perform();
+
+        selectUlke.selectByIndex(5);
+        scrollToElement(Driver.getDriver(), manageUsersDDM.buttonSaveChanges);
+        ReusableMethods.wait(2);
+
         if (manageUsersDDM.buttonStatusActive.getText().equals("Active")){
             manageUsersDDM.buttonStatusBanned.click();
         }else {
             manageUsersDDM.buttonStatusActive.click();
         }
-        if (manageUsersDDM.buttonEmailVerification.getText().equals("Verified")){
-            manageUsersDDM.buttonUnVerified.click();
+        if (manageUsersDDM.buttonEmailVerified.getText().equals("Verified")){
+            manageUsersDDM.buttonEmailUnVerified.click();
         }else {
-            manageUsersDDM.buttonVerified.click();
+            manageUsersDDM.buttonEmailVerified.click();
         }
-        if (manageUsersDDM.buttonEmailVerification.getText().equals("Verified")){
-            manageUsersDDM.buttonUnVerified.click();
+        if (manageUsersDDM.buttonSmsVerified.getText().equals("Verified")){
+            manageUsersDDM.buttonSmsUnVerified.click();
         }else {
-            manageUsersDDM.buttonVerified.click();
+            manageUsersDDM.buttonSmsVerified.click();
         }
+        // "Save Changes" butonuna tıklar
 
-        manageUsersDDM.buttonEmailVerification.click();
-        manageUsersDDM.buttonSMSVerification.click();
-        //manageUsersDDM.buttonSaveChanges.click();
-        /*
-        manageUsersDDM.inputLastName.click();
-        manageUsersDDM.inputEmail.click();
-        manageUsersDDM.inputMobileNumber.click();
-        manageUsersDDM.inputAddress.click();
-        manageUsersDDM.inputState.click();
-        manageUsersDDM.inputZipPostal.click();
-        manageUsersDDM.dropDownCountry.click();
-        manageUsersDDM.buttonStatus.click();
-        manageUsersDDM.buttonEmailVerification.click();
-        manageUsersDDM.buttonSMSVerification.click();
-*/
+        ReusableMethods.wait(2);
+        manageUsersDDM.buttonSaveChanges.click();
 
-        // "Information" panelindeki değişiklikleri kaydeder
-        // "Active Users" sekmesine tıklanır ve görüntülenir
+        //--------------------------------------------------------------------------------
+
+        // "Banned Users"  linkine tıklar
+        manageUsersDDM.linkBannedUsers.click();
         // Herhangi bir kullanıcıya tıklar
+        manageUsersDDM.linkFakeKullanici.click();
         // "Information" panelindeki her kutucuğa tıklar ve  bilgileri değiştirir
-        // "Information" panelindeki değişiklikleri kaydeder
-        // "Banned Users" sekmesine tıklanır ve görüntülenir
-        // Herhangi bir kullanıcıya tıklar
-        // "Information" panelindeki her kutucuğa tıklar ve  bilgileri değiştirir
-        // "Information" panelindeki değişiklikleri kaydeder
+        manageUsersDDM.inputFirstName.clear();
+        actions.click(manageUsersDDM.inputFirstName)
+                .sendKeys(faker.name().firstName()).sendKeys(Keys.TAB)
+                .sendKeys(faker.name().lastName()).sendKeys(Keys.TAB)
+                .sendKeys(faker.internet().emailAddress()).sendKeys(Keys.TAB)
+                .sendKeys(faker.phoneNumber().cellPhone()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().fullAddress()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().city()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().state()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().zipCode()).sendKeys(Keys.TAB).perform();
 
+        selectUlke.selectByIndex(5);
+        scrollToElement(Driver.getDriver(), manageUsersDDM.buttonSaveChanges);
+        ReusableMethods.wait(2);
+        if (manageUsersDDM.buttonStatusActive.getText().equals("Active")){
+            manageUsersDDM.buttonStatusBanned.click();
+        }else {
+            manageUsersDDM.buttonStatusActive.click();
+        }
+        if (manageUsersDDM.buttonEmailVerified.getText().equals("Verified")){
+            manageUsersDDM.buttonEmailUnVerified.click();
+        }else {
+            manageUsersDDM.buttonEmailVerified.click();
+        }
+        if (manageUsersDDM.buttonSmsVerified.getText().equals("Verified")){
+            manageUsersDDM.buttonSmsUnVerified.click();
+        }else {
+            manageUsersDDM.buttonSmsVerified.click();
+        }
+        // "Save Changes" butonuna tıklar
+
+        ReusableMethods.wait(2);
+        manageUsersDDM.buttonSaveChanges.click();
+        Driver.closeDriver();
+    }
+    public static void scrollToElement(WebDriver driver, WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
     private String kullaniciAdiCikar(String metin) {
         int atIndex = metin.indexOf('@');

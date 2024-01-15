@@ -22,7 +22,7 @@ public class TC01 {
         // "all users, active users, banned users, Email unverified, sms unverified, email to al" sayfalarındaki "User" başlığının altındaki kullanıcı adlarını görür
         manageUsersDDM.linkAllUsers.click();
         // bir kullanıcı adına tıklar
-        manageUsersDDM.linkKullaniciAdi.click();
+        manageUsersDDM.linkIlkKullaniciAdi.click();
         // "User Detail" sayfası açılır
         String expectedUrl = "https://qa.easybusticket.com/admin/user/detail";
         String actualUrl = Driver.getDriver().getCurrentUrl();
@@ -32,6 +32,7 @@ public class TC01 {
         String actualTitle = Driver.getDriver().getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle, "Title'lar aynı değil");
         // Kullanıcı bilgilerinin ayrıntılarını görüntüler
+        Driver.closeDriver();
     }
 
     private String kullaniciAdiCikar(String metin) {

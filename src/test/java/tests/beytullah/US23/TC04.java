@@ -32,5 +32,6 @@ public class TC04 {
         // "Send Email" butonuna tıklar
         manageUsersDDM.buttonSendEmail.click();
         // Tüm kullanıcılara başarıyla mail gönderir
+        Driver.closeDriver();
     }
 }

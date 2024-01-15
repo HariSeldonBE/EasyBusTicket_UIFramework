@@ -37,18 +37,14 @@ public class ManageUsersDDM {
 
     @FindBy(xpath = "//span[@class='menu-badge pill bg--primary ml-auto']")
     public List<WebElement> listSayiManageUsers;
-    @FindBy(xpath = "(//span[@class='menu-badge pill bg--primary ml-auto'])[2]")
-    public WebElement sayiManageUsers;
-
-
+    @FindBy(xpath = "//span[@class='small']")
+    public List<WebElement> columnKullaniciAdi;
     @FindBy(xpath = "//input[@type='text']")
     public WebElement inputAramaKutusu;
-    @FindBy(xpath = "//td[1]")
-    public List<WebElement> columnKullaniciAdi;
     @FindBy(xpath = "//td[2]")
     public List<WebElement> listEmail;
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]/span[2]/a")
-    public  WebElement linkKullaniciAdi; // Sayfalarda var
+    public  WebElement linkIlkKullaniciAdi; // Sayfalarda var
     // --------------------------------EmailToAll linki--------------------------------
     @FindBy(xpath = "//input[@type='text']")
     public WebElement inputSubjectText;
@@ -63,13 +59,13 @@ public class ManageUsersDDM {
     @FindBy(xpath = "(//body//li[1]/text())[27]")
     public WebElement labelUserInformationBaslik;
 
-    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/login/history/171']")
+    @FindBy(xpath = "//a[@class='btn btn--primary btn--shadow btn-block btn-lg']")
     public WebElement  buttonLoginLogs;
-    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/login/history/171']")
+    @FindBy(xpath = "//a[@class='btn btn--info btn--shadow btn-block btn-lg']")
     public WebElement  buttonSendEmailUserDetailPage;
-    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/user/login/171']")
+    @FindBy(xpath = "//a[@class='btn btn--dark btn--shadow btn-block btn-lg']")
     public WebElement  buttonLoginAsUser;
-    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/admin/users/email-log/171']")
+    @FindBy(xpath = "//a[@class='btn btn--warning btn--shadow btn-block btn-lg']")
     public WebElement  buttonEmailLog;
     @FindBy(xpath = "(//input[@class='form-control'])[1]")
     public WebElement inputFirstName;
@@ -91,19 +87,23 @@ public class ManageUsersDDM {
     public WebElement dropDownCountry;
     @FindBy(xpath = "(//div[@class='toggle-group'])[1]")
     public WebElement buttonStatus;
-    @FindBy(xpath = "//label[@class='btn btn--success toggle-on']")
+    @FindBy(xpath = "(//label[@class='btn btn--success toggle-on'])[1]")
     public WebElement buttonStatusActive;
-    @FindBy(xpath = "//label[@class='btn btn--danger active toggle-off']")
+    @FindBy(xpath = "(//label[@class='btn btn--danger active toggle-off'])[1]")
     public WebElement buttonStatusBanned;
     @FindBy(xpath = "(//div[@class='toggle-group'])[2]")
     public WebElement buttonEmailVerification;
-    @FindBy(xpath = "//label[@class='btn btn--success toggle-on']")
-    public WebElement buttonVerified;
-    @FindBy(xpath = "//label[@class='btn btn--danger active toggle-off']")
-    public WebElement buttonUnVerified;
+    @FindBy(xpath = "(//label[@class='btn btn--success toggle-on'])[2]")
+    public WebElement buttonEmailVerified;
+    @FindBy(xpath = "(//label[@class='btn btn--danger active toggle-off'])[2]")
+    public WebElement buttonEmailUnVerified;
     @FindBy(xpath = "(//div[@class='toggle-group'])[3]")
     public WebElement buttonSMSVerification;
-    @FindBy(xpath = "(//button[@type='submit'])[2]")
+    @FindBy(xpath = "(//label[@class='btn btn--success toggle-on'])[3]")
+    public WebElement buttonSmsVerified;
+    @FindBy(xpath = "(//label[@class='btn btn--danger active toggle-off'])[3]")
+    public WebElement buttonSmsUnVerified;
+    @FindBy(xpath = "//button[@class='btn btn--primary btn-block btn-lg']")
     public WebElement buttonSaveChanges;
 
     @FindBy(xpath = "//span[@class='small']")
@@ -111,4 +111,8 @@ public class ManageUsersDDM {
 
     @FindBy(xpath = "(//a[@href='https://qa.easybusticket.com/admin/user/detail/172'])[1]")
     public WebElement linkFakeKullanici;
+    //---------------------------------------------------------------------------------------------
+    @FindBy(xpath = "//i[@class='las la-desktop text--shadow']")
+    public WebElement linkEmailDetail;
+
 }

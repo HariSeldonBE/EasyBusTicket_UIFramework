@@ -58,5 +58,6 @@ public class TC01 {
         }
 
         System.out.println("Numbers: " + numbers);
+        Driver.closeDriver();
     }
 }
