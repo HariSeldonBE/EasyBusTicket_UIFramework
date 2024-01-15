@@ -887,6 +887,9 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]/a/i")
     public WebElement iDesktop;
 
+    @FindBy(xpath = "/html/body/section[2]/div/div/div[1]/div[2]/div[1]/h2[1]/span[1]")
+    public static WebElement spanDifferentTimesTheYear;
+
 
 
 
