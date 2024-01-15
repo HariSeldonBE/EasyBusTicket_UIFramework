@@ -18,6 +18,7 @@ public class TC01 {
 
 
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+        Driver.getDriver().navigate().back();
 
 
         Driver.closeDriver();
