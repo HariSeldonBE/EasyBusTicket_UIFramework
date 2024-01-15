@@ -140,32 +140,29 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//div[@class='logo'])[2]")
     public WebElement easyBusTicketFooterLogo;
 
-
-    //EasyBusTicket Home page header kÄ±smÄ±nÄ±n solundaki "MobileNumber"
+    //EasyBusTicket Home page header kısmının solundaki "MobileNumber"
     @FindBy(xpath = "//html/body//div[3]//div//div//a")
     public WebElement headerMobileNumberLinki;
 
-    //EasyBusTicket Home page header kÄ±smÄ±nÄ±n solundaki "Email Adresi"
+    //EasyBusTicket Home page header kısmının solundaki "Email Adresi"
     @FindBy(xpath = "//html/body//div[3]//div//div//li[2]//a")
     public WebElement headerEmail;
 
-    //EasyBusTicket Home page header kÄ±smÄ±nÄ±n sagÄ±ndaki "X icon'u"
+    //EasyBusTicket Home page header kısmının sagındaki "X icon'u"
     @FindBy(xpath = "//html/body//div[3]//div//div//div//li[1]//a")
     public WebElement xIcon;
 
-    //EasyBusTicket Home page header kÄ±smÄ±nÄ±n sagÄ±ndaki "Facebook icon'u"
+    //EasyBusTicket Home page header kısmının sagındaki "Facebook icon'u"
     @FindBy(xpath = "//html/body//div[3]//div//div//div//li[2]//a")
     public WebElement facebookIcon;
 
-    //EasyBusTicket Home page header kÄ±smÄ±nÄ±n sagÄ±ndaki "Youtube icon'u"
+    //EasyBusTicket Home page header kısmının sagındaki "Youtube icon'u"
     @FindBy(xpath = "//html/body//div[3]//div//div//div//li[3]//a")
     public WebElement youtubeIcon;
 
-    //EasyBusTicket Home page header kÄ±smÄ±nÄ±n sagÄ±ndaki "Instagram icon'u"
+    //EasyBusTicket Home page header kısmının sagındaki "Instagram icon'u"
     @FindBy(xpath = "//html/body//div[3]//div//div//div//li[4]//a")
     public WebElement instagramIcon;
-
-
 
     // "Forgot Password?" link -->kevser_US20_TC01
     @FindBy(xpath = "//*[text()='Forgot Password?']")
