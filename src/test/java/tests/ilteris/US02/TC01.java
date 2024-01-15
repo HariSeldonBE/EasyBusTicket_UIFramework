@@ -17,6 +17,10 @@ public class TC01 {
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
 
+        String expectedURl="https://easybusticket.com/";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedURl);
+
         //Iletisim bilgilerinin görünürlügünü test edin
         softAssert.assertTrue(easyBusTicketPage.headerMobileNumberLinki.isDisplayed(),"Mobile Number görünüyor");
         softAssert.assertTrue(easyBusTicketPage.headerEmail.isDisplayed(),"Email görünüyor");
@@ -36,5 +40,10 @@ public class TC01 {
         Driver.closeDriver();
 
 
+    }
+
+
+
     }*/
+
 }

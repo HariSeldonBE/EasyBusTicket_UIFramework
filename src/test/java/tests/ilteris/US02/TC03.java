@@ -17,6 +17,10 @@ public class TC03 {
        // SoftAssert softAssert = new SoftAssert();
         //EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
 
+        String exceptedUrl = "https://easybusticket.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(exceptedUrl,actualUrl);
+
         //Sosyal Medya icon'larının görüntülendigini ve aktifligini doğrulayın
         softAssert.assertTrue(easyBusTicketPage.signInButton.isDisplayed());
         easyBusTicketPage.signInButton.click();
@@ -38,6 +42,7 @@ public class TC03 {
 
 
         Driver.closeDriver();
+
 
     }*/
 }

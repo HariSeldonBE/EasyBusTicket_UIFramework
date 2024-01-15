@@ -17,6 +17,10 @@ public class TC02 {
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
 
+        String expectedURl="https://easybusticket.com/";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedURl);
+
         //Sosyal Medya icon'larının görüntülendiğini doğrulayın
         softAssert.assertTrue(easyBusTicketPage.xIcon.isDisplayed());
         softAssert.assertTrue(easyBusTicketPage.facebookIcon.isDisplayed());

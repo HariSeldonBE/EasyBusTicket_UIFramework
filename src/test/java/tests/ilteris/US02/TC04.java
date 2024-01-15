@@ -25,13 +25,14 @@ public class TC04 {
         easyBusTicketPage.buyTicketsButton.click();
         String exceptedUrl = "https://easybusticket.com/tickets";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(exceptedUrl,actualUrl);
+        softAssert.assertEquals(exceptedUrl,actualUrl);
 
         softAssert.assertAll();
 
 
 
         Driver.closeDriver();
+
 
 
 
