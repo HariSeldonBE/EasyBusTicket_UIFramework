@@ -1,8 +1,14 @@
 package tests.zeliha.US28;
 
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import pages.admin.AdminDashBoardPage;
+
+import java.util.List;
 
 public class TC01 {
+
+
 
     @Test
     public void SupportRequestTesti(){
@@ -24,7 +30,12 @@ public class TC01 {
 
    */
 
+        
+        
+        
+        String[] webelementlerlistesi = AdminDashBoardPage.spanDifferentTimesTheYear.getText().split(" ");
 
+        System.out.println(webelementlerlistesi);
     }
 
 
