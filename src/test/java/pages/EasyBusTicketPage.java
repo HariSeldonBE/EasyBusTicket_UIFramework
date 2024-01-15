@@ -140,15 +140,6 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//div[@class='logo'])[2]")
     public WebElement easyBusTicketFooterLogo;
 
-
-
-
-
-
-    // Homepage >> Sign-up Button
-    @FindBy(className = "sign-up")      //(xpath = "//a[@class='sign-up']")
-    public WebElement signUpButton;
-
     // "Forgot Password?" link -->kevser_US20_TC01
     @FindBy(xpath = "//*[text()='Forgot Password?']")
     public WebElement forgotPasswordLink;
