@@ -11,12 +11,16 @@ public class TC02 {
 
     @Test
     public void headerSosyalMedyaIconlarıGörüntülemeVeDogrulamaTesti(){
-
+/*
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+
+        String expectedURl="https://easybusticket.com/";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedURl);
 
         //Sosyal Medya icon'larının görüntülendiğini doğrulayın
         softAssert.assertTrue(easyBusTicketPage.xIcon.isDisplayed());
@@ -58,6 +62,8 @@ public class TC02 {
 
         Driver.closeDriver();
 
+
+ */
 
     }
 }

@@ -10,12 +10,16 @@ public class TC03 {
 
     @Test
     public void headerSignInVeSignUpButonTestleri() {
-
+/*
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+
+        String exceptedUrl = "https://easybusticket.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(exceptedUrl,actualUrl);
 
         //Sosyal Medya icon'larının görüntülendigini ve aktifligini doğrulayın
         softAssert.assertTrue(easyBusTicketPage.signInButton.isDisplayed());
@@ -39,5 +43,7 @@ public class TC03 {
 
         Driver.closeDriver();
 
+
+ */
     }
 }

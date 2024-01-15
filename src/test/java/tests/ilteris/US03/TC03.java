@@ -6,10 +6,10 @@ import pages.EasyBusTicketPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class    TC01 {
+public class TC03 {
 
     @Test
-    public void chooseYourTicketPanelGörüntülemeTesti() {
+    public void getTicketNowButtonAktiflikTesti() {
 /*
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
@@ -21,13 +21,13 @@ public class    TC01 {
         String actualUrl=Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(actualUrl,expectedURl);
 
+        softAssert.assertTrue(easyBusTicketPage.homePageGetTicketNowButton.isDisplayed());
 
-        //Choose Your Ticket Panelinin görünür olduğunu test edin
-        softAssert.assertTrue(easyBusTicketPage.homePageChooseYourTicketPanelText.isDisplayed());
-        softAssert.assertTrue(easyBusTicketPage.homePagePickUpPointContainer.isDisplayed());
-        softAssert.assertTrue(easyBusTicketPage.homePageDroppingPointContainer.isDisplayed());
-        softAssert.assertTrue(easyBusTicketPage.homePageDepartureDatePicker.isDisplayed());
-        softAssert.assertTrue(easyBusTicketPage.homePageFindTicketButton.isDisplayed());
+        easyBusTicketPage.homePageGetTicketNowButton.click();
+
+        String EBTticketPageExpectedUrl = "https://easybusticket.com/tickets";
+        String EBTTicketPageActualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertTrue(EBTTicketPageActualUrl.contains(EBTticketPageExpectedUrl));
 
         softAssert.assertAll();
 
@@ -42,6 +42,8 @@ public class    TC01 {
 
 
 
+
  */
+
     }
 }
