@@ -185,6 +185,102 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//span[text()='Disabled'])[1]")
     public WebElement scheduleFirstRowDisabledElement;
 
+    // ticket price sayfasındaki listenin 1. satırındaki fleet type
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]")
+    public WebElement tpFleetTypeElement;
+
+    // ticket price sayfasındaki add new butonu
+    @FindBy(xpath = "//a[@class='btn btn-sm btn--primary box--shadow1 text--small']")
+    public WebElement tpAddNewButton;
+
+    // ticket price add new sayfasındaki fleet type kutusu
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[1]")
+    public WebElement tpAddNewFleetTypeBox;
+
+    // ticket price add new sayfasındaki fleet type kutusu
+    @FindBy(xpath = "(//select[@class='select2-basic select2-hidden-accessible'])[1]")
+    public WebElement tpAddNewFleetTypeSelect;
+
+    // ticket price add new sayfasındaki route kutusu
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[2]")
+    public WebElement tpAddNewRouteBox;
+
+    // ticket price add new sayfasındaki route kutusu
+    @FindBy(xpath = "(//select[@class='select2-basic select2-hidden-accessible'])[2]")
+    public WebElement tpAddNewRouteSelect;
+
+    // ticket price add new sayfasındaki price kutusu
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement tpAddNewPriceBox;
+
+    // ticket price add new sayfasındaki save butonu
+    @FindBy(xpath = "//button[text()='Save                                ']")
+    public WebElement tpAddNewSaveButton;
+
+    // ticket price add new sayfasındaki go back butonu
+    @FindBy(xpath = "(//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn'])[1]")
+    public WebElement tpAddNewGoBackButton;
+
+    //ticket price add new sayfasındaki sonradan cikan price kutusu
+    @FindBy(xpath = "(//input[@id='point-2'])[1]")
+    public WebElement tpAddNewSecondPriceBox;
+
+    // ticket price sayfasındaki listenin 1. satırındaki edit butonu
+    @FindBy(xpath = "(//a[@class='icon-btn ml-1'])[1]")
+    public WebElement tpFirstRowEditButton;
+
+    // ticket price edit sayfasındaki price input box
+    @FindBy(xpath = "(//input[@id='point-1'])[1]")
+    public WebElement tpEditPagePriceInputBox;
+
+    // ticket prive edit sayfasındaki update butonu
+    @FindBy(xpath = "(//button[text()='Update'])[1]")
+    public WebElement tpEditPageUpdateButton;
+
+    // ticket price edit sayfasındaki go back butonu
+    @FindBy(xpath = "(//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn'])[1]")
+    public WebElement tpEditPageGoBackButton;
+
+    // ticket price sayfasındaki listenin 1. satırındaki delete butonu
+    @FindBy(xpath = "(//button[@class='ml-1 icon-btn btn--danger removeBtn '])[1]")
+    public WebElement tpFirstRowDeleteButton;
+
+    // ticket price delet pop-up sayfasındaki delete butonu
+    @FindBy(xpath = "(//button[@class='btn btn--danger'])[1]")
+    public WebElement tpDeletePopUpDeletButton;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tpFirstRowRouteElement;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
+    public WebElement tpFirstRowPriceElement;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody")
     public WebElement counterNamesList;
