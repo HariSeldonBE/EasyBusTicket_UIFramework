@@ -9,10 +9,12 @@ import pages.admin.AdminDashBoard_HeaderPage;
 
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC03 {
+public class TC03 extends TestBaseRapor {
     @Test
     public void bildirimTest(){
+        extentTest=extentReports.createTest("Bildirim TEST", "Bildirim button");
 
         AdminDashBoard_HeaderPage adminDashBoard_headerPage = new AdminDashBoard_HeaderPage();
         SoftAssert softAssert = new SoftAssert();
@@ -21,7 +23,7 @@ public class TC03 {
        // 1-Browser açılır
        // 2-Url 'e  gidilir
         ReusableMethods.adminLoginMethod("admin11","123123123");
-
+        extentTest.info("User goes to \"Easy Bus Ticket Admin\" Dashboard");
        // 3-Dashboard sayfasındaki header bölümündeki bildirim butonunun göründüğü doğrulanır
         softAssert.assertTrue(adminDashBoard_headerPage.ikonBildirim.isDisplayed(),"bildirim ikonu görünmüyor");
 
@@ -54,9 +56,10 @@ public class TC03 {
         softAssert.assertEquals("User Detail",expectedAcilanBildirimSayfasi,"ilk");
         softAssert.assertEquals("Booked Ticket",expectedAcilanBildirimSayfasi,"iki");
         softAssert.assertEquals("Reply Request",expectedAcilanBildirimSayfasi,"üç");
+        extentTest.pass("Tests bildirimler açıldı");
 
 
-
+        extentTest.info("Closed page");
         softAssert.assertAll();
         ReusableMethods.wait(2);
         Driver.closeDriver();
