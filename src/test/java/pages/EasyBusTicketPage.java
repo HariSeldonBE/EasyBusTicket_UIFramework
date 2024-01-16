@@ -219,12 +219,15 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//*[text()='Blog'])[1]")
     public WebElement headerBlogButton;
 
+    // Homepage >> Testimonial link of Emily Rodriguez (1st Testimonial)  -->Huseyin_US11_TC 15
     @FindBy(xpath = "(//button[@tabindex='0'])")
     public WebElement testimonial1;
 
+    // Homepage >> Testimonial link of Aprilou Marwan (2nd Testimonial)  -->Huseyin_US11_TC 15
     @FindBy(xpath = "(//button[@tabindex='-1'])[1]")
     public WebElement testimonial2;
 
+    // Homepage >> Testimonial link of Alex Thompson (3rd Testimonial)  -->Huseyin_US11_TC 15
     @FindBy(xpath = "(//button[@tabindex='-1'])[2]")
     public WebElement testimonial3;
 
