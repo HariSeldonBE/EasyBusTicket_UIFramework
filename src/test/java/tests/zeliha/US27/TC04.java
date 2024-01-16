@@ -112,7 +112,7 @@ public class TC04 {
 
 
         adminDashBoardPage.goBackButonu.click();
-        adminDashBoardPage.duzenleButonu.click();
+        adminDashBoardPage.iPencil.click();
 
         adminDashBoardPage.divNewManualGatewayBack.click();
         //adminDashBoardPage.GatewayNameTextbox.click();

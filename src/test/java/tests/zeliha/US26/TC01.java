@@ -6,8 +6,9 @@ import pages.admin.AdminDashBoardPage;
 import pages.admin.AdminLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.TestBaseRapor;
 
-public class TC01 {
+public class TC01 extends TestBaseRapor {
 
     @Test
     public void BookingHistoryLinki(){
@@ -27,9 +28,10 @@ public class TC01 {
         9 -	"Booking History" Linkine tıklandığında, "All Ticket" linkinin görünür ve aktif olduğu doğrulanır.
 
        */
-
+        extentTest=extentReports.createTest("Zeliha Selçuk / "+"Booking History Button TEST", "Is 'Booking History Button' is worked?");
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
         AdminLoginPage adminLoginPage = new AdminLoginPage();
+        extentTest.info("User goes to \"Easy Bus Ticket\" AdminDashboard Booking History page");
         adminLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("admin20"));
         adminLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("adminPass"));
         adminLoginPage.loginButton.click();
@@ -40,18 +42,24 @@ public class TC01 {
         adminDashBoardPage.bookingHistoryButton.click();
 
         softAssert.assertTrue(adminDashBoardPage.pendingTicketButton.isDisplayed(),"Pending Ticket linki Görüntülenemedi.");
+        extentTest.pass("PASSED");
         softAssert.assertTrue(adminDashBoardPage.pendingTicketButton.isEnabled(),"Pending Ticket linki Aktif Değil.");
 
+
         softAssert.assertTrue(adminDashBoardPage.bookedTicketButton.isDisplayed(),"Booked Ticket linki Görüntülenemedi.");
+        extentTest.pass("PASSED");
         softAssert.assertTrue(adminDashBoardPage.bookedTicketButton.isEnabled(),"Booked Ticket linki Aktif Değil.");
 
         softAssert.assertTrue(adminDashBoardPage.rejectedTicketButton.isDisplayed(),"Rejected Ticket linki Görüntülenemedi.");
+        extentTest.pass("PASSED");
         softAssert.assertTrue(adminDashBoardPage.rejectedTicketButton.isEnabled(),"Rejected Ticket linki Aktif Değil.");
 
         softAssert.assertTrue(adminDashBoardPage.allTicketButton.isDisplayed(),"All Ticket linki Görüntülenemedi.");
+        extentTest.pass("PASSED");
         softAssert.assertTrue(adminDashBoardPage.allTicketButton.isEnabled(),"All Ticket linki Aktif Değil.");
 
         Driver.quitDriver();
+        extentTest.info("Closed page");
 
 
 
