@@ -219,6 +219,15 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//*[text()='Blog'])[1]")
     public WebElement headerBlogButton;
 
+    @FindBy(xpath = "(//button[@tabindex='0'])")
+    public WebElement testimonial1;
+
+    @FindBy(xpath = "(//button[@tabindex='-1'])[1]")
+    public WebElement testimonial2;
+
+    @FindBy(xpath = "(//button[@tabindex='-1'])[2]")
+    public WebElement testimonial3;
+
 
 
 
