@@ -14,7 +14,7 @@ import utilities.ReusableMethods;
 
 public class TC16 {
     @Test
-    public void expirationDatePozitifTesti2HaneliYilGirisi(){
+    public void expirationDateNegatifTesti2HaneliYilGirisi(){
 
         // 1-Browser açılır ve Url'e gidilir
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
@@ -44,14 +44,17 @@ public class TC16 {
         findTicketsPage.pickupPoint.click();
 
         findTicketsPage.pickupPointSelection.click();
+        Object selectedPickup=findTicketsPage.pickupPointSelection.getText();
         ReusableMethods.wait(2);
         // 11-"Dropping Point" dropbox undan farklı yer seçilir
         findTicketsPage.droppingPoint.click();
         findTicketsPage.droppingPointSelection.click();
+        Object selectedDropping = findTicketsPage.droppingPointSelection.getText();
         ReusableMethods.wait(2);
         // 12-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
         findTicketsPage.dateOfJourneySelection.click();
+        Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
         ReusableMethods.wait(2);
         // 13-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
@@ -59,6 +62,14 @@ public class TC16 {
         findTicketsPage.selectSeatButton.click();
         ReusableMethods.wait(2);
         SelectSeatPage selectSeatPage = new SelectSeatPage();
+        // 14- Journey Date doğru mu kontrol edilir
+        selectSeatPage.seatJourneyDateBox.click();
+        Assert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate);
+        // 15- Pickup Point doğru mu kontrol edilir
+        Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
+        // 16- Dropping Point doğru mu kontrol edilir
+        Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+
         // 21-Cinsiyet seçimi yapılır
         selectSeatPage.femaleCheckbox.click();
 
@@ -67,19 +78,7 @@ public class TC16 {
         // 24 - Koltuk seçimi yapılır
 
 
-
-        int i=5;
-
-
-        while(i<34){
-            if(!(selectSeatPage.ladiesSelectedSeats.contains(selectSeatPage.seats.get(i))))
-            {
-                selectSeatPage.seats.get(i).click();
-
-                i=34;
-            }
-            i++;
-        }
+        selectSeatPage.seats.get(7).click();
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         ReusableMethods.wait(2);
@@ -127,7 +126,7 @@ public class TC16 {
         //18-"PAY NOW" butonu tıklanır
         selectSeatPage.paymentConfirmPayNowButton.click();
         ReusableMethods.wait(2);
-        Object expected = "Booked";
+        Object expected = "Rejected";
         Assert.assertEquals(selectSeatPage.status.getText(),expected);
 
 

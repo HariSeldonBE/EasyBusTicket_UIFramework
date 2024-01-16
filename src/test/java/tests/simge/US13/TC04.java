@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.FindTicketsPage;
 import pages.user.SelectSeatPage;
@@ -16,7 +17,7 @@ import utilities.ReusableMethods;
 public class TC04 {
     @Test
     public void selectSeatDogrulamaTesti(){
-
+        SoftAssert softAssert=new SoftAssert();
         // 1-Browser açılır ve Url'e gidilir
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         // 2-Cookies kabul edilir
@@ -85,53 +86,75 @@ public class TC04 {
         Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
         // 22- Dropping Point doğru mu kontrol edilir
         Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
-        // 23-Cinsiyet seçimi yapılır
-        selectSeatPage.femaleCheckbox.click();
 
-        // 24 - Koltuk numaraları checkbox larının görünür ve aktif olduğu doğrulanır
+        // 23 - Koltuk numaraları checkbox larının görünür ve aktif olduğu doğrulanır
         for (int i = 1; i < 34; i++) {
             selectSeatPage.seats.get(i).isDisplayed();
             selectSeatPage.seats.get(i).isEnabled();
         }
 
-        // 25 - Koltuk seçimi yapılır
-            selectSeatPage.seats.get(1).click();
-
-        // 26 - Seçilen koltukların seçili olarak görüntülendiği doğrulanır
-        for (WebElement selectedSeat:selectSeatPage.selectedSeats) {
-            Assert.assertTrue(selectedSeat.isDisplayed());
-        }
           JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
           js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
 
+        // 24 - Koltuk seçimi yapılır
+        for (int i = 0; i < 15; i++) {
+            selectSeatPage.seats.get(i).click();
+            ReusableMethods.wait(1);
+            for (WebElement selectedSeat:selectSeatPage.selectedSeats) {
+                Assert.assertTrue(selectedSeat.isDisplayed());
+            }
+            // 25-Cinsiyet seçimi yapılır
+            selectSeatPage.femaleCheckbox.click();
+            js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
+            ReusableMethods.wait(1);
+            // 26-"Continue" butonu görüntülenir ve aktif olduğu doğrulanır
+            Assert.assertTrue(selectSeatPage.continueButton.isDisplayed());
+            Assert.assertTrue(selectSeatPage.continueButton.isEnabled());
+            // 27-"Continue" butonu tıklanır
+            selectSeatPage.continueButton.click();
+            ReusableMethods.wait(1);
+            // 28-"Confirm Booking" penceresi açıldığı doğrulanır
+            Assert.assertTrue(selectSeatPage.confirmBooking.isDisplayed());
+            // 29-Çıkan "Confirm Booking" penceresinde "Close" butonu görüntülenir ve aktif olduğu doğrulanır
+            Assert.assertTrue(selectSeatPage.closeConfirmBookingButton.isDisplayed());
+            Assert.assertTrue(selectSeatPage.closeConfirmBookingButton.isEnabled());
+            // 30-Çıkan "Confirm Booking" penceresinde "Confirm" butonu görüntülenir ve aktif olduğu doğrulanır
+            Assert.assertTrue(selectSeatPage.confirmBookingButton.isDisplayed());
+            Assert.assertTrue(selectSeatPage.confirmBookingButton.isEnabled());
+            // 31-"Confirm" butonu tıklanır
+            selectSeatPage.confirmBookingButton.click();
+            ReusableMethods.wait(1);
+            // 32-Payment Methods sayfası açıldığı doğrulanır
+            String expectedURL= "https://qa.easybusticket.com/user/ticket-booking/payment-gateway";
+            softAssert.assertEquals(Driver.getDriver().getCurrentUrl(),expectedURL,i+". koltuk için hata verdi.");
 
-        // 27-"Continue" butonu görüntülenir ve aktif olduğu doğrulanır
-        Assert.assertTrue(selectSeatPage.continueButton.isDisplayed());
-        Assert.assertTrue(selectSeatPage.continueButton.isEnabled());
-        // 28-"Continue" butonu tıklanır
-        ReusableMethods.wait(2);
-        selectSeatPage.continueButton.click();
-        ReusableMethods.wait(2);
-        // 29-"Confirm Booking" penceresi açıldığı doğrulanır
-        Assert.assertTrue(selectSeatPage.confirmBooking.isDisplayed());
-        // 30-Çıkan "Confirm Booking" penceresinde "Close" butonu görüntülenir ve aktif olduğu doğrulanır
-        Assert.assertTrue(selectSeatPage.closeConfirmBookingButton.isDisplayed());
-        Assert.assertTrue(selectSeatPage.closeConfirmBookingButton.isEnabled());
-        // 31-Çıkan "Confirm Booking" penceresinde "Confirm" butonu görüntülenir ve aktif olduğu doğrulanır
-        Assert.assertTrue(selectSeatPage.confirmBookingButton.isDisplayed());
-        Assert.assertTrue(selectSeatPage.confirmBookingButton.isEnabled());
-        // 32-"Confirm" butonu tıklanır
-        selectSeatPage.confirmBookingButton.click();
-        // 33-Payment Methods sayfası açıldığı doğrulanır
-        Assert.assertTrue(selectSeatPage.paymentMethodsTitle.isDisplayed());
-        ReusableMethods.wait(2);
+            Driver.getDriver().get("https://qa.easybusticket.com/ticket/22/lux-bus-austin-dallas");
+            ReusableMethods.wait(1);
+        }
+        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        ReusableMethods.wait(1);
+        for (int i = 15; i < 33; i++) {
+            selectSeatPage.seats.get(i).click();
+            ReusableMethods.wait(1);
+            // 33-Cinsiyet seçimi yapılır
+            selectSeatPage.femaleCheckbox.click();
+            js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
+            ReusableMethods.wait(1);
+            // 34-"Continue" butonu tıklanır
+            selectSeatPage.continueButton.click();
+            // 35-"Confirm" butonu tıklanır
+            selectSeatPage.confirmBookingButton.click();
+            ReusableMethods.wait(1);
+            // 36-Payment Methods sayfası açıldığı doğrulanır
+            String expectedURL= "https://qa.easybusticket.com/user/ticket-booking/payment-gateway";
+            softAssert.assertEquals(Driver.getDriver().getCurrentUrl(),expectedURL,i+". koltuk için hata verdi.");
 
-
+            Driver.getDriver().get("https://qa.easybusticket.com/ticket/22/lux-bus-austin-dallas");
+            js.executeScript("window.scrollBy(0,arguments[0])",500);
+            ReusableMethods.wait(1);
+        }
+        softAssert.assertAll();
         Driver.closeDriver();
-
-
-
-
 
     }
 }

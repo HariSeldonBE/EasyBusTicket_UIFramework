@@ -1,10 +1,8 @@
 package tests.simge.US13;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.FindTicketsPage;
 import pages.user.SelectSeatPage;
@@ -14,16 +12,15 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TC06 {
+public class TC24 {
     @Test
-    public void selectSeatDogrulamaPozitifTesti(){
+    public void expirationDateNegatifTestiBoslukHiclikKarakterHarfGirisi(){
 
         // 1-Browser açılır ve Url'e gidilir
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         // 2-Cookies kabul edilir
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        if (easyBusTicketPage.cookiesButton.isDisplayed()){
-        easyBusTicketPage.cookiesButton.click();}
+        easyBusTicketPage.cookiesButton.click();
         // 3-SignIn butonuna tıklanır
         easyBusTicketPage.signInButton.click();
         ReusableMethods.wait(2);
@@ -42,27 +39,29 @@ public class TC06 {
         userDashBoardPage.buyTicket.click();
 
         FindTicketsPage findTicketsPage = new FindTicketsPage();
-        // 9-"Pick Up Point" dropbox undan herhangi bir yer seçilir
+
+        // 10-"Pick Up Point" dropbox undan herhangi bir yer seçilir
         findTicketsPage.pickupPoint.click();
-        ReusableMethods.wait(2);
+
         findTicketsPage.pickupPointSelection.click();
         Object selectedPickup = findTicketsPage.pickupPointSelection.getText();
         ReusableMethods.wait(2);
-        // 10-"Dropping Point" dropbox undan farklı yer seçilir
+        // 11-"Dropping Point" dropbox undan farklı yer seçilir
         findTicketsPage.droppingPoint.click();
         findTicketsPage.droppingPointSelection.click();
-        Object selectedDropping=findTicketsPage.droppingPointSelection.getText();
-        // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
+        Object selectedDropping = findTicketsPage.droppingPointSelection.getText();
+        ReusableMethods.wait(2);
+        // 12-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
         findTicketsPage.dateOfJourneySelection.click();
         Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
         ReusableMethods.wait(2);
-        // 12-"Find Tickets" butonu tıklanır
+        // 13-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
-        // 13- Select Seat butonu tıklanır
+        // 14- Select Seat butonu tıklanır
         findTicketsPage.selectSeatButton.click();
         ReusableMethods.wait(2);
-        SelectSeatPage selectSeatPage =new SelectSeatPage();
+        SelectSeatPage selectSeatPage = new SelectSeatPage();
         // 14- Journey Date doğru mu kontrol edilir
         selectSeatPage.seatJourneyDateBox.click();
         Assert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate);
@@ -70,59 +69,66 @@ public class TC06 {
         Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
         // 16- Dropping Point doğru mu kontrol edilir
         Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        // 21-Cinsiyet seçimi yapılır
+        selectSeatPage.femaleCheckbox.click();
 
 
 
+        // 24 - Koltuk seçimi yapılır
+
+        selectSeatPage.seats.get(11).click();
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         ReusableMethods.wait(2);
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
-        SoftAssert softAssert = new SoftAssert();
+
+
+
+
+        // 26-"Continue" butonu tıklanır
         ReusableMethods.wait(2);
-        // 16 - Rezerve edilen koltuklardan koltuk seçimi yapılamadığı doğrulanır
+        selectSeatPage.continueButton.click();
+        ReusableMethods.wait(2);
 
-        if(!selectSeatPage.ladiesSelectedSeats.isEmpty()){
-            for (WebElement ladiesSelectedSeat:selectSeatPage.ladiesSelectedSeats) {
-                Assert.assertTrue(ladiesSelectedSeat.isDisplayed());
-                try {
-                    if(ladiesSelectedSeat.isEnabled()){
-                        ladiesSelectedSeat.click();
-                    }
-                } catch (Exception e) {
-                    System.out.println("Element is not clickable at point");
-                }
 
-                break;
-            }
-        }
-        if(!selectSeatPage.gentsSelectedSeats.isEmpty()){
-            for (WebElement gentsSelectedSeat:selectSeatPage.gentsSelectedSeats) {
-                Assert.assertTrue(gentsSelectedSeat.isDisplayed());
-                try {
-                    if(gentsSelectedSeat.isEnabled()){
-                        gentsSelectedSeat.click();
-                    }
-                } catch (Exception e) {
-                    System.out.println("Element is not clickable at point");
-                }
-                break;
-            }
-        }
-        if(!selectSeatPage.othersSelectedSeats.isEmpty()){
-            for (WebElement othersSelectedSeat:selectSeatPage.othersSelectedSeats) {
-                Assert.assertTrue(othersSelectedSeat.isDisplayed());
-                try {
-                    if(othersSelectedSeat.isEnabled()){
-                        othersSelectedSeat.click();
-                    }
-                } catch (Exception e) {
-                    System.out.println("Element is not clickable at point");
-                }
-                break;
-            }
-        }
+        // 30-"Confirm" butonu tıklanır
+        selectSeatPage.confirmBookingButton.click();
 
-        Assert.assertTrue(selectSeatPage.selectedSeats.isEmpty());
+        //32- "Pay Now" butonu tıklanır
+        selectSeatPage.paymentMethodsPayNowButton.click();
+        ReusableMethods.wait(2);
+
+        //28-"Confirm" butonu tıklanır
+        selectSeatPage.paymentByStripeHostedConfirm.click();
+
+        //32-"pay now" butonu tıklanır
+        selectSeatPage.paymentReviewPayNowButton.click();
+
+        //9-"Name on Card" textbox ına isim soyisim yazılır
+        selectSeatPage.nameOnCard.sendKeys(ConfigReader.getProperty("nameOnCard"));
+        ReusableMethods.wait(2);
+
+        //12-"Card Number" textbox ına 16 haneli geçerli kart numrası girilir
+        selectSeatPage.validCardNumber.sendKeys(ConfigReader.getProperty("validCardNumber"));
+
+        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
+        ReusableMethods.wait(2);
+
+        //14 - "Expiration Date" textbox ına bosluk/hiclik/karakter/harf girilir
+        selectSeatPage.expirationDate.sendKeys(" ");
+        selectSeatPage.expirationDate.sendKeys("");
+        selectSeatPage.expirationDate.sendKeys("*-.");
+        selectSeatPage.expirationDate.sendKeys("a");
+
+        //16-"CVC Code" textbox ına 3 haneli sayı girilir
+        selectSeatPage.cvcCode.sendKeys(ConfigReader.getProperty("cvcCode"));
+
+
+        //18-"PAY NOW" butonu tıklanır
+        selectSeatPage.paymentConfirmPayNowButton.click();
+        String expectedURL="https://qa.easybusticket.com/user/booked-ticket/history";
+        Assert.assertNotEquals(Driver.getDriver().getCurrentUrl(),expectedURL,"Bug var");
+        ReusableMethods.wait(2);
 
         Driver.closeDriver();
 

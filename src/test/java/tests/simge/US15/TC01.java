@@ -1,9 +1,10 @@
-package tests.simge.US13;
+package tests.simge.US15;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.EasyBusTicketPage;
-import pages.user.FindTicketsPage;
+import pages.user.SelectSeatPage;
+import pages.user.SupportRequestPage;
 import pages.user.UserDashBoardPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
@@ -12,7 +13,7 @@ import utilities.ReusableMethods;
 
 public class TC01 {
     @Test
-    public void buyTicketDogrulamaTesti(){
+    public void supportRequestButonuDogrulamaTesti(){
 
         // 1-Browser açılır ve Url'e gidilir
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
@@ -22,6 +23,7 @@ public class TC01 {
         // 3-SignIn butonuna tıklanır
         easyBusTicketPage.signInButton.click();
         ReusableMethods.wait(2);
+        UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         // 4-Geçerli Username girilir
         UserLoginPage userLoginPage = new UserLoginPage();
         userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
@@ -29,23 +31,19 @@ public class TC01 {
         userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
         // 6-Log In butonuna tıklanır
         userLoginPage.loginButton.click();
-        // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
-        UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
-        Assert.assertTrue(userDashBoardPage.bookingDdm.isDisplayed());
-        userDashBoardPage.bookingDdm.click();
-        // 8-"Booking" ddm menüsünden "Buy Ticket" butonu görüntülenir ve aktif olduğu  doğrulanır
-        ReusableMethods.wait(2);
-        Assert.assertTrue(userDashBoardPage.buyTicket.isDisplayed());
-        Assert.assertTrue(userDashBoardPage.buyTicket.isEnabled());
-        // 9-"Booking" açılır menüsü açıldığında "Buy Ticket" butonu tıklanır
-        userDashBoardPage.buyTicket.click();
-        // 10-Bilet arama sayfasının açıldığı doğrulanır
-        ReusableMethods.wait(2);
-        FindTicketsPage findTicketsPage = new FindTicketsPage();
-        Assert.assertTrue(findTicketsPage.findTicketsButton.isDisplayed());
-
+        ReusableMethods.wait(1);
+        //"Support Request" DDM görülür ve aktif olduğu doğrulanır
+        Assert.assertTrue(userDashBoardPage.supportRequest.isDisplayed());
+        Assert.assertTrue(userDashBoardPage.supportRequest.isEnabled());
+        //Support Request tıklanır ve alt menüde Create New görüntülenir ve aktif olduğu doğrulanır
+        userDashBoardPage.supportRequest.click();
+        Assert.assertTrue(userDashBoardPage.createNew.isDisplayed());
+        Assert.assertTrue(userDashBoardPage.createNew.isEnabled());
+        //Create New tıklanır ve Support Tickets sayfası açıldığı doğrulanır
+        SupportRequestPage supportRequestPage = new SupportRequestPage();
+        userDashBoardPage.createNew.click();
+        Assert.assertTrue(supportRequestPage.supportTicketsTitle.isDisplayed());
         Driver.closeDriver();
-
 
     }
 }
