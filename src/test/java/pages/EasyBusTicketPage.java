@@ -167,6 +167,8 @@ public class EasyBusTicketPage {
     // "Forgot Password?" link -->kevser_US20_TC01
     @FindBy(xpath = "//*[text()='Forgot Password?']")
     public WebElement forgotPasswordLink;
+    @FindBy(xpath = "//a[@href=\"https://qa.easybusticket.com/user/dashboard\"]")
+    public WebElement dashboardButton;
 
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a")
     public WebElement footerXIcon;
