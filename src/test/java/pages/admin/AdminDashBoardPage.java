@@ -866,7 +866,7 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[1]/td[3]/a[1]")
     public WebElement duzenleButonu;
 
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[1]/td[3]/a[1]/i")
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[2]/td[3]/a[1]/i")
     public WebElement iPencil;
 
     // boşluk
@@ -936,9 +936,9 @@ public class AdminDashBoardPage {
 
     @FindBy(xpath = "//input[@type='text']")
     public WebElement inputSearch3;
-    
+
     // ip location sayfasında 
-    
+
     @FindBy(xpath = "//button[@id='btn-click'][1]")
     public WebElement locationbuttonClick;
 
@@ -946,7 +946,6 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div[2]/div/div[1]/div[3]/div/div[3]/div/div/div[1]/div/table/tbody/tr[6]/td")
     public WebElement td2;
 
-    
 
     //
     // ====================== REPORTS >> EMAıl HISTORY================================= //
@@ -983,18 +982,184 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]/a/i")
     public WebElement iDesktop;
 
-    @FindBy(xpath = "/html/body/section[2]/div/div/div[1]/div[2]/div[1]/h2[1]/span[1]")
-    public static WebElement spanDifferentTimesTheYear;
+    //
+    // ====================== SUPPORT REQUESTS >> ALL REQUEST ================================= //
+    //
+
+    // Support request butonu
+    @FindBy(xpath = "//span[text()='Support Requests']")
+    public WebElement supportRequestButton;
+
+    // All request butonu
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[6]/div/ul/li[1]/a/span")
+    public WebElement spanAllRequests;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thSubject2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thSubmitted;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thStatus7;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thPriority;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thLastReply;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thAction3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]/span")
+    public WebElement spanOpen;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/span")
+    public WebElement spanHigh;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]")
+    public WebElement tdLastReply;
+
+    //action butonu
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[6]/a/i")
+    public WebElement actionbutonu;
 
 
+    //
+    // ====================== SUPPORT REQUESTS >> PENDING REQUEST ================================= //
+    //
+
+    // PENDING REQUESTS BUTONU
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[6]/div/ul/li[2]/a/span[1]")
+    public WebElement spanPendingRequests;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thSubject3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thSubmitted2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thStatus8;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thPriority2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thLastReply2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thAction4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/span")
+    public WebElement spanHigh2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]")
+    public WebElement tdLastReply2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]/span")
+    public WebElement spanOpen2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tdSubmitted;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]")
+    public WebElement tdSubject2;
 
 
-    
-    
+    //
+    // ====================== SUPPORT REQUESTS >> CLOSED REQUEST ================================= //
+    //
 
 
+    // CLOSED REQUEST BUTONU
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[6]/div/ul/li[3]/a/span")
+    public WebElement spanClosedRequests;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thSubject4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thSubmitted3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thStatus9;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thPriority3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thLastReply3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thAction5;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]")
+    public WebElement tdSubject3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tdSubmitted2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
+    public WebElement tdStatus4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]")
+    public WebElement tdPriority;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]")
+    public WebElement tdLastReply3;
 
 
+    //
+    // ====================== SUPPORT REQUESTS >> ANSWERED REQUEST ================================= //
+    //
+
+
+    // ANSWERED REQUEST BUTONU
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[6]/div/ul/li[4]/a/span")
+    public WebElement spanAnsweredRequests;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thSubject5;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thSubmitted4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thStatus10;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thPriority4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thLastReply4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thAction6;
+
+
+    //
+    // ====================== SUPPORT REQUESTS >> ANSWERED REQUEST >> ACTION MENUSU================================= //
+    //
+
+
+    //ACTION BUTONU
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[6]/a")
+    public WebElement tdAction;
+
+
+    // YOUR MESSAGE TEXTBOX
+    @FindBy(id = "inputMessage")
+    public WebElement yourmessage;
+
+    @FindBy(xpath = "//*[@id=\"inputAttachments\"]")
+    public WebElement uploadBox;
+
+
+    @FindBy(xpath = "//button[@value='1']")
+    public WebElement buttonReplayTicket;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div/div[1]/div[1]/button")
+    public WebElement repliedAllertYesil;
 }
-
-
