@@ -3,14 +3,15 @@ package tests.zehra.US30;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
-
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
+import pages.EasyBusTicketPage;
+import pages.admin.AdminDashBoardPage;
 import pages.admin.AdminDashBoard_CounterPage;
-
+import pages.user.UserLoginPage;
+import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 public class TC05 {
@@ -36,25 +37,13 @@ public class TC05 {
         //  Yeni Counter'ın sağ tarafındaki kalem ikonunu görür ve tıklar
         softAssert.assertTrue(adminDashBoard_counterPage.kalemİkon.isDisplayed(),"kalem ikonu görünmüyor");
        ReusableMethods.wait(3);
-        JSUtilities.clickWithJS(Driver.getDriver(),adminDashBoard_counterPage.kalemİkon);
+        ReusableMethods.doubleClick(adminDashBoard_counterPage.kalemİkon);
 
         //   İstenen bilgileri (Name, City, Location, Mobile) günceller
-        String fakerName = faker.name().name();
+        String fakerName = faker.name().firstName();
         String fakerAddress = faker.address().city();
         String fakerLocation = faker.address().cityName();
-
-        // Faker ile rastgele telefon numarası oluştur
-        String phoneNumberString = faker.phoneNumber().cellPhone();
-        System.out.println("Rastgele Telefon Numarası (String): " + phoneNumberString);
-        // String tipindeki telefon numarasını int tipine çevir
-        int phoneNumberInt = convertPhoneNumberToIntAlternative(phoneNumberString);
-
-        // Sonucu yazdır
-
-        System.out.println("Rastgele Telefon Numarası (int): " + phoneNumberInt);
-
-
-
+        int fakerPhone = faker.number().randomDigit();
 
         ReusableMethods.wait(2);
         actions.click( adminDashBoard_counterPage.counterUpdateNameTextBox)
@@ -64,7 +53,7 @@ public class TC05 {
                 .sendKeys(Keys.TAB)
                 .sendKeys(fakerLocation)
                 .sendKeys(Keys.TAB)
-                .sendKeys(""+phoneNumberInt)
+                .sendKeys("0"+fakerPhone)
                 .perform();
 
         //   Pencerenin altındaki "Update" butonuna basar
@@ -79,16 +68,5 @@ public class TC05 {
         ReusableMethods.wait(2);
         Driver.closeDriver();
 
-    }       // Telefon numarasını stringten int'e çeviren alternatif metod
-    private static int convertPhoneNumberToIntAlternative(String phoneNumberString) {
-        // Sadece sayısal karakterleri al ve int'e çevir
-        StringBuilder numericChars = new StringBuilder();
-        for (char c : phoneNumberString.toCharArray()) {
-            if (Character.isDigit(c)) {
-                numericChars.append(c);
-            }
-        }
-
-        return Integer.parseInt(numericChars.toString());
     }
 }
