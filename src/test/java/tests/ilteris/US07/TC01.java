@@ -10,7 +10,7 @@ import utilities.Driver;
 public class TC01 {
 
     @Test
-    public void headerFAQsLinkiDogrulamaTesti(){
+    public void headerBlogLinkiDogrulamaTesti(){
 
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
@@ -25,10 +25,10 @@ public class TC01 {
         String actualUrl = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(actualUrl,exceptedUrl);
 
-        softAssert.assertTrue(easyBusTicketPage.headerFAQsButton.isDisplayed());
-        easyBusTicketPage.headerFAQsButton.click();
+        softAssert.assertTrue(easyBusTicketPage.headerBlogButton.isDisplayed());
+        easyBusTicketPage.headerBlogButton.click();
 
-        String EBTticketPageExpectedUrl = "https://qa.easybusticket.com/faq";
+        String EBTticketPageExpectedUrl = "https://qa.easybusticket.com/blog";
         String EBTTicketPageActualUrl = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(EBTTicketPageActualUrl,EBTticketPageExpectedUrl);
 
