@@ -201,6 +201,25 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "//*[text()='Ticket Policies']")
     public WebElement footerTicketPoliciesButton;
 
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[1]")
+    public WebElement footerAdresText;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[2]")
+    public WebElement footerContactNumber;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[3]")
+    public WebElement footerContactEmail;
+
+    @FindBy(xpath = "(//*[text()='About'])[1]")
+    public WebElement headerAboutButton;
+
+    @FindBy(xpath = "(//*[text()='FAQs'])[1]")
+    public WebElement headerFAQsButton;
+
+    @FindBy(xpath = "(//*[text()='Blog'])[1]")
+    public WebElement headerBlogButton;
+
+
 
 
 

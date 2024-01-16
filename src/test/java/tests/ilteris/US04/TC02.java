@@ -28,8 +28,6 @@ public class TC02 {
         String actualUrl = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(actualUrl,exceptedUrl);
 
-        //actions.sendKeys(Keys.PAGE_DOWN).perform();
-        //actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait(0);
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
