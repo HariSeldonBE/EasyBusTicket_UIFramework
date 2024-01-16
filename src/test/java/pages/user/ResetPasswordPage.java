@@ -12,7 +12,7 @@ public class ResetPasswordPage {
 
     //kevser_US20_TC01_TC02
     //Reset Password yazı locate'i (expected page verification)
-    @FindBy(xpath = "//h3[text()='Reset Password']")
+    @FindBy(xpath = "//*[text()='Reset Password']")
     public WebElement resetPasswordYazisi;
 
     // US_20 / TC_02

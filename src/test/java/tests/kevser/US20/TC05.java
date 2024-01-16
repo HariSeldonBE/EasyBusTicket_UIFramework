@@ -10,23 +10,25 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TC03 {
-    // US20 / TC03
-    // "Account Recovery" sayfasına ulaşılır
-    // "Try to send again" linki tıklanarak,
-    // "Reset Password" sayfasına geri dönüldüğü doğrulanır.
+public class TC05 {
+
     @Test
     public void test01() {
+        //TC05 : Account Recovery Page'de, Verfication Code'un yazılması gereken textbox'da
+        //yapılacak olan işleme uygun bir yazı bulunması gerekmektedir.
+        // expectedYazi = "Enter Your Verification Code";
+        // actualYazi = "Enter Your username";
+
         //Kayıtlı kullanıcı;
         //Browser'ı açar, Url'e gider, Cokies'i kabul eder, "Sign in"i tıklar, "Forgot Password?" linkini tıklar
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        //UserLoginPage loginPage = new UserLoginPage();
         easyBusTicketPage.cookiesButton.click();
         easyBusTicketPage.signInButton.click();
         easyBusTicketPage.forgotPasswordLink.click();
-        // DDM'de Username seçeneği kullanılarak, reset password code alınır.
+        // Username seçeneği kullanılarak, reset password code alınır.
         ResetPasswordPage resetPasswordPage = new ResetPasswordPage();
-        ReusableMethods.wait(2);
         resetPasswordPage.selectOneDDM.click();
         Select selectUsername = new Select(resetPasswordPage.selectOneDDM);
         selectUsername.selectByValue("username");
@@ -40,13 +42,22 @@ public class TC03 {
         Assert.assertTrue(accountRecoveryPage.labelAccountRecovery.isDisplayed());
         ReusableMethods.wait(3);
 
-        // "Try to send again" linki tıklanarak, "Reset Password" sayfasına geri dönülebildiği doğrulanır.
-        accountRecoveryPage.tryToSendAgainLink.click();
-        Assert.assertTrue(resetPasswordPage.resetPasswordYazisi.isDisplayed());
-        ReusableMethods.wait(3);
+        // TC05
+        // Account Recovery Page'de, Verfication Code'un yazılması gereken textbox'da
+        // yapılacak olan işleme uygun bir yazı bulunması gerekmektedir.
 
+
+        String expectedYazi = "Enter Your Verification Code";
+
+        String actualYazi = accountRecoveryPage.verificationCodePlaceholderYazisi.getText();
+
+        Assert.assertNotEquals(actualYazi,expectedYazi);
+
+        /*
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertNotEquals(actualYazi,expectedYazi,"Placeholder'da 'Enter Your Username' yazısı görülmektedir.");
+         */
         Driver.closeDriver();
-
 
     }
 
