@@ -34,5 +34,11 @@ public class UserDashBoardPage {
     @FindBy(xpath = "(//a/img)")
     public WebElement eBTLogo;
 
+    //User Dashboard >>Header >> Profile DDM
+    @FindBy(xpath = "(//a[text()='Profile'])[1]")
+    public WebElement headerDdmProfileButton;
 
+
+    @FindBy(xpath = "(//a[@href='https://qa.easybusticket.com/logout'])")
+    public WebElement headerDdmLogoutButton;
 }

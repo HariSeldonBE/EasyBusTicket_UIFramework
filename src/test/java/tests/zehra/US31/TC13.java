@@ -7,11 +7,14 @@ import pages.admin.AdminDashBoard_ManageFleetsPage;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC13 {
+public class TC13 extends TestBaseRapor {
     @Test
-    public void test(){
+    public void deleteButonu(){
 
+
+        extentTest=extentReports.createTest("Delete butonu TEST", "Delete butonu  ");
 
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
@@ -31,11 +34,12 @@ public class TC13 {
 
        // Sayfada ""Action"" başlığının altındaki çöp kutusu butonuna tıklar"
         softAssert.assertFalse(adminDashBoard_manageFleetsPage.tdAction3.isDisplayed(),"delete butonu yok");
+        extentTest.info("Delete butonu yok");
 
        // Pencerede "Are you sure, you want to delete this?" yazısını görüntüler
        // "Delete" butonuna tıklar
        // Eklenen Fleet Type'ı sildiğini görür
-
+        extentTest.info("Closed page");
         softAssert.assertAll();
         ReusableMethods.wait(2);
         Driver.closeDriver();

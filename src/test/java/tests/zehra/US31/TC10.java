@@ -9,10 +9,13 @@ import pages.admin.AdminDashBoard_ManageFleetsPage;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC10 {
+public class TC10 extends TestBaseRapor {
     @Test
-    public void test01(){
+    public void negatifTest(){
+
+        extentTest=extentReports.createTest("add New Negatif TEST", "Yanlış bilgilerle girilmemesi gerekiyor ");
 
 
         SoftAssert softAssert = new SoftAssert();
@@ -53,7 +56,9 @@ public class TC10 {
         // Hata mesajı görür
         String expectedAlertMesaj = "Fleet type saved successfully";
         softAssert.assertFalse(expectedAlertMesaj.contains(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText()),"başarıyla kaydedilmemesi gerekiyordu");
+        extentTest.info("Hata mesajı bekleniyor");
 
+        extentTest.info("Closed page");
         softAssert.assertAll();
         ReusableMethods.wait(2);
         Driver.closeDriver();

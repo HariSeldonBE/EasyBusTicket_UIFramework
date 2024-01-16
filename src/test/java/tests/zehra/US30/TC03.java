@@ -12,14 +12,17 @@ import pages.admin.AdminDashBoardPage;
 import pages.admin.AdminDashBoard_CounterPage;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.util.Arrays;
 
-public class TC03 {
+public class TC03 extends TestBaseRapor {
     @Test
     public void test01(){
         // Browser'ı açar
         // URL'e gider
+
+        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
 
         AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
@@ -27,6 +30,7 @@ public class TC03 {
         Actions actions = new Actions(Driver.getDriver());
         
         ReusableMethods.adminLoginMethod("admin11","123123123");
+        extentTest.info("User goes to \"Easy Bus Ticket Admin\" Dashboard");
 
         // "Counter" linkine tıklar
         adminDashBoard_counterPage.linkCounter.click();
@@ -68,11 +72,13 @@ public class TC03 {
        // System.out.println("Last row data: " + rowData);
         String[] rowDataArray = rowData.split(" ");
         softAssert.assertEquals(rowDataArray[0],fakerName,"Girilen isim kayıtlı isim ile aynı değil");
+        extentTest.pass("Tests the visibility of the 'new Counter' text");
 
         // Counter bigilerini görüntüler
         System.out.println(Arrays.toString(rowDataArray));
-        //System.out.println(adminDashBoardPage.counterHata.getText());//Counter save successfully.
+
         softAssert.assertAll();
+        extentTest.info("Closed page");
         Driver.quitDriver();
 
     }

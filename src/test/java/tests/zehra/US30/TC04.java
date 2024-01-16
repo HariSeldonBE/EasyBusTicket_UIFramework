@@ -16,16 +16,18 @@ import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.util.Arrays;
 
-public class TC04 {
+public class TC04 extends TestBaseRapor {
     @Test
     public void negatifTest(){
 
       // Browser'ı açar
       // URL'e gider
 
+        extentTest=extentReports.createTest("New Counter Negatif TEST", "Yanlış bilgilerle girilmemesi gerekiyor ");
 
         AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
@@ -36,6 +38,7 @@ public class TC04 {
 
       // "Counter" linkine tıklar
         adminDashBoard_counterPage.linkCounter.click();
+        extentTest.info("User goes to \"Easy Bus Ticket Admin\" Dashboard \" Counter");
 
       // "Add New" butonuna tıklar
         adminDashBoard_counterPage.counterAddNewButton.click();
@@ -59,8 +62,9 @@ public class TC04 {
 
         // Pencerenin altındaki "Save"butonuna tıklar
         adminDashBoard_counterPage.counterSaveButton.click();
+        extentTest.info("New Counter kaydı");
 
-      // Hata mesajı görür
+        // Hata mesajı görür
     ;
        System.out.println(adminDashBoard_counterPage.counterHata.getText());
        softAssert.assertNotEquals( "Counter save successfully.",adminDashBoard_counterPage.counterHata.getText(),"hatalı bilgiler kaydedilmiş");
@@ -73,7 +77,9 @@ public class TC04 {
         String[] rowDataArray = rowData.split(" ");
         System.out.println(rowData);
         softAssert.assertNotEquals(rowDataArray[0],fakerName,"Girilen isim kaydedilmiş");
+        extentTest.pass("Tests the visibility of the 'new Counter' text");
 
+        extentTest.info("Closed page");
         softAssert.assertAll();
         ReusableMethods.wait(2);
         Driver.closeDriver();

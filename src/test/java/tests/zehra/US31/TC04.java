@@ -7,14 +7,12 @@ import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.admin.AdminDashBoard_ManageFleetsPage;
 import pages.user.UserLoginPage;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.JSUtilities;
-import utilities.ReusableMethods;
+import utilities.*;
 
-public class TC04 {
+public class TC04 extends TestBaseRapor {
     @Test
     public void negatifTest(){
+        extentTest=extentReports.createTest("New Counter Negatif TEST", "Yanlış bilgilerle girilmemesi gerekiyor ");
 
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
@@ -40,6 +38,7 @@ public class TC04 {
 
         // Pencerenin altındaki "Save" butonunu tıklar
          adminDashBoard_manageFleetsPage.buttonSave.click();
+        extentTest.info("New Layout kaydı");
 
        // Hata mesajı görür
         String expectedHataMesaji = "Seat layout saved successfully.";
@@ -49,6 +48,7 @@ public class TC04 {
         System.out.println(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText());
         softAssert.assertAll();
         ReusableMethods.wait(2);
+        extentTest.info("Closed page");
         Driver.closeDriver();
 
     }
