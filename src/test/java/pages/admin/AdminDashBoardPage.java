@@ -245,39 +245,87 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//button[@class='ml-1 icon-btn btn--danger removeBtn '])[1]")
     public WebElement tpFirstRowDeleteButton;
 
-    // ticket price delet pop-up sayfasındaki delete butonu
+    // ticket price delete pop-up sayfasındaki delete butonu
     @FindBy(xpath = "(//button[@class='btn btn--danger'])[1]")
     public WebElement tpDeletePopUpDeletButton;
 
+    // ticket price sayfasındaki 1. satırdaki route elementi
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
     public WebElement tpFirstRowRouteElement;
 
+    // ticket price sayfasındaki 1. satırdaki price elementi
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
     public WebElement tpFirstRowPriceElement;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]")
+    public WebElement tripFirstRowTitle;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tripFirstRowAc;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
+    public WebElement tripFirstRowDayOff;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/span")
+    public WebElement tripFirstRowActiveElement;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]/button[1]")
+    public WebElement tripFirstRowEditButton;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]/button[2]")
+    public WebElement tripFirstRowDisableButton;
 
+    @FindBy(xpath = "//button[@class='btn btn--danger']")
+    public WebElement tripDisablePopUpDisableButton;
 
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/span")
+    public WebElement tripFirstRowDisabledElement;
 
+    @FindBy(xpath = "(//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn'])[1]")
+    public WebElement tripAddNewButton;
 
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement tripAddNewPopUpTitleBox;
 
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[1]")
+    public WebElement tripAddNewFleetTypeBox;
+    @FindBy(xpath = "(//select[@class='select2-basic fleet_type1 select2-hidden-accessible'])[1]")
+    public WebElement tripAddNewFleetTypeSelect;
 
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[2]")
+    public WebElement tripAddNewRouteBox;
+    @FindBy(xpath = "(//select[@class='select2-basic route1 select2-hidden-accessible'])[1]")
+    public WebElement tripAddNewRouteSelect;
 
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[3]")
+    public WebElement tripAddNewScheduleBox;
+    @FindBy(xpath = "(//select[@class='select2-basic schedule1 select2-hidden-accessible'])[1]")
+    public WebElement tripAddNewScheduleSelect;
 
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[4]")
+    public WebElement tripAddNewStartFromBox;
+    @FindBy(xpath = "(//select[@class='select2-basic start_form1 select2-hidden-accessible'])[1]")
+    public WebElement tripAddNewStartFromSelect;
 
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[5]")
+    public WebElement tripAddNewEndToBox;
+    @FindBy(xpath = "(//select[@class='select2-basic end_to1 select2-hidden-accessible'])[1]")
+    public WebElement tripAddNewEndToSelect;
 
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--multiple'])[1]")
+    public WebElement tripAddNewDayOffBox;
 
+    @FindBy(xpath = "(//button[@class='btn btn--primary'])[1]")
+    public WebElement tripAddNewSaveButton;
 
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[8]")
+    public WebElement tripUpdateScheduleBox;
 
+    @FindBy(xpath = "(//select[@class='select2-basic schedule2 select2-hidden-accessible'])[1]")
+    public WebElement tripUpdateScheduleSelect;
 
-
-
-
-
+    @FindBy(xpath = "(//button[@class='btn btn--primary'])[2]")
+    public WebElement tripUpdateButton;
 
 
 

@@ -10,7 +10,7 @@ import utilities.ReusableMethods;
 
 public class TC06 {
 
-    //Atanmış araçlar menüsünden tüm atanmış araçları görüntüleyebilmeli,yeni ekleyebilmeli, eklediğimi düzenleyebilmeliyim
+    //Assigned Vehicles menüsünden tüm atanmış araçları görüntüleyebilmeli, yeni ekleyebilmeli, eklediğimi düzenleyebilmeliyim
     @Test
     public void test01(){
         SoftAssert softAssert = new SoftAssert();
