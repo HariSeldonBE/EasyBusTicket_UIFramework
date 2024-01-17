@@ -95,11 +95,11 @@ public class TC18 {
         softAssert.assertTrue(easyBusTicketPage.blogPostImgThree.isEnabled(), "Blog Post-3 in Home Page is not enabled");
 
         JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.blogPostImgThree);
-        String expectedAboutUrl = "https://qa.easybusticket.com/blog/86/safety-measures-what-to-pay-attention-to-during-travel";
-        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
+        String expectedBlog3Url = "https://qa.easybusticket.com/blog/86/safety-measures-what-to-pay-attention-to-during-travel";
+        String actualBlog3Url = Driver.getDriver().getCurrentUrl();
 
         // Blog Post-3 in Home Page Url Test
-        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "Blog Post-3 in Home Page is not displayed");
+        softAssert.assertEquals(actualBlog3Url,expectedBlog3Url, "Blog Post-3 in Home Page is not displayed");
 
 //*****************************************************************************************************************************
 

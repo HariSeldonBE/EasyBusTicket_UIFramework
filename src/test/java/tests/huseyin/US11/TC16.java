@@ -95,11 +95,11 @@ public class TC16 {
         softAssert.assertTrue(easyBusTicketPage.blogPostImgOne.isEnabled(), "Blog Post-1 in Home Page is not enabled");
 
         JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.blogPostImgOne);
-        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
-        String expectedAboutUrl = "https://qa.easybusticket.com/blog/103/travel-trends-the-best-times-to-explore-new-places";
+        String actualBlog1Url = Driver.getDriver().getCurrentUrl();
+        String expectedBlog1Url = "https://qa.easybusticket.com/blog/103/travel-trends-the-best-times-to-explore-new-places";
 
         // Blog Post-1 in Home Page Url Test
-        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "Blog Post-1 in Home Page is not displayed");
+        softAssert.assertEquals(actualBlog1Url,expectedBlog1Url, "Blog Post-1 in Home Page is not displayed");
 
 
 //*****************************************************************************************************************************

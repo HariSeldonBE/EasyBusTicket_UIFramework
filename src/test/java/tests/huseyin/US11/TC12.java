@@ -92,11 +92,11 @@ public class TC12 {
         softAssert.assertTrue(easyBusTicketPage.buyTicketsButton.isEnabled(), "BUY TICKET Button in header is not enabled");
 
         easyBusTicketPage.buyTicketsButton.click();
-        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
-        String expectedAboutUrl = "https://qa.easybusticket.com/tickets";
+        String actualTicketUrl = Driver.getDriver().getCurrentUrl();
+        String expectedTicketUrl = "https://qa.easybusticket.com/tickets";
 
         // BUY TICKET Button Page Url Test
-        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "BUY TICKET Page is not displayed");
+        softAssert.assertEquals(actualTicketUrl,expectedTicketUrl, "BUY TICKET Page is not displayed");
 
 //*****************************************************************************************************************************
 

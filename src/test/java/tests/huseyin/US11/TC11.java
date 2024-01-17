@@ -92,11 +92,11 @@ public class TC11 {
         softAssert.assertTrue(easyBusTicketPage.contactButton.isEnabled(), "Contact link in header is not enabled");
 
         easyBusTicketPage.contactButton.click();
-        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
-        String expectedAboutUrl = "https://qa.easybusticket.com/contact";
+        String actualContactUrl = Driver.getDriver().getCurrentUrl();
+        String expectedContactUrl = "https://qa.easybusticket.com/contact";
 
         // Contact Page Url Test
-        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "Contact Page is not displayed");
+        softAssert.assertEquals(actualContactUrl,expectedContactUrl, "Contact Page is not displayed");
 
 //*****************************************************************************************************************************
 

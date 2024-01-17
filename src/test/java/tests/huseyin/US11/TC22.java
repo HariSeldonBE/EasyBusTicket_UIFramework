@@ -97,7 +97,7 @@ public class TC22 {
         String expectedAboutUrl = "https://www.instagram.com/";
         String actualAboutUrl = Driver.getDriver().getCurrentUrl();
 
-        // Facebook Social Media Button in Home Page Footer Url Test
+        // Instagram Social Media Button in Home Page Footer Url Test
         softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "Instagram Web Page is not displayed");
 
         //*****************************************************************************************************************************

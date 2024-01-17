@@ -94,11 +94,11 @@ public class TC21 {
         softAssert.assertTrue(easyBusTicketPage.footerYoutubeIcon.isEnabled(), "YouTube Social Media Button in Home Page Footer is not enabled");
 
         JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.footerYoutubeIcon);
-        String expectedAboutUrl = "https://www.youtube.com/";
+        String expectedYouTubeUrl = "https://www.youtube.com/";
         String actualAboutUrl = Driver.getDriver().getCurrentUrl();
 
         // YouTube Social Media Button in Home Page Footer Url Test
-        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "YouTube Web Page is not displayed");
+        softAssert.assertEquals(actualAboutUrl,expectedYouTubeUrl, "YouTube Web Page is not displayed");
 
         //*****************************************************************************************************************************
 

@@ -94,11 +94,11 @@ public class TC20 {
         softAssert.assertTrue(easyBusTicketPage.footerFacebookIcon.isEnabled(), "Facebook Social Media Button in Home Page Footer is not enabled");
 
         JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.footerFacebookIcon);
-        String expectedAboutUrl = "https://www.facebook.com/";
-        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
+        String expectedFacebookUrl = "https://www.facebook.com/";
+        String actualFacebookUrl = Driver.getDriver().getCurrentUrl();
 
         // Facebook Social Media Button in Home Page Footer Url Test
-        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "Facebook Web Page is not displayed");
+        softAssert.assertEquals(actualFacebookUrl,expectedFacebookUrl, "Facebook Web Page is not displayed");
 
         //*****************************************************************************************************************************
 
