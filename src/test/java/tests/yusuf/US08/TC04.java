@@ -29,7 +29,7 @@ import utilities.TestBaseRapor;
         // "Your message has been sent, thank you for contact us" yazısının görünür olduğu doğrulanmalı.
 
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("Contact Us Communication TEST", "User tests the contact button");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();

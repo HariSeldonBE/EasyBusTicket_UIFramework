@@ -17,7 +17,7 @@ public class TC02 extends TestBaseRapor {
         // 3- Click on "signUp" ButtonLink from the home page.
         // 4- In the registration window, it is verified that the Firstname, Last name, Email, Country, Mobile, Username, Email, Password, Confirm Password text boxes are active and visible.
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("SignUp Page  TEST", "User tests the signUp Page ");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
