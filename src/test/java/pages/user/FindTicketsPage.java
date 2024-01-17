@@ -31,7 +31,7 @@ public class FindTicketsPage {
 
     @FindBy(xpath = "(//option[@value='1'])[1]")
     public WebElement pickupPointSelection;
-    @FindBy(xpath = "(//option[@value='2'])[2]")
+    @FindBy(xpath = "(//option[@value='3'])[2]")
     public WebElement droppingPointSelection;
     @FindBy(xpath = "(//option[@value='3'])[1]")
     public WebElement pickupPointSelectionaktarma;

@@ -51,7 +51,7 @@ public class SelectSeatPage {public SelectSeatPage(){PageFactory.initElements(Dr
     public WebElement genderSelectError;
     @FindBy(xpath = "//div[@class='selected-seat-details']")
     public WebElement selectedSeatDetails;
-    @FindBy(xpath = "//a[@data-bs-toggle='modal']")
+    @FindBy(xpath = "(//a[@data-bs-toggle='modal'])[1]")
     public WebElement paymentMethodsPayNowButton;
     @FindBy(xpath = "//h5[@id='depositModalLabel']")
     public WebElement paymentByStripeHostedTitle;
