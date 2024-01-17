@@ -19,6 +19,7 @@ import java.util.Set;
 public class TC25 {
     @Test
     public void aktarmalidaPaymentDogrulamaTesti(){
+        SoftAssert softAssert = new SoftAssert();
 
         // 1-Login yapılır
         ReusableMethods.userLoginButton();
@@ -75,22 +76,22 @@ public class TC25 {
         // 9- Journey Date doğru mu kontrol edilir
         selectSeatPage.seatJourneyDateBox.click();
         Object selectedDate=selectSeatPage.firstSelectedDate.getText();
-        Assert.assertEquals(selectedDate,dateSelection);
+        softAssert.assertEquals(selectedDate,dateSelection,"Secilen tarih uyusmuyor");
         // 9- Pickup Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatPickup.getText(),pickupSelection);
+        softAssert.assertEquals(selectSeatPage.seatPickup.getText(),pickupSelection,"Secilen pickup point uyusmuyor");
         // 10- Dropping Point doğru mu kontrol edilir
 
-        Assert.assertEquals(selectSeatPage.seatDropping.getText(),aktarma12);
+        softAssert.assertEquals(selectSeatPage.seatDropping.getText(),aktarma12,"Secilen dropping point uyusmuyor");
 
         js.executeScript("window.scrollBy(0,arguments[0])",500);
         ReusableMethods.wait(1);
         // 11-Cinsiyet seçimi yapılır
         selectSeatPage.femaleCheckbox.click();
         // 12 - Koltuk seçimi yapılır
-        // ReusableMethods.seatSelectionMethod();
-         selectSeatPage.seats.get(1).click();
+         ReusableMethods.seatSelectionMethod();
+         //selectSeatPage.seats.get(1).click();
          ReusableMethods.wait(1);
-         selectSeatPage.seats.get(2).click();
+        // selectSeatPage.seats.get(2).click();
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
         ReusableMethods.wait(1);
 
@@ -114,7 +115,7 @@ public class TC25 {
 
         // 17-Amount tutarının Sub Total'e eşit olduğu doğrulanır
         Object ttl = selectSeatPage.tolalPayment.getText().replaceAll(".00","");
-        Assert.assertEquals(sbTtlPymnt,ttl);
+        softAssert.assertEquals(sbTtlPymnt,ttl,"Sub Total ve amount uyusmuyor");
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentReviewPayNowButton);
         ReusableMethods.wait(1);
         // 18-"pay now" butonu tıklanır
@@ -139,21 +140,21 @@ public class TC25 {
         // 23-"PAY NOW" butonu tıklanır
         selectSeatPage.paymentConfirmPayNowButton.click();
         // 24-"payment captured successfully" yazısı görüntülenir
-        Assert.assertTrue(selectSeatPage.successfulPayment.isDisplayed());
+        softAssert.assertTrue(selectSeatPage.successfulPayment.isDisplayed(),"Successful payment uyarısı görüntülenmedi");
         // 25-Booking History sayfasında pickup point kontrol edilir
         BookingHistoryPage bookingHistoryPage = new BookingHistoryPage();
-        Assert.assertEquals(bookingHistoryPage.pickupControl.getText(),pickupSelection);
+        softAssert.assertEquals(bookingHistoryPage.pickupControl.getText(),pickupSelection,"Booking History pickup uyusmuyor");
         // 26-Booking History sayfasında drop point kontrol edilir
-        Assert.assertEquals(bookingHistoryPage.dropControl.getText(),aktarma12);
+        softAssert.assertEquals(bookingHistoryPage.dropControl.getText(),aktarma12,"Booking History drop uyusmuyor");
         // 27-Booking History sayfasında journey date kontrol edilir
         Object date = bookingHistoryPage.dateControl.getText().substring(0,2);
-        Assert.assertEquals(date,dateSelection);
+        softAssert.assertEquals(date,dateSelection,"Booking History date uyusmuyor");
         // 28-Booking History sayfasında alınan biletin status'u "Booked" olarak görüntülenir
         Object expected = "Booked";
-        Assert.assertEquals(selectSeatPage.status.getText(),expected);
+        softAssert.assertEquals(selectSeatPage.status.getText(),expected,"Bug var");
         // 29-Booking History sayfasında tutar kontrol edilir
         Object fare = bookingHistoryPage.subTotalControl.getText().replaceAll(".00 USD","");
-        Assert.assertEquals(fare,sbTtlPymnt);
+        softAssert.assertEquals(fare,sbTtlPymnt,"Booking History tutar uyusmuyor");
         String bookingWindowHandle = Driver.getDriver().getWindowHandle();
         // 30-Yazıcı ikonuna tıklanır
         selectSeatPage.yaziciIkonu.click();
@@ -165,8 +166,8 @@ public class TC25 {
                 Driver.getDriver().switchTo().window(handle);
                 yaziciWindowHandle=handle;
                 // Bu doğrulamayı, e-bilet sayfasının belirli bir locator'ı ile yapabilirsiniz
-                Assert.assertTrue(bookingHistoryPage.downloadTicket.isDisplayed());
-                Assert.assertTrue(bookingHistoryPage.downloadTicket.isEnabled());
+                softAssert.assertTrue(bookingHistoryPage.downloadTicket.isDisplayed(),"Download Ticket butonu görüntülenmedi");
+                softAssert.assertTrue(bookingHistoryPage.downloadTicket.isEnabled(),"Download Ticket butonu aktif değil");
                 // 57-Download Ticket tıklanır
                 bookingHistoryPage.downloadTicket.click();
                 ReusableMethods.wait(2);
@@ -190,12 +191,12 @@ public class TC25 {
         selectSeatPage.seatJourneyDateBox.click();
         ReusableMethods.wait(2);
         Object selectedDate2 = selectSeatPage.secondSelectedDate.getText();
-        Assert.assertEquals(selectedDate2,dateSelection,"Journey Date'ler uyuşmuyor.");
+        softAssert.assertEquals(selectedDate2,dateSelection,"Journey Date'ler uyuşmuyor.");
         // 34- Pickup Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatPickup.getText(),aktarma12);
+        softAssert.assertEquals(selectSeatPage.seatPickup.getText(),aktarma12,"Pickup point uyusmuyor");
         // 35- Dropping Point doğru mu kontrol edilir
 
-        Assert.assertEquals(selectSeatPage.seatDropping.getText(),aktarma13);
+        softAssert.assertEquals(selectSeatPage.seatDropping.getText(),aktarma13,"Dropping point uyusmuyor");
 
         js.executeScript("window.scrollBy(0,arguments[0])",500);
         ReusableMethods.wait(1);
@@ -221,7 +222,7 @@ public class TC25 {
         // 41-"Confirm" butonu tıklanır
         selectSeatPage.paymentByStripeHostedConfirm.click();
         // 42-Amount tutarının Sub Total'e eşit olduğu doğrulanır
-        Assert.assertEquals(sbTtlPymnt,ttl);
+        softAssert.assertEquals(sbTtlPymnt,ttl,"Sub Total ve amount uyusmuyor");
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentReviewPayNowButton);
         ReusableMethods.wait(1);
         // 43-"pay now" butonu tıklanır
@@ -245,18 +246,18 @@ public class TC25 {
         // 48-"PAY NOW" butonu tıklanır
         selectSeatPage.paymentConfirmPayNowButton.click();
         // 49-"payment captured successfully" yazısı görüntülenir
-        Assert.assertTrue(selectSeatPage.successfulPayment.isDisplayed());
+        softAssert.assertTrue(selectSeatPage.successfulPayment.isDisplayed(),"Successful payment uyarısı görüntülenmedi");
         // 50-Booking History sayfasında pickup point kontrol edilir
-        Assert.assertEquals(bookingHistoryPage.pickupControl.getText(),pickupSelection);
+        softAssert.assertEquals(bookingHistoryPage.pickupControl.getText(),pickupSelection,"Booking history pickup point uyusmuyor");
         // 51-Booking History sayfasında drop point kontrol edilir
-        Assert.assertEquals(bookingHistoryPage.dropControl.getText(),aktarma12);
+        softAssert.assertEquals(bookingHistoryPage.dropControl.getText(),aktarma12,"Booking History drop point ıuyusmuyor");
         // 52-Booking History sayfasında journey date kontrol edilir
-        Assert.assertEquals(date,dateSelection);
+        softAssert.assertEquals(date,dateSelection,"Booking History date uyusmuyor");
         // 53-Booking History sayfasında alınan biletin status'u "Booked" olarak görüntülenir
         Object Expected = "Booked";
-        Assert.assertEquals(selectSeatPage.status.getText(),Expected);
+        softAssert.assertEquals(selectSeatPage.status.getText(),Expected,"Bug var");
         // 54-Booking History sayfasında tutar kontrol edilir
-        Assert.assertEquals(fare,sbTtlPymnt);
+        softAssert.assertEquals(fare,sbTtlPymnt,"Booking History tutar uyusmuyor");
         String bookingHistoryWingowHandle2= Driver.getDriver().getWindowHandle();
         // 55-Yazıcı ikonuna tıklanır
         selectSeatPage.yaziciIkonu.click();
@@ -265,8 +266,8 @@ public class TC25 {
             if (!handle.equals(findTicketWindowHandle)&&!handle.equals(bookingWindowHandle)&&!handle.equals(yaziciWindowHandle)&&!handle.equals(bookingHistoryWingowHandle2)) {
                 Driver.getDriver().switchTo().window(handle);
                 // Bu doğrulamayı, e-bilet sayfasının belirli bir locator'ı ile yapabilirsiniz
-                Assert.assertTrue(bookingHistoryPage.downloadTicket.isDisplayed());
-                Assert.assertTrue(bookingHistoryPage.downloadTicket.isEnabled());
+                softAssert.assertTrue(bookingHistoryPage.downloadTicket.isDisplayed(),"Download Ticket görüntülenmedi");
+                softAssert.assertTrue(bookingHistoryPage.downloadTicket.isEnabled(),"Download Ticket aktif değil");
                 // 57-Download Ticket tıklanır
                 bookingHistoryPage.downloadTicket.click();
 
@@ -274,7 +275,7 @@ public class TC25 {
             }
 
         }
-
+       softAssert.assertAll();
 
         Driver.closeDriver();
 

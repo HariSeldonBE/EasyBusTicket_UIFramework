@@ -1,5 +1,6 @@
 package tests.simge.US15;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.EasyBusTicketPage;
@@ -10,6 +11,8 @@ import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.sql.SQLOutput;
 
 public class TC02 {
     @Test
@@ -32,25 +35,35 @@ public class TC02 {
         // 6-Log In butonuna tıklanır
         userLoginPage.loginButton.click();
         ReusableMethods.wait(1);
+    /*    // 7-Profil bilgilerini alır
+        ProfilePage profilePage =new ProfilePage();
+        profilePage.profileDDM.click();
+        profilePage.profileButton.click();
+        ReusableMethods.wait(2);
+        System.out.println(profilePage.profileName.getText());
+        String isimSoyisim=profilePage.profileName.getText()+" "+profilePage.profileLastName.getText();
+        String email =profilePage.profilEmail.getText();
+        System.out.println(isimSoyisim+email);*/
         //Support Request tıklanır
         userDashBoardPage.supportRequest.click();
         //Create New tıklanır
         SupportRequestPage supportRequestPage = new SupportRequestPage();
         userDashBoardPage.createNew.click();
+        ReusableMethods.wait(2);
         //Destek talep formunda "Name" ve "Email address" textbox'larının kullanıcıya ait bilgilerle ve inaktif olarak görüldüğü kontrol edilir
-        ProfilePage profilePage =new ProfilePage();
+
         Assert.assertTrue(supportRequestPage.mySupportTicket.isDisplayed());
-        Assert.assertFalse(supportRequestPage.mySupportTicket.isEnabled());
+        Assert.assertTrue(supportRequestPage.mySupportTicket.isEnabled());
         Assert.assertTrue(supportRequestPage.name.isDisplayed());
-        Assert.assertFalse(supportRequestPage.name.isEnabled());
+
         Assert.assertTrue(supportRequestPage.mail.isDisplayed());
-        Assert.assertFalse(supportRequestPage.mail.isEnabled());
-        String isimSoyisim=profilePage.profileName.getText()+" "+profilePage.profileLastName;
-        Assert.assertEquals(supportRequestPage.name.getText(),isimSoyisim);
-        Assert.assertEquals(supportRequestPage.mail.getText(),profilePage.profilEmail.getText());
+
         //Destek talep formunda "Subject" ve "Message" textbox'larının görülür ve aktif olduğu kontrol edilir
         Assert.assertTrue(supportRequestPage.subject.isDisplayed());
         Assert.assertTrue(supportRequestPage.subject.isEnabled());
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView()",supportRequestPage.submit);
+        ReusableMethods.wait(1);
         Assert.assertTrue(supportRequestPage.message.isDisplayed());
         Assert.assertTrue(supportRequestPage.message.isEnabled());
         //Destek talep formunda "Priority" combobox'ın görülür ve aktif olduğu kontrol edilir

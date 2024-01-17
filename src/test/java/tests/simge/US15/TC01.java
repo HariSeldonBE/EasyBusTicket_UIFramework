@@ -2,11 +2,9 @@ package tests.simge.US15;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
-import pages.user.SelectSeatPage;
-import pages.user.SupportRequestPage;
-import pages.user.UserDashBoardPage;
-import pages.user.UserLoginPage;
+import pages.user.*;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -14,35 +12,26 @@ import utilities.ReusableMethods;
 public class TC01 {
     @Test
     public void supportRequestButonuDogrulamaTesti(){
+        SoftAssert softAssert=new SoftAssert();
 
         // 1-Browser açılır ve Url'e gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        // 2-Cookies kabul edilir
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
-        // 3-SignIn butonuna tıklanır
-        easyBusTicketPage.signInButton.click();
-        ReusableMethods.wait(2);
+        BookingHistoryPage bookingHistoryPage = new BookingHistoryPage();
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
-        // 4-Geçerli Username girilir
-        UserLoginPage userLoginPage = new UserLoginPage();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        // 5-Geçerli Password girilir
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        // 6-Log In butonuna tıklanır
-        userLoginPage.loginButton.click();
+        ReusableMethods.userLoginButton();
         ReusableMethods.wait(1);
         //"Support Request" DDM görülür ve aktif olduğu doğrulanır
-        Assert.assertTrue(userDashBoardPage.supportRequest.isDisplayed());
-        Assert.assertTrue(userDashBoardPage.supportRequest.isEnabled());
+        softAssert.assertTrue(userDashBoardPage.supportRequest.isDisplayed(),"Support Request DDM görüntülenmedi");
+        softAssert.assertTrue(userDashBoardPage.supportRequest.isEnabled(),"Support Request DDM aktif değil");
         //Support Request tıklanır ve alt menüde Create New görüntülenir ve aktif olduğu doğrulanır
         userDashBoardPage.supportRequest.click();
-        Assert.assertTrue(userDashBoardPage.createNew.isDisplayed());
-        Assert.assertTrue(userDashBoardPage.createNew.isEnabled());
+        ReusableMethods.wait(1);
+        softAssert.assertTrue(userDashBoardPage.createNew.isDisplayed(),"Create New butonu görüntülenmedi");
+        Assert.assertTrue(userDashBoardPage.createNew.isEnabled(),"Create New butonu aktif değil");
         //Create New tıklanır ve Support Tickets sayfası açıldığı doğrulanır
         SupportRequestPage supportRequestPage = new SupportRequestPage();
         userDashBoardPage.createNew.click();
-        Assert.assertTrue(supportRequestPage.supportTicketsTitle.isDisplayed());
+        softAssert.assertTrue(supportRequestPage.supportTicketsTitle.isDisplayed(),"Support Tickets sayfası açılmadı");
+        softAssert.assertAll();
         Driver.closeDriver();
 
     }

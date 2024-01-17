@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.FindTicketsPage;
 import pages.user.SelectSeatPage;
@@ -16,6 +17,7 @@ import utilities.ReusableMethods;
 public class TC13 {
     @Test
     public void validCardNumberNegatifTesti19Hane(){
+        SoftAssert softAssert = new SoftAssert();
 
         // 1-Browser açılır ve Url'e gidilir ve Login olunur
         ReusableMethods.userLoginButton();
@@ -52,11 +54,11 @@ public class TC13 {
         SelectSeatPage selectSeatPage = new SelectSeatPage();
         // 14- Journey Date doğru mu kontrol edilir
         selectSeatPage.seatJourneyDateBox.click();
-        Assert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate);
+        softAssert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate,"Secilen tarih uyusmuyor");
         // 15- Pickup Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
+        softAssert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup,"Secilen pickup point uyusmuyor");
         // 16- Dropping Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        softAssert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping,"Secilen dropping point uyusmuyor");
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0,arguments[0])",500);
         ReusableMethods.wait(1);
@@ -114,7 +116,8 @@ public class TC13 {
 
         ReusableMethods.wait(2);
         Object expected = "Rejected";
-        Assert.assertEquals(selectSeatPage.status.getText(),expected);
+        softAssert.assertEquals(selectSeatPage.status.getText(),expected,"Bug var");
+        softAssert.assertAll();
 
         Driver.closeDriver();
 

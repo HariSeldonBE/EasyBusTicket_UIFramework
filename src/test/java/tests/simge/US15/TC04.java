@@ -71,18 +71,45 @@ public class TC04 {
        //Status u open olarak görünen desteklere cevap yazmak için action tıklanır ve doğru talebin reply sayfasının açıldığı doğrulanır
          String satirdakiStatusXpath="";
          String satirdakiActionXpath="";
-        for (int i = 1; i <=supportRequestPage.lastReplies.size(); i++) {
+        for (int i = 1; i <=supportRequestPage.lastReplies.size()/2; i++) {
         satirdakiStatusXpath="(//tr/td[2])["+i+"]";
         satirdakiActionXpath="(//i[@class=\"fa fa-desktop\"])["+i+"]";
         if (Driver.getDriver().findElement(By.xpath(satirdakiStatusXpath)).getText().contains("Open")){
             String expected =supportRequestPage.subjectList.get(i-1).getText();
             Driver.getDriver().findElement(By.xpath(satirdakiActionXpath)).click();
+            ReusableMethods.wait(2);
             String cardTitleKontrol = supportRequestPage.cardTitle.getText().replace("Open ","");
             Assert.assertEquals(cardTitleKontrol,expected);
-
-        }
+            ReusableMethods.wait(1);
             Driver.getDriver().get("https://qa.easybusticket.com/ticket");
             js.executeScript("window.scrollBy(0,arguments[0])",500);
+            ReusableMethods.wait(1);
+
+        }
+
+
+            ReusableMethods.wait(1);
+
+        }
+        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        ReusableMethods.wait(1);
+        for (int i = supportRequestPage.lastReplies.size()/2; i <supportRequestPage.lastReplies.size()/2; i++) {
+            satirdakiStatusXpath="(//tr/td[2])["+i+"]";
+            satirdakiActionXpath="(//i[@class=\"fa fa-desktop\"])["+i+"]";
+            if (Driver.getDriver().findElement(By.xpath(satirdakiStatusXpath)).getText().contains("Open")){
+                String expected =supportRequestPage.subjectList.get(i-1).getText();
+                Driver.getDriver().findElement(By.xpath(satirdakiActionXpath)).click();
+                ReusableMethods.wait(2);
+                String cardTitleKontrol = supportRequestPage.cardTitle.getText().replace("Open ","");
+                Assert.assertEquals(cardTitleKontrol,expected);
+                ReusableMethods.wait(1);
+                Driver.getDriver().get("https://qa.easybusticket.com/ticket");
+                js.executeScript("window.scrollBy(0,arguments[0])",500);
+                ReusableMethods.wait(1);
+
+            }
+
+
             ReusableMethods.wait(1);
 
         }

@@ -3,6 +3,7 @@ package tests.simge.US14;
 import com.beust.ah.A;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.BookingHistoryPage;
 import pages.user.SelectSeatPage;
@@ -15,6 +16,7 @@ import utilities.ReusableMethods;
 public class TC02 {
     @Test
     public void bookingHistorySayfasıDogrulamaTesti(){
+        SoftAssert softAssert=new SoftAssert();
 
         // 1-Browser açılır ve Url'e gidilir
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
@@ -40,7 +42,8 @@ public class TC02 {
         ReusableMethods.wait(1);
         //9-Booking table görüntülenir ve boş olmadığı doğrulanır
         BookingHistoryPage bookingHistoryPage=new BookingHistoryPage();
-        Assert.assertFalse(bookingHistoryPage.bookingHistoryTable.isEmpty());
+        softAssert.assertFalse(bookingHistoryPage.bookingHistoryTable.isEmpty(),"Booking table boş");
+        softAssert.assertAll();
         Driver.closeDriver();
 
 
