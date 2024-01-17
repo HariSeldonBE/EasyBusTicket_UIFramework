@@ -27,14 +27,18 @@ public class TC05 extends TestBaseRapor {
         // 6- Send Us Message Button tıklanilir
         // 7- " Your message has been sent. Thank you for contacting us. " goruntulendigi dogrulanir
 
-
+        extentTest=extentReports.createTest("Contact Us support message TEST", "User tests the contact button");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+        extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
+        extentTest.info("User presses the accept cookies ");
         easyBusTicketPage.contactButton.click();
+        extentTest.info("User presses the contact button");
 
         ContactPage contactPage=new ContactPage();
         ReusableMethods.wait(1);
+        extentTest.info("1 seconds wait");
 
         Actions actions=new Actions(Driver.getDriver());
         JavascriptExecutor jse= (JavascriptExecutor) Driver.getDriver();
@@ -52,10 +56,16 @@ public class TC05 extends TestBaseRapor {
                 .sendKeys(Keys.TAB)
                 .sendKeys(ConfigReader.getProperty("fakemessage"))
                 .perform();
+            extentTest.info("Fills boxes with appropriate criteria");
         contactPage.sendUsButton.click();
+        extentTest.info("\"send us button\" Click");
         ReusableMethods.wait(3);
+        extentTest.info("3 seconds wait");
         Assert.assertTrue(contactPage.yourmessagehasbeensentbutton.isDisplayed());
+        extentTest.pass("' YourMessage Has Been Sent' displayed test passed ");
+
         Driver.closeDriver();
+        extentTest.info("Page closed");
 
 
 

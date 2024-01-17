@@ -22,7 +22,8 @@ public class TC06 {
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         // 2-Cookies kabul edilir
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
+        if (easyBusTicketPage.cookiesButton.isDisplayed()){
+        easyBusTicketPage.cookiesButton.click();}
         // 3-SignIn butonuna tıklanır
         easyBusTicketPage.signInButton.click();
         ReusableMethods.wait(2);
@@ -45,6 +46,7 @@ public class TC06 {
         findTicketsPage.pickupPoint.click();
         ReusableMethods.wait(2);
         findTicketsPage.pickupPointSelection.click();
+        Object selectedPickup = findTicketsPage.pickupPointSelection.getText();
         ReusableMethods.wait(2);
         // 10-"Dropping Point" dropbox undan farklı yer seçilir
         findTicketsPage.droppingPoint.click();
@@ -53,55 +55,76 @@ public class TC06 {
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
         findTicketsPage.dateOfJourneySelection.click();
+        Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
         ReusableMethods.wait(2);
         // 12-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
         // 13- Select Seat butonu tıklanır
         findTicketsPage.selectSeatButton.click();
         ReusableMethods.wait(2);
-
         SelectSeatPage selectSeatPage =new SelectSeatPage();
+        // 14- Journey Date doğru mu kontrol edilir
+        selectSeatPage.seatJourneyDateBox.click();
+        Assert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate);
+        // 15- Pickup Point doğru mu kontrol edilir
+        Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
+        // 16- Dropping Point doğru mu kontrol edilir
+        Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+
+
+
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         ReusableMethods.wait(2);
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
         SoftAssert softAssert = new SoftAssert();
         ReusableMethods.wait(2);
-        // 14 - Koltuk seçimi yapılır
+        // 16 - Rezerve edilen koltuklardan koltuk seçimi yapılamadığı doğrulanır
 
         if(!selectSeatPage.ladiesSelectedSeats.isEmpty()){
             for (WebElement ladiesSelectedSeat:selectSeatPage.ladiesSelectedSeats) {
-                softAssert.assertFalse(ladiesSelectedSeat.isEnabled());
+                Assert.assertTrue(ladiesSelectedSeat.isDisplayed());
+                try {
+                    if(ladiesSelectedSeat.isEnabled()){
+                        ladiesSelectedSeat.click();
+                    }
+                } catch (Exception e) {
+                    System.out.println("Element is not clickable at point");
+                }
 
                 break;
             }
         }
         if(!selectSeatPage.gentsSelectedSeats.isEmpty()){
             for (WebElement gentsSelectedSeat:selectSeatPage.gentsSelectedSeats) {
-                softAssert.assertFalse(gentsSelectedSeat.isEnabled());
-
+                Assert.assertTrue(gentsSelectedSeat.isDisplayed());
+                try {
+                    if(gentsSelectedSeat.isEnabled()){
+                        gentsSelectedSeat.click();
+                    }
+                } catch (Exception e) {
+                    System.out.println("Element is not clickable at point");
+                }
                 break;
             }
         }
         if(!selectSeatPage.othersSelectedSeats.isEmpty()){
             for (WebElement othersSelectedSeat:selectSeatPage.othersSelectedSeats) {
-                softAssert.assertFalse(othersSelectedSeat.isEnabled());
-
+                Assert.assertTrue(othersSelectedSeat.isDisplayed());
+                try {
+                    if(othersSelectedSeat.isEnabled()){
+                        othersSelectedSeat.click();
+                    }
+                } catch (Exception e) {
+                    System.out.println("Element is not clickable at point");
+                }
                 break;
             }
         }
 
-
-        Assert.assertFalse(selectSeatPage.selectedSeatDetails.isDisplayed());
-
-        ReusableMethods.wait(2);
-
-
+        Assert.assertTrue(selectSeatPage.selectedSeats.isEmpty());
 
         Driver.closeDriver();
-
-
-
 
 
     }

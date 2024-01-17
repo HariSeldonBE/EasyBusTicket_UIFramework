@@ -77,15 +77,23 @@ public class TC06 {
         // User Dashboard Page Url Test
         softAssert.assertEquals(actualUserDBUrl,expectedUserDBUrl, "User Dashboard Url is not confirmed");
         // User Dashboard Page Easy Bus Ticket Logo Display Test
-        softAssert.assertTrue(userDashBoardPage.eBTLogo.isDisplayed(), "Login Button is not displayed");
+        softAssert.assertTrue(userDashBoardPage.eBTLogo.isDisplayed(), "Easy Bus Ticket logo in User Dashboard Page is not displayed");
         // User Dashboard Page Easy Bus Ticket Logo Enable Test
-        softAssert.assertTrue(userDashBoardPage.eBTLogo.isEnabled(), "Login Button Box is not enabled");
+        softAssert.assertTrue(userDashBoardPage.eBTLogo.isEnabled(), "Easy Bus Ticket logo in User Dashboard Page is not enabled");
 
         userDashBoardPage.eBTLogo.click();
 
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
+        // Home Page Easy Bus Ticket Logo Display Test
+        softAssert.assertTrue(easyBusTicketPage.easyBusTicketHeaderLogo.isDisplayed(), "Logo in header is not displayed");
+        // Home Page Easy Bus Ticket Logo Enable Test
+        softAssert.assertTrue(easyBusTicketPage.easyBusTicketHeaderLogo.isEnabled(), "Logo in header is not enabled");
 
+        easyBusTicketPage.easyBusTicketHeaderLogo.click();
+
+        // Easy Bus Ticket Home Page Url Test
+        softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
 
         softAssert.assertAll();
         Driver.closeDriver();

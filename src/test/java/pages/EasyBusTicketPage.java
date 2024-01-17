@@ -32,7 +32,7 @@ public class EasyBusTicketPage {
 
 
     //EasyBusTicket Home page header kısmının solundaki "EasyBusTicketLogo"
-    @FindBy(xpath = "(//div[@class='logo'])[1]")
+    @FindBy(xpath = "(//*[@class='logo'])[1]")
     public WebElement easyBusTicketHeaderLogo;
 
     //EasyBusTicket Home page header kısmının sagındaki "Buy Tickets Butonu"
@@ -106,13 +106,13 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//h2[@class='title'])[4]")
     public WebElement recentBlogPostTitle;
 
-    @FindBy(xpath = "(//div[@class='post-thumb'])[1]")
+    @FindBy(xpath = "(//h4/a)[1]")
     public WebElement blogPostImgOne;
 
-    @FindBy(xpath = "(//div[@class='post-thumb'])[2]")
+    @FindBy(xpath = "(//h4/a)[2]")
     public WebElement blogPostImgTwo;
 
-    @FindBy(xpath = "(//div[@class='post-thumb'])[3]")
+    @FindBy(xpath = "(//h4/a)[3]")
     public WebElement blogPostImgThree;
 
     @FindBy(xpath = "(//div[@class='post-content'])[1]")
@@ -160,6 +160,10 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "//html/body//div[3]//div//div//div//li[3]//a")
     public WebElement youtubeIcon;
 
+
+    // Homepage >> Sign-up Button
+
+
     //EasyBusTicket Home page header kısmının sagındaki "Instagram icon'u"
     @FindBy(xpath = "//html/body//div[3]//div//div//div//li[4]//a")
     public WebElement instagramIcon;
@@ -167,6 +171,8 @@ public class EasyBusTicketPage {
     // "Forgot Password?" link -->kevser_US20_TC01
     @FindBy(xpath = "//*[text()='Forgot Password?']")
     public WebElement forgotPasswordLink;
+    @FindBy(xpath = "//a[@href=\"https://qa.easybusticket.com/user/dashboard\"]")
+    public WebElement dashboardButton;
 
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a")
     public WebElement footerXIcon;
@@ -219,6 +225,7 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//*[text()='Blog'])[1]")
     public WebElement headerBlogButton;
 
+
     @FindBy(xpath = "/html/body/section[4]/div/div[2]/div/div/div/ul/li[1]/button")
     public WebElement ourTestimonialsButton;
 
@@ -228,8 +235,21 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "/html/body/section[4]/div/div[2]/div/div/div/ul/li[3]/button")
     public WebElement ourTestimonialsButton3;
 
+    // Homepage >> Testimonial link of Emily Rodriguez (1st Testimonial)  -->Huseyin_US11_TC 15
+    @FindBy(xpath = "(//button[@tabindex='0'])")
+    public WebElement testimonial1;
 
+    // Homepage >> Testimonial link of Aprilou Marwan (2nd Testimonial)  -->Huseyin_US11_TC 15
+    @FindBy(xpath = "(//button[@tabindex='-1'])[1]")
+    public WebElement testimonial2;
 
+    // Homepage >> Testimonial link of Alex Thompson (3rd Testimonial)  -->Huseyin_US11_TC 15
+    @FindBy(xpath = "(//button[@tabindex='-1'])[2]")
+    public WebElement testimonial3;
+
+    // Homepage >> Home Linki  -->Huseyin_US115
+    @FindBy(xpath = "(//a[normalize-space()='Home'])")
+    public WebElement homeLink;
 
 
 }

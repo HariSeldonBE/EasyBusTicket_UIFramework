@@ -25,13 +25,19 @@ public class TC07 extends TestBaseRapor {
         // 9- Sign Up button is pressed.
         // 10- Verify that text "The username has already been taken."
 
-
+        extentTest=extentReports.createTest("SignUp Page  TEST", "User tests the signUp Page ");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+        extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
+        extentTest.info("User presses the accept cookies ");
         easyBusTicketPage.signUpButton.click();
+        extentTest.info("User presses the SignUp button");
         SignUpPage signUpPage = new SignUpPage();
         ReusableMethods.wait(2);
+        extentTest.info("1 seconds wait");
+
+
 
         Actions actions = new Actions(Driver.getDriver());
         Faker faker=new Faker();
@@ -56,24 +62,27 @@ public class TC07 extends TestBaseRapor {
                 .sendKeys(Keys.TAB)
                 .sendKeys(password)
                 .perform();
+        extentTest.info("An existing username is entered into the Username textbox, other textboxes are filled with appropriate criteria.");
+
         ReusableMethods.wait(1);
+        extentTest.info("1 seconds wait");
 
         softAssert.assertTrue(signUpPage.usernameAlreadyExist.isDisplayed());
-
+        extentTest.pass("Username Already Exist displayed test passed");
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait(1);
         signUpPage.acceptCheckButon.click();
-
+        extentTest.info("Sign Up accept check box clicked");
         ReusableMethods.wait(1);
-
+        extentTest.info("1 seconds wait");
         signUpPage.signUpbutton.click();
-
+        extentTest.info("Sign Up button  clicked");
         softAssert.assertTrue(signUpPage.Theusernamehasalreadybeentaken.isDisplayed());
-
+        extentTest.pass("Theusernamehasalreadybeentaken text displayed passed");
         softAssert.assertAll();
 
         Driver.closeDriver();
-
+        extentTest.info("Page closed");
 
 
 

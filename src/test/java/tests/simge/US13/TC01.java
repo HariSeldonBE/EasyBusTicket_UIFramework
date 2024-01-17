@@ -47,13 +47,5 @@ public class TC01 {
         Driver.closeDriver();
 
 
-
-
-
-
-
-
-
-
     }
 }

@@ -1,23 +1,29 @@
 package tests.beytullah.US24;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.ManageUsersDDM;
+import pages.admin.PaymentHistoryDDM;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
+
+import java.time.Duration;
+
+import static utilities.JSUtilities.scrollToBottom;
 
 public class TC02 {
     @Test
-    public void test1(){
+    public void test1() {
         ManageUsersDDM manageUsersDDM = new ManageUsersDDM();
+        PaymentHistoryDDM paymentHistoryDDM = new PaymentHistoryDDM();
         SoftAssert softAssert = new SoftAssert();
 
         // URL'e gider
@@ -28,14 +34,30 @@ public class TC02 {
         manageUsersDDM.dropDownManageUsers.click();
         manageUsersDDM.linkAllUsers.click();
         // Herhangi bir kullanıcıya tıklar
-        /*
-        List<String> kullaniciAdlari = new ArrayList<>();
-        for (WebElement element : manageUsersDDM.linkKullaniciAdi1) {
-            String kullaniciAdi = kullaniciAdiCikar(element.getText());
-            kullaniciAdlari.add(kullaniciAdi);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+        boolean fakeKullaniciFound = false;
+
+        while (!fakeKullaniciFound) {
+            try {
+                // Elementin sayfa üzerinde görünür olmasını bekler
+                WebElement fakeKullanici = wait.until(ExpectedConditions.visibilityOf(manageUsersDDM.linkFakeKullanici));
+                JSUtilities.clickWithJS(Driver.getDriver(), fakeKullanici);
+
+                fakeKullaniciFound = true; // Döngüyü sonlandır
+            } catch (TimeoutException e) {
+                try {
+                    // Element belirli bir süre içinde görünmezse, bir sonraki sayfaya geçiş yapılabilir
+                    scrollToBottom(Driver.getDriver());
+                    WebElement buttonRight = wait.until(ExpectedConditions.elementToBeClickable(manageUsersDDM.buttonRight));
+                    JSUtilities.clickWithJS(Driver.getDriver(), manageUsersDDM.buttonRight);
+                } catch (TimeoutException innerException) {
+                    // buttonRight belirli bir süre içinde tıklanabilir hale gelmezse, hata alındı olarak işaretleyebilirsiniz.
+                    System.out.println("Hata: Sayfa yüklenemedi veya buttonRight tıklanabilir hale gelmedi.");
+                    break; // Döngüyü sonlandır
+                }
+            }
         }
-*/
-        manageUsersDDM.linkFakeKullanici.click();
         // "User Detail" sayfasına ulaşır
         softAssert.assertTrue(manageUsersDDM.labelTitleBaslik.isDisplayed());
         // "Information" panelindeki her kutucuğu görür, tıklar ve  bilgileri değiştirir
@@ -51,18 +73,19 @@ public class TC02 {
         softAssert.assertTrue(manageUsersDDM.buttonEmailVerification.isDisplayed());
         softAssert.assertTrue(manageUsersDDM.buttonSMSVerification.isDisplayed());
 
-        Faker faker=new Faker();
-        Actions actions=new Actions(Driver.getDriver());
+        Faker faker = new Faker();
+        Actions actions = new Actions(Driver.getDriver());
+
         manageUsersDDM.inputFirstName.clear();
         actions.click(manageUsersDDM.inputFirstName)
-                        .sendKeys(faker.name().firstName()).sendKeys(Keys.TAB)
-                        .sendKeys(faker.name().lastName()).sendKeys(Keys.TAB)
-                        .sendKeys(faker.internet().emailAddress()).sendKeys(Keys.TAB)
-                        .sendKeys(faker.phoneNumber().phoneNumber()).sendKeys(Keys.TAB)
-                        .sendKeys(faker.address().fullAddress()).sendKeys(Keys.TAB)
-                        .sendKeys(faker.address().city()).sendKeys(Keys.TAB)
-                        .sendKeys(faker.address().state()).sendKeys(Keys.TAB)
-                        .sendKeys(faker.address().zipCode()).sendKeys(Keys.TAB).perform();
+                .sendKeys(faker.name().firstName()).sendKeys(Keys.TAB)
+                .sendKeys(faker.name().lastName()).sendKeys(Keys.TAB)
+                .sendKeys(faker.internet().emailAddress()).sendKeys(Keys.TAB)
+                .sendKeys(faker.phoneNumber().phoneNumber()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().fullAddress()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().city()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().state()).sendKeys(Keys.TAB)
+                .sendKeys(faker.address().zipCode()).sendKeys(Keys.TAB).perform();
         Select selectUlke = new Select(manageUsersDDM.dropDownCountry);
         selectUlke.selectByIndex(5);
 
@@ -72,17 +95,17 @@ public class TC02 {
             manageUsersDDM.buttonStatusBanned.click();
         }
         */
-        if (manageUsersDDM.buttonEmailVerified.getText().equals("Verified")){
+        if (manageUsersDDM.buttonEmailVerified.getText().equals("Verified")) {
             manageUsersDDM.buttonEmailUnVerified.click();
-        }else {
+        } else {
             manageUsersDDM.buttonEmailVerified.click();
         }
-        if (manageUsersDDM.buttonSmsVerified.getText().equals("Verified")){
+        if (manageUsersDDM.buttonSmsVerified.getText().equals("Verified")) {
             manageUsersDDM.buttonSmsUnVerified.click();
-        }else {
+        } else {
             manageUsersDDM.buttonSmsVerified.click();
         }
-        // "Save Changes" butonuna tıklar
+        //"Save Changes" butonuna tıklar
 
 
         manageUsersDDM.buttonSaveChanges.click();
@@ -92,7 +115,31 @@ public class TC02 {
         // "Active Users" linkine tıklar
         manageUsersDDM.linkActiveUsers.click();
         // Herhangi bir kullanıcıya tıklar
-        manageUsersDDM.linkFakeKullanici.click();
+        ReusableMethods.wait(2);
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+        fakeKullaniciFound = false;
+
+        while (!fakeKullaniciFound) {
+            try {
+                // Elementin sayfa üzerinde görünür olmasını bekler
+                WebElement fakeKullanici = wait.until(ExpectedConditions.visibilityOf(manageUsersDDM.linkFakeKullanici));
+                JSUtilities.clickWithJS(Driver.getDriver(), fakeKullanici);
+
+                fakeKullaniciFound = true; // Döngüyü sonlandır
+            } catch (TimeoutException e) {
+                try {
+                    // Element belirli bir süre içinde görünmezse, bir sonraki sayfaya geçiş yapılabilir
+                    scrollToBottom(Driver.getDriver());
+                    WebElement buttonRight = wait.until(ExpectedConditions.elementToBeClickable(manageUsersDDM.buttonRight));
+                    JSUtilities.clickWithJS(Driver.getDriver(), manageUsersDDM.buttonRight);
+                } catch (TimeoutException innerException) {
+                    // buttonRight belirli bir süre içinde tıklanabilir hale gelmezse, hata alındı olarak işaretleyebilirsiniz.
+                    System.out.println("Hata: Sayfa yüklenemedi veya buttonRight tıklanabilir hale gelmedi.");
+                    break; // Döngüyü sonlandır
+                }
+            }
+        }
         // "Information" panelindeki her kutucuğa tıklar ve  bilgileri değiştirir
         manageUsersDDM.inputFirstName.clear();
         actions.click(manageUsersDDM.inputFirstName)
@@ -109,19 +156,20 @@ public class TC02 {
         scrollToElement(Driver.getDriver(), manageUsersDDM.buttonSaveChanges);
         ReusableMethods.wait(2);
 
-        if (manageUsersDDM.buttonStatusActive.getText().equals("Active")){
+        if (manageUsersDDM.buttonStatusActive.getText().equals("Active")) {
             manageUsersDDM.buttonStatusBanned.click();
-        }else {
+        } else {
             manageUsersDDM.buttonStatusActive.click();
         }
-        if (manageUsersDDM.buttonEmailVerified.getText().equals("Verified")){
+
+        if (manageUsersDDM.buttonEmailVerified.getText().equals("Verified")) {
             manageUsersDDM.buttonEmailUnVerified.click();
-        }else {
+        } else {
             manageUsersDDM.buttonEmailVerified.click();
         }
-        if (manageUsersDDM.buttonSmsVerified.getText().equals("Verified")){
+        if (manageUsersDDM.buttonSmsVerified.getText().equals("Verified")) {
             manageUsersDDM.buttonSmsUnVerified.click();
-        }else {
+        } else {
             manageUsersDDM.buttonSmsVerified.click();
         }
         // "Save Changes" butonuna tıklar
@@ -134,7 +182,32 @@ public class TC02 {
         // "Banned Users"  linkine tıklar
         manageUsersDDM.linkBannedUsers.click();
         // Herhangi bir kullanıcıya tıklar
-        manageUsersDDM.linkFakeKullanici.click();
+
+        ReusableMethods.wait(2);
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+        fakeKullaniciFound = false;
+
+        while (!fakeKullaniciFound) {
+            try {
+                // Elementin sayfa üzerinde görünür olmasını bekler
+                WebElement fakeKullanici = wait.until(ExpectedConditions.visibilityOf(manageUsersDDM.linkFakeKullanici));
+                JSUtilities.clickWithJS(Driver.getDriver(), fakeKullanici);
+
+                fakeKullaniciFound = true; // Döngüyü sonlandır
+            } catch (TimeoutException e) {
+                try {
+                    // Element belirli bir süre içinde görünmezse, bir sonraki sayfaya geçiş yapılabilir
+                    scrollToBottom(Driver.getDriver());
+                    WebElement buttonRight = wait.until(ExpectedConditions.elementToBeClickable(manageUsersDDM.buttonRight));
+                    JSUtilities.clickWithJS(Driver.getDriver(), manageUsersDDM.buttonRight);
+                } catch (TimeoutException innerException) {
+                    // buttonRight belirli bir süre içinde tıklanabilir hale gelmezse, hata alındı olarak işaretleyebilirsiniz.
+                    System.out.println("Hata: Sayfa yüklenemedi veya buttonRight tıklanabilir hale gelmedi.");
+                    break; // Döngüyü sonlandır
+                }
+            }
+        }
         // "Information" panelindeki her kutucuğa tıklar ve  bilgileri değiştirir
         manageUsersDDM.inputFirstName.clear();
         actions.click(manageUsersDDM.inputFirstName)
@@ -150,19 +223,19 @@ public class TC02 {
         selectUlke.selectByIndex(5);
         scrollToElement(Driver.getDriver(), manageUsersDDM.buttonSaveChanges);
         ReusableMethods.wait(2);
-        if (manageUsersDDM.buttonStatusActive.getText().equals("Active")){
+        if (manageUsersDDM.buttonStatusActive.getText().equals("Active")) {
             manageUsersDDM.buttonStatusBanned.click();
-        }else {
+        } else {
             manageUsersDDM.buttonStatusActive.click();
         }
-        if (manageUsersDDM.buttonEmailVerified.getText().equals("Verified")){
+        if (manageUsersDDM.buttonEmailVerified.getText().equals("Verified")) {
             manageUsersDDM.buttonEmailUnVerified.click();
-        }else {
+        } else {
             manageUsersDDM.buttonEmailVerified.click();
         }
-        if (manageUsersDDM.buttonSmsVerified.getText().equals("Verified")){
+        if (manageUsersDDM.buttonSmsVerified.getText().equals("Verified")) {
             manageUsersDDM.buttonSmsUnVerified.click();
-        }else {
+        } else {
             manageUsersDDM.buttonSmsVerified.click();
         }
         // "Save Changes" butonuna tıklar
@@ -171,14 +244,9 @@ public class TC02 {
         manageUsersDDM.buttonSaveChanges.click();
         Driver.closeDriver();
     }
+
     public static void scrollToElement(WebDriver driver, WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
-    private String kullaniciAdiCikar(String metin) {
-        int atIndex = metin.indexOf('@');
-        if (atIndex != -1 && atIndex < metin.length() - 1) {
-            return metin.substring(atIndex + 1).trim();
-        }
-        return "";
-    }
+
 }

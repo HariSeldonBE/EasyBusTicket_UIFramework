@@ -24,29 +24,40 @@ public class TC08 extends TestBaseRapor {
         // 6- Press the "Sign In" button
         // 7- "SignInYourAccount" is displayed
 
+
+        extentTest=extentReports.createTest("SignUp Page  TEST", "User tests the signUp Page ");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+        extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
+        extentTest.info("User presses the accept cookies ");
         easyBusTicketPage.signUpButton.click();
+        extentTest.info("User presses the SignUp button");
         SignUpPage signUpPage = new SignUpPage();
         ReusableMethods.wait(2);
+        extentTest.info("2 seconds wait");
 
         Actions actions=new Actions(Driver.getDriver());
 
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait(1);
+        extentTest.info("1 seconds wait");
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
 
 
         signUpPage.signInButton.click();
+        extentTest.info("Sign In button clicked");
         ReusableMethods.wait(1);
         SoftAssert softAssert=new SoftAssert();
+
         softAssert.assertTrue(signUpPage.SignInYourAccountText.isDisplayed());
+        extentTest.info("Sign in Your Account button test passed");
         softAssert.assertAll();
         Driver.closeDriver();
+        extentTest.info("Page closed");
 
 
 

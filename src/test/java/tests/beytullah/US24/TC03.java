@@ -1,19 +1,22 @@
 package tests.beytullah.US24;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.ManageUsersDDM;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
+import java.time.Duration;
 import java.util.Random;
+
+import static utilities.JSUtilities.scrollToBottom;
 
 public class TC03 {
     @Test
@@ -30,7 +33,37 @@ public class TC03 {
         // "All Users" linkine tıklar
         manageUsersDDM.linkAllUsers.click();
         // Herhangi bir kullanıcıya tıklar
-        manageUsersDDM.linkFakeKullanici.click();
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+        boolean fakeKullaniciFound = false;
+
+        while (!fakeKullaniciFound) {
+            try {
+                // Elementin sayfa üzerinde görünür olmasını bekler
+                WebElement fakeKullanici = wait.until(ExpectedConditions.visibilityOf(manageUsersDDM.linkFakeKullanici));
+
+                // fakeKullanici bulunuyorsa
+                JSUtilities.clickWithJS(Driver.getDriver(),fakeKullanici);
+
+                fakeKullaniciFound = true; // Döngüyü sonlandır
+            } catch (TimeoutException e) {
+                try {
+                    // Element belirli bir süre içinde görünmezse, bir sonraki sayfaya geçiş yapılabilir
+                    scrollToBottom(Driver.getDriver());
+                    WebElement buttonRight = wait.until(ExpectedConditions.elementToBeClickable(manageUsersDDM.buttonRight));
+                    JSUtilities.clickWithJS(Driver.getDriver(),manageUsersDDM.buttonRight);
+                } catch (TimeoutException innerException) {
+                    // buttonRight belirli bir süre içinde tıklanabilir hale gelmezse, hata alındı olarak işaretleyebilirsiniz.
+                    System.out.println("Hata: Sayfa yüklenemedi veya buttonRight tıklanabilir hale gelmedi.");
+                    break; // Döngüyü sonlandır
+                }
+            }
+        }
+
+
+        // Döngü bittiğinde, linkFakeKullanici'ye tıkla
+
         // "Information" panelindeki her kutucuğa tıklayıp "First Name",
         // "Last Name","City", "State", kısmına rakam ve simge,
         // "Email" kısmna @'den sonra rakam veya hiçlik ,
@@ -64,8 +97,10 @@ public class TC03 {
        ReusableMethods.wait(2);
         manageUsersDDM.buttonSaveChanges.click();
         // "Information" panelindeki değişiklikleri kaydedemez
+        softAssert.assertTrue(manageUsersDDM.alert.getText().contains("warning"));
 
-        Driver.closeDriver();
+        softAssert.assertAll();
+       // Driver.closeDriver();
     }
     public static void scrollToElement(WebDriver driver, WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);

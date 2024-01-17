@@ -33,35 +33,30 @@ public class TC02 {
         String expectedUrl1 = "https://qa.easybusticket.com/admin/users";
         String actualUrl1 = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(expectedUrl1, actualUrl1);
-        Driver.getDriver().navigate().back();
 
         manageUsersDDM.linkActiveUsers.click();
         // Linklerin sayfalarını görüntüler
         String expectedUrl2 = "https://qa.easybusticket.com/admin/users/active";
         String actualUrl2 = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(expectedUrl2, actualUrl2);
-        Driver.getDriver().navigate().back();
 
         manageUsersDDM.linkBannedUsers.click();
         // Linklerin sayfalarını görüntüler
         String expectedUrl3 = "https://qa.easybusticket.com/admin/users/banned";
         String actualUrl3 = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(expectedUrl3, actualUrl3);
-        Driver.getDriver().navigate().back();
 
         manageUsersDDM.linkEmailUnverified.click();
         // Linklerin sayfalarını görüntüler
         String expectedUrl4 = "https://qa.easybusticket.com/admin/users/email-unverified";
         String actualUrl4 = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(expectedUrl4, actualUrl4);
-        Driver.getDriver().navigate().back();
 
         manageUsersDDM.linkSmsUnverified.click();
         // Linklerin sayfalarını görüntüler
         String expectedUrl5 = "https://qa.easybusticket.com/admin/users/sms-unverified";
         String actualUrl5 = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(expectedUrl5, actualUrl5);
-        Driver.getDriver().navigate().back();
 
         manageUsersDDM.linkEmailToAll.click();
         // Linklerin sayfalarını görüntüler

@@ -37,8 +37,6 @@ public class ManageUsersDDM {
 
     @FindBy(xpath = "//span[@class='menu-badge pill bg--primary ml-auto']")
     public List<WebElement> listSayiManageUsers;
-    @FindBy(xpath = "//span[@class='small']")
-    public List<WebElement> columnKullaniciAdi;
     @FindBy(xpath = "//input[@type='text']")
     public WebElement inputAramaKutusu;
     @FindBy(xpath = "//td[2]")
@@ -105,14 +103,18 @@ public class ManageUsersDDM {
     public WebElement buttonSmsUnVerified;
     @FindBy(xpath = "//button[@class='btn btn--primary btn-block btn-lg']")
     public WebElement buttonSaveChanges;
-
-    @FindBy(xpath = "//span[@class='small']")
-    public List<WebElement> linkKullaniciAdi1;
-
     @FindBy(xpath = "(//a[@href='https://qa.easybusticket.com/admin/user/detail/172'])[1]")
     public WebElement linkFakeKullanici;
     //---------------------------------------------------------------------------------------------
+    @FindBy(xpath = "//i[@class='fa fa-angle-right']")
+    public WebElement buttonRight;
+    //---------------------------------------------------------------------------------------------
     @FindBy(xpath = "//i[@class='las la-desktop text--shadow']")
     public WebElement linkEmailDetail;
+    @FindBy(xpath = "(//*[@data-label=\"Email-Phone\"])[1]")
+    public WebElement labelMail;
+    @FindBy(xpath = "//p[@class='iziToast-message slideIn']")
+    public WebElement alert;
+
 
 }

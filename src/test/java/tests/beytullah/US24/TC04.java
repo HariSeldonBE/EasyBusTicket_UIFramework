@@ -1,6 +1,5 @@
 package tests.beytullah.US24;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.ManageUsersDDM;
@@ -23,13 +22,13 @@ public class TC04 {
         // "All Users" linkine tıklar
         manageUsersDDM.linkAllUsers.click();
         //"Actions" başlığının altında TV simgesini görür ve tıklar
-        softAssert.assertTrue(manageUsersDDM.linkEmailDetail.isDisplayed());
+        softAssert.assertTrue(manageUsersDDM.linkEmailDetail.isDisplayed(), "Actions başlığının altında TV simgesi görünmedi");
         manageUsersDDM.linkEmailDetail.click();
-        //"Email Detail" Sayfasına ulaşır
+        //"Email Detail" sayfasına ulaşır
         String expectedTitle="Email Detail";
         String actualTitle=Driver.getDriver().getTitle();
-        Assert.assertTrue(actualTitle.contains(expectedTitle));
-        System.out.println("actualTitle = " + actualTitle);
+        softAssert.assertTrue(actualTitle.contains(expectedTitle),"Email Detail sayfasına ulaşılamadı");
+        softAssert.assertAll();
         Driver.closeDriver();
     }
 }

@@ -10,10 +10,13 @@ import pages.admin.AdminDashBoard_ManageFleetsPage;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC17 {
+public class TC17 extends TestBaseRapor {
     @Test
-    public void test(){
+    public void addNewNegatifTest(){
+
+        extentTest=extentReports.createTest("add New Negatif TEST", "Yanlış bilgilerle girilmemesi gerekiyor ");
 
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
@@ -38,14 +41,14 @@ public class TC17 {
         //  Model No.  2024 ve altı, Fleet Type anlamlı kelime veya cümle" haricinde değerler girerek alanlarını doldurur
         ReusableMethods.wait(1);
         adminDashBoard_manageFleetsPage.inputNickName.click();
-        actions.sendKeys("1111111111111")
+        actions.sendKeys("111111111111")
                 .sendKeys(Keys.TAB).perform();
         Select select = new Select(adminDashBoard_manageFleetsPage.selectFleetType_Vehicle);
         select.selectByVisibleText("w bus");
         actions.click(adminDashBoard_manageFleetsPage.inputRegister_Vehicle)
-                .sendKeys("222222222222222").sendKeys(Keys.TAB)
-                .sendKeys("33333333333333333333333333").sendKeys(Keys.TAB)
-                .sendKeys("111111111111111111111111111111111").sendKeys(Keys.TAB)
+                .sendKeys("0222222222222222").sendKeys(Keys.TAB)
+                .sendKeys("3333333333333333333333933").sendKeys(Keys.TAB)
+                .sendKeys("1111111111111111111111111111111").sendKeys(Keys.TAB)
                 .sendKeys("111111111").perform();
 
         // "Save" butonuna tıklar
@@ -56,14 +59,9 @@ public class TC17 {
         String expectedAddNewMesajı = "Vehicle save successfully.";
         String actualAddNew = adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText();
         softAssert.assertNotEquals(actualAddNew,expectedAddNewMesajı,"başarılı mesajı göründü");
+        extentTest.info("Hata mesajı bekleniyor");
 
-
-
-
-
-
-
-
+        extentTest.info("Closed page");
         softAssert.assertAll();
         ReusableMethods.wait(2);
         Driver.closeDriver();

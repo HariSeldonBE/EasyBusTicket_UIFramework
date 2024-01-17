@@ -33,9 +33,13 @@ public class FindTicketsPage {
     public WebElement pickupPointSelection;
     @FindBy(xpath = "(//option[@value='2'])[2]")
     public WebElement droppingPointSelection;
+    @FindBy(xpath = "(//option[@value='3'])[1]")
+    public WebElement pickupPointSelectionaktarma;
+    @FindBy(xpath = "(//option[@value='8'])[2]")
+    public WebElement droppingPointSelectionaktarma;
     @FindBy(xpath = "(//option[@value='1'])[2]")
     public WebElement droppingPointNegatifSelection;
-    @FindBy(xpath = "(//td[@data-handler='selectDay'])[20]")
+    @FindBy(xpath = "(//td[@data-handler='selectDay'])[18]")
     public WebElement dateOfJourneySelection;
     @FindBy(xpath = "(//td[@data-handler='selectDay'])[10]")
     public WebElement dateOfJourneyNegatifSelection;
@@ -47,6 +51,17 @@ public class FindTicketsPage {
 
     @FindBy(xpath = "//a[@class='btn btn--base']")
     public WebElement selectSeatButton;
+
+    @FindBy(xpath = "(//a[@class='btn btn--base'])[2]")
+    public WebElement selectSeatButton2;
     @FindBy(xpath = "//span[@id='select2-pickup-z9-container']")
     public WebElement selectSeatPickup;
+    @FindBy(xpath = "(//p[@class='place'])[1]")
+    public WebElement aktarma1;
+    @FindBy(xpath = "(//p[@class='place'])[1]")
+    public WebElement aktarma2;
+    @FindBy(xpath = "(//p[@class='place'])[1]")
+    public WebElement aktarma3;
+    @FindBy(xpath = "(//p[@class='place'])[1]")
+    public WebElement aktarma4;
 }
