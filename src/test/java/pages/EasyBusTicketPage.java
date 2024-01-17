@@ -225,6 +225,16 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//*[text()='Blog'])[1]")
     public WebElement headerBlogButton;
 
+
+    @FindBy(xpath = "/html/body/section[4]/div/div[2]/div/div/div/ul/li[1]/button")
+    public WebElement ourTestimonialsButton;
+
+    @FindBy(xpath = "/html/body/section[4]/div/div[2]/div/div/div/ul/li[2]/button")
+    public WebElement ourTestimonialsButton2;
+
+    @FindBy(xpath = "/html/body/section[4]/div/div[2]/div/div/div/ul/li[3]/button")
+    public WebElement ourTestimonialsButton3;
+
     // Homepage >> Testimonial link of Emily Rodriguez (1st Testimonial)  -->Huseyin_US11_TC 15
     @FindBy(xpath = "(//button[@tabindex='0'])")
     public WebElement testimonial1;
