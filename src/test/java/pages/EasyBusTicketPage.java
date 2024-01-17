@@ -160,6 +160,10 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "//html/body//div[3]//div//div//div//li[3]//a")
     public WebElement youtubeIcon;
 
+
+    // Homepage >> Sign-up Button
+
+
     //EasyBusTicket Home page header kısmının sagındaki "Instagram icon'u"
     @FindBy(xpath = "//html/body//div[3]//div//div//div//li[4]//a")
     public WebElement instagramIcon;

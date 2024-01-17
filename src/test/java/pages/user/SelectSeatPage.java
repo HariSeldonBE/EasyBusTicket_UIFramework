@@ -100,6 +100,8 @@ public class SelectSeatPage {public SelectSeatPage(){PageFactory.initElements(Dr
     public WebElement seatDropping;
     @FindBy(xpath = "//a[@class='ui-state-default ui-state-active']")
     public WebElement firstSelectedDate;
+   @FindBy(xpath = "//span[@class='seat']")
+    public WebElement koltuk;
     @FindBy(xpath = "(//p[@class='place'])[1]")
     public WebElement aktarmali1;
     @FindBy(xpath = "(//p[@class='place'])[2]")

@@ -21,27 +21,38 @@ public class TC03 extends TestBaseRapor {
         // 4- Registration procedures: Name, Surname, Email, Country, Mobile Phone, Username, Email, Password, Confirm Password text boxes are left blank and the register button is pressed.
         // 5- It is verified that the form has not been sent
 
-
+        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+        extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
+        extentTest.info("User presses the accept cookies ");
         easyBusTicketPage.signUpButton.click();
+        extentTest.info("User presses the signUp button");
         SignUpPage signUpPage = new SignUpPage();
         ReusableMethods.wait(2);
+        extentTest.info("1 seconds wait");
 
         Actions actions = new Actions(Driver.getDriver());
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
         signUpPage.acceptCheckButon.click();
+        extentTest.info("Accept check button Click");
 
         signUpPage.signUpbutton.click();
+        extentTest.info("Sign Up button clicked");
 
 
         ReusableMethods.wait(1);
+        extentTest.info("1 seconds wait");
+
         Assert.assertTrue(signUpPage.firstnameTextBox.isDisplayed());
+        extentTest.pass("Firstname textBox is displayed test passed");
         ReusableMethods.wait(4);
+        extentTest.info("4 seconds passed ");
         Driver.closeDriver();
+        extentTest.info("Page closed");
 
 
     }

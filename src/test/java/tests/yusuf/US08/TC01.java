@@ -27,12 +27,13 @@ public class TC01 extends TestBaseRapor {
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
         ContactPage contactPage=new ContactPage();
         easyBusTicketPage.cookiesButton.click();
-        extentTest.info("User presses the contact button");
+        extentTest.info("User presses the accept cookies ");
         easyBusTicketPage.contactButton.click();
+        extentTest.info("User presses the contact button");
         ReusableMethods.wait(1);
-
+        extentTest.info("1 seconds wait");
         Assert.assertTrue(contactPage.contactUsText.isDisplayed());
-        extentTest.pass("Tests the visibility of the 'Contact Us' text");
+        extentTest.pass("Tests the visibility of the 'Contact Us' text passed");
 
         Driver.closeDriver();
         extentTest.info("Closed page");

@@ -29,38 +29,53 @@ import utilities.TestBaseRapor;
         // "Your message has been sent, thank you for contact us" yazısının görünür olduğu doğrulanmalı.
 
 
-
+        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+        extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
+        extentTest.info("User presses the accept cookies ");
         easyBusTicketPage.contactButton.click();
         ContactPage contactPage=new ContactPage();
+        extentTest.info("User presses the contact button");
         ReusableMethods.wait(1);
         Actions actions = new Actions(Driver.getDriver());
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         SoftAssert softAssert=new SoftAssert();
         softAssert.assertTrue(contactPage.haveAnyQuestionsText.isDisplayed());
+        extentTest.pass("Have Any Questions displayed test passed");
 
         softAssert.assertTrue(contactPage.nameTextBox.isDisplayed(),"Name Textbox gozukmuyor");
+        extentTest.pass("Name TextBox displayed test passed");
         softAssert.assertTrue(contactPage.nameTextBox.isEnabled(),"Name Textbox aktif degil");
+        extentTest.pass("Name TextBox enabled  test passed");
 
         softAssert.assertTrue(contactPage.emailTextBox.isDisplayed(),"Email Textbox gozukmuyor");
+        extentTest.pass("Email TextBox displayed test passed");
         softAssert.assertTrue(contactPage.emailTextBox.isEnabled(),"Email Textbox aktif degil");
+        extentTest.pass("Email TextBox enabled test passed");
 
 
         softAssert.assertTrue(contactPage.subjectTextBox.isDisplayed(),"Subject Textbox gozukmuyor");
+        extentTest.pass("Subject TextBox displayed test passed");
         softAssert.assertTrue(contactPage.subjectTextBox.isEnabled(),"Subject Textbox aktif degil");
-
+        extentTest.pass("Subject TextBox enabled test passed");
 
         softAssert.assertTrue(contactPage.messageTextBox.isDisplayed(),"Message Textbox gozukmuyor");
+        extentTest.pass("Message textBox displayed test passed");
         softAssert.assertTrue(contactPage.messageTextBox.isEnabled(),"Message Textbox aktif degil");
+        extentTest.pass("Message textBox enabled test passed");
 
         softAssert.assertTrue(contactPage.sendUsButton.isDisplayed(),"Send Us Button  gozukmuyor");
+        extentTest.pass("Send Us Button displayed test passed");
         softAssert.assertTrue(contactPage.sendUsButton.isEnabled(),"Send Us Button aktif degil");
+        extentTest.pass("Send Us Button enabled test passed");
 
-       softAssert.assertAll();
+        softAssert.assertAll();
+
 
        Driver.closeDriver();
+        extentTest.info("Closed page");
 
 
 
