@@ -8,31 +8,31 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.ManageUsersDDM;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.JSUtilities;
-import utilities.ReusableMethods;
+import utilities.*;
 
 import java.time.Duration;
 import java.util.Random;
 
 import static utilities.JSUtilities.scrollToBottom;
 
-public class TC03 {
+public class TC03 extends TestBaseRapor {
     @Test
     public void test01(){
         ManageUsersDDM manageUsersDDM = new ManageUsersDDM();
         SoftAssert softAssert = new SoftAssert();
+        extentTest=extentReports.createTest("Hatalı karakter girişiyle kayıt yapma", "Kullnıcının biligilerini değiştirirken kabul edilmemesi gereken karakterler kabul ediliyor");
 
-        // URL'e gider
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
-        // Admin bilgilerini girer
+        extentTest.info("URL'e gider");
+
         ReusableMethods.adminLoginMethod("admin14", "123123123");
-        // "Manage Users" DDM'ye tıklar
+        extentTest.info("Admin bilgilerini girer");
+
         manageUsersDDM.dropDownManageUsers.click();
-        // "All Users" linkine tıklar
+        extentTest.info("\"Manage Users\" DDM'ye tıklar");
+
         manageUsersDDM.linkAllUsers.click();
-        // Herhangi bir kullanıcıya tıklar
+        extentTest.info("\"All Users\" linkine tıklar");
 
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
 
@@ -60,14 +60,8 @@ public class TC03 {
                 }
             }
         }
+        extentTest.info("Herhangi bir kullanıcıya tıklar");
 
-
-        // Döngü bittiğinde, linkFakeKullanici'ye tıkla
-
-        // "Information" panelindeki her kutucuğa tıklayıp "First Name",
-        // "Last Name","City", "State", kısmına rakam ve simge,
-        // "Email" kısmna @'den sonra rakam veya hiçlik ,
-        // "Mobile Number" ve "Zip/Postal" kısmına harf ve simge girer
         Faker faker=new Faker();
         Actions actions=new Actions(Driver.getDriver());
 
@@ -91,16 +85,20 @@ public class TC03 {
                 .sendKeys(""+randomNumber+randomSymbol).sendKeys(Keys.TAB)
                 .sendKeys(""+randomNumber+randomSymbol).sendKeys(Keys.TAB)
                 .sendKeys(faker.artist().name()+randomSymbol).sendKeys(Keys.TAB).perform();
+        extentTest.info("\"Information\" panelindeki her kutucuğa tıklayıp \"First Name\",\n" +
+                "\"Last Name\",\"City\", \"State\", kısmına rakam ve simge,\n" +
+                "\"Email\" kısmna @'den sonra rakam veya hiçlik ,\n" +
+                "\"Mobile Number\" ve \"Zip/Postal\" kısmına harf ve simge girer");
 
-        // "Save Changes" butonuna tıklar
        scrollToElement(Driver.getDriver(),manageUsersDDM.buttonSaveChanges);
+        extentTest.info("\"Save Changes\" butonuna tıklar");
        ReusableMethods.wait(2);
         manageUsersDDM.buttonSaveChanges.click();
-        // "Information" panelindeki değişiklikleri kaydedemez
-        softAssert.assertTrue(manageUsersDDM.alert.getText().contains("warning"));
+        softAssert.assertTrue(manageUsersDDM.alert.getText().contains("warning"),"Yanlış girilen bilgiler kaydedildi");
+        extentTest.info("\"Information\" panelindeki değişiklikleri kaydedemez");
 
         softAssert.assertAll();
-       // Driver.closeDriver();
+       Driver.closeDriver();
     }
     public static void scrollToElement(WebDriver driver, WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);

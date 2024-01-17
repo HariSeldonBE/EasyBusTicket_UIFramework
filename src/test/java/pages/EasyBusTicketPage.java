@@ -240,6 +240,20 @@ public class EasyBusTicketPage {
     // Homepage >> Home Linki  -->Huseyin_US115
     @FindBy(xpath = "(//a[normalize-space()='Home'])")
     public WebElement homeLink;
+    @FindBy(xpath = "(//a[@href='javascript::void()'])[2]")
+    public WebElement dropDownSupportRequest;
+    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/ticket/new']")
+    public WebElement linkCreateNew;
+    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/ticket']")
+    public WebElement linkRequests;
+
+    @FindBy(xpath = " //table[@class='booking-table']")
+    public WebElement labelTable;
+    @FindBy(xpath = "(//i[@class='fa fa-desktop'])[1]")
+    public WebElement buttonAction;
+
+    @FindBy(xpath = " (//a[@class='btn btn--base btn-sm'])[1]")
+    public WebElement buttonNewTicket;
 
 
 }

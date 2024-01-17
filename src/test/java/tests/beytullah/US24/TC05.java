@@ -3,68 +3,78 @@ package tests.beytullah.US24;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.ManageUsersDDM;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.ReusableMethods;
+import utilities.*;
 
-public class TC05 {
+import java.time.Duration;
+
+public class TC05 extends TestBaseRapor {
     @Test
-    public void test1(){
+    public void test1() {
         ManageUsersDDM manageUsersDDM = new ManageUsersDDM();
         SoftAssert softAssert = new SoftAssert();
+        extentTest = extentReports.createTest("Send Email linki istene sayfaya ulaştırmıyor", "User Detail sayfasındaki Send Email linkine tıklandığında başka bir lik olan Login Logs'un sayfasına gidiliyor");
 
-        // URL'e gider
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
-        // Admin bilgilerini girer
+        extentTest.info("URL'e gider");
+
         ReusableMethods.adminLoginMethod("admin14", "123123123");
-        // "Manage Users" DDM'ye tıklar
+        extentTest.info("Admin bilgilerini girer");
+
         manageUsersDDM.dropDownManageUsers.click();
         String manageUsersPage=Driver.getDriver().getWindowHandle();
-        // "All Users" linkine tıklar
+        extentTest.info("\"Manage Users\" DDM'ye tıklar");
+
         manageUsersDDM.linkAllUsers.click();
-        // Herhangi bir kullanıcıya tıklar
+        extentTest.info("\"All Users\" linkine tıklar");
+
         manageUsersDDM.linkIlkKullaniciAdi.click();
-        //"User Detail" sayfasında  "User Action" panelinin altındaki
-        // "Login Logs" linkini görüntüler tıklar
+        extentTest.info("Herhangi bir kullanıcıya tıklar");
 
         softAssert.assertTrue(manageUsersDDM.buttonLoginLogs.isDisplayed());
         manageUsersDDM.buttonLoginLogs.click();
-        //"User Login History" sayfasına ulaşır
+        extentTest.info("\"User Detail\" sayfasında  \"User Action\" panelinin altındaki\n" +
+                " \"Login Logs\" linkini görüntüler tıklar");
+
         String expectedTitle1="User Login History";
         String actualTitle1=Driver.getDriver().getTitle();
         softAssert.assertTrue(actualTitle1.contains(expectedTitle1),"User Login History sayfasına ulasılamadi");
+        extentTest.info("URL'e gider");
         Driver.getDriver().navigate().back();
 
-        //"User Detail" sayfasında  "User Action" panelinin altındaki
-        // "Send Email"  linkini görüntüler tıklar
         softAssert.assertTrue(manageUsersDDM.buttonSendEmailUserDetailPage.isDisplayed());
         manageUsersDDM.buttonSendEmailUserDetailPage.click();
-        //"Send Email" sayfası açılır ve email gönderir
+        extentTest.info("\"User Detail\" sayfasında  \"User Action\" panelinin altındaki\n" +
+                "        // \"Send Email\"  linkini görüntüler tıklar");
+
         String expectedTitle2="Send Email";
         String actualTitle2=Driver.getDriver().getTitle();
         softAssert.assertEquals(actualTitle2,expectedTitle2,"Send Email sayfasınsa ulasılamadi");
+        extentTest.info("\"Send Email\" sayfası açılır ve email gönderir");
         Driver.getDriver().navigate().back();
 
-        //"User Detail" sayfasında  "User Action" panelinin altındaki
-        // "Login as User" linkini görüntüler tıklar
         softAssert.assertTrue(manageUsersDDM.buttonLoginAsUser.isDisplayed());
         manageUsersDDM.buttonLoginAsUser.click();
-        //Kullnıcı olarak giriş yapar
-        String expectedTitle3=" Easy Bus Ticket - Dashboard";
-        String actualTitle3=Driver.getDriver().getTitle();
-        softAssert.assertTrue(actualTitle3.contains(expectedTitle3),"Kullanıcı olarak giriş yapılamadı");
 
-        //"User Detail" sayfasında  "User Action" panelinin altındaki
-        // "Email Log" linkini görüntüler tıklar
+        extentTest.info("\"User Detail\" sayfasında  \"User Action\" panelinin altındaki\n" +
+                " \"Login as User\" linkini görüntüler tıklar");
+
+        String expectedUrl="user/detail/";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        JSUtilities.waitForPageLoadWithJS(Driver.getDriver(), Duration.ofSeconds(10));
+        softAssert.assertTrue(actualUrl.contains(expectedUrl),"Kullanıcı olarak giriş yapılamadı");
+        extentTest.info("Kullnıcı olarak giriş yapar");
+
         ReusableMethods.wait(2);
         Driver.getDriver().switchTo().window(manageUsersPage);
         softAssert.assertTrue(manageUsersDDM.buttonEmailLog.isDisplayed());
         manageUsersDDM.buttonEmailLog.click();
-        //"Email log" sayfasına ulaşır
+        extentTest.info("\"User Detail\" sayfasında  \"User Action\" panelinin altındaki\n" +
+                " \"Email Log\" linkini görüntüler tıklar");
+
         String expectedTitle4="Email log";
         String actualTitle4=Driver.getDriver().getTitle();
         softAssert.assertTrue(actualTitle4.contains(expectedTitle4),"Email log sayfasına ulaşılamadı");
-
+        extentTest.info("\"Email log\" sayfasına ulaşır");
         softAssert.assertAll();
         Driver.closeDriver();
     }
