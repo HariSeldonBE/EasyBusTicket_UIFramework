@@ -22,7 +22,7 @@ public class TC03 extends TestBaseRapor {
         // Browser'ı açar
         // URL'e gider
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("addNew TEST", "Add New Counter Test");
 
         AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();

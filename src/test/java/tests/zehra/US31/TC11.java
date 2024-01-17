@@ -41,11 +41,11 @@ public class TC11 {
                 .sendKeys("a bus").perform();
         Select select2 = new Select(adminDashBoard_manageFleetsPage.selectSeat3);
         select2.selectByVisibleText("1 x 3");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
         actions.sendKeys(Keys.TAB).sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
                 .sendKeys("1")
                 .sendKeys(Keys.TAB).sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
-                .sendKeys("9")
+                .sendKeys("8")
                 .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
                 .click()
                 .perform();

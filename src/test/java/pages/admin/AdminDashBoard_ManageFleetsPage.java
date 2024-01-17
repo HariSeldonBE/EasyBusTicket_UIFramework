@@ -55,7 +55,7 @@ public class AdminDashBoard_ManageFleetsPage {
     @FindBy(xpath = "//div[@class='modal-content']")
     public WebElement popapAddSeat;
 
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div/input")
+    @FindBy(xpath = "//input[@class='form-control']")
     public WebElement textboxLayout;
 
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[2]/button[2]")

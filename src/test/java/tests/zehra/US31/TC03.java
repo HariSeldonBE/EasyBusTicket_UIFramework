@@ -44,7 +44,7 @@ public class TC03 {
         
        // "Layout" kutucuğuna koltuk tipini rakam olarak girer
         adminDashBoard_manageFleetsPage.textboxLayout.click();
-        actions.sendKeys("01").perform();
+        actions.sendKeys("07").perform();
 
        // Pencerenin altındaki "Save" butonunu görür ve tıklar
         softAssert.assertTrue(adminDashBoard_manageFleetsPage.buttonSave.isDisplayed(),"save butonu görünmedi");
@@ -52,7 +52,7 @@ public class TC03 {
 
        // Yeni Seat layout'un eklendiğini görür
         System.out.println(getCellData(1,2));
-        softAssert.assertEquals(getCellData(1,2),"0 x 1","eşit değil" );
+        softAssert.assertEquals(getCellData(1,2),"0 x 7","eşit değil" );
 
         softAssert.assertAll();
         ReusableMethods.wait(2);

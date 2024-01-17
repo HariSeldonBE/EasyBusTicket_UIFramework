@@ -37,15 +37,15 @@ public class TC09 extends TestBaseRapor {
 
        // "Add Fleet Type" penceresindeki "No of Deck" kısmına 3'ten büyük bir sayı girer
         adminDashBoard_manageFleetsPage.inputName.click();
-        actions.sendKeys("f bus").perform();
+        actions.sendKeys("FW BUS").perform();
         Select select1 = new Select(adminDashBoard_manageFleetsPage.selectSeat);
         select1.selectByVisibleText("2 x 2");
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).sendKeys("4")
-                .sendKeys(Keys.TAB).sendKeys("11")
-                .sendKeys(Keys.TAB).sendKeys("11")
-                .sendKeys(Keys.TAB).sendKeys("11")
-                .sendKeys(Keys.TAB).sendKeys("11")
+                .sendKeys(Keys.TAB).sendKeys("101")
+                .sendKeys(Keys.TAB).sendKeys("102")
+                .sendKeys(Keys.TAB).sendKeys("12")
+                .sendKeys(Keys.TAB).sendKeys("18")
                 .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
                 .perform();
         ReusableMethods.wait(1);
