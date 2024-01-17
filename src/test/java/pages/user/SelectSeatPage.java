@@ -92,6 +92,9 @@ public class SelectSeatPage {public SelectSeatPage(){PageFactory.initElements(Dr
 
     @FindBy(xpath = "//a[@class='ui-state-default ui-state-active']")
     public WebElement seatJourneyDateSelection;
+    @FindBy(xpath = "//td[@class=\" ui-datepicker-days-cell-over  ui-datepicker-current-day ui-datepicker-today\"]")
+    public WebElement secondSelectedDate;
+
     @FindBy(xpath = "//input[@id='date_of_journey']")
     public WebElement seatJourneyDateBox;
     @FindBy(xpath = "//span[@id='select2-pickup_point-container']")

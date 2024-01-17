@@ -24,21 +24,8 @@ public class TC07 {
     @Test
     public void paymentDogrulamaTesti() {
 
-        // 1-Browser açılır ve Url'e gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        // 2-Cookies kabul edilir
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
-        // 3-SignIn butonuna tıklanır
-        easyBusTicketPage.signInButton.click();
-        ReusableMethods.wait(2);
-        // 4-Geçerli Username girilir
-        UserLoginPage userLoginPage = new UserLoginPage();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        // 5-Geçerli Password girilir
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        // 6-Log In butonuna tıklanır
-        userLoginPage.loginButton.click();
+        // 1-Browser açılır ve Url'e gidilir ve Login olunur
+        ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         userDashBoardPage.bookingDdm.click();
@@ -77,15 +64,18 @@ public class TC07 {
         Assert.assertEquals(selectSeatPage.seatPickup.getText(), pickupSelection);
         // 16- Dropping Point doğru mu kontrol edilir
         Assert.assertEquals(selectSeatPage.seatDropping.getText(), dropSelection);
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        ReusableMethods.wait(1);
 
         // 17-Cinsiyet seçimi yapılır
         selectSeatPage.femaleCheckbox.click();
+
         // 18 - Koltuk seçimi yapılır
-        selectSeatPage.seats.get(8).click();
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        ReusableMethods.wait(2);
+        ReusableMethods.seatSelectionMethod();
+        ReusableMethods.wait(1);
         js.executeScript("arguments[0].scrollIntoView()", selectSeatPage.continueButton);
-        ReusableMethods.wait(2);
+        ReusableMethods.wait(1);
         Object sbTtlPymnt = selectSeatPage.subTotal.get(selectSeatPage.subTotal.size() - 1).getText().replaceAll("\\D", "");
 
 
@@ -119,8 +109,14 @@ public class TC07 {
         // 29-"pay now" butonu görüntülenir ve aktif olduğu doğrulanır
         Assert.assertTrue(selectSeatPage.paymentReviewPayNowButton.isDisplayed());
         Assert.assertTrue(selectSeatPage.paymentReviewPayNowButton.isEnabled());
+        ReusableMethods.wait(1);
+        js.executeScript("arguments[0].scrollIntoView()", selectSeatPage.paymentReviewPayNowButton);
+        ReusableMethods.wait(1);
         // 30-"pay now" butonu tıklanır
         selectSeatPage.paymentReviewPayNowButton.click();
+        ReusableMethods.wait(1);
+        js.executeScript("arguments[0].scrollIntoView()", selectSeatPage.paymentConfirmPayNowButton);
+        ReusableMethods.wait(1);
         // 31-Payment Confirm sayfası açıldığı doğrulanır
         Assert.assertTrue(selectSeatPage.paymentConfirmTitle.isDisplayed());
         // 32- "Name on Card" textbox ında placeholder olarak "Name on Card" yazısı görüntülenir
@@ -139,9 +135,6 @@ public class TC07 {
         Assert.assertTrue(selectSeatPage.validCardNumber.isEnabled());
         // 37-"Card Number" textbox ına 16 haneli geçerli kart numarası girilir
         selectSeatPage.validCardNumber.sendKeys(ConfigReader.getProperty("validCardNumber"));
-        js.executeScript("arguments[0].scrollIntoView()", selectSeatPage.paymentConfirmPayNowButton);
-        ReusableMethods.wait(2);
-
         // 38 - "Expiration Date" textbox ında place holder olarak "MM/YYYY" yazısı görüntülenir
         Assert.assertTrue(selectSeatPage.expirationDate.isDisplayed());
         // 39 - "Expiration Date" textbox ının aktif olduğu doğrulanır
@@ -178,7 +171,6 @@ public class TC07 {
         // 52-Booking Histosy sayfasında tutar kontrol edilir
         Object fare = bookingHistoryPage.subTotalControl.getText().replaceAll(".00 USD", "");
         Assert.assertEquals(fare, sbTtlPymnt);
-
         // 53-Action kısmının altında bulunan yazıcı ikonu görüntülenir ve aktif olduğu doğrulanır
         Assert.assertTrue(selectSeatPage.yaziciIkonu.isDisplayed());
         Assert.assertTrue(selectSeatPage.yaziciIkonu.isEnabled());
@@ -196,16 +188,16 @@ public class TC07 {
                 Assert.assertTrue(bookingHistoryPage.downloadTicket.isEnabled());
                 // 57-Download Ticket tıklanır
                 bookingHistoryPage.downloadTicket.click();
+                ReusableMethods.wait(2);
 
                 break;
             }
 
+
         }
 
-         String pdfFilePath = "file:///C:/Users/ATALAY/Downloads/testerteam2_1704836836.pdf";
-        boolean isPrintable = ReusableMethods.isPdfPrintable(pdfFilePath);
-        System.out.println("PDF yazdırılabilir:"+isPrintable);
         Driver.closeDriver();
+
     }
 
 

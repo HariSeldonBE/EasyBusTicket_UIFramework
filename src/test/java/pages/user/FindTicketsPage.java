@@ -39,7 +39,7 @@ public class FindTicketsPage {
     public WebElement droppingPointSelectionaktarma;
     @FindBy(xpath = "(//option[@value='1'])[2]")
     public WebElement droppingPointNegatifSelection;
-    @FindBy(xpath = "(//td[@data-handler='selectDay'])[18]")
+    @FindBy(xpath = "(//td[@data-handler='selectDay'])[26]")
     public WebElement dateOfJourneySelection;
     @FindBy(xpath = "(//td[@data-handler='selectDay'])[10]")
     public WebElement dateOfJourneyNegatifSelection;

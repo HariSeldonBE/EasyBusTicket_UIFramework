@@ -18,22 +18,8 @@ public class TC06 {
     @Test
     public void selectSeatDogrulamaPozitifTesti(){
 
-        // 1-Browser açılır ve Url'e gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        // 2-Cookies kabul edilir
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        if (easyBusTicketPage.cookiesButton.isDisplayed()){
-        easyBusTicketPage.cookiesButton.click();}
-        // 3-SignIn butonuna tıklanır
-        easyBusTicketPage.signInButton.click();
-        ReusableMethods.wait(2);
-        // 4-Geçerli Username girilir
-        UserLoginPage userLoginPage = new UserLoginPage();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        // 5-Geçerli Password girilir
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        // 6-Log In butonuna tıklanır
-        userLoginPage.loginButton.click();
+        // 1-Browser açılır ve Url'e gidilir ve Login olunur
+        ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         userDashBoardPage.bookingDdm.click();
@@ -70,15 +56,10 @@ public class TC06 {
         Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
         // 16- Dropping Point doğru mu kontrol edilir
         Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
-
-
-
-
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        ReusableMethods.wait(2);
-        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
+        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        ReusableMethods.wait(1);
         SoftAssert softAssert = new SoftAssert();
-        ReusableMethods.wait(2);
         // 16 - Rezerve edilen koltuklardan koltuk seçimi yapılamadığı doğrulanır
 
         if(!selectSeatPage.ladiesSelectedSeats.isEmpty()){

@@ -1,6 +1,7 @@
 package tests.simge.US13;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.EasyBusTicketPage;
@@ -16,21 +17,8 @@ public class TC24 {
     @Test
     public void expirationDateNegatifTestiBoslukHiclikKarakterHarfGirisi(){
 
-        // 1-Browser açılır ve Url'e gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        // 2-Cookies kabul edilir
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
-        // 3-SignIn butonuna tıklanır
-        easyBusTicketPage.signInButton.click();
-        ReusableMethods.wait(2);
-        // 4-Geçerli Username girilir
-        UserLoginPage userLoginPage = new UserLoginPage();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        // 5-Geçerli Password girilir
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        // 6-Log In butonuna tıklanır
-        userLoginPage.loginButton.click();
+        // 1-Browser açılır ve Url'e gidilir ve login olunur
+        ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         userDashBoardPage.bookingDdm.click();
@@ -58,6 +46,9 @@ public class TC24 {
         ReusableMethods.wait(2);
         // 13-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView()",findTicketsPage.selectSeatButton);
+        ReusableMethods.wait(1);
         // 14- Select Seat butonu tıklanır
         findTicketsPage.selectSeatButton.click();
         ReusableMethods.wait(2);
@@ -69,19 +60,17 @@ public class TC24 {
         Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
         // 16- Dropping Point doğru mu kontrol edilir
         Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+
+        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        ReusableMethods.wait(1);
         // 21-Cinsiyet seçimi yapılır
         selectSeatPage.femaleCheckbox.click();
-
-
-
         // 24 - Koltuk seçimi yapılır
+        ReusableMethods.seatSelectionMethod();
 
-        selectSeatPage.seats.get(11).click();
 
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        ReusableMethods.wait(2);
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
-
+        ReusableMethods.wait(1);
 
 
 
@@ -100,9 +89,13 @@ public class TC24 {
 
         //28-"Confirm" butonu tıklanır
         selectSeatPage.paymentByStripeHostedConfirm.click();
+        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentReviewPayNowButton);
+        ReusableMethods.wait(1);
 
         //32-"pay now" butonu tıklanır
         selectSeatPage.paymentReviewPayNowButton.click();
+        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
+        ReusableMethods.wait(1);
 
         //9-"Name on Card" textbox ına isim soyisim yazılır
         selectSeatPage.nameOnCard.sendKeys(ConfigReader.getProperty("nameOnCard"));
@@ -110,9 +103,6 @@ public class TC24 {
 
         //12-"Card Number" textbox ına 16 haneli geçerli kart numrası girilir
         selectSeatPage.validCardNumber.sendKeys(ConfigReader.getProperty("validCardNumber"));
-
-        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
-        ReusableMethods.wait(2);
 
         //14 - "Expiration Date" textbox ına bosluk/hiclik/karakter/harf girilir
         selectSeatPage.expirationDate.sendKeys(" ");
@@ -126,8 +116,8 @@ public class TC24 {
 
         //18-"PAY NOW" butonu tıklanır
         selectSeatPage.paymentConfirmPayNowButton.click();
-        String expectedURL="https://qa.easybusticket.com/user/booked-ticket/history";
-        Assert.assertNotEquals(Driver.getDriver().getCurrentUrl(),expectedURL,"Bug var");
+        String expectedURL="https://qa.easybusticket.com/user/ticket-booking/payment/confirm";
+        Assert.assertEquals(Driver.getDriver().getCurrentUrl(),expectedURL,"Bug var");
         ReusableMethods.wait(2);
 
         Driver.closeDriver();
