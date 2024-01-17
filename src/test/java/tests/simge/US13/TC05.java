@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.FindTicketsPage;
 import pages.user.SelectSeatPage;
@@ -17,7 +18,7 @@ import utilities.ReusableMethods;
 public class TC05 {
     @Test
     public void selectSeatNegatifTesti(){
-
+        SoftAssert softAssert = new SoftAssert();
         // 1-Browser açılır ve Url'e gidilir ve Login olunur
         ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
@@ -51,11 +52,11 @@ public class TC05 {
         SelectSeatPage selectSeatPage = new SelectSeatPage();
         // 14- Journey Date doğru mu kontrol edilir
         selectSeatPage.seatJourneyDateBox.click();
-        Assert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate);
+        softAssert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate,"Secilen tarih uyusmuyor");
         // 15- Pickup Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
+        softAssert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup,"Secilen pickup point uyusmuyor");
         // 16- Dropping Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        softAssert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping,"Secilen dropping point uyusmuyor");
 
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
@@ -67,7 +68,7 @@ public class TC05 {
         selectSeatPage.continueButton.click();
         ReusableMethods.wait(2);
         // 18-"Select at least one seat" hatası verir
-        Assert.assertTrue(selectSeatPage.seatSelectionError.isDisplayed());
+        softAssert.assertTrue(selectSeatPage.seatSelectionError.isDisplayed(),"Error görüntülenmedi");
         // 19-Koltuk seçimi yapılır
         ReusableMethods.seatSelectionMethod();
         // 20-"Continue" butonu tıklanır
@@ -78,18 +79,18 @@ public class TC05 {
         ReusableMethods.wait(2);
 
         // 22-"The gender field is required" hatası verir
-        Assert.assertTrue(selectSeatPage.genderSelectError.isDisplayed());
+        softAssert.assertTrue(selectSeatPage.genderSelectError.isDisplayed(),"Error görüntülenmedi");
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
         ReusableMethods.wait(2);
         // 23-Journey Date doğru mu kontrol edilir
 
         selectSeatPage.seatJourneyDateBox.click();
         Object secondDate=selectSeatPage.secondSelectedDate.getText();
-        Assert.assertEquals(secondDate,selectedDate,"Bug var");
+        softAssert.assertEquals(secondDate,selectedDate,"Secilen tarih uyusmuyor");
         // 24- Pickup Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
+        softAssert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup,"Secilen pickup point uyusmuyor");
         // 25- Dropping Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        softAssert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping,"Secilen dropping point uyusmuyor");
         // 26-Cinsiyet seçimi yapılır
         selectSeatPage.femaleCheckbox.click();
         ReusableMethods.wait(2);
@@ -102,8 +103,9 @@ public class TC05 {
         // 29-"Confirm" butonu tıklanır
         selectSeatPage.confirmBookingButton.click();
         // 30-Payment Methods sayfası açıldığı doğrulanır
-        Assert.assertTrue(selectSeatPage.paymentMethodsTitle.isDisplayed());
+        softAssert.assertTrue(selectSeatPage.paymentMethodsTitle.isDisplayed(),"Payment Methods açılmadı");
         ReusableMethods.wait(2);
+        softAssert.assertAll();
 
         Driver.closeDriver();
 
