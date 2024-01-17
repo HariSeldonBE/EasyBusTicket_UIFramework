@@ -18,21 +18,8 @@ public class TC04 {
     @Test
     public void selectSeatDogrulamaTesti(){
         SoftAssert softAssert=new SoftAssert();
-        // 1-Browser açılır ve Url'e gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        // 2-Cookies kabul edilir
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
-        // 3-SignIn butonuna tıklanır
-        easyBusTicketPage.signInButton.click();
-        ReusableMethods.wait(2);
-        // 4-Geçerli Username girilir
-        UserLoginPage userLoginPage = new UserLoginPage();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        // 5-Geçerli Password girilir
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        // 6-Log In butonuna tıklanır
-        userLoginPage.loginButton.click();
+        // 1-Browser açılır ve Url'e gidilir ve Login olunur
+        ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü tıklanır
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         userDashBoardPage.bookingDdm.click();
@@ -86,17 +73,20 @@ public class TC04 {
         Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
         // 22- Dropping Point doğru mu kontrol edilir
         Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        ReusableMethods.wait(1);
 
         // 23 - Koltuk numaraları checkbox larının görünür ve aktif olduğu doğrulanır
-        for (int i = 1; i < 34; i++) {
+        for (int i = 1; i < 33; i++) {
             selectSeatPage.seats.get(i).isDisplayed();
             selectSeatPage.seats.get(i).isEnabled();
         }
 
-          JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-          js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
 
-        // 24 - Koltuk seçimi yapılır
+
+
+        // 24 - Koltuk seçimi yapılır(Burada tarih seçimi önemli!!! Bütün koltukların boş olduğu tarih seçilmeli)
         for (int i = 0; i < 15; i++) {
             selectSeatPage.seats.get(i).click();
             ReusableMethods.wait(1);
@@ -133,7 +123,7 @@ public class TC04 {
         }
         js.executeScript("window.scrollBy(0,arguments[0])",500);
         ReusableMethods.wait(1);
-        for (int i = 15; i < 33; i++) {
+        for (int i = 15; i < selectSeatPage.seats.size(); i++) {
             selectSeatPage.seats.get(i).click();
             ReusableMethods.wait(1);
             // 33-Cinsiyet seçimi yapılır

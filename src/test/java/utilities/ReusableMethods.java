@@ -7,7 +7,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.EasyBusTicketPage;
 import pages.admin.AdminLoginPage;
+import pages.user.SelectSeatPage;
+import pages.user.UserLoginPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -402,32 +405,66 @@ public class ReusableMethods {
         adminLoginPage.passwordBox.sendKeys(adminPassword);
         adminLoginPage.loginButton.click();
     }
+    //2 sekme için
     public static void switchToNewTab(){
         for(String handle:Driver.getDriver().getWindowHandles()){
             Driver.getDriver().switchTo().window(handle);
         }
     }
-    public static boolean isPdfPrintable(String pdfFilePath) {
-        boolean b =true;
-        try {
-            File file = new File(pdfFilePath);
+    public static void seatSelectionMethod(){
+        SelectSeatPage selectSeatPage= new SelectSeatPage();
+        for (int i = 0; i < selectSeatPage.seats.size(); i++) {
+            if (selectSeatPage.selectedSeats.size()==2){
+                break;}
 
-            // PDF belgesini aç
-            PDDocument document = PDDocument.load(file);
+            if (!selectSeatPage.ladiesSelectedSeats.isEmpty()) {
+                for (WebElement ladiesSelectedSeat : selectSeatPage.ladiesSelectedSeats) {
+                    if (ladiesSelectedSeat.getText().equals(selectSeatPage.seats.get(i).getText())) {
+                        break;
+                    }
 
-            // PDF belgesinin sayfa sayısını al
-            int pageCount = document.getNumberOfPages();
+                }
+            }
+            if (!selectSeatPage.gentsSelectedSeats.isEmpty()) {
+                for (WebElement gentsSelectedSeat : selectSeatPage.gentsSelectedSeats) {
+                    if (gentsSelectedSeat.getText().equals(selectSeatPage.seats.get(i).getText())) {
+                        break;
+                    }
+                }
+            }
+            if (!selectSeatPage.othersSelectedSeats.isEmpty()) {
+                for (WebElement othersSelectedSeat : selectSeatPage.othersSelectedSeats) {
+                    if (othersSelectedSeat.getText().equals(selectSeatPage.seats.get(i).getText())) {
+                        break;
+                    }
+                }
+            } else {
+                selectSeatPage.seats.get(i).click();
+                ReusableMethods.wait(1);
 
-            // PDF belgesini kapat
-            document.close();
-
-            // PDF belgesinin sayfa sayısı 0'dan büyükse yazdırılabilir kabul edilir
-            if(pageCount > 0) b=true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            b=false;
+            }
         }
-        return b;
-    }
 
+    }
+    public static void userLoginButton(){
+        // 1-Browser açılır ve Url'e gidilir
+        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+        // 2-Cookies kabul edilir
+        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        if(easyBusTicketPage.cookiesButton.isDisplayed()) {
+            easyBusTicketPage.cookiesButton.click();
+        }
+
+        // 3-SignIn butonuna tıklanır
+        easyBusTicketPage.signInButton.click();
+        ReusableMethods.wait(2);
+        // 4-Geçerli Username girilir
+        UserLoginPage userLoginPage = new UserLoginPage();
+        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
+        // 5-Geçerli Password girilir
+        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
+        // 6-Log In butonuna tıklanır
+        userLoginPage.loginButton.click();
+
+    }
     }

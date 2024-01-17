@@ -18,21 +18,8 @@ public class TC05 {
     @Test
     public void selectSeatNegatifTesti(){
 
-        // 1-Browser açılır ve Url'e gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        // 2-Cookies kabul edilir
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
-        // 3-SignIn butonuna tıklanır
-        easyBusTicketPage.signInButton.click();
-        ReusableMethods.wait(2);
-        // 4-Geçerli Username girilir
-        UserLoginPage userLoginPage = new UserLoginPage();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        // 5-Geçerli Password girilir
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        // 6-Log In butonuna tıklanır
-        userLoginPage.loginButton.click();
+        // 1-Browser açılır ve Url'e gidilir ve Login olunur
+        ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         userDashBoardPage.bookingDdm.click();
@@ -82,8 +69,7 @@ public class TC05 {
         // 18-"Select at least one seat" hatası verir
         Assert.assertTrue(selectSeatPage.seatSelectionError.isDisplayed());
         // 19-Koltuk seçimi yapılır
-        selectSeatPage.seats.get(30).click();
-
+        ReusableMethods.seatSelectionMethod();
         // 20-"Continue" butonu tıklanır
         selectSeatPage.continueButton.click();
         ReusableMethods.wait(2);
@@ -96,8 +82,10 @@ public class TC05 {
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
         ReusableMethods.wait(2);
         // 23-Journey Date doğru mu kontrol edilir
+
         selectSeatPage.seatJourneyDateBox.click();
-        Assert.assertEquals(selectSeatPage.seatJourneyDateSelection.getText(),selectedDate);
+        Object secondDate=selectSeatPage.secondSelectedDate.getText();
+        Assert.assertEquals(secondDate,selectedDate,"Bug var");
         // 24- Pickup Point doğru mu kontrol edilir
         Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
         // 25- Dropping Point doğru mu kontrol edilir

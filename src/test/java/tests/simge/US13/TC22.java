@@ -1,6 +1,7 @@
 package tests.simge.US13;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.EasyBusTicketPage;
@@ -16,21 +17,8 @@ public class TC22 {
     @Test
     public void cvcCodeNegatifTesti4HaneliSayiGirisi(){
 
-        // 1-Browser açılır ve Url'e gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        // 2-Cookies kabul edilir
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
-        // 3-SignIn butonuna tıklanır
-        easyBusTicketPage.signInButton.click();
-        ReusableMethods.wait(2);
-        // 4-Geçerli Username girilir
-        UserLoginPage userLoginPage = new UserLoginPage();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        // 5-Geçerli Password girilir
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        // 6-Log In butonuna tıklanır
-        userLoginPage.loginButton.click();
+        // 1-Browser açılır ve Url'e gidilir ve Login olunur
+        ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         userDashBoardPage.bookingDdm.click();
@@ -69,21 +57,15 @@ public class TC22 {
         Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
         // 16- Dropping Point doğru mu kontrol edilir
         Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        ReusableMethods.wait(1);
         // 21-Cinsiyet seçimi yapılır
         selectSeatPage.femaleCheckbox.click();
 
-
-
         // 24 - Koltuk seçimi yapılır
-
-
-
-        selectSeatPage.seats.get(7).click();
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        ReusableMethods.wait(2);
+       ReusableMethods.seatSelectionMethod();
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
-
-
 
 
         // 26-"Continue" butonu tıklanır
@@ -94,16 +76,20 @@ public class TC22 {
 
         // 30-"Confirm" butonu tıklanır
         selectSeatPage.confirmBookingButton.click();
-
+        ReusableMethods.wait(1);
         //32- "Pay Now" butonu tıklanır
         selectSeatPage.paymentMethodsPayNowButton.click();
-        ReusableMethods.wait(2);
+        ReusableMethods.wait(1);
 
         //28-"Confirm" butonu tıklanır
         selectSeatPage.paymentByStripeHostedConfirm.click();
+        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentReviewPayNowButton);
+        ReusableMethods.wait(1);
 
         //32-"pay now" butonu tıklanır
         selectSeatPage.paymentReviewPayNowButton.click();
+        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
+        ReusableMethods.wait(1);
 
         //9-"Name on Card" textbox ına isim soyisim yazılır
         selectSeatPage.nameOnCard.sendKeys(ConfigReader.getProperty("nameOnCard"));
@@ -111,9 +97,6 @@ public class TC22 {
 
         //12-"Card Number" textbox ına 16 haneli geçerli kart numrası girilir
         selectSeatPage.validCardNumber.sendKeys(ConfigReader.getProperty("validCardNumber"));
-
-        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
-        ReusableMethods.wait(2);
 
         //14 - "Expiration Date" textbox ına "MM/YYYY" formatında gecerli tarih girilir
         selectSeatPage.expirationDate.sendKeys(ConfigReader.getProperty("expirationDate"));
@@ -126,7 +109,7 @@ public class TC22 {
         selectSeatPage.paymentConfirmPayNowButton.click();
         ReusableMethods.wait(2);
         Object expected = "Rejected";
-        Assert.assertEquals(selectSeatPage.status.getText(),expected);
+        Assert.assertEquals(selectSeatPage.status.getText(),expected,"Bug var.");
 
 
         Driver.closeDriver();

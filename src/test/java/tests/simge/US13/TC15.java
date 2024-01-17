@@ -1,6 +1,7 @@
 package tests.simge.US13;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.EasyBusTicketPage;
@@ -16,21 +17,8 @@ public class TC15 {
     @Test
     public void validCardNumberNegatifTestiKarakterHiclikBoslukHarf(){
 
-        // 1-Browser açılır ve Url'e gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        // 2-Cookies kabul edilir
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
-        // 3-SignIn butonuna tıklanır
-        easyBusTicketPage.signInButton.click();
-        ReusableMethods.wait(2);
-        // 4-Geçerli Username girilir
-        UserLoginPage userLoginPage = new UserLoginPage();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        // 5-Geçerli Password girilir
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        // 6-Log In butonuna tıklanır
-        userLoginPage.loginButton.click();
+        // 1-Browser açılır ve Url'e gidilir ve Login olunur
+        ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         userDashBoardPage.bookingDdm.click();
@@ -69,6 +57,9 @@ public class TC15 {
         Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
         // 16- Dropping Point doğru mu kontrol edilir
         Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        ReusableMethods.wait(1);
 
         // 17-Cinsiyet seçimi yapılır
         selectSeatPage.femaleCheckbox.click();
@@ -76,15 +67,10 @@ public class TC15 {
 
 
         // 18 - Koltuk seçimi yapılır
-
-
-
-        selectSeatPage.seats.get(8).click();
-
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        ReusableMethods.wait(2);
+        ReusableMethods.seatSelectionMethod();
+        ReusableMethods.wait(1);
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
-
+        ReusableMethods.wait(1);
 
 
 
@@ -103,10 +89,16 @@ public class TC15 {
 
         // 22-"Confirm" butonu tıklanır
         selectSeatPage.paymentByStripeHostedConfirm.click();
+        ReusableMethods.wait(1);
+        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentReviewPayNowButton);
+        ReusableMethods.wait(1);
 
         // 23-"pay now" butonu tıklanır
         selectSeatPage.paymentReviewPayNowButton.click();
-        ReusableMethods.wait(2);
+        ReusableMethods.wait(1);
+        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
+        ReusableMethods.wait(1);
+
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
         // 24-"Name on Card" textbox ına isim soyisim yazılır
         selectSeatPage.nameOnCard.sendKeys(ConfigReader.getProperty("nameOnCard"));
@@ -125,13 +117,11 @@ public class TC15 {
 
         // 27-"CVC Code" textbox ına 3 haneli sayı girilir
         selectSeatPage.cvcCode.sendKeys(ConfigReader.getProperty("cvcCode"));
-
-        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
         // 28-"PAY NOW" butonu tıklanır
         ReusableMethods.wait(1);
         selectSeatPage.paymentConfirmPayNowButton.click();
-        String expectedURL="https://qa.easybusticket.com/user/booked-ticket/history";
-        Assert.assertNotEquals(Driver.getDriver().getCurrentUrl(),expectedURL,"Bug var");
+        String expectedURL="https://qa.easybusticket.com/user/ticket-booking/payment/confirm";
+        Assert.assertEquals(Driver.getDriver().getCurrentUrl(),expectedURL,"Bug var");
         ReusableMethods.wait(2);
 
 

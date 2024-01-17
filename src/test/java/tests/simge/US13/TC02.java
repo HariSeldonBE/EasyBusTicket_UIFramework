@@ -15,21 +15,8 @@ public class TC02 {
     @Test
     public void biletAramaPozitifTesti(){
 
-        // 1-Browser açılır ve Url'e gidilir
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        // 2-Cookies kabul edilir
-        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
-        // 3-SignIn butonuna tıklanır
-        easyBusTicketPage.signInButton.click();
-        ReusableMethods.wait(2);
-        // 4-Geçerli Username girilir
-        UserLoginPage userLoginPage = new UserLoginPage();
-        userLoginPage.usernameBox.sendKeys(ConfigReader.getProperty("userName"));
-        // 5-Geçerli Password girilir
-        userLoginPage.passwordBox.sendKeys(ConfigReader.getProperty("userPass"));
-        // 6-Log In butonuna tıklanır
-        userLoginPage.loginButton.click();
+        // 1-Browser açılır ve Url'e gidilir ve Login olunur
+        ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü tıklanır
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         userDashBoardPage.bookingDdm.click();
@@ -74,6 +61,7 @@ public class TC02 {
         ReusableMethods.wait(2);
         // 19-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
+
         // 20-"Select Seat" butonu görüntülenir ve aktif olduğu doğrulanır
         Assert.assertTrue(findTicketsPage.selectSeatButton.isDisplayed());
         Assert.assertTrue(findTicketsPage.selectSeatButton.isEnabled());
