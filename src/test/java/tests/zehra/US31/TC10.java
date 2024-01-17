@@ -13,10 +13,9 @@ import utilities.TestBaseRapor;
 
 public class TC10 extends TestBaseRapor {
     @Test
-    public void negatifTest(){
+    public void negatifFleetTypeTest02(){
 
-        extentTest=extentReports.createTest("add New Negatif TEST", "Yanlış bilgilerle girilmemesi gerekiyor ");
-
+        extentTest=extentReports.createTest("ZEHRA_Add New Fleet Type Negatif TEST 2", "US_31  TC_10 Yanlış bilgilerle girilmemesi gerekiyor ");
 
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
@@ -26,6 +25,7 @@ public class TC10 extends TestBaseRapor {
         // Browser'ı açar
         // URL'e gider
         ReusableMethods.adminLoginMethod("admin11", "123123123");
+
         // Manage Fleets'e tıklar
         adminDashBoard_manageFleetsPage.linkManageFleets.click();
 
