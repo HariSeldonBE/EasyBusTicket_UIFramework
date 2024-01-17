@@ -1,4 +1,4 @@
-/* package tests.mehmet.US16;
+package tests.mehmet.US16;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -45,4 +45,3 @@ public class TC03 {
 
     }
 }
-*/
