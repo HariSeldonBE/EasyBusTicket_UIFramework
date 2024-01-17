@@ -7,6 +7,7 @@ import pages.user.UserDashBoardPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 public class TC23 {
@@ -86,6 +87,22 @@ public class TC23 {
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
 
+
+//*********************  About Link in Home Page Footer Display Test  **************************************************
+ //
+ softAssert.assertTrue(easyBusTicketPage.footerAboutButton.isDisplayed(), "About Link in Home Page Footer is not displayed");
+ // About Link in Home Page Footer Enable Test
+ softAssert.assertTrue(easyBusTicketPage.footerAboutButton.isEnabled(), "About Link in Home Page Footer is not enabled");
+
+
+ JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.footerAboutButton);
+ String expectedAboutUrl = "https://qa.easybusticket.com/about-us";
+ String actualAboutUrl = Driver.getDriver().getCurrentUrl();
+
+ // About Link in Home Page Footer Url Test
+ softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "About Page is not displayed");
+
+ //*********************************************************************************************************************
 
         softAssert.assertAll();
         Driver.closeDriver();

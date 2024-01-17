@@ -93,11 +93,11 @@ public class TC10 {
         softAssert.assertTrue(easyBusTicketPage.headerBlogButton.isEnabled(), "Blog link in header is not enabled");
 
         easyBusTicketPage.headerBlogButton.click();
-        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
-        String expectedAboutUrl = "https://qa.easybusticket.com/blog";
+        String actualBlogUrl = Driver.getDriver().getCurrentUrl();
+        String expectedBlogUrl = "https://qa.easybusticket.com/blog";
 
         // Blog Page Url Test
-        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "Blog Page is not displayed");
+        softAssert.assertEquals(actualBlogUrl,expectedBlogUrl, "Blog Page is not displayed");
 
 //*****************************************************************************************************************************
 
