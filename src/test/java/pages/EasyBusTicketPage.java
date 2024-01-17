@@ -32,7 +32,7 @@ public class EasyBusTicketPage {
 
 
     //EasyBusTicket Home page header kısmının solundaki "EasyBusTicketLogo"
-    @FindBy(xpath = "(//div[@class='logo'])[1]")
+    @FindBy(xpath = "(//*[@class='logo'])[1]")
     public WebElement easyBusTicketHeaderLogo;
 
     //EasyBusTicket Home page header kısmının sagındaki "Buy Tickets Butonu"
@@ -106,13 +106,13 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//h2[@class='title'])[4]")
     public WebElement recentBlogPostTitle;
 
-    @FindBy(xpath = "(//div[@class='post-thumb'])[1]")
+    @FindBy(xpath = "(//h4/a)[1]")
     public WebElement blogPostImgOne;
 
-    @FindBy(xpath = "(//div[@class='post-thumb'])[2]")
+    @FindBy(xpath = "(//h4/a)[2]")
     public WebElement blogPostImgTwo;
 
-    @FindBy(xpath = "(//div[@class='post-thumb'])[3]")
+    @FindBy(xpath = "(//h4/a)[3]")
     public WebElement blogPostImgThree;
 
     @FindBy(xpath = "(//div[@class='post-content'])[1]")
@@ -233,7 +233,9 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//button[@tabindex='-1'])[2]")
     public WebElement testimonial3;
 
-
+    // Homepage >> Home Linki  -->Huseyin_US115
+    @FindBy(xpath = "(//a[normalize-space()='Home'])")
+    public WebElement homeLink;
 
 
 }

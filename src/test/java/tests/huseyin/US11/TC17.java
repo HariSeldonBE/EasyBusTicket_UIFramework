@@ -1,6 +1,5 @@
 package tests.huseyin.US11;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
@@ -8,9 +7,10 @@ import pages.user.UserDashBoardPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
-public class TC15 {
+public class TC17 {
     @Test
     public void test01(){
 
@@ -87,22 +87,21 @@ public class TC15 {
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
 
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isEnabled(), "Testimonial is not enabled");
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial1);
-        ReusableMethods.wait(2);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial2);
-        ReusableMethods.wait(1);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial3);
-        ReusableMethods.wait(1);
+//***************************************************************************************************************************
+        // Blog Post-2 in Home Page Display Test
+        softAssert.assertTrue(easyBusTicketPage.blogPostImgTwo.isDisplayed(), "Blog Post-2 in Home Page is not displayed");
+        // Blog Post-2 in Home Page Enable Test
+        softAssert.assertTrue(easyBusTicketPage.blogPostImgTwo.isEnabled(), "Blog Post-2 in Home Page is not enabled");
 
+        JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.blogPostImgTwo);
+        String expectedAboutUrl = "https://qa.easybusticket.com/blog/87/traveling-with-technology-making-your-journey-easier-with-apps-and-devices";
+        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
 
+        // Blog Post-2 in Home Page Url Test
+        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "Blog Post-2 in Home Page is not displayed");
+
+//*****************************************************************************************************************************
         softAssert.assertAll();
         Driver.closeDriver();
     }

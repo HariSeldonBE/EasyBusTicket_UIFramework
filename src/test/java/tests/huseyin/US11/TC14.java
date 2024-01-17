@@ -1,6 +1,5 @@
 package tests.huseyin.US11;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
@@ -10,7 +9,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TC15 {
+public class TC14 {
     @Test
     public void test01(){
 
@@ -87,20 +86,21 @@ public class TC15 {
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
 
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isEnabled(), "Testimonial is not enabled");
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        //***************************************************************************************************************************
+        // GET TICKET NOW Button in Home Page Header Display Test
+        softAssert.assertTrue(easyBusTicketPage.homePageGetTicketNowButton.isDisplayed(), "GET TICKET NOW Button in header is not displayed");
+        // GET TICKET NOW Button link in Home Page Header Enable Test
+        softAssert.assertTrue(easyBusTicketPage.homePageGetTicketNowButton.isEnabled(), "GET TICKET NOW Button in header is not enabled");
 
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial1);
-        ReusableMethods.wait(2);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial2);
-        ReusableMethods.wait(1);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial3);
-        ReusableMethods.wait(1);
+        easyBusTicketPage.homePageGetTicketNowButton.click();
+        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
+        String expectedAboutUrl = "https://qa.easybusticket.com/tickets";
+
+        // GET TICKET NOW Button Page Url Test
+        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "GET TICKET NOW Page is not displayed");
+
+//*****************************************************************************************************************************
+
 
 
         softAssert.assertAll();

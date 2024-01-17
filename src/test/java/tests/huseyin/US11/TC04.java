@@ -77,14 +77,17 @@ public class TC04 {
         // User Dashboard Page Url Test
         softAssert.assertEquals(actualUserDBUrl,expectedUserDBUrl, "User Dashboard Url is not confirmed");
         // User Dashboard Page Easy Bus Ticket Logo Display Test
-        softAssert.assertTrue(userDashBoardPage.eBTLogo.isDisplayed(), "Login Button is not displayed");
+        softAssert.assertTrue(userDashBoardPage.eBTLogo.isDisplayed(), "Easy Bus Ticket logo in User Dashboard is not displayed");
         // User Dashboard Page Easy Bus Ticket Logo Enable Test
-        softAssert.assertTrue(userDashBoardPage.eBTLogo.isEnabled(), "Login Button Box is not enabled");
+        softAssert.assertTrue(userDashBoardPage.eBTLogo.isEnabled(), "Easy Bus Ticket Logo in User Dashboard is not enabled");
 
         userDashBoardPage.eBTLogo.click();
 
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
+        // Home Page E-mail Display Test
+        softAssert.assertTrue(easyBusTicketPage.headerEmail.isDisplayed(), "E-mail in header is not displayed");
+
 
 
         softAssert.assertAll();

@@ -1,6 +1,5 @@
 package tests.huseyin.US11;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
@@ -8,9 +7,10 @@ import pages.user.UserDashBoardPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
-public class TC15 {
+public class TC20 {
     @Test
     public void test01(){
 
@@ -87,20 +87,20 @@ public class TC15 {
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
 
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isEnabled(), "Testimonial is not enabled");
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+//***************************************************************************************************************************
+        // Facebook Social Media Button in Home Page Footer Display Test
+        softAssert.assertTrue(easyBusTicketPage.footerFacebookIcon.isDisplayed(), "Facebook Social Media Button in Home Page Footer is not displayed");
+        // Facebook Social Media Button in Home Page Footer Enable Test
+        softAssert.assertTrue(easyBusTicketPage.footerFacebookIcon.isEnabled(), "Facebook Social Media Button in Home Page Footer is not enabled");
 
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial1);
-        ReusableMethods.wait(2);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial2);
-        ReusableMethods.wait(1);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial3);
-        ReusableMethods.wait(1);
+        JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.footerFacebookIcon);
+        String expectedAboutUrl = "https://www.facebook.com/";
+        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
+
+        // Facebook Social Media Button in Home Page Footer Url Test
+        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "Facebook Web Page is not displayed");
+
+        //*****************************************************************************************************************************
 
 
         softAssert.assertAll();
