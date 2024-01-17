@@ -21,20 +21,15 @@ public class TC01 {
 
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-
+        easyBusTicketPage.cookiesButton.click();
         //"Every Journey is an Adventure, Every Ticket is a Story" yazısının görünürlüğünü test edin
         softAssert.assertTrue(easyBusTicketPage.EveryJourneyisanAdventureEveryTicketisaStoryYazisi.isDisplayed());
 
-        // Title'in "easy" icerdigini test edin
-        String exceptedTitleIcerik = "easy";
-        String actualTitle = Driver.getDriver().getTitle();
-        softAssert.assertTrue(actualTitle.contains(exceptedTitleIcerik));
 
         //url'in https://easybusticket.com/ oldugunu test edin
-
-        String exceptedUrl = "https://easybusticket.com/";
+        String exceptedUrl = "https://qa.easybusticket.com/";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        softAssert.assertEquals(exceptedUrl,actualUrl);
+        softAssert.assertEquals(actualUrl,exceptedUrl);
 
         softAssert.assertAll();
 

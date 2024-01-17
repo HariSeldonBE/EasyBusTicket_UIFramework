@@ -9,8 +9,7 @@ import utilities.Driver;
 import javax.xml.xpath.XPath;
 import java.util.List;
 
-public class SelectSeatPage {public SelectSeatPage(){PageFactory.initElements(Driver.getDriver(),this);
-}
+public class SelectSeatPage {public SelectSeatPage(){PageFactory.initElements(Driver.getDriver(),this);}
     @FindBy(xpath = "//input[@name='date_of_journey']")
     public WebElement journeyDate;
 
@@ -91,7 +90,7 @@ public class SelectSeatPage {public SelectSeatPage(){PageFactory.initElements(Dr
     @FindBy(xpath = "(//td[@data-label='Status'])[1]")
     public WebElement status;
 
-    @FindBy(xpath = " //a[@class='ui-state-default ui-state-highlight ui-state-active ui-state-hover']")
+    @FindBy(xpath = "//a[@class='ui-state-default ui-state-active']")
     public WebElement seatJourneyDateSelection;
     @FindBy(xpath = "//input[@id='date_of_journey']")
     public WebElement seatJourneyDateBox;
@@ -103,4 +102,20 @@ public class SelectSeatPage {public SelectSeatPage(){PageFactory.initElements(Dr
     public WebElement firstSelectedDate;
    @FindBy(xpath = "//span[@class='seat']")
     public WebElement koltuk;
+    @FindBy(xpath = "(//p[@class='place'])[1]")
+    public WebElement aktarmali1;
+    @FindBy(xpath = "(//p[@class='place'])[2]")
+    public WebElement aktarmali2;
+    @FindBy(xpath = "(//p[@class='place'])[4]")
+    public WebElement aktarmali4;
+    @FindBy(xpath = "//p[@class='iziToast-message slideIn']")
+    public WebElement seatSelectionError2;
+    @FindBy(xpath = "//span[@class='rear']")
+    public WebElement rear;
+    @FindBy(xpath = "//img[@src=\"https://qa.easybusticket.com/assets/images/logoIcon/logo_2.png\"]")
+    public WebElement logo;
+    @FindBy(xpath = "//span[@data-seat=\"1-F1\"]")
+    public WebElement F1;
+
+
 }

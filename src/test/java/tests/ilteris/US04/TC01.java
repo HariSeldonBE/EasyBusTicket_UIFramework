@@ -10,20 +10,30 @@ public class TC01 {
 
     @Test
     public void footerGörüntülemeTesti() {
-/*
+
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
         SoftAssert softAssert = new SoftAssert();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        easyBusTicketPage.cookiesButton.click();
 
-        String expectedURl="https://easybusticket.com/";
-        String actualUrl=Driver.getDriver().getCurrentUrl();
-        softAssert.assertEquals(actualUrl,expectedURl);
+        //url'in https://easybusticket.com/ oldugunu test edin
+        String exceptedUrl = "https://qa.easybusticket.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,exceptedUrl);
+
+        //Easy Bus Ticket home page footer kısmı görününürlüğünü test edin
+        softAssert.assertTrue(easyBusTicketPage.sosyalMedyaIcons.isDisplayed());
+        softAssert.assertTrue(easyBusTicketPage.usefulLinksTitle.isDisplayed());
+        softAssert.assertTrue(easyBusTicketPage.policiesTitle.isDisplayed());
+        softAssert.assertTrue(easyBusTicketPage.contactInfoTitle.isDisplayed());
+        softAssert.assertTrue(easyBusTicketPage.easyBusTicketFooterLogo.isDisplayed());
 
 
+        softAssert.assertAll();
 
+        Driver.closeDriver();
 
- */
     }
 }

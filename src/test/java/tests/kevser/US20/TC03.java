@@ -26,6 +26,7 @@ public class TC03 {
         easyBusTicketPage.forgotPasswordLink.click();
         // DDM'de Username seçeneği kullanılarak, reset password code alınır.
         ResetPasswordPage resetPasswordPage = new ResetPasswordPage();
+        ReusableMethods.wait(2);
         resetPasswordPage.selectOneDDM.click();
         Select selectUsername = new Select(resetPasswordPage.selectOneDDM);
         selectUsername.selectByValue("username");

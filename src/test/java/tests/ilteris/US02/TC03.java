@@ -5,35 +5,41 @@ import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class TC03 {
 
-    /*@Test
+    @Test
     public void headerSignInVeSignUpButonTestleri() {
 
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        SoftAssert softAssert = new SoftAssert();
+        easyBusTicketPage.cookiesButton.click();
 
-       // SoftAssert softAssert = new SoftAssert();
-        //EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-
-        String exceptedUrl = "https://easybusticket.com/";
+        //url'in https://easybusticket.com/ oldugunu test edin
+        String exceptedUrl = "https://qa.easybusticket.com/";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        softAssert.assertEquals(exceptedUrl,actualUrl);
+        softAssert.assertEquals(actualUrl,exceptedUrl);
 
-        //Sosyal Medya icon'larının görüntülendigini ve aktifligini doğrulayın
+
         softAssert.assertTrue(easyBusTicketPage.signInButton.isDisplayed());
         easyBusTicketPage.signInButton.click();
-        String signInExceptedTitle = "Sign In your Account";
-        String signInActualTitle = Driver.getDriver().getTitle();
-        softAssert.assertTrue(signInActualTitle.contains(signInExceptedTitle));
+        ReusableMethods.wait(1);
+        String signInExceptedUrl = "https://qa.easybusticket.com/login";
+        String signInActualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(signInActualUrl,signInExceptedUrl);
         Driver.getDriver().navigate().back();
 
+        ReusableMethods.wait(6);
+
         softAssert.assertTrue(easyBusTicketPage.signUpButton.isDisplayed());
-        easyBusTicketPage.signInButton.click();
-        String signUpExceptedTitle = "Sign Up your Account";
-        String signUpActualTitle = Driver.getDriver().getTitle();
-        softAssert.assertTrue(signUpActualTitle.contains(signUpExceptedTitle));
+        easyBusTicketPage.signUpButton.click();
+        ReusableMethods.wait(1);
+        String signUpExceptedUrl = "https://qa.easybusticket.com/register";
+        String signUpActualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(signUpActualUrl,signUpExceptedUrl);
         Driver.getDriver().navigate().back();
 
 
@@ -44,5 +50,5 @@ public class TC03 {
         Driver.closeDriver();
 
 
-    }*/
+    }
 }

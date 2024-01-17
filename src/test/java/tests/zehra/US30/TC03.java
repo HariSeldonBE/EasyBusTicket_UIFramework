@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
+import pages.admin.AdminDashBoardPage;
 
 import pages.admin.AdminDashBoard_CounterPage;
 import utilities.Driver;
@@ -22,7 +22,7 @@ public class TC03 extends TestBaseRapor {
         // Browser'ı açar
         // URL'e gider
 
-        extentTest=extentReports.createTest("CounterLinki TEST", " admin tests counterlinki ");
+        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
 
         AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
@@ -30,11 +30,10 @@ public class TC03 extends TestBaseRapor {
         Actions actions = new Actions(Driver.getDriver());
         
         ReusableMethods.adminLoginMethod("admin11","123123123");
+        extentTest.info("User goes to \"Easy Bus Ticket Admin\" Dashboard");
 
         // "Counter" linkine tıklar
         adminDashBoard_counterPage.linkCounter.click();
-
-        extentTest.info("Easybusticket/admin/homepage");
 
         // Açılan sayfada "Add New" butonunu görüntüler
         softAssert.assertTrue(adminDashBoard_counterPage.counterAddNewButton.isDisplayed(),"Add New butonu görünmüyor");
@@ -73,13 +72,15 @@ public class TC03 extends TestBaseRapor {
        // System.out.println("Last row data: " + rowData);
         String[] rowDataArray = rowData.split(" ");
         softAssert.assertEquals(rowDataArray[0],fakerName,"Girilen isim kayıtlı isim ile aynı değil");
+        extentTest.pass("Tests the visibility of the 'new Counter' text");
 
         // Counter bigilerini görüntüler
         System.out.println(Arrays.toString(rowDataArray));
-        //System.out.println(adminDashBoardPage.counterHata.getText());//Counter save successfully.
+
         softAssert.assertAll();
+        extentTest.info("Closed page");
         Driver.quitDriver();
-        extentTest.pass("counter linki görünüyor");
+
     }
 
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
+import pages.admin.AdminDashBoardPage;
 import pages.admin.AdminDashBoard_CounterPage;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -43,7 +43,7 @@ public class TC06 {
         // System.out.println("Last row data: " + rowData);
         String[] rowDataArray = rowData.split(" ");
         System.out.println(rowData);
-        if (rowDataArray[6].equals("Active")) {
+        if (rowDataArray[5].equals("Active")) {
             // softAssert.assertEquals(rowDataArray[4],"Active","Disabled");
 
             // Active ikonuna tıklar ve açılan pencereden Disable butonuna tıklar
@@ -60,7 +60,7 @@ public class TC06 {
             String[] rowDataArray1 = rowData1.split(" ");
             System.out.println(rowData1);
 
-            softAssert.assertEquals(rowDataArray1[6],"Disabled","Active");
+            softAssert.assertEquals(rowDataArray1[5],"Disabled","Active");
 
         }else { adminDashBoard_counterPage.ikonCounterActiveDisable.click();
             adminDashBoard_counterPage.buttonActive.click();
@@ -75,7 +75,7 @@ public class TC06 {
             String[] rowDataArray1 = rowData1.split(" ");
             System.out.println(rowData1);
 
-            softAssert.assertEquals(rowDataArray1[6],"Active","Disabled");
+            softAssert.assertEquals(rowDataArray1[5],"Active","Disabled");
         }
 
 

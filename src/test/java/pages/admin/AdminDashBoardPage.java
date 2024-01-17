@@ -149,17 +149,9 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//input[@class='form-control'])[2]")
     public WebElement scheduleAddNewEndAtBox;
 
-    // schedule sayfasındaki Add New Pop-up sayfasındaki "Save" butonu
-    @FindBy(xpath = "(//button[@class='btn btn--primary'])[1]")
-    public WebElement scheduleAddNewSaveButton;
-
     // schedule sayfasındaki Listenin 1. satırındaki Kalem butonu
     @FindBy(xpath = "(//button[@class='icon-btn ml-1 editBtn'])[1]")
     public WebElement scheduleFirstRowPenButton;
-
-    // schedule sayfasındaki Listenin 1. satırındaki disable butonu
-    @FindBy(xpath = "(//button[@class='icon-btn btn--danger ml-1 disableBtn '])[1]")
-    public WebElement scheduleFirstRawDisableButton;
 
     // schedule sayfasındaki Update schedule pop-up sayfasındaki "Start From" input boxu
     @FindBy(xpath = "(//input[@class='form-control'])[3]")
@@ -169,23 +161,125 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//input[@class='form-control'])[4]")
     public WebElement scheduleupdatePopUpEndAtBox;
 
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki start from boxuna basinca cikan clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[11]")
-    public WebElement scheduleUpdatePopUpStartFromClockPickerElement;
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki start from boxuna basinca cikan 2. clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[36]")
-    public WebElement scheduleUpdatePopUpStartFromSecondClockPickerElement;
-
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki End At boxuna basinca cikan ilk clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[51]")
-    public WebElement scheduleUpdatePopUpEndAtClockPickerElement;
-    // schedule sayfasındaki Update schedule pop-up sayfasındaki End At boxuna basinca cikan 2. clock-picker
-    @FindBy(xpath = "(//div[@class='clockpicker-tick'])[72]")
-    public WebElement scheduleUpdatePopUpEndAtSecondClockPickerElement;
-
     // schedule sayfasındaki Update schedule pop-up sayfasındaki Update
     @FindBy(xpath = "(//button[@class='btn btn--primary'])[2]")
     public WebElement scheduleUpdatePopUpUpdateButton;
+
+    // admin dashboard sayfasının sağ üstündeki profile butonu
+    @FindBy(xpath = "(//button[@type='button'])[6]")
+    public WebElement adminDashboardProfileButton;
+
+    // schedule sayfasındaki listenin 1. satırındaki status'taki active elementi
+    @FindBy(xpath = "(//span[text()='Active'])[1]")
+    public WebElement scheduleFirstRowActiveElement;
+
+    // schedule sayfasındaki listenin 1. satırındaki action kısmındaki disable butonu
+    @FindBy(xpath = "(//button[@class='icon-btn btn--danger ml-1 disableBtn '])[1]")
+    public WebElement scheduleFirstRowDisableButton;
+
+    // schedule sayfasındaki disable butonuna basilinca cikan pop-up sayfadaki disable butonu
+    @FindBy(xpath = "(//button[@class='btn btn--danger'])[1]")
+    public WebElement scheduleDisablePopUpDisableButton;
+
+    // schedule sayfasındaki listenin 1. satırındaki status'taki disabled elementi
+    @FindBy(xpath = "(//span[text()='Disabled'])[1]")
+    public WebElement scheduleFirstRowDisabledElement;
+
+    // ticket price sayfasındaki listenin 1. satırındaki fleet type
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]")
+    public WebElement tpFleetTypeElement;
+
+    // ticket price sayfasındaki add new butonu
+    @FindBy(xpath = "//a[@class='btn btn-sm btn--primary box--shadow1 text--small']")
+    public WebElement tpAddNewButton;
+
+    // ticket price add new sayfasındaki fleet type kutusu
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[1]")
+    public WebElement tpAddNewFleetTypeBox;
+
+    // ticket price add new sayfasındaki fleet type kutusu
+    @FindBy(xpath = "(//select[@class='select2-basic select2-hidden-accessible'])[1]")
+    public WebElement tpAddNewFleetTypeSelect;
+
+    // ticket price add new sayfasındaki route kutusu
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[2]")
+    public WebElement tpAddNewRouteBox;
+
+    // ticket price add new sayfasındaki route kutusu
+    @FindBy(xpath = "(//select[@class='select2-basic select2-hidden-accessible'])[2]")
+    public WebElement tpAddNewRouteSelect;
+
+    // ticket price add new sayfasındaki price kutusu
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement tpAddNewPriceBox;
+
+    // ticket price add new sayfasındaki save butonu
+    @FindBy(xpath = "//button[text()='Save                                ']")
+    public WebElement tpAddNewSaveButton;
+
+    // ticket price add new sayfasındaki go back butonu
+    @FindBy(xpath = "(//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn'])[1]")
+    public WebElement tpAddNewGoBackButton;
+
+    //ticket price add new sayfasındaki sonradan cikan price kutusu
+    @FindBy(xpath = "(//input[@id='point-2'])[1]")
+    public WebElement tpAddNewSecondPriceBox;
+
+    // ticket price sayfasındaki listenin 1. satırındaki edit butonu
+    @FindBy(xpath = "(//a[@class='icon-btn ml-1'])[1]")
+    public WebElement tpFirstRowEditButton;
+
+    // ticket price edit sayfasındaki price input box
+    @FindBy(xpath = "(//input[@id='point-1'])[1]")
+    public WebElement tpEditPagePriceInputBox;
+
+    // ticket prive edit sayfasındaki update butonu
+    @FindBy(xpath = "(//button[text()='Update'])[1]")
+    public WebElement tpEditPageUpdateButton;
+
+    // ticket price edit sayfasındaki go back butonu
+    @FindBy(xpath = "(//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn'])[1]")
+    public WebElement tpEditPageGoBackButton;
+
+    // ticket price sayfasındaki listenin 1. satırındaki delete butonu
+    @FindBy(xpath = "(//button[@class='ml-1 icon-btn btn--danger removeBtn '])[1]")
+    public WebElement tpFirstRowDeleteButton;
+
+    // ticket price delet pop-up sayfasındaki delete butonu
+    @FindBy(xpath = "(//button[@class='btn btn--danger'])[1]")
+    public WebElement tpDeletePopUpDeletButton;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tpFirstRowRouteElement;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
+    public WebElement tpFirstRowPriceElement;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div/div/table/tbody")
@@ -772,7 +866,7 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[1]/td[3]/a[1]")
     public WebElement duzenleButonu;
 
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[1]/td[3]/a[1]/i")
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[2]/div/table/tbody/tr[2]/td[3]/a[1]/i")
     public WebElement iPencil;
 
     // boşluk
@@ -842,9 +936,9 @@ public class AdminDashBoardPage {
 
     @FindBy(xpath = "//input[@type='text']")
     public WebElement inputSearch3;
-    
+
     // ip location sayfasında 
-    
+
     @FindBy(xpath = "//button[@id='btn-click'][1]")
     public WebElement locationbuttonClick;
 
@@ -852,7 +946,6 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div[2]/div/div[1]/div[3]/div/div[3]/div/div/div[1]/div/table/tbody/tr[6]/td")
     public WebElement td2;
 
-    
 
     //
     // ====================== REPORTS >> EMAıl HISTORY================================= //
@@ -889,15 +982,184 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]/a/i")
     public WebElement iDesktop;
 
+    //
+    // ====================== SUPPORT REQUESTS >> ALL REQUEST ================================= //
+    //
+
+    // Support request butonu
+    @FindBy(xpath = "//span[text()='Support Requests']")
+    public WebElement supportRequestButton;
+
+    // All request butonu
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[6]/div/ul/li[1]/a/span")
+    public WebElement spanAllRequests;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thSubject2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thSubmitted;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thStatus7;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thPriority;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thLastReply;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thAction3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]/span")
+    public WebElement spanOpen;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/span")
+    public WebElement spanHigh;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]")
+    public WebElement tdLastReply;
+
+    //action butonu
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[6]/a/i")
+    public WebElement actionbutonu;
 
 
+    //
+    // ====================== SUPPORT REQUESTS >> PENDING REQUEST ================================= //
+    //
 
-    
-    
+    // PENDING REQUESTS BUTONU
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[6]/div/ul/li[2]/a/span[1]")
+    public WebElement spanPendingRequests;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thSubject3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thSubmitted2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thStatus8;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thPriority2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thLastReply2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thAction4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/span")
+    public WebElement spanHigh2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]")
+    public WebElement tdLastReply2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]/span")
+    public WebElement spanOpen2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tdSubmitted;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]")
+    public WebElement tdSubject2;
 
 
+    //
+    // ====================== SUPPORT REQUESTS >> CLOSED REQUEST ================================= //
+    //
 
 
+    // CLOSED REQUEST BUTONU
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[6]/div/ul/li[3]/a/span")
+    public WebElement spanClosedRequests;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thSubject4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thSubmitted3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thStatus9;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thPriority3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thLastReply3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thAction5;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]")
+    public WebElement tdSubject3;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tdSubmitted2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
+    public WebElement tdStatus4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]")
+    public WebElement tdPriority;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]")
+    public WebElement tdLastReply3;
+
+
+    //
+    // ====================== SUPPORT REQUESTS >> ANSWERED REQUEST ================================= //
+    //
+
+
+    // ANSWERED REQUEST BUTONU
+    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[6]/div/ul/li[4]/a/span")
+    public WebElement spanAnsweredRequests;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thSubject5;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thSubmitted4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thStatus10;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thPriority4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thLastReply4;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thAction6;
+
+
+    //
+    // ====================== SUPPORT REQUESTS >> ANSWERED REQUEST >> ACTION MENUSU================================= //
+    //
+
+
+    //ACTION BUTONU
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[6]/a")
+    public WebElement tdAction;
+
+
+    // YOUR MESSAGE TEXTBOX
+    @FindBy(id = "inputMessage")
+    public WebElement yourmessage;
+
+    @FindBy(xpath = "//*[@id=\"inputAttachments\"]")
+    public WebElement uploadBox;
+
+
+    @FindBy(xpath = "//button[@value='1']")
+    public WebElement buttonReplayTicket;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div/div[1]/div[1]/button")
+    public WebElement repliedAllertYesil;
 }
-
-

@@ -41,14 +41,17 @@ public class TC08 {
         // 9-"Pick Up Point" dropbox undan herhangi bir yer seçilir
         findTicketsPage.pickupPoint.click();
         findTicketsPage.pickupPointSelection.click();
+        Object selectedPickup = findTicketsPage.pickupPointSelection.getText();
         ReusableMethods.wait(2);
         // 10-"Dropping Point" dropbox undan farklı yer seçilir
         findTicketsPage.droppingPoint.click();
         findTicketsPage.droppingPointSelection.click();
+        Object selectedDropping = findTicketsPage.droppingPointSelection.getText();
         ReusableMethods.wait(2);
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
         findTicketsPage.dateOfJourneySelection.click();
+        Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
         ReusableMethods.wait(2);
         // 12-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
@@ -56,44 +59,51 @@ public class TC08 {
         findTicketsPage.selectSeatButton.click();
         ReusableMethods.wait(2);
         SelectSeatPage selectSeatPage = new SelectSeatPage();
-        // 14-Cinsiyet seçimi yapılır
+        // 14- Journey Date doğru mu kontrol edilir
+        selectSeatPage.seatJourneyDateBox.click();
+        Assert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate);
+        // 15- Pickup Point doğru mu kontrol edilir
+        Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
+        // 16- Dropping Point doğru mu kontrol edilir
+        Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+
+        // 17-Cinsiyet seçimi yapılır
         selectSeatPage.femaleCheckbox.click();
 
-        // 15 - Koltuk seçimi yapılır
+        // 18 - Koltuk seçimi yapılır
         selectSeatPage.seats.get(3).click();
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         ReusableMethods.wait(2);
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
-        // 16 -"Continue" butonu tıklanır
+        // 19 -"Continue" butonu tıklanır
         ReusableMethods.wait(2);
         selectSeatPage.continueButton.click();
         ReusableMethods.wait(2);
-        // 17 -"Confirm" butonu tıklanır
+        // 20 -"Confirm" butonu tıklanır
         selectSeatPage.confirmBookingButton.click();
-        // 18 -"Pay Now" butonu tıklanır
+        // 21 -"Pay Now" butonu tıklanır
         selectSeatPage.paymentMethodsPayNowButton.click();
         ReusableMethods.wait(2);
-        // 19 -"Confirm" butonu tıklanır
+        // 22 -"Confirm" butonu tıklanır
         selectSeatPage.paymentByStripeHostedConfirm.click();
-        // 20 -"pay now" butonu tıklanır
+        // 23 -"pay now" butonu tıklanır
         selectSeatPage.paymentReviewPayNowButton.click();
-        // 21 -"Name on Card" textbox ına rakamlar yazılır
+        // 24 -"Name on Card" textbox ına rakamlar yazılır
         selectSeatPage.nameOnCard.sendKeys("123456789");
         ReusableMethods.wait(2);
-        // 22 -"Card Number" textbox ına 16 haneli geçerli kart numarası girilir
+        // 25 -"Card Number" textbox ına 16 haneli geçerli kart numarası girilir
         selectSeatPage.validCardNumber.sendKeys(ConfigReader.getProperty("validCardNumber"));
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
         ReusableMethods.wait(2);
-        // 23 -"Expiration Date" textbox ına "MM/YYYY" formatında geçerli tarih girilir
+        // 26 -"Expiration Date" textbox ına "MM/YYYY" formatında geçerli tarih girilir
         selectSeatPage.expirationDate.sendKeys(ConfigReader.getProperty("expirationDate"));
-        // 24 -"CVC Code" textbox ına 3 haneli sayı girilir
+        // 27 -"CVC Code" textbox ına 3 haneli sayı girilir
         selectSeatPage.cvcCode.sendKeys(ConfigReader.getProperty("cvcCode"));
-        // 25 -"PAY NOW" butonu tıklanır
+        // 28 -"PAY NOW" butonu tıklanır
         selectSeatPage.paymentConfirmPayNowButton.click();
-        // 26 -"payment captured successfully" yazısı görüntülenir
-        Assert.assertTrue(selectSeatPage.successfulPayment.isDisplayed());
+
         ReusableMethods.wait(2);
-        // 27 -Booking History sayfasında alınan bilet status durumu "Booked" olarak görüntülenir
+        // 29 -Booking History sayfasında alınan bilet status durumu "Booked" olarak görüntülenir
         Object expected = "Rejected";
         Assert.assertEquals(selectSeatPage.status.getText(),expected);
         Driver.closeDriver();

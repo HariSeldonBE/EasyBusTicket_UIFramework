@@ -51,7 +51,7 @@ public class AdminDashBoard_ManageFleetsPage {
     @FindBy(xpath = "//a[text()='Add New']")
     public WebElement buttonAddNew;
 
-    // Admin >> Dashboard >> Manage Fleets >> Seat Layouts >> Add Seat Layout
+    // Admin >> Dashboard >> Manage Fleets >> Seat Layouts >> Add Seat Layout>>>>>>>>>>>>>>>>>>>>
     @FindBy(xpath = "//div[@class='modal-content']")
     public WebElement popapAddSeat;
 
@@ -85,7 +85,7 @@ public class AdminDashBoard_ManageFleetsPage {
     @FindBy(xpath = "//strong")
     public WebElement strongAreYouSureWant;
 
-    // Admin >> Dashboard >> Manage Fleets >> FleetType
+    // Admin >> Dashboard >> Manage Fleets >> FleetType>>>>>>>>>>>>>>>>>>>>>>>
     @FindBy(xpath = "//span[text()='Fleet Type']")
     public WebElement linkFleetTyp;
 
@@ -128,13 +128,11 @@ public class AdminDashBoard_ManageFleetsPage {
     @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[6]")
     public WebElement tdStatus;
 
-    @FindBy(xpath = "//td[.//button[@data-id='32']]")
-    public WebElement tdAction2;
 
     @FindBy(xpath = "//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn']")
     public WebElement ButtonAddNew_FleetType;
 
-    @FindBy(xpath = "//div[@role='document'][.//*[@id='facilities']]")
+    @FindBy(xpath = "(//div[@class='modal-content'])[1]")
     public WebElement popapAddFleetType;
 
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[1]/input")
@@ -143,29 +141,135 @@ public class AdminDashBoard_ManageFleetsPage {
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[2]/select")
     public WebElement selectSeat;
 
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[2]/select")
-    public WebElement selectSeat2;
-
-    @FindBy(xpath = "//button[contains(@aria-describedby, 'vm')]")
-    public WebElement buttonRemoveTeaCoffe;
-
-    @FindBy(xpath = "//button[contains(@aria-describedby, 'fh')]")
-    public WebElement buttonRemoveWater;
-
-
-    @FindBy(xpath = "//button[contains(@aria-describedby, 'uq')]")
-    public WebElement buttonRemovePillow;
-
-    @FindBy(xpath = "//button[contains(@aria-describedby, 'losc')]")
-    public WebElement buttonRemoveWifi;
-
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[6]/div/div/span")
     public WebElement buttonACStatus;
 
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[2]/button[2]")
     public WebElement buttonAddFleetSave2;
 
+    @FindBy(xpath = "(//button[@class='icon-btn ml-1 editBtn'])[1]")
+    public WebElement buttonUpdate_Fleet;
 
+    @FindBy(xpath = "(//input[@class='form-control'])[4]")
+    public WebElement inputName2;
+
+    @FindBy(xpath = "//button[text()='Update']")
+    public WebElement buttonUpdate2;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[4]/div/div/form/div[1]/div[2]/select")
+    public WebElement selectSeat3;
+
+    @FindBy(xpath = "(//button[@class='icon-btn btn--danger ml-1 disableBtn'])[1]")
+    public WebElement buttonActiveDissable_Fleet;
+
+    @FindBy(xpath = "//button[@class='btn btn--danger']")
+    public WebElement buttonDisable_FleetPopup;
+
+    @FindBy(xpath = "//td[.//button[@data-id='41']]")
+    public WebElement tdAction3;
+
+    // Admin >> Dashboard >> Manage Fleets >> Vehicles >>>>>>>>>>>>>>>>>>>>>>
+
+    @FindBy(xpath = "//span[text()='Vehicles']")
+    public WebElement linkVehicles1;
+
+    @FindBy(xpath = "//h6[text()='All Vehicles']")
+    public WebElement labelAllVehicles;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[1]")
+    public WebElement thNickName;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[2]")
+    public WebElement thReg;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[3]")
+    public WebElement thEngine;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[4]")
+    public WebElement thChasis;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[5]")
+    public WebElement thModel;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[6]")
+    public WebElement thFleetType;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[7]")
+    public WebElement thStatus2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/thead/tr/th[8]")
+    public WebElement thAction2;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]")
+    public WebElement tdNickName;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement tdReg;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
+    public WebElement tdEngine;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]")
+    public WebElement tdChasis;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]")
+    public WebElement tdModel;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[6]")
+    public WebElement tdFleetType;
+
+    @FindBy(xpath = "//td[.//span[contains(@class, 'badge--warning')]]")
+    public WebElement tdStatus2;
+
+    @FindBy(xpath = "//td[.//button[@data-id='81']]")
+    public WebElement tdAction2;
+
+    @FindBy(xpath = "//input[@name='search']")
+    public WebElement inputSearch_Vehicles;
+
+   @FindBy(xpath = "//a[@class='btn btn--primary box--shadow1 addBtn']")
+    public WebElement buttonAddNew_Vehicles;
+
+    @FindBy(xpath = "//td[@data-label='Reg. No.']")
+    public WebElement tdReg2;
+
+    @FindBy(xpath = "//h6[@class='page-title']")
+    public WebElement titleVehicleSearch;
+
+    @FindBy(xpath = "(//div[@class='modal-content'])[1]")
+    public WebElement tableAddVehicle;
+
+    @FindBy(xpath = "(//input[@*='Enter nick name'])[1]")
+    public WebElement inputNickName;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[2]/button[2]")
+    public WebElement buttonSave_AddVehicle;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[2]/select")
+    public WebElement selectFleetType_Vehicle;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div[1]/div[3]/input")
+    public WebElement inputRegister_Vehicle;
+
+    @FindBy(xpath = "(//button[@class='icon-btn ml-1 editBtn'])[1]")
+    public WebElement buttonKalem_Vehicle;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[4]/div/div/form/div[2]/button[2]")
+    public WebElement buttonUpdate_Vehicle;
     
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[4]/div/div/form/div[1]/div[1]/input")
+    public WebElement textboxNickName_Update;
 
+    @FindBy(xpath = "(//button[@class='icon-btn btn--danger ml-1 disableBtn'])[1]")
+    public WebElement ikonActiveDissable_Vehicle;
+
+    @FindBy(xpath = "//button[text()='Disable']")
+    public WebElement buttonActiveDisable_Vehicle;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[4]/div/div/form/div[1]/div[2]/select")
+    public WebElement selectFleetTypeUpdate_Vehicle;
+
+    @FindBy(xpath = "(//input[@name='register_no'])[2]")
+    public WebElement textboxRegister_VehicleUPdate;
+    
 }

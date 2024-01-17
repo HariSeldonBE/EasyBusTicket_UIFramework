@@ -1,5 +1,7 @@
 package utilities;
 import org.apache.commons.io.FileUtils;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -28,7 +30,7 @@ public class ReusableMethods {
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         File source = ts.getScreenshotAs(OutputType.FILE);
         // full path to the screenshot location
-        String target = System.getProperty("user.dir") + "/raporlar/Screenshots/" + name + date + ".png";
+        String target = System.getProperty("user.dir") + "/test-output/Screenshots/" + name + date + ".png";
 
         File finalDestination = new File(target);
         // save the screenshot to the path given
@@ -400,4 +402,32 @@ public class ReusableMethods {
         adminLoginPage.passwordBox.sendKeys(adminPassword);
         adminLoginPage.loginButton.click();
     }
-}
+    public static void switchToNewTab(){
+        for(String handle:Driver.getDriver().getWindowHandles()){
+            Driver.getDriver().switchTo().window(handle);
+        }
+    }
+    public static boolean isPdfPrintable(String pdfFilePath) {
+        boolean b =true;
+        try {
+            File file = new File(pdfFilePath);
+
+            // PDF belgesini aç
+            PDDocument document = PDDocument.load(file);
+
+            // PDF belgesinin sayfa sayısını al
+            int pageCount = document.getNumberOfPages();
+
+            // PDF belgesini kapat
+            document.close();
+
+            // PDF belgesinin sayfa sayısı 0'dan büyükse yazdırılabilir kabul edilir
+            if(pageCount > 0) b=true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            b=false;
+        }
+        return b;
+    }
+
+    }

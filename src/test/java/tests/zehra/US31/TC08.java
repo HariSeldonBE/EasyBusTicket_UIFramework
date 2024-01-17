@@ -1,5 +1,6 @@
 package tests.zehra.US31;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ public class TC08 {
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
         Actions actions = new Actions(Driver.getDriver());
-        Select select1 = new Select(adminDashBoard_manageFleetsPage.selectSeat);
+
 
         // Browser'ı açar
         // URL'e gider
@@ -32,22 +33,30 @@ public class TC08 {
 
        // "+Add New" butonuna tıklar
         adminDashBoard_manageFleetsPage.ButtonAddNew_FleetType.click();
+        ReusableMethods.wait(2);
 
        // "Add Fleet Type" penceresi açılır
-        softAssert.assertTrue(adminDashBoard_manageFleetsPage.popapAddFleetType.isDisplayed());
+        softAssert.assertTrue(adminDashBoard_manageFleetsPage.popapAddFleetType.isDisplayed(),"pencere görünmedi");
 
        // İstenen bilgileri girer ve "save" butonuna tıklar
          adminDashBoard_manageFleetsPage.inputName.click();
-         actions.sendKeys("VIP BUS").perform();
-
-        select1.selectByVisibleText("Houston");
-        ReusableMethods.wait(2);
-
+         actions.sendKeys("w bus").perform();
+        Select select1 = new Select(adminDashBoard_manageFleetsPage.selectSeat);
+        select1.selectByVisibleText("2 x 2");
+        ReusableMethods.wait(1);
+        actions.sendKeys(Keys.TAB).sendKeys("1")
+                .sendKeys(Keys.TAB).sendKeys("11")
+                .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
+                .perform();
+        ReusableMethods.wait(1);
+        adminDashBoard_manageFleetsPage.buttonACStatus.click();
+        adminDashBoard_manageFleetsPage.buttonAddFleetSave2.click();
 
 
         // Sayfada yeni Fleet Type eklendiğini görür
-
-
+        String expectedAlertMesaj = "Fleet type saved successfully";
+        System.out.println(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText());
+       softAssert.assertEquals(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText(),expectedAlertMesaj,"alert mesajı eşit değil");
 
 
 
