@@ -1,6 +1,5 @@
 package tests.huseyin.US11;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
@@ -10,7 +9,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TC15 {
+public class TC13 {
     @Test
     public void test01(){
 
@@ -80,27 +79,17 @@ public class TC15 {
         // User Dashboard Page Easy Bus Ticket Logo Display Test
         softAssert.assertTrue(userDashBoardPage.eBTLogo.isDisplayed(), "Easy Bus Ticket logo in User Dashboard Page is not displayed");
         // User Dashboard Page Easy Bus Ticket Logo Enable Test
-        softAssert.assertTrue(userDashBoardPage.eBTLogo.isEnabled(), "Easy Bus Ticket logo in User Dashboard Page is not enabled");
+        softAssert.assertTrue(userDashBoardPage.eBTLogo.isEnabled(), "Easy Bus Ticket logo in User Dashboard Page Box is not enabled");
 
         userDashBoardPage.eBTLogo.click();
 
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
+//***************************************************************************************************************************
+//        BİLET ARAMA PANELİ
 
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isEnabled(), "Testimonial is not enabled");
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+//*****************************************************************************************************************************
 
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial1);
-        ReusableMethods.wait(2);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial2);
-        ReusableMethods.wait(1);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial3);
-        ReusableMethods.wait(1);
 
 
         softAssert.assertAll();

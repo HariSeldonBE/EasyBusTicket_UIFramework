@@ -1,6 +1,5 @@
 package tests.huseyin.US11;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
@@ -10,7 +9,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TC15 {
+public class TC10 {
     @Test
     public void test01(){
 
@@ -77,9 +76,9 @@ public class TC15 {
 
         // User Dashboard Page Url Test
         softAssert.assertEquals(actualUserDBUrl,expectedUserDBUrl, "User Dashboard Url is not confirmed");
-        // User Dashboard Page Easy Bus Ticket Logo Display Test
+        // Easy Bus Ticket logo in User Dashboard Page Display Test
         softAssert.assertTrue(userDashBoardPage.eBTLogo.isDisplayed(), "Easy Bus Ticket logo in User Dashboard Page is not displayed");
-        // User Dashboard Page Easy Bus Ticket Logo Enable Test
+        // Easy Bus Ticket logo in User Dashboard Page Enable Test
         softAssert.assertTrue(userDashBoardPage.eBTLogo.isEnabled(), "Easy Bus Ticket logo in User Dashboard Page is not enabled");
 
         userDashBoardPage.eBTLogo.click();
@@ -87,20 +86,20 @@ public class TC15 {
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
 
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial1.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial2.isEnabled(), "Testimonial is not enabled");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isDisplayed(), "Testimonial is not displayed");
-        softAssert.assertTrue(easyBusTicketPage.testimonial3.isEnabled(), "Testimonial is not enabled");
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+//***************************************************************************************************************************
+        // Blog link in Home Page Header Display Test
+        softAssert.assertTrue(easyBusTicketPage.headerBlogButton.isDisplayed(), "Blog link in header is not displayed");
+        // Blog link in Home Page Header Enable Test
+        softAssert.assertTrue(easyBusTicketPage.headerBlogButton.isEnabled(), "Blog link in header is not enabled");
 
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial1);
-        ReusableMethods.wait(2);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial2);
-        ReusableMethods.wait(1);
-        js.executeScript("arguments[0].click();",easyBusTicketPage.testimonial3);
-        ReusableMethods.wait(1);
+        easyBusTicketPage.headerBlogButton.click();
+        String actualAboutUrl = Driver.getDriver().getCurrentUrl();
+        String expectedAboutUrl = "https://qa.easybusticket.com/blog";
+
+        // Blog Page Url Test
+        softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "Blog Page is not displayed");
+
+//*****************************************************************************************************************************
 
 
         softAssert.assertAll();
