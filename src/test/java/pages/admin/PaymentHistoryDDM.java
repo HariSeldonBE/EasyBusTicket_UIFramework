@@ -40,4 +40,8 @@ public class PaymentHistoryDDM {
     @FindBy(xpath= "(//i[@class='fa fa-search'])[2]")
     public WebElement buttonDate;
     // Admin Dashboard  >> Payment History DDM >> Tüm sayfalar >> Successful Payment
+    @FindBy(xpath= "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr/td[1]/small")
+    public WebElement linkIlkKullanici;
+    @FindBy(xpath= "(//i[@class='fa fa-search'])[2]")
+    public WebElement bu;
 }

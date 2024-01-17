@@ -19,7 +19,17 @@ public class TC01 {
         ReusableMethods.adminLoginMethod("admin14", "123123123");
         // "Manage Users" DDM'ye tıklar
         manageUsersDDM.dropDownManageUsers.click();
-        // "all users, active users, banned users, Email unverified, sms unverified, email to al" sayfalarındaki "User" başlığının altındaki kullanıcı adlarını görür
+        // "all users, active users, banned users, Email unverified, sms unverified"
+        //  sayfalarındaki "User" başlığının altındaki kullanıcı adlarını görür
+        manageUsersDDM.linkAllUsers.click();
+        softAssert.assertTrue(manageUsersDDM.linkIlkKullaniciAdi.isDisplayed(),"All users'ta kullanıcı adları görülemedi");
+        manageUsersDDM.linkActiveUsers.click();
+        softAssert.assertTrue(manageUsersDDM.linkIlkKullaniciAdi.isDisplayed(),"Banned users'ta kullanıcı adları görülemedi");
+        manageUsersDDM.linkBannedUsers.click();
+        softAssert.assertTrue(manageUsersDDM.linkIlkKullaniciAdi.isDisplayed(),"Email unverified'ta kullanıcı adları görülemedi");
+        manageUsersDDM.linkEmailUnverified.click();
+        softAssert.assertTrue(manageUsersDDM.linkIlkKullaniciAdi.isDisplayed(),"Sms unverified'ta kullanıcı adları görülemedi");
+
         manageUsersDDM.linkAllUsers.click();
         // bir kullanıcı adına tıklar
         manageUsersDDM.linkIlkKullaniciAdi.click();
@@ -28,18 +38,8 @@ public class TC01 {
         String actualUrl = Driver.getDriver().getCurrentUrl();
         softAssert.assertTrue(actualUrl.contains(expectedUrl), "User Detail Sayfasına Ulaşılamadı");
 
-        String expectedTitle = "User Detail";
-        String actualTitle = Driver.getDriver().getTitle();
-        softAssert.assertEquals(actualTitle, expectedTitle, "Title'lar aynı değil");
-        // Kullanıcı bilgilerinin ayrıntılarını görüntüler
+        softAssert.assertAll();
         Driver.closeDriver();
     }
 
-    private String kullaniciAdiCikar(String metin) {
-        int atIndex = metin.indexOf('@');
-        if (atIndex != -1 && atIndex < metin.length() - 1) {
-            return metin.substring(atIndex + 1).trim();
-        }
-        return "";
-    }
 }

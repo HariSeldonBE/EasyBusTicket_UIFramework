@@ -18,28 +18,35 @@ public class TC01 {
         ManageUsersDDM manageUsersDDM = new ManageUsersDDM();
         SoftAssert softAssert = new SoftAssert();
 
-        //URL'e gider
+        // URL'e gider
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
-        //Admin bilgilerini girer
+        // Admin bilgilerini girer
         ReusableMethods.adminLoginMethod("admin14", "123123123");
-        //Admin dashboard sayfasına ulaşır
+        // Admin dashboard sayfasına ulaşır
         String expectedURl = "https://qa.easybusticket.com/admin/dashboard";
         String actualUrl = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(actualUrl, expectedURl, "Admin dashboard sayfasına ulaşılamadı");
 
-        //"Manage Users" DDM'yi görür
-        manageUsersDDM.dropDownManageUsers.isDisplayed();
-        //"Manage Users" DDM'ye tıklar
-        manageUsersDDM.dropDownManageUsers.click();
-        //Açılan DDM'de "all users, active users,banned users, Email unverified, sms unverified, email to al" linklerini görür
-        softAssert.assertTrue(manageUsersDDM.linkAllUsers.isDisplayed());
-        softAssert.assertTrue(manageUsersDDM.linkActiveUsers.isDisplayed());
-        softAssert.assertTrue(manageUsersDDM.linkBannedUsers.isDisplayed());
-        softAssert.assertTrue(manageUsersDDM.linkEmailUnverified.isDisplayed());
-        softAssert.assertTrue(manageUsersDDM.linkSmsUnverified.isDisplayed());
-        softAssert.assertTrue(manageUsersDDM.linkEmailToAll.isDisplayed());
-        // Linklerin sayılarını görüntüler
+        // "Manage Users" DDM'yi görür ve tıklar
+        WebElement dropDownManageUsers = manageUsersDDM.dropDownManageUsers;
+        softAssert.assertTrue(dropDownManageUsers.isDisplayed(), "Manage Users DDM görüntülenemedi");
+        dropDownManageUsers.click();
 
+        // Açılan DDM'de belirli linkleri görür
+        List<WebElement> linkElements = List.of(
+                manageUsersDDM.linkAllUsers,
+                manageUsersDDM.linkActiveUsers,
+                manageUsersDDM.linkBannedUsers,
+                manageUsersDDM.linkEmailUnverified,
+                manageUsersDDM.linkSmsUnverified,
+                manageUsersDDM.linkEmailToAll
+        );
+
+        for (WebElement linkElement : linkElements) {
+            softAssert.assertTrue(linkElement.isDisplayed(), "Link görüntülenemedi: " + linkElement.getText());
+        }
+
+        // Linklerin sayılarını kontrol et
         List<Integer> numbers = new ArrayList<>();
 
         for (WebElement element : manageUsersDDM.listSayiManageUsers) {
@@ -53,11 +60,18 @@ public class TC01 {
                     System.err.println("Sayıya dönüştürme hatası: " + text);
                 }
             }
-
-            softAssert.assertTrue(!numbers.isEmpty());
         }
 
+        // Sayıları kontrol et
+        softAssert.assertFalse(numbers.isEmpty(), "Sayı listesi boş");
+
         System.out.println("Numbers: " + numbers);
+
+        // Tüm assertleri kontrol et
+        softAssert.assertAll();
+
+
+
         Driver.closeDriver();
     }
 }
