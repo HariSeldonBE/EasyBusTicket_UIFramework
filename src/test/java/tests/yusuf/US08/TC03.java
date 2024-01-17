@@ -23,13 +23,16 @@ import utilities.TestBaseRapor;
         // 4 - It must be verified that the map providing location information is visible.
         // 5 - It must be verified that the map providing location information is active.
 
-
+        extentTest=extentReports.createTest("Contact Us MAP TEST", "User tests the contact button");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-
+        extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
+        extentTest.info("User presses the accept cookies ");
+
 
         easyBusTicketPage.contactButton.click();
+        extentTest.info("User presses the contact button");
 
         ContactPage contactPage=new ContactPage();
         ReusableMethods.wait(1);
@@ -37,13 +40,17 @@ import utilities.TestBaseRapor;
         Actions actions = new Actions(Driver.getDriver());
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait(1);
+        extentTest.info("1 seconds wait");
 
-       softAssert.assertTrue(contactPage.map.isDisplayed(),"Map gozukmuyor");
-       softAssert.assertTrue(contactPage.map.isEnabled(),"Map aktif degil");
+       softAssert.assertTrue(contactPage.map.isDisplayed(),"Map is not displayed");
+        extentTest.pass("Map  displayed test passed");
+       softAssert.assertTrue(contactPage.map.isEnabled(),"Map is not displayed");
+        extentTest.pass("Map enabled test passed");
 
        softAssert.assertAll();
 
         Driver.closeDriver();
+        extentTest.info("Closed page");
 
 
 

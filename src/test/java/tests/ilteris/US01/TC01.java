@@ -11,7 +11,7 @@ import utilities.ReusableMethods;
 
 public class TC01 {
 
-    /*
+
     @Test
 
     public void EasyBusTicketAnaSayfaErişebilmeTesti(){
@@ -46,5 +46,5 @@ public class TC01 {
 
 
     }
-    */
+
 }
