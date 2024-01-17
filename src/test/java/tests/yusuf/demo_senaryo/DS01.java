@@ -37,6 +37,7 @@ public class DS01 {
         userLoginPage.loginButton.click();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
+        ReusableMethods.wait(1);
         userDashBoardPage.bookingDdm.click();
         ReusableMethods.wait(2);
         // 8-"Booking" açılır menüsü açıldığında "Buy Ticket" butonu tıklanır
@@ -74,21 +75,25 @@ public class DS01 {
         ReusableMethods.wait(1);
         // 13- Select Seat butonu tıklanır
         findTicketsPage.selectSeatButton.click();
-
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-
+        ReusableMethods.wait(2);
         SelectSeatPage selectSeatPage = new SelectSeatPage();
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.wait(1);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
         // 21-Cinsiyet seçimi yapılır
+
         selectSeatPage.femaleCheckbox.click();
 
 
 
         // 24 - Koltuk seçimi yapılır
 
-        selectSeatPage.koltuk.click();
+        selectSeatPage.seats.get(5).click();
 
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
         ReusableMethods.wait(2);
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
 
@@ -98,6 +103,58 @@ public class DS01 {
         // 26-"Continue" butonu tıklanır
         ReusableMethods.wait(2);
         selectSeatPage.continueButton.click();
+        // 30-"Confirm" butonu tıklanır
+        selectSeatPage.confirmBookingButton.click();
+        ReusableMethods.wait(1);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+        ReusableMethods.wait(1);
+        //32- "Pay Now" butonu tıklanır
+        selectSeatPage.paymentMethodsPayNowButton.click();
+        ReusableMethods.wait(2);
+
+        //28-"Confirm" butonu tıklanır
+        selectSeatPage.paymentByStripeHostedConfirm.click();
+        ReusableMethods.wait(1);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+         ReusableMethods.wait(1);
+        //32-"pay now" butonu tıklanır
+        selectSeatPage.paymentReviewPayNowButton.click();
+
+        //9-"Name on Card" textbox ına isim soyisim yazılır
+        selectSeatPage.nameOnCard.sendKeys(ConfigReader.getProperty("nameOnCard"));
+        ReusableMethods.wait(2);
+
+        //12-"Card Number" textbox ına 16 haneli geçerli kart numrası girilir
+        selectSeatPage.validCardNumber.sendKeys(ConfigReader.getProperty("validCardNumber"));
+
+        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.paymentConfirmPayNowButton);
+        ReusableMethods.wait(2);
+
+        //14 - "Expiration Date" textbox ına "MM/YYYY" formatında gecerli tarih girilir
+        selectSeatPage.expirationDate.sendKeys(ConfigReader.getProperty("expirationDate"));
+
+        // 52-"CVC Code" textbox ına 3 haneli sayı girilir
+        selectSeatPage.cvcCode.sendKeys(ConfigReader.getProperty("cvcCode"));
+        JavascriptExecutor jse= (JavascriptExecutor) Driver.getDriver();
+
+
+        jse.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",selectSeatPage.paymentConfirmPayNowButton);
+
+         actions.sendKeys(Keys.PAGE_UP).perform();
+        ReusableMethods.wait(1);
+        //18-"PAY NOW" butonu tıklanır
+        selectSeatPage.paymentConfirmPayNowButton.click();
+
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+        ReusableMethods.wait(10);
+
+        Driver.closeDriver();
+
+
+        Driver.closeDriver();
+
 
 
 
