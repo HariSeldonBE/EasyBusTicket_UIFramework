@@ -13,20 +13,22 @@ import pages.admin.AdminLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.util.List;
 
-public class TC04 {
+public class TC04 extends TestBaseRapor {
 
     //Ticket price sayfasında bilet fiyatlarını görüntüleyebilmeliyim,yeni ekleyebilmeli, eklediğimi düzenleyebilmeli ve silebilmeliyim
     @Test
     public void test01(){
+        extentTest = extentReports.createTest("Ticket Price Page");
         SoftAssert softAssert = new SoftAssert();
         Actions actions = new Actions(Driver.getDriver());
         AdminDashBoardPage adminDashBoardPage = new AdminDashBoardPage();
 
         ReusableMethods.adminLoginMethod("admin13","123123123");
-
+        extentTest.info("Logged in with admin credentials");
         adminDashBoardPage.manageTripsLink.click();
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).perform();
@@ -58,6 +60,7 @@ public class TC04 {
         adminDashBoardPage.tpAddNewGoBackButton.click();
         softAssert.assertTrue(adminDashBoardPage.tpFirstRowRouteElement.getText().contains("Grey"),"Eklenen tp'nin ismi dogru mu?");
         softAssert.assertTrue(adminDashBoardPage.tpFirstRowPriceElement.getText().contains(price+"0"),"Eklenen tp'nin fiyati dogru mu?");
+        extentTest.info("Added new ticket price to the top of the list");
         adminDashBoardPage.tpFirstRowEditButton.click();
         adminDashBoardPage.tpEditPagePriceInputBox.sendKeys(Keys.BACK_SPACE);
         adminDashBoardPage.tpEditPagePriceInputBox.sendKeys(Keys.BACK_SPACE);
@@ -67,12 +70,14 @@ public class TC04 {
         adminDashBoardPage.tpEditPageUpdateButton.click();
         adminDashBoardPage.tpEditPageGoBackButton.click();
         softAssert.assertTrue(adminDashBoardPage.tpFirstRowPriceElement.getText().contains(priceUpdated+"0"),"Guncellenen tp'nin guncellenmis fiyati dogru mu?");
+        extentTest.info("Updated the information of the latest ticket price on the list");
         adminDashBoardPage.tpFirstRowDeleteButton.click();
         adminDashBoardPage.tpDeletePopUpDeletButton.click();
         softAssert.assertFalse(adminDashBoardPage.tpFirstRowRouteElement.getText().contains("Grey"),"tp silinmis mi?");
-
+        extentTest.info("Deleted the latest ticket price on the list");
         softAssert.assertAll();
         ReusableMethods.wait(2);
+        extentTest.info("Tested the ticket price page and closed the browser");
         Driver.quitDriver();
     }
 }
