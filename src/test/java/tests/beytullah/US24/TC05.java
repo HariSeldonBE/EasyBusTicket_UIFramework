@@ -1,6 +1,5 @@
 package tests.beytullah.US24;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.admin.ManageUsersDDM;
@@ -43,7 +42,7 @@ public class TC05 {
         //"Send Email" sayfası açılır ve email gönderir
         String expectedTitle2="Send Email";
         String actualTitle2=Driver.getDriver().getTitle();
-        Assert.assertEquals(actualTitle2,expectedTitle2,"Send Email sayfasınsa ulasılamadi");
+        softAssert.assertEquals(actualTitle2,expectedTitle2,"Send Email sayfasınsa ulasılamadi");
         Driver.getDriver().navigate().back();
 
         //"User Detail" sayfasında  "User Action" panelinin altındaki
@@ -54,7 +53,6 @@ public class TC05 {
         String expectedTitle3=" Easy Bus Ticket - Dashboard";
         String actualTitle3=Driver.getDriver().getTitle();
         softAssert.assertTrue(actualTitle3.contains(expectedTitle3),"Kullanıcı olarak giriş yapılamadı");
-        //Driver.getDriver().navigate().back();
 
         //"User Detail" sayfasında  "User Action" panelinin altındaki
         // "Email Log" linkini görüntüler tıklar
@@ -67,5 +65,7 @@ public class TC05 {
         String actualTitle4=Driver.getDriver().getTitle();
         softAssert.assertTrue(actualTitle4.contains(expectedTitle4),"Email log sayfasına ulaşılamadı");
 
+        softAssert.assertAll();
+        Driver.closeDriver();
     }
 }
