@@ -20,7 +20,7 @@ public class TC04 extends TestBaseRapor {
         // 4- The page scrolls down
         // 5- Registration procedures: Name, Surname, Email, Country, Mobile Phone, User Name, Email, Password, Confirm Password text boxes are filled with the appropriate criteria and the register button is pressed.
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("SignUp Page  TEST", "User tests the signUp Page ");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();

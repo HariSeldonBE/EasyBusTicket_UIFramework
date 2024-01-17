@@ -25,7 +25,7 @@ public class TC07 extends TestBaseRapor {
         // 9- Sign Up button is pressed.
         // 10- Verify that text "The username has already been taken."
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("SignUp Page  TEST", "User tests the signUp Page ");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();

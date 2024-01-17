@@ -27,7 +27,7 @@ public class TC05 extends TestBaseRapor {
         // 6- Send Us Message Button tıklanilir
         // 7- " Your message has been sent. Thank you for contacting us. " goruntulendigi dogrulanir
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("Contact Us support message TEST", "User tests the contact button");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();

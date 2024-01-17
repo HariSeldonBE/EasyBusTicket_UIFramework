@@ -21,7 +21,7 @@ public class TC01 extends TestBaseRapor {
 
 
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("SignUp Button TEST", "User tests the signUp button");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();

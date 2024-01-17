@@ -24,7 +24,7 @@ public class TC06 extends TestBaseRapor {
         // 7- Sign Up button is pressed.
         // 9- Verify that the firstname textBox appears on the same page
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("SignUp Page  TEST", "User tests the signUp Page ");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();

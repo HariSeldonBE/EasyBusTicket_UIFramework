@@ -21,7 +21,7 @@ public class TC03 extends TestBaseRapor {
         // 4- Registration procedures: Name, Surname, Email, Country, Mobile Phone, Username, Email, Password, Confirm Password text boxes are left blank and the register button is pressed.
         // 5- It is verified that the form has not been sent
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("SignUp Page  TEST", "User tests the signUp Page ");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
