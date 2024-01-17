@@ -40,12 +40,12 @@ public class TC08 {
 
        // İstenen bilgileri girer ve "save" butonuna tıklar
          adminDashBoard_manageFleetsPage.inputName.click();
-         actions.sendKeys("w bus").perform();
+         actions.sendKeys("QW BUS").perform();
         Select select1 = new Select(adminDashBoard_manageFleetsPage.selectSeat);
         select1.selectByVisibleText("2 x 2");
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).sendKeys("1")
-                .sendKeys(Keys.TAB).sendKeys("11")
+                .sendKeys(Keys.TAB).sendKeys("10")
                 .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
                 .perform();
         ReusableMethods.wait(1);

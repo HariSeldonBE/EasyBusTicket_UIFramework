@@ -47,11 +47,11 @@ public class TC18 {
         actions.moveToElement(adminDashBoard_manageFleetsPage.textboxRegister_VehicleUPdate).click().build().perform();
         ReusableMethods.wait(2);
         adminDashBoard_manageFleetsPage.textboxRegister_VehicleUPdate.clear();
-        adminDashBoard_manageFleetsPage.textboxRegister_VehicleUPdate.sendKeys(faker.number().digit());
+        adminDashBoard_manageFleetsPage.textboxRegister_VehicleUPdate.sendKeys(faker.number().digits(10));
         ReusableMethods.wait(2);
-        actions.sendKeys(Keys.TAB).sendKeys(Keys.CLEAR).sendKeys(faker.number().digit()).sendKeys(Keys.TAB)
-                .sendKeys(Keys.CLEAR).sendKeys(faker.number().digit()).sendKeys(Keys.TAB)
-                .sendKeys(Keys.CLEAR).sendKeys(faker.number().digit()).perform();
+        actions.sendKeys(Keys.TAB).sendKeys(Keys.CLEAR).sendKeys(faker.number().digits(11)).sendKeys(Keys.TAB)
+                .sendKeys(Keys.CLEAR).sendKeys(faker.number().digits(14)).sendKeys(Keys.TAB)
+                .sendKeys(Keys.CLEAR).sendKeys(faker.number().digits(15)).perform();
 
         // "Update" butonuna tıklar
          adminDashBoard_manageFleetsPage.buttonUpdate_Vehicle.click();

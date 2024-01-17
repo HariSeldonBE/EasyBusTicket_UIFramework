@@ -47,7 +47,7 @@ public class TC04 extends TestBaseRapor {
         int fakerName = faker.number().randomDigit();
         String fakerAddress = faker.number().digit();
         String fakerLocation = faker.number().digit();
-        int fakerPhone = faker.number().randomDigit();
+        int fakerPhone = faker.number().numberBetween(11,11111111);
 
         ReusableMethods.wait(2);
         actions.click( adminDashBoard_counterPage.nameTextBox)

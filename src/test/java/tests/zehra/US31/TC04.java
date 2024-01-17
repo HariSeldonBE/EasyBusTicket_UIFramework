@@ -33,7 +33,7 @@ public class TC04 extends TestBaseRapor {
         adminDashBoard_manageFleetsPage.buttonAddNew.click();
 
         // "Layout" kutucuğuna koltuk tipini "?x?, axa, 0x0 ve 3x3'ten buyük" değer girer
-        adminDashBoard_manageFleetsPage.textboxLayout.click();
+        JSUtilities.clickWithJS(Driver.getDriver(),adminDashBoard_manageFleetsPage.textboxLayout);
         actions.sendKeys("ee").perform();
 
         // Pencerenin altındaki "Save" butonunu tıklar

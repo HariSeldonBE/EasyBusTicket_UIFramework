@@ -41,12 +41,12 @@ public class TC10 extends TestBaseRapor {
         // 9'dan küçük 50'ten büyük bir sayı girer
 
         adminDashBoard_manageFleetsPage.inputName.click();
-        actions.sendKeys("f bus").perform();
+        actions.sendKeys("KL bus").perform();
         Select select1 = new Select(adminDashBoard_manageFleetsPage.selectSeat);
         select1.selectByVisibleText("2 x 2");
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).sendKeys("1")
-                .sendKeys(Keys.TAB).sendKeys("100")
+                .sendKeys(Keys.TAB).sendKeys("105")
                 .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
                 .perform();
         ReusableMethods.wait(1);

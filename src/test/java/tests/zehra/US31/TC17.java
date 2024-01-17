@@ -41,15 +41,15 @@ public class TC17 extends TestBaseRapor {
         //  Model No.  2024 ve altı, Fleet Type anlamlı kelime veya cümle" haricinde değerler girerek alanlarını doldurur
         ReusableMethods.wait(1);
         adminDashBoard_manageFleetsPage.inputNickName.click();
-        actions.sendKeys("111111111111")
+        actions.sendKeys("11111191111")
                 .sendKeys(Keys.TAB).perform();
         Select select = new Select(adminDashBoard_manageFleetsPage.selectFleetType_Vehicle);
         select.selectByVisibleText("w bus");
         actions.click(adminDashBoard_manageFleetsPage.inputRegister_Vehicle)
-                .sendKeys("0222222222222222").sendKeys(Keys.TAB)
-                .sendKeys("3333333333333333333333933").sendKeys(Keys.TAB)
-                .sendKeys("1111111111111111111111111111111").sendKeys(Keys.TAB)
-                .sendKeys("111111111").perform();
+                .sendKeys("0222222222222522").sendKeys(Keys.TAB)
+                .sendKeys("3333333333333333333833933").sendKeys(Keys.TAB)
+                .sendKeys("111111111111111111111111711111").sendKeys(Keys.TAB)
+                .sendKeys("119111111").perform();
 
         // "Save" butonuna tıklar
         adminDashBoard_manageFleetsPage.buttonSave_AddVehicle.click();

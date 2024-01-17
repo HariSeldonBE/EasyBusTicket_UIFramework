@@ -34,7 +34,7 @@ public class TC13 extends TestBaseRapor {
 
        // Sayfada ""Action"" başlığının altındaki çöp kutusu butonuna tıklar"
         softAssert.assertFalse(adminDashBoard_manageFleetsPage.tdAction3.isDisplayed(),"delete butonu yok");
-        extentTest.info("Delete butonu yok");
+        extentTest.info("Delete butonu görünmüyor.");
 
        // Pencerede "Are you sure, you want to delete this?" yazısını görüntüler
        // "Delete" butonuna tıklar

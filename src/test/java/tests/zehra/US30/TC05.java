@@ -12,6 +12,7 @@ import pages.admin.AdminDashBoard_CounterPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 public class TC05 {
@@ -37,28 +38,40 @@ public class TC05 {
         //  Yeni Counter'ın sağ tarafındaki kalem ikonunu görür ve tıklar
         softAssert.assertTrue(adminDashBoard_counterPage.kalemİkon.isDisplayed(),"kalem ikonu görünmüyor");
        ReusableMethods.wait(3);
-        ReusableMethods.doubleClick(adminDashBoard_counterPage.kalemİkon);
+        JSUtilities.clickWithJS(Driver.getDriver(),adminDashBoard_counterPage.kalemİkon);
 
         //   İstenen bilgileri (Name, City, Location, Mobile) günceller
         String fakerName = faker.name().firstName();
         String fakerAddress = faker.address().city();
         String fakerLocation = faker.address().cityName();
-        int fakerPhone = faker.number().randomDigit();
+        int fakerPhone = faker.number().numberBetween(10,1000000);
 
         ReusableMethods.wait(2);
         actions.click( adminDashBoard_counterPage.counterUpdateNameTextBox)
-                .sendKeys(fakerName)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE).sendKeys(fakerName)
                 .sendKeys(Keys.TAB)
-                .sendKeys(fakerAddress)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE).sendKeys(fakerAddress)
                 .sendKeys(Keys.TAB)
-                .sendKeys(fakerLocation)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE).sendKeys(fakerLocation)
                 .sendKeys(Keys.TAB)
-                .sendKeys("0"+fakerPhone)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
+                .sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE).sendKeys(""+fakerPhone)
                 .perform();
-
+                 ReusableMethods.wait(2);
         //   Pencerenin altındaki "Update" butonuna basar
         adminDashBoard_counterPage.counterUpdateButton.click();
 
+        ReusableMethods.wait(2);
         //   Değişikliklerin yapıldığını görür
         String actualUpdateMessage = adminDashBoard_counterPage.counterHata.getText();
         String expectedUpdateMessage = "Counter update successfully.";
