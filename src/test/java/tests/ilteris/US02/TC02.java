@@ -37,25 +37,25 @@ public class TC02 extends TestBaseRapor {
         String xActualURL = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(xActualURL,xActualURL,"Gidilen URL 'X' ulaşıyor");
         Driver.getDriver().navigate().back();
-
+        extentTest.pass("PASSED");
         easyBusTicketPage.facebookIcon.click();
         String facebookExceptedURL = "https://www.facebook.com/";
         String facebookActualURL = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(facebookActualURL,facebookExceptedURL,"Gidilen URL 'Facebook'a ulaşıyor");
         Driver.getDriver().navigate().back();
-
+        extentTest.pass("PASSED");
         easyBusTicketPage.youtubeIcon.click();
         String youtubeExceptedURL = "https://www.youtube.com/";
         String youtubeActualURL = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(youtubeActualURL,youtubeExceptedURL,"Gidilen URL 'Youtube' a ulaşmıyor");
         Driver.getDriver().navigate().back();
-        extentTest.pass("PASSED");
+        extentTest.pass("FAİLED");
         easyBusTicketPage.instagramIcon.click();
         String instagramExceptedURL = "https://www.instagram.com/";
         String instagramActualURL = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(instagramActualURL,instagramExceptedURL,"Gidilen URL 'Instagram'a ulaşıyor");
         Driver.getDriver().navigate().back();
-
+        extentTest.pass("PASSED");
 
 
 

@@ -30,19 +30,21 @@ public class TC01 extends TestBaseRapor {
 
         //Iletisim bilgilerinin görünürlügünü test edin
         softAssert.assertTrue(easyBusTicketPage.headerMobileNumberLinki.isDisplayed(),"Mobile Number görünüyor");
+        extentTest.pass("PASSED");
         softAssert.assertTrue(easyBusTicketPage.headerMobileNumberLinki.getAttribute("href").contains("tel:"), "Telefon linkine tıklayınca telefon uygulaması açılmıyor");
-
+        extentTest.pass("FAİLED");
 
         ReusableMethods.wait(1);
 
         //Iletisim bilgilerinin aktifliğini test edin
         easyBusTicketPage.headerMobileNumberLinki.click();
         softAssert.assertTrue(easyBusTicketPage.headerEmail.getAttribute("href").contains("mailto:"), "Mail linkine tıklayınca mail uygulaması açılmıyor");
+        extentTest.pass("FAİLED");
 
 
         easyBusTicketPage.headerEmail.click();
         softAssert.assertTrue(easyBusTicketPage.headerMobileNumberLinki.isEnabled(),"Email'e erişilemiyor");
-
+        extentTest.pass("FAİLED");
 
         softAssert.assertAll();
 
