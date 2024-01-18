@@ -265,5 +265,12 @@ public class EasyBusTicketPage {
     @FindBy(xpath = " (//a[@class='btn btn--base btn-sm'])[1]")
     public WebElement buttonNewTicket;
 
+    @FindBy(xpath = "//*[@href ='tel:+1 (603) 624-1800']")
+    public WebElement footerTelNumber;
 
+    @FindBy(xpath = "//*[@href ='mailto:info@easybusticket.com']")
+    public WebElement footerEmail;
+
+    @FindBy(xpath = "//*[@class='las la-chevron-up']")
+    public WebElement toTheTop;
 }

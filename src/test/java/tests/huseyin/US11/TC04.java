@@ -87,10 +87,13 @@ public class TC04 {
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
         // Home Page E-mail Display Test
         softAssert.assertTrue(easyBusTicketPage.headerEmail.isDisplayed(), "E-mail in header is not displayed");
+        softAssert.assertTrue(easyBusTicketPage.headerEmail.isEnabled(), "E-mail in header is not enabled");
 
+        // When clicking on e-mail link, an external e-mail app like outlook or any other starts to run or not
+        softAssert.assertTrue(easyBusTicketPage.headerEmail.getAttribute("href").contains("mailto:"), "E-mail in header does not look for an external mail app");
 
-
-        softAssert.assertAll();
         Driver.closeDriver();
+        softAssert.assertAll();
+
     }
 }
