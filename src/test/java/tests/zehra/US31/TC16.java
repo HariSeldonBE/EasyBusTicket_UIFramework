@@ -48,10 +48,10 @@ public class TC16 {
         Select select = new Select(adminDashBoard_manageFleetsPage.selectFleetType_Vehicle);
         select.selectByVisibleText("w bus");
         actions.click(adminDashBoard_manageFleetsPage.inputRegister_Vehicle)
-                .sendKeys(faker.number().digit()).sendKeys(Keys.TAB)
-                .sendKeys(faker.number().digit()).sendKeys(Keys.TAB)
-                .sendKeys(faker.number().digit()).sendKeys(Keys.TAB)
-                .sendKeys(faker.number().digit()).perform();
+                .sendKeys(""+ faker.number().numberBetween(1,900)).sendKeys(Keys.TAB)
+                .sendKeys(""+ faker.number().numberBetween(1,900)).sendKeys(Keys.TAB)
+                .sendKeys(""+ faker.number().numberBetween(1,900)).sendKeys(Keys.TAB)
+                .sendKeys(""+ faker.number().numberBetween(1,900)).perform();
 
 
         // "Save" butonu görür
