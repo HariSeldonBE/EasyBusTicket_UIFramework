@@ -91,13 +91,11 @@ public class DS01 {
 
         // 24 - Koltuk seçimi yapılır
 
-        selectSeatPage.seats.get(5).click();
+        selectSeatPage.seats.get(9).click();
 
 
         ReusableMethods.wait(2);
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
-
-
 
 
         // 26-"Continue" butonu tıklanır
@@ -147,6 +145,19 @@ public class DS01 {
         selectSeatPage.paymentConfirmPayNowButton.click();
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         ReusableMethods.wait(10);
 
