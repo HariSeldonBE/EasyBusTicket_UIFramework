@@ -26,14 +26,19 @@ public class DS06 extends TestBaseRapor {
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
+        Faker faker=new Faker();
+        Actions actions = new Actions(Driver.getDriver());
+        FindTicketsPage findTicketsPage = new FindTicketsPage();
+        SelectSeatPage selectSeatPage = new SelectSeatPage();
+        SoftAssert softAssert = new SoftAssert();
+      /*  easyBusTicketPage.cookiesButton.click();
         ReusableMethods.wait(1);
 
         easyBusTicketPage.getTicketNowButton.click();
         ReusableMethods.wait(1);
-        Actions actions = new Actions(Driver.getDriver());
+
         actions.sendKeys(Keys.PAGE_DOWN).perform();
-        FindTicketsPage findTicketsPage = new FindTicketsPage();
+
         findTicketsPage.pickupPoint.click();
 
         ReusableMethods.wait(2);
@@ -63,7 +68,7 @@ public class DS06 extends TestBaseRapor {
         // 13- Select Seat butonu tıklanır
         findTicketsPage.selectSeatButton.click();
         ReusableMethods.wait(2);
-        SelectSeatPage selectSeatPage = new SelectSeatPage();
+
        // actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait(1);
        // actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -96,24 +101,26 @@ public class DS06 extends TestBaseRapor {
         selectSeatPage.confirmBookingButton.click();
         ReusableMethods.wait(2);
        UserLoginPage userLoginPage=new UserLoginPage();
-       Faker faker=new Faker();
+
        //actions.sendKeys(Keys.PAGE_DOWN).perform();
        ReusableMethods.wait(1);
        userLoginPage.signUpButton.click();
        // js.executeScript("arguments[0].click",userLoginPage.signUpButton);
 
         extentTest.info("User presses the signUp button");
-
+*/
         SignUpPage signUpPage = new SignUpPage();
         ReusableMethods.wait(2);
         extentTest.info("2 seconds wait");
-
+Driver.getDriver().get("https://qa.easybusticket.com/register");
 
         String email =faker.internet().emailAddress();
         String password=ConfigReader.getProperty("userPass");
-        actions.click(signUpPage.firstnameTextBox)
-                .sendKeys(faker.name().firstName())
-                .sendKeys(Keys.TAB)
+        signUpPage.firstnameTextBox.click();
+       // actions.click(signUpPage.firstnameTextBox)
+              signUpPage.firstnameTextBox
+                      .sendKeys(faker.name().firstName());
+             actions.sendKeys(Keys.TAB)
                 .sendKeys(faker.name().lastName())
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.TAB)
@@ -135,10 +142,11 @@ public class DS06 extends TestBaseRapor {
        // extentTest.info("Page down");
         ReusableMethods.wait(1);
         extentTest.info("1 seconds wait");
-
-        js.executeScript("arguments[0].click",signUpPage.acceptCheckButon);
+        signUpPage.acceptCheckButon.click();
+       // js.executeScript("arguments[0].click",signUpPage.acceptCheckButon);
         extentTest.info("Sign Up accept check box clicked");
-        js.executeScript("arguments[0].click",signUpPage.signUpbutton);
+        signUpPage.signUpbutton.click();;
+      //  js.executeScript("arguments[0].click",signUpPage.signUpbutton);
         extentTest.info("Sign Up button  clicked");
         ReusableMethods.wait(1);
 
@@ -155,7 +163,8 @@ public class DS06 extends TestBaseRapor {
         ReusableMethods.wait(1);
 
         // 9-"Pick Up Point" dropbox undan herhangi bir yer seçilir
-        js.executeScript("arguments[0].click", findTicketsPage.pickupPoint);
+        findTicketsPage.pickupPoint.click();
+      //  js.executeScript("arguments[0].click", findTicketsPage.pickupPoint);
 
 
         ReusableMethods.wait(2);
@@ -296,7 +305,7 @@ public class DS06 extends TestBaseRapor {
 
         }
         softAssert.assertAll();
-        Driver.closeDriver();
+        //Driver.closeDriver();
 
     }
 
