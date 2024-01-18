@@ -327,6 +327,58 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//button[@class='btn btn--primary'])[2]")
     public WebElement tripUpdateButton;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[1]")
+    public WebElement avTripTitleElement;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[2]")
+    public WebElement avNicknameElement;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[3]")
+    public WebElement avRegNoElement;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/span")
+    public WebElement avStatusActiveElement;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[5]/button[1]")
+    public WebElement avEditButton;
+
+    @FindBy(xpath = "//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn']")
+    public WebElement avAddNewButton;
+
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[1]")
+    public WebElement avAddNewTripTitleBox;
+
+    @FindBy(xpath = "(//select[@class='select2-basic select2-hidden-accessible'])[1]")
+    public WebElement avAddNewTripTitleSelect;
+
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[2]")
+    public WebElement avAddNewVehicleNameBox;
+
+    @FindBy(xpath = "(//select[@class='select2-basic select2-hidden-accessible'])[2]")
+    public WebElement avAddNewVehicleNameSelect;
+
+    @FindBy(xpath = "(//button[@class='btn btn--primary'])[1]")
+    public WebElement avAddNewSaveButton;
+
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[3]")
+    public WebElement avUpdateTripBox;
+
+    @FindBy(xpath = "(//select[@class='select2-basic select2-hidden-accessible'])[3]")
+    public WebElement avUpdateTripSelect;
+
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[4]")
+    public WebElement avUpdateVehicleBox;
+
+    @FindBy(xpath = "(//select[@class='select2-basic select2-hidden-accessible'])[4]")
+    public WebElement avUpdateVehicleSelect;
+
+    @FindBy(xpath = "(//button[@class='btn btn--primary'])[2]")
+    public WebElement avUpdatePopUpUpdateButton;
+
+
+
+
+
 
 
 
