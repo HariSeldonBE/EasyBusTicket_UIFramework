@@ -50,10 +50,11 @@ public class TC05 extends TestBaseRapor {
 
 
         softAssert.assertTrue(easyBusTicketPage.footerAdresText.isDisplayed(), "Address Info in Home Page Footer is not displayed");
+        extentTest.pass("FAİLED");
 
         // Address Info in Home Page Footer Enable Test - click to go Google Map
         softAssert.assertTrue(easyBusTicketPage.footerAdresText.isEnabled(), "Address Info in Home Page Footer is not enabled");
-
+        extentTest.pass("FAİLED");
 
         // Address Info in Home Page Footer Google Map test
         String hrefAttribute = easyBusTicketPage.footerAdresText.getAttribute("href");
@@ -64,7 +65,7 @@ public class TC05 extends TestBaseRapor {
 
         }
         softAssert.assertFalse(hrefAttribute.contains("no href"), "Address Info in Footer is not a Google Map link");
-
+        extentTest.pass("FAİLED");
 
         softAssert.assertAll();
 
