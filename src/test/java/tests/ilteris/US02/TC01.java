@@ -6,11 +6,14 @@ import pages.EasyBusTicketPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC01 {
+public class TC01 extends TestBaseRapor {
     @Test
     public void headerIletisimBilgileriGörüntülemeVeDogrulamaTesti(){
 
+
+        extentTest=extentReports.createTest("Ilteris Kagan Colak", "US_02  TC_01 IletisimBilgileriDogrulamaTest ");
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
@@ -43,7 +46,7 @@ public class TC01 {
 
         softAssert.assertAll();
 
-
+        extentTest.info("Closed page");
 
         Driver.closeDriver();
 

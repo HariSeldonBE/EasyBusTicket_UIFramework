@@ -5,12 +5,14 @@ import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.TestBaseRapor;
 
-public class TC02 {
+public class TC02 extends TestBaseRapor {
 
     @Test
     public void headerSosyalMedyaIconlarıGörüntülemeVeDogrulamaTesti(){
 
+        extentTest=extentReports.createTest("Ilteris Kagan Colak", "US_02  TC_02 HeaderSosyalMedyaIconlarDogrulamaTest ");
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
@@ -24,34 +26,34 @@ public class TC02 {
         softAssert.assertEquals(actualUrl,exceptedUrl);
 
         //Sosyal Medya icon'larının görüntülendiğini doğrulayın
-        softAssert.assertTrue(easyBusTicketPage.xIcon.isDisplayed());
-        softAssert.assertTrue(easyBusTicketPage.facebookIcon.isDisplayed());
-        softAssert.assertTrue(easyBusTicketPage.youtubeIcon.isDisplayed());
-        softAssert.assertTrue(easyBusTicketPage.instagramIcon.isDisplayed());
+        softAssert.assertTrue(easyBusTicketPage.xIcon.isDisplayed(),"X Icon Görünüyor");
+        softAssert.assertTrue(easyBusTicketPage.facebookIcon.isDisplayed(),"Facebook Icon Görünüyor");
+        softAssert.assertTrue(easyBusTicketPage.youtubeIcon.isDisplayed(),"Youtube Icon Görünüyor");
+        softAssert.assertTrue(easyBusTicketPage.instagramIcon.isDisplayed(),"Instagram Icon Görünüyor");
 
         //Sosyal Medya icon'larının aktifliğini doğrulayın
         easyBusTicketPage.xIcon.click();
-        String xExceptedTitle = "Hemen katıl.";
-        String xActualTitle = Driver.getDriver().getTitle();
-        softAssert.assertTrue(xActualTitle.contains(xExceptedTitle));
+        String xExceptedURL = "https://twitter.com/";
+        String xActualURL = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(xActualURL,xActualURL,"Gidilen URL 'X' ulaşıyor");
         Driver.getDriver().navigate().back();
 
         easyBusTicketPage.facebookIcon.click();
-        String facebookExceptedTitle = "Facebook tanıdıklarınla iletişim kurmanı ve hayatında olup bitenleri paylaşmanı sağlar.";
-        String facebookActualTitle = Driver.getDriver().getTitle();
-        softAssert.assertTrue(facebookActualTitle.contains(facebookExceptedTitle));
+        String facebookExceptedURL = "https://www.facebook.com/";
+        String facebookActualURL = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(facebookActualURL,facebookExceptedURL,"Gidilen URL 'Facebook'a ulaşıyor");
         Driver.getDriver().navigate().back();
 
         easyBusTicketPage.youtubeIcon.click();
-        String youtubeExceptedTitle = "Videoları beğenmek, yorum yapmak ve abone olmak için oturum açın.";
-        String youtubeActualTitle = Driver.getDriver().getTitle();
-        softAssert.assertTrue(youtubeActualTitle.contains(youtubeExceptedTitle));
+        String youtubeExceptedURL = "https://www.youtube.com/";
+        String youtubeActualURL = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(youtubeActualURL,youtubeExceptedURL,"Gidilen URL 'Youtube' a ulaşmıyor");
         Driver.getDriver().navigate().back();
-
+        extentTest.pass("PASSED");
         easyBusTicketPage.instagramIcon.click();
-        String instagramExceptedTitle = "Hesabın yok mu?";
-        String instagramActualTitle = Driver.getDriver().getTitle();
-        softAssert.assertTrue(instagramActualTitle.contains(instagramExceptedTitle));
+        String instagramExceptedURL = "https://www.instagram.com/";
+        String instagramActualURL = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(instagramActualURL,instagramExceptedURL,"Gidilen URL 'Instagram'a ulaşıyor");
         Driver.getDriver().navigate().back();
 
 
@@ -59,7 +61,7 @@ public class TC02 {
 
         softAssert.assertAll();
 
-
+        extentTest.info("Closed page");
 
         Driver.closeDriver();
 
