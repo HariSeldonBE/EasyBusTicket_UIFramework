@@ -8,12 +8,14 @@ import pages.EasyBusTicketPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC05 {
+public class TC05 extends TestBaseRapor {
 
     @Test
     public void footerContactInfoGorunurlukVeAktiflikTesti() {
 
+        extentTest=extentReports.createTest("Ilteris Kagan Colak", "US_05  TC_05 FooterContactInfoDogrulamaTest ");
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
@@ -37,16 +39,11 @@ public class TC05 {
         softAssert.assertTrue(easyBusTicketPage.footerAdresText.isDisplayed());
         ReusableMethods.wait(1);
 
-
-        //js.executeScript("window.history.go(-1);");
-        //Driver.getDriver().navigate().back();
-
-
         // Phone Number in Footer Display Test
         softAssert.assertTrue(easyBusTicketPage.footerTelNumber.isDisplayed(), "Phone number in footer is not displayed");
         softAssert.assertTrue(easyBusTicketPage.footerTelNumber.isEnabled(), "Phone number in footer is not enabled");
         softAssert.assertTrue(easyBusTicketPage.footerTelNumber.getAttribute("href").contains("tel:"), "Phone number in footer does not look for an external phone app");
-
+        extentTest.pass("PASSED");
 
 
 
@@ -70,6 +67,8 @@ public class TC05 {
 
 
         softAssert.assertAll();
+
+        extentTest.info("Closed page");
 
         Driver.closeDriver();
 
