@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.FindTicketsPage;
+import pages.user.SelectSeatPage;
 import pages.user.UserDashBoardPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;

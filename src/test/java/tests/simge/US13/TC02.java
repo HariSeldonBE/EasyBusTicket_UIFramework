@@ -58,7 +58,7 @@ public class TC02 {
         findTicketsPage.droppingPointSelection.click();
         // 18-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
-        findTicketsPage.dateOfJourneySelection.click();
+        findTicketsPage.dateOfJourney.sendKeys(ConfigReader.getProperty("date"));
         ReusableMethods.wait(2);
         // 19-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
@@ -68,9 +68,9 @@ public class TC02 {
         softAssert.assertTrue(findTicketsPage.selectSeatButton.isEnabled(),"Select Seat Button aktif değil");
         ReusableMethods.wait(2);
 
-
-        Driver.closeDriver();
         softAssert.assertAll();
+        Driver.closeDriver();
+
 
 
 

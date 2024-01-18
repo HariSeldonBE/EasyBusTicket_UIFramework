@@ -1,8 +1,7 @@
 package tests.simge.US13;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDDocumentInformation;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -49,9 +48,9 @@ public class TC07 {
         ReusableMethods.wait(2);
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
-        findTicketsPage.dateOfJourneySelection.click();
-        Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
-        Object dateSelection = findTicketsPage.dateOfJourneySelection.getText();
+        findTicketsPage.dateOfJourney.sendKeys(ConfigReader.getProperty("date"));
+
+        Object[] dateSelection = ConfigReader.getProperty("date").split("/");
         ReusableMethods.wait(2);
         // 12-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
@@ -60,8 +59,7 @@ public class TC07 {
         ReusableMethods.wait(2);
         SelectSeatPage selectSeatPage = new SelectSeatPage();
         // 14- Journey Date doğru mu kontrol edilir
-        selectSeatPage.seatJourneyDateBox.click();
-        softAssert.assertEquals(selectSeatPage.firstSelectedDate.getText(), selectedDate,"Secilen tarih uyusmuyor");
+        softAssert.assertEquals(selectSeatPage.seatJourneyDateBox.getAttribute("value"),ConfigReader.getProperty("date"),"Find Ticket Page'de secilen tarih ile Select Seat Page'ki journey date uyusmuyor");
         // 15- Pickup Point doğru mu kontrol edilir
         softAssert.assertEquals(selectSeatPage.seatPickup.getText(), pickupSelection,"Secilen pickup point uyusmuyor");
         // 16- Dropping Point doğru mu kontrol edilir
@@ -166,7 +164,8 @@ public class TC07 {
         softAssert.assertEquals(bookingHistoryPage.dropControl.getText(), dropSelection,"Booking history drop point uyusmuyor");
         // 50-Booking History sayfasında journey date kontrol edilir
         Object date = bookingHistoryPage.dateControl.getText().substring(0, 2);
-        softAssert.assertEquals(date, dateSelection,"Booking History date uyusmuyor");
+
+        softAssert.assertEquals(date, dateSelection[1],"Booking History date uyusmuyor");
         // 51-Booking History sayfasında alınan biletin status'u "Booked" olarak görüntülenir
         Object expected = "Booked";
         softAssert.assertEquals(selectSeatPage.status.getText(), expected,"Bug var");
