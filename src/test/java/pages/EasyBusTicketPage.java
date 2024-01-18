@@ -258,12 +258,53 @@ public class EasyBusTicketPage {
     public WebElement linkRequests;
 
     @FindBy(xpath = " //table[@class='booking-table']")
+
     public WebElement labelTable;
     @FindBy(xpath = "(//i[@class='fa fa-desktop'])[1]")
     public WebElement buttonAction;
 
     @FindBy(xpath = " (//a[@class='btn btn--base btn-sm'])[1]")
     public WebElement buttonNewTicket;
+
+    @FindBy(xpath = "//a[@href='#0']")
+    public WebElement dropDownProfile;
+
+    @FindBy(xpath = "//a[@href='https://qa.easybusticket.com/user/change-password']")
+    public WebElement linkChangePassword;
+
+    @FindBy(xpath = "//h2[@class='title']")
+    public WebElement labelChangePasswordText;
+
+    @FindBy(xpath = "//section[@class='inner-banner bg_img']")
+    public WebElement imageBackgroundChangePassword;
+
+    @FindBy(xpath = "//form[@class='register']")
+    public WebElement formChangePasswordPenceresi;
+
+    @FindBy(xpath = "(//label[@class='form-label'])[1]")
+    public WebElement labelCurrentPasswordText;
+
+    @FindBy(xpath = "(//input[@class='form-contorl form--control radius-0'])[1]")
+    public WebElement boxCurrentPassword;
+    @FindBy(xpath = "(//label[@class='form-label'])[2]")
+    public WebElement labelPasswordText;
+
+    @FindBy(xpath = "(//input[@class='form-contorl form--control radius-0'])[2]")
+    public WebElement boxPassword;
+    @FindBy(xpath = "(//label[@class='form-label'])[3]")
+    public WebElement labelConfirmPassword;
+
+    @FindBy(xpath = "(//input[@class='form-contorl form--control radius-0'])[3]")
+    public WebElement boxConfirmPassword;
+
+    @FindBy(xpath = "//input[@class='btn btn--base']")
+    public WebElement buttonChangePassword;
+
+    @FindBy(xpath = "//*[@class='iziToast-wrapper iziToast-wrapper-topRight']")
+    public WebElement alert;
+
+    @FindBy(xpath = "//div[@class='input-popup']")
+    public WebElement popUpSifre;
 
     @FindBy(xpath = "//*[@href ='tel:+1 (603) 624-1800']")
     public WebElement footerTelNumber;
