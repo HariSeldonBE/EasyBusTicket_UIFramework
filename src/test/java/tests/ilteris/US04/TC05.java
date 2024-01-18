@@ -10,7 +10,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class TC05 {
-/*
+
     @Test
     public void footerContactInfoGorunurlukVeAktiflikTesti() {
 
@@ -71,5 +71,5 @@ public class TC05 {
 
     }
 
- */
+
 }
