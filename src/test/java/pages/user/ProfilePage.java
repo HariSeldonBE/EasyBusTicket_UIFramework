@@ -12,6 +12,10 @@ public class ProfilePage {public ProfilePage(){PageFactory.initElements(Driver.g
     public WebElement profileLastName;
     @FindBy(xpath = "//input[@id=\"email\"]")
     public WebElement profilEmail;
+    @FindBy(xpath = "(//li[@class=\"has-sub-menu\"])[3]")
+    public WebElement profileDDM;
+    @FindBy(xpath = "//a[@href=\"https://qa.easybusticket.com/user/profile-setting\"]")
+    public WebElement profileButton;
 
 
 

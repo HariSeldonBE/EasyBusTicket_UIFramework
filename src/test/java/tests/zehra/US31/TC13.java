@@ -14,7 +14,7 @@ public class TC13 extends TestBaseRapor {
     public void deleteButonu(){
 
 
-        extentTest=extentReports.createTest("Delete butonu TEST", "Delete butonu  ");
+        extentTest=extentReports.createTest("ZEHRA_Delete Butonu TEST", "US_31  TC_13  Delete butonu görünmüyor. ");
 
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();

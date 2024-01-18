@@ -306,5 +306,12 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "//div[@class='input-popup']")
     public WebElement popUpSifre;
 
+    @FindBy(xpath = "//*[@href ='tel:+1 (603) 624-1800']")
+    public WebElement footerTelNumber;
 
+    @FindBy(xpath = "//*[@href ='mailto:info@easybusticket.com']")
+    public WebElement footerEmail;
+
+    @FindBy(xpath = "//*[@class='las la-chevron-up']")
+    public WebElement toTheTop;
 }

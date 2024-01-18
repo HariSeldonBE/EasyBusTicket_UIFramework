@@ -7,6 +7,7 @@ import pages.user.UserDashBoardPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 public class TC28 {
@@ -85,6 +86,24 @@ public class TC28 {
 
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
+
+//*********************  Terms and Conditions Link in Home Page Footer Display Test  ***********************************
+        //
+        softAssert.assertTrue(easyBusTicketPage.footerPrivacyTermsConditionsButton.isDisplayed(), "Terms and Conditions Link in Home Page Footer is not displayed");
+        // Terms and Conditions Link in Home Page Footer Enable Test
+        softAssert.assertTrue(easyBusTicketPage.footerPrivacyTermsConditionsButton.isEnabled(), "Terms and Conditions Link in Home Page Footer is not enabled");
+
+
+        JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.footerPrivacyTermsConditionsButton);
+        String expectedTermsAndConditionsUrl = "https://qa.easybusticket.com/policy/71/terms-and-conditions";
+        String actualTermsAndConditionsUrl = Driver.getDriver().getCurrentUrl();
+
+        // Terms and Conditions Link in Home Page Footer Url Test
+        softAssert.assertEquals(actualTermsAndConditionsUrl,expectedTermsAndConditionsUrl, "Terms and Conditions Page is not displayed");
+
+//**********************************************************************************************************************
+
+
 
 
         softAssert.assertAll();

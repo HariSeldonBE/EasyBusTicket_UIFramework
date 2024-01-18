@@ -1,5 +1,6 @@
 package tests.zehra.US31;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -21,6 +22,7 @@ public class TC03 {
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
         Actions actions = new Actions(Driver.getDriver());
+        Faker faker = new Faker();
 
         // Browser'ı açar
         // URL'e gider
@@ -44,7 +46,9 @@ public class TC03 {
         
        // "Layout" kutucuğuna koltuk tipini rakam olarak girer
         adminDashBoard_manageFleetsPage.textboxLayout.click();
-        actions.sendKeys("07").perform();
+        int sayı1 = faker.number().numberBetween(0,10);
+        int sayi2 = faker.number().numberBetween(0,10);
+        actions.sendKeys(""+sayı1+sayi2).perform();
 
        // Pencerenin altındaki "Save" butonunu görür ve tıklar
         softAssert.assertTrue(adminDashBoard_manageFleetsPage.buttonSave.isDisplayed(),"save butonu görünmedi");
@@ -52,7 +56,8 @@ public class TC03 {
 
        // Yeni Seat layout'un eklendiğini görür
         System.out.println(getCellData(1,2));
-        softAssert.assertEquals(getCellData(1,2),"0 x 7","eşit değil" );
+        String expectedData= sayı1+" x "+sayi2;
+        softAssert.assertEquals(getCellData(1,2),expectedData,"eşit değil" );
 
         softAssert.assertAll();
         ReusableMethods.wait(2);

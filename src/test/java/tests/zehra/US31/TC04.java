@@ -11,8 +11,8 @@ import utilities.*;
 
 public class TC04 extends TestBaseRapor {
     @Test
-    public void negatifTest(){
-        extentTest=extentReports.createTest("New Counter Negatif TEST", "Yanlış bilgilerle girilmemesi gerekiyor ");
+    public void negatifLayoutKayıtTest(){
+        extentTest=extentReports.createTest("ZEHRA_New Layout Negatif TEST", "US_31 TC_04  Yanlış bilgilerle girilmemesi gerekiyor ");
 
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
@@ -33,14 +33,15 @@ public class TC04 extends TestBaseRapor {
         adminDashBoard_manageFleetsPage.buttonAddNew.click();
 
         // "Layout" kutucuğuna koltuk tipini "?x?, axa, 0x0 ve 3x3'ten buyük" değer girer
-        JSUtilities.clickWithJS(Driver.getDriver(),adminDashBoard_manageFleetsPage.textboxLayout);
-        actions.sendKeys("ee").perform();
+        adminDashBoard_manageFleetsPage.textboxLayout.click();
+        actions.sendKeys("eg").perform();
 
         // Pencerenin altındaki "Save" butonunu tıklar
          adminDashBoard_manageFleetsPage.buttonSave.click();
         extentTest.info("New Layout kaydı");
+        ReusableMethods.wait(2);
 
-       // Hata mesajı görür
+        // Hata mesajı görür
         String expectedHataMesaji = "Seat layout saved successfully.";
         softAssert.assertNotEquals(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText(),expectedHataMesaji,"Hata mesajı vermedi");
 

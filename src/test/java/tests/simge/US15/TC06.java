@@ -46,8 +46,9 @@ public class TC06 {
 
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
-        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        js.executeScript("window.scrollBy(0,arguments[0])",600);
         ReusableMethods.wait(1);
+
 
         //Status u open olarak görünen desteklere cevap yazmak için action tıklanır
         String satirdakiStatusXpath="";
@@ -72,10 +73,10 @@ public class TC06 {
                 ReusableMethods.wait(1);
                 Assert.assertTrue(supportRequestPage.error.isDisplayed());
                 ReusableMethods.wait(1);
-                Driver.closeDriver();
+                break;
             }
-            else Driver.closeDriver();
 
         }
+        Driver.closeDriver();
     }
 }

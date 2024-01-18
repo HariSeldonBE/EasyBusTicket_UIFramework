@@ -83,7 +83,7 @@ public class TC05 {
                 ReusableMethods.wait(1);
                 Assert.assertTrue(supportRequestPage.repliedMessage.isDisplayed());
                 Driver.getDriver().get("https://qa.easybusticket.com/ticket");
-                js.executeScript("window.scrollBy(0,arguments[0])",300);
+                js.executeScript("window.scrollBy(0,arguments[0])",800);
                 ReusableMethods.wait(1);
                 for (WebElement customerReply:supportRequestPage.customerReplies) {
                     Assert.assertTrue(customerReply.isDisplayed());
@@ -92,6 +92,6 @@ public class TC05 {
             }
 
         }
-       // Driver.closeDriver();
+        Driver.closeDriver();
     }
 }

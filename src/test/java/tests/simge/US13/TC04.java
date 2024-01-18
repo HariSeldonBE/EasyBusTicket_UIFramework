@@ -49,30 +49,30 @@ public class TC04 {
         ReusableMethods.wait(2);
         // 14- "Jouney Date" tarih kutusunun görünür ve aktif olduğu doğrulanır
         SelectSeatPage selectSeatPage =new SelectSeatPage();
-        Assert.assertTrue(selectSeatPage.journeyDate.isDisplayed());
-        Assert.assertTrue(selectSeatPage.journeyDate.isEnabled());
+        softAssert.assertTrue(selectSeatPage.journeyDate.isDisplayed(),"Journey Date görüntülenmedi");
+        softAssert.assertTrue(selectSeatPage.journeyDate.isEnabled(),"Journey Date aktif değil");
         // 15- "Pickup Point" dropbox unun görünür ve aktif olduğu doğrulanır
-        Assert.assertTrue(selectSeatPage.pickupPoint.isDisplayed());
-        Assert.assertTrue(selectSeatPage.pickupPoint.isEnabled());
+        softAssert.assertTrue(selectSeatPage.pickupPoint.isDisplayed(),"Pickup Point görüntülenemedi");
+        softAssert.assertTrue(selectSeatPage.pickupPoint.isEnabled(),"Pickup Point aktif değil");
         // 16- "Dropping Point" dropbox unun görünür ve aktif olduğu doğrulanır
-        Assert.assertTrue(selectSeatPage.droppingPoint.isDisplayed());
-        Assert.assertTrue(selectSeatPage.droppingPoint.isEnabled());
+        softAssert.assertTrue(selectSeatPage.droppingPoint.isDisplayed(),"Dropping Point görüntülenemedi");
+        softAssert.assertTrue(selectSeatPage.droppingPoint.isEnabled(),"Dropping Point aktif değil");
         // 17- "Select Gender" bölümünde "Male" checkbox'ının görünür ve aktif olduğu doğrulanır
-        Assert.assertTrue(selectSeatPage.maleCheckbox.isDisplayed());
-        Assert.assertTrue(selectSeatPage.maleCheckbox.isEnabled());
+        softAssert.assertTrue(selectSeatPage.maleCheckbox.isDisplayed(),"Male checkbox görüntülenemedi");
+        softAssert.assertTrue(selectSeatPage.maleCheckbox.isEnabled(),"Male checkbox aktif değil");
         // 18- "Select Gender" bölümünde "Female" checkbox'ının görünür ve aktif olduğu doğrulanır
-        Assert.assertTrue(selectSeatPage.femaleCheckbox.isDisplayed());
-        Assert.assertTrue(selectSeatPage.femaleCheckbox.isEnabled());
+        softAssert.assertTrue(selectSeatPage.femaleCheckbox.isDisplayed(),"Female checkbox görüntülenmedi");
+        softAssert.assertTrue(selectSeatPage.femaleCheckbox.isEnabled(),"Female vcehckbox aktif değil");
         // 19-"Select Gender" bölümünde "other" checkbox'ının görünür ve aktif olduğu doğrulanır
-        Assert.assertTrue(selectSeatPage.otherCheckbox.isDisplayed());
-        Assert.assertTrue(selectSeatPage.otherCheckbox.isEnabled());
+        softAssert.assertTrue(selectSeatPage.otherCheckbox.isDisplayed(),"Other checkbox görüntülenmedi");
+        softAssert.assertTrue(selectSeatPage.otherCheckbox.isEnabled(),"Other checkbox aktif değil");
         // 20- Journey Date doğru mu kontrol edilir
         selectSeatPage.seatJourneyDateBox.click();
-        Assert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate);
+        softAssert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate,"Secilen tarih uyusmuyor");
         // 21- Pickup Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
+        softAssert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup,"Secilen pickup point uyusmuyor");
         // 22- Dropping Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        softAssert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping,"Secilen dropping point uyusmuypr");
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0,arguments[0])",500);
         ReusableMethods.wait(1);
@@ -91,26 +91,26 @@ public class TC04 {
             selectSeatPage.seats.get(i).click();
             ReusableMethods.wait(1);
             for (WebElement selectedSeat:selectSeatPage.selectedSeats) {
-                Assert.assertTrue(selectedSeat.isDisplayed());
+                softAssert.assertTrue(selectedSeat.isDisplayed(),"Secilen koltuk görüntülenmedi");
             }
             // 25-Cinsiyet seçimi yapılır
             selectSeatPage.femaleCheckbox.click();
             js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
             ReusableMethods.wait(1);
             // 26-"Continue" butonu görüntülenir ve aktif olduğu doğrulanır
-            Assert.assertTrue(selectSeatPage.continueButton.isDisplayed());
-            Assert.assertTrue(selectSeatPage.continueButton.isEnabled());
+            softAssert.assertTrue(selectSeatPage.continueButton.isDisplayed(),"Continue Buton görüntülenmedi");
+            softAssert.assertTrue(selectSeatPage.continueButton.isEnabled(),"Continue Buton aktif değil");
             // 27-"Continue" butonu tıklanır
             selectSeatPage.continueButton.click();
             ReusableMethods.wait(1);
             // 28-"Confirm Booking" penceresi açıldığı doğrulanır
-            Assert.assertTrue(selectSeatPage.confirmBooking.isDisplayed());
+            softAssert.assertTrue(selectSeatPage.confirmBooking.isDisplayed(),"Confirm Booking penceresi acilmadi");
             // 29-Çıkan "Confirm Booking" penceresinde "Close" butonu görüntülenir ve aktif olduğu doğrulanır
-            Assert.assertTrue(selectSeatPage.closeConfirmBookingButton.isDisplayed());
-            Assert.assertTrue(selectSeatPage.closeConfirmBookingButton.isEnabled());
+            softAssert.assertTrue(selectSeatPage.closeConfirmBookingButton.isDisplayed(),"Close Button görüntülenmedi");
+            softAssert.assertTrue(selectSeatPage.closeConfirmBookingButton.isEnabled(),"Close Button aktif değil");
             // 30-Çıkan "Confirm Booking" penceresinde "Confirm" butonu görüntülenir ve aktif olduğu doğrulanır
-            Assert.assertTrue(selectSeatPage.confirmBookingButton.isDisplayed());
-            Assert.assertTrue(selectSeatPage.confirmBookingButton.isEnabled());
+            softAssert.assertTrue(selectSeatPage.confirmBookingButton.isDisplayed(),"Confirm Button görüntülenmedi");
+            softAssert.assertTrue(selectSeatPage.confirmBookingButton.isEnabled(),"Confirm Button aktif değil");
             // 31-"Confirm" butonu tıklanır
             selectSeatPage.confirmBookingButton.click();
             ReusableMethods.wait(1);

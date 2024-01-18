@@ -86,6 +86,14 @@ public class TC32 {
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
 
+        // Email in Footer Display Test
+        softAssert.assertTrue(easyBusTicketPage.footerEmail.isDisplayed(), "Email in footer is not displayed");
+        softAssert.assertTrue(easyBusTicketPage.footerEmail.isEnabled(), "Email in footer is not enabled");
+
+        // When clicking on Email link, an external mail app starts to run or not
+        softAssert.assertTrue(easyBusTicketPage.footerEmail.getAttribute("href").contains("mailto:"), "Email in footer does not look for an external mail app");
+
+
 
         softAssert.assertAll();
         Driver.closeDriver();

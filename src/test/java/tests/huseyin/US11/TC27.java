@@ -7,6 +7,7 @@ import pages.user.UserDashBoardPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 public class TC27 {
@@ -86,6 +87,21 @@ public class TC27 {
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
 
+//*********************  Privacy Policy Link in Home Page Footer Display Test  ***************************************************
+        //
+        softAssert.assertTrue(easyBusTicketPage.footerPrivacyPolicyButton.isDisplayed(), "Privacy Policy Link in Home Page Footer is not displayed");
+        // Privacy Policy Link in Home Page Footer Enable Test
+        softAssert.assertTrue(easyBusTicketPage.footerPrivacyPolicyButton.isEnabled(), "Privacy Policy Link in Home Page Footer is not enabled");
+
+
+        JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.footerPrivacyPolicyButton);
+        String expectedPrivacyPolicyUrl = "https://qa.easybusticket.com/policy/69/privacy-policy";
+        String actualPrivacyPolicyUrl = Driver.getDriver().getCurrentUrl();
+
+        // Privacy Policy Link in Home Page Footer Url Test
+        softAssert.assertEquals(actualPrivacyPolicyUrl,expectedPrivacyPolicyUrl, "Privacy Policy Page is not displayed");
+
+//**********************************************************************************************************************
 
         softAssert.assertAll();
         Driver.closeDriver();
