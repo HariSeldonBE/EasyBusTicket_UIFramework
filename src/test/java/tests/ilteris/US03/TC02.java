@@ -10,7 +10,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class TC02 {
-/*
+
     @Test
 
     public void chooseYourTicketPanelAktiflikTesti() {
@@ -65,5 +65,5 @@ public class TC02 {
 
 
 
- */
+
 }
