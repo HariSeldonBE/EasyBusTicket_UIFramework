@@ -11,7 +11,7 @@ import java.util.List;
 public class SupportRequestPage { public SupportRequestPage(){PageFactory.initElements(Driver.getDriver(),this);}
     @FindBy(xpath = "//h2[@class=\"title\"]")
     public WebElement supportTicketsTitle;
-    @FindBy(xpath = "(//input[@class=\"form--control\"])[1]")
+    @FindBy(xpath = "//input[@value=\"Team2 Tester\"]")
     public WebElement name;
     @FindBy(xpath = "(//input[@class=\"form--control\"])[2]")
     public WebElement mail;

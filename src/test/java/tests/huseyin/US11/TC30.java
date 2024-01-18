@@ -7,6 +7,7 @@ import pages.user.UserDashBoardPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 public class TC30 {
@@ -86,8 +87,27 @@ public class TC30 {
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
 
+//*********************  Address Info in Home Page Footer Display Test  ***********************************
+        //
+        softAssert.assertTrue(easyBusTicketPage.footerAdresText.isDisplayed(), "Address Info in Home Page Footer is not displayed");
 
-        softAssert.assertAll();
+        // Address Info in Home Page Footer Enable Test - click to go Google Map
+        softAssert.assertTrue(easyBusTicketPage.footerAdresText.isEnabled(), "Address Info in Home Page Footer is not enabled");
+
+
+        // Address Info in Home Page Footer Google Map test
+       String hrefAttribute = easyBusTicketPage.footerAdresText.getAttribute("href");
+       if (hrefAttribute == null) {
+           hrefAttribute = "no href";
+       }
+       else {
+
+       }
+       softAssert.assertFalse(hrefAttribute.contains("no href"), "Address Info in Footer is not a Google Map link");
+
+//**********************************************************************************************************************
         Driver.closeDriver();
+        softAssert.assertAll();
+
     }
 }

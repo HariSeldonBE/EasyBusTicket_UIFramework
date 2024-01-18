@@ -1,4 +1,4 @@
-/* package tests.mehmet.US16;
+package tests.mehmet.US16;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -38,6 +38,6 @@ public class TC05 {
         softAssert.assertTrue(actualTitle.contains(expectedTitle),"Yeni destek talebi oluşturma sayfasına erişildiği doğrulanamadı");
         softAssert.assertAll();
 
+        Driver.getDriver().close();
     }
 }
-*/

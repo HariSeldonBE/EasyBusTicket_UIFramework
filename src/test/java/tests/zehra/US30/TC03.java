@@ -18,11 +18,11 @@ import java.util.Arrays;
 
 public class TC03 extends TestBaseRapor {
     @Test
-    public void test01(){
+    public void addNewTEST(){
         // Browser'ı açar
         // URL'e gider
 
-        extentTest=extentReports.createTest("Contact Us Button TEST", "User tests the contact button");
+        extentTest=extentReports.createTest("ZEHRA_add New Counter TEST", "US_30  TC_03 Add New Counter Test");
 
         AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
@@ -30,7 +30,7 @@ public class TC03 extends TestBaseRapor {
         Actions actions = new Actions(Driver.getDriver());
         
         ReusableMethods.adminLoginMethod("admin11","123123123");
-        extentTest.info("User goes to \"Easy Bus Ticket Admin\" Dashboard");
+        extentTest.info("Admin goes to \"Easy Bus Ticket Admin\" Dashboard");
 
         // "Counter" linkine tıklar
         adminDashBoard_counterPage.linkCounter.click();

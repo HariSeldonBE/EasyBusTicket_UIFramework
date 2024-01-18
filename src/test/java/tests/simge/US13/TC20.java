@@ -1,9 +1,11 @@
 package tests.simge.US13;
 
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.FindTicketsPage;
 import pages.user.SelectSeatPage;
@@ -16,6 +18,7 @@ import utilities.ReusableMethods;
 public class TC20 {
     @Test
     public void expirationDateNegatifTestiGecersizAyGirisi(){
+        SoftAssert softAssert = new SoftAssert();
 
         // 1-Browser açılır ve Url'e gidilir ve Login olunur
         ReusableMethods.userLoginButton();
@@ -41,8 +44,7 @@ public class TC20 {
         ReusableMethods.wait(2);
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
-        findTicketsPage.dateOfJourneySelection.click();
-        Object selectedDate=findTicketsPage.dateOfJourneySelection.getText();
+        findTicketsPage.dateOfJourney.sendKeys(ConfigReader.getProperty("date"));
         ReusableMethods.wait(2);
         // 12-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
@@ -51,12 +53,11 @@ public class TC20 {
         ReusableMethods.wait(2);
         SelectSeatPage selectSeatPage = new SelectSeatPage();
         // 14- Journey Date doğru mu kontrol edilir
-        selectSeatPage.seatJourneyDateBox.click();
-        Assert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate);
+        softAssert.assertEquals(selectSeatPage.seatJourneyDateBox.getAttribute("value"),ConfigReader.getProperty("date"),"Find Ticket Page'de secilen tarih ile Select Seat Page'ki journey date uyusmuyor");
         // 15- Pickup Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
+        softAssert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup,"Secilen pickup point uyusmuyor");
         // 16- Dropping Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        softAssert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping,"Secilen dropping point uyusmuyor");
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0,arguments[0])",500);
         ReusableMethods.wait(1);
@@ -114,7 +115,8 @@ public class TC20 {
         selectSeatPage.paymentConfirmPayNowButton.click();
         ReusableMethods.wait(2);
         Object expected = "Rejected";
-        Assert.assertEquals(selectSeatPage.status.getText(),expected);
+        softAssert.assertEquals(selectSeatPage.status.getText(),expected,"Bug var");
+        softAssert.assertAll();
 
 
         Driver.closeDriver();

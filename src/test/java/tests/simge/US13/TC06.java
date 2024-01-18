@@ -17,7 +17,7 @@ import utilities.ReusableMethods;
 public class TC06 {
     @Test
     public void selectSeatDogrulamaPozitifTesti(){
-
+        SoftAssert softAssert = new SoftAssert();
         // 1-Browser açılır ve Url'e gidilir ve Login olunur
         ReusableMethods.userLoginButton();
         // 7-Açılan user dashboard sayfasında navbar menüde "Booking" ddm menüsü görüntülenir ve tıklanır
@@ -40,9 +40,9 @@ public class TC06 {
         Object selectedDropping=findTicketsPage.droppingPointSelection.getText();
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
-        findTicketsPage.dateOfJourneySelection.click();
-        Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
-        ReusableMethods.wait(2);
+        findTicketsPage.dateOfJourney.sendKeys(ConfigReader.getProperty("date"));
+
+        ReusableMethods.wait(1);
         // 12-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
         // 13- Select Seat butonu tıklanır
@@ -50,21 +50,19 @@ public class TC06 {
         ReusableMethods.wait(2);
         SelectSeatPage selectSeatPage =new SelectSeatPage();
         // 14- Journey Date doğru mu kontrol edilir
-        selectSeatPage.seatJourneyDateBox.click();
-        Assert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate);
+        softAssert.assertEquals(selectSeatPage.seatJourneyDateBox.getAttribute("value"),ConfigReader.getProperty("date"),"Find Ticket Page'de secilen tarih ile Select Seat Page'ki journey date uyusmuyor");
         // 15- Pickup Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup);
+        softAssert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup,"Secilen pickup point uyusmuyor");
         // 16- Dropping Point doğru mu kontrol edilir
-        Assert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping);
+        softAssert.assertEquals(selectSeatPage.seatDropping.getText(),selectedDropping,"Secilen dropping point uyusmuyor");
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0,arguments[0])",500);
         ReusableMethods.wait(1);
-        SoftAssert softAssert = new SoftAssert();
         // 16 - Rezerve edilen koltuklardan koltuk seçimi yapılamadığı doğrulanır
 
         if(!selectSeatPage.ladiesSelectedSeats.isEmpty()){
             for (WebElement ladiesSelectedSeat:selectSeatPage.ladiesSelectedSeats) {
-                Assert.assertTrue(ladiesSelectedSeat.isDisplayed());
+                softAssert.assertTrue(ladiesSelectedSeat.isDisplayed(),"Ladies rezerve koltuklar görüntülenmedi");
                 try {
                     if(ladiesSelectedSeat.isEnabled()){
                         ladiesSelectedSeat.click();
@@ -78,7 +76,7 @@ public class TC06 {
         }
         if(!selectSeatPage.gentsSelectedSeats.isEmpty()){
             for (WebElement gentsSelectedSeat:selectSeatPage.gentsSelectedSeats) {
-                Assert.assertTrue(gentsSelectedSeat.isDisplayed());
+                softAssert.assertTrue(gentsSelectedSeat.isDisplayed(),"Gents rezerve koltuklar görüntülenmedi");
                 try {
                     if(gentsSelectedSeat.isEnabled()){
                         gentsSelectedSeat.click();
@@ -91,7 +89,7 @@ public class TC06 {
         }
         if(!selectSeatPage.othersSelectedSeats.isEmpty()){
             for (WebElement othersSelectedSeat:selectSeatPage.othersSelectedSeats) {
-                Assert.assertTrue(othersSelectedSeat.isDisplayed());
+                softAssert.assertTrue(othersSelectedSeat.isDisplayed(),"Others rezerve koltuklar görüntülenmedi");
                 try {
                     if(othersSelectedSeat.isEnabled()){
                         othersSelectedSeat.click();
@@ -103,7 +101,8 @@ public class TC06 {
             }
         }
 
-        Assert.assertTrue(selectSeatPage.selectedSeats.isEmpty());
+        softAssert.assertTrue(selectSeatPage.selectedSeats.isEmpty(),"Rezerve koltuklar secilebildi");
+        softAssert.assertAll();
 
         Driver.closeDriver();
 

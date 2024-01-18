@@ -44,12 +44,12 @@ public class TC05 {
 
         adminDashBoardPage.tripAddNewFleetTypeBox.click();
         Select select1 = new Select(adminDashBoardPage.tripAddNewFleetTypeSelect);
-        select1.selectByVisibleText("Roberta");
+        select1.selectByVisibleText("Fletcher");
         adminDashBoardPage.tripAddNewFleetTypeBox.click();
 
         adminDashBoardPage.tripAddNewRouteBox.click();
         Select select2 = new Select(adminDashBoardPage.tripAddNewRouteSelect);
-        select2.selectByVisibleText("Locke of Oldcastle");
+        select2.selectByVisibleText("Alex Rider");
         adminDashBoardPage.tripAddNewRouteBox.click();
 
         adminDashBoardPage.tripAddNewScheduleBox.click();
@@ -70,7 +70,7 @@ public class TC05 {
         adminDashBoardPage.tripAddNewDayOffBox.sendKeys("Sunday"+Keys.ENTER);
         adminDashBoardPage.tripAddNewSaveButton.click();
 
-        softAssert.assertTrue(adminDashBoardPage.tripFirstRowTitle.getText().contains("Roberta - Houston - Austin"),"Trip'in ismi dogru yazilmis mi listeye");
+        softAssert.assertTrue(adminDashBoardPage.tripFirstRowTitle.getText().contains("Fletcher - Houston - Austin"),"Trip'in ismi dogru yazilmis mi listeye");
         softAssert.assertTrue(adminDashBoardPage.tripFirstRowDayOff.getText().contains("Sunday"),"Trip'in day off'lari listede dogru gorunuyor mu");
 
         adminDashBoardPage.tripFirstRowEditButton.click();

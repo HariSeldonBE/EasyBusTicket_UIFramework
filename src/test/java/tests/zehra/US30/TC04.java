@@ -27,7 +27,7 @@ public class TC04 extends TestBaseRapor {
       // Browser'ı açar
       // URL'e gider
 
-        extentTest=extentReports.createTest("New Counter Negatif TEST", "Yanlış bilgilerle girilmemesi gerekiyor ");
+        extentTest=extentReports.createTest("ZEHRA_New Counter Negatif TEST", "US_30  TC_04  Yanlış bilgilerle girilmemesi gerekiyor ");
 
         AdminDashBoard_CounterPage adminDashBoard_counterPage = new AdminDashBoard_CounterPage();
         SoftAssert softAssert = new SoftAssert();
@@ -38,7 +38,7 @@ public class TC04 extends TestBaseRapor {
 
       // "Counter" linkine tıklar
         adminDashBoard_counterPage.linkCounter.click();
-        extentTest.info("User goes to \"Easy Bus Ticket Admin\" Dashboard \" Counter");
+        extentTest.info("Admin goes to \"Easy Bus Ticket Admin\" Dashboard \" Counter");
 
       // "Add New" butonuna tıklar
         adminDashBoard_counterPage.counterAddNewButton.click();
@@ -47,7 +47,7 @@ public class TC04 extends TestBaseRapor {
         int fakerName = faker.number().randomDigit();
         String fakerAddress = faker.number().digit();
         String fakerLocation = faker.number().digit();
-        int fakerPhone = faker.number().randomDigit();
+        int fakerPhone = faker.number().numberBetween(11,11111111);
 
         ReusableMethods.wait(2);
         actions.click( adminDashBoard_counterPage.nameTextBox)

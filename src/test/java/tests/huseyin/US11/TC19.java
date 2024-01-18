@@ -94,11 +94,11 @@ public class TC19 {
  softAssert.assertTrue(easyBusTicketPage.footerXIcon.isEnabled(), "x Social Media Button in Home Page Footer is not enabled");
 
  JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.footerXIcon);
- String expectedAboutUrl = "https://twitter.com/";
- String actualAboutUrl = Driver.getDriver().getCurrentUrl();
+ String expectedXUrl = "https://twitter.com/";
+ String actualXUrl = Driver.getDriver().getCurrentUrl();
 
  // x Social Media Button in Home Page Footer Url Test
- softAssert.assertEquals(actualAboutUrl,expectedAboutUrl, "x Web Page is not displayed");
+ softAssert.assertEquals(actualXUrl,expectedXUrl, "x Web Page is not displayed");
 
  //*****************************************************************************************************************************
 

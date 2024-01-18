@@ -7,6 +7,7 @@ import pages.user.UserDashBoardPage;
 import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 public class TC26 {
@@ -85,6 +86,23 @@ public class TC26 {
 
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
+
+//*********************  Contact Link in Home Page Footer Display Test  ***************************************************
+        //
+        softAssert.assertTrue(easyBusTicketPage.footerContactButton.isDisplayed(), "Contact Link in Home Page Footer is not displayed");
+        // Contact Link in Home Page Footer Enable Test
+        softAssert.assertTrue(easyBusTicketPage.footerContactButton.isEnabled(), "Contact Link in Home Page Footer is not enabled");
+
+
+        JSUtilities.clickWithJS(Driver.getDriver(), easyBusTicketPage.footerContactButton);
+        String expectedContactUrl = "https://qa.easybusticket.com/contact";
+        String actualContactUrl = Driver.getDriver().getCurrentUrl();
+
+        // Contact Link in Home Page Footer Url Test
+        softAssert.assertEquals(actualContactUrl,expectedContactUrl, "Contact Page is not displayed");
+
+//**********************************************************************************************************************
+
 
 
         softAssert.assertAll();

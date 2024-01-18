@@ -7,36 +7,45 @@ import pages.admin.ManageUsersDDM;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class TC04 {
+
+public class TC04 extends TestBaseRapor {
     @Test
     public void test() {
         ManageUsersDDM manageUsersDDM = new ManageUsersDDM();
         SoftAssert softAssert=new SoftAssert();
+        extentTest=extentReports.createTest("Tüm kullanıcılara mail gönderme", "Kullanıcılara mail göndermek için butona tıklandığında gönderildi mesajı gelmiyor");
 
-        // URL'e gider
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
-        // Admin bilgilerini girer
+        extentTest.info("URL'e gider");
+
         ReusableMethods.adminLoginMethod("admin14", "123123123");
-        // "Manage Users" DDM'ye tıklar
+        extentTest.info("Admin bilgilerini girer");
+
         manageUsersDDM.dropDownManageUsers.click();
-        // Email to All linkine tıklar
+        extentTest.info("\"Manage Users\" DDM'e tıklar");
+
         manageUsersDDM.linkEmailToAll.click();
-        // "Subject" ve "Message" text boxlarını ve "Send Email" butonunu görür
+        extentTest.info("\"Email to All\" linkine tıklar");
+
         ReusableMethods.wait(2);
         manageUsersDDM.inputSubjectText.isDisplayed();
         manageUsersDDM.inputMessageText.isDisplayed();
         manageUsersDDM.buttonSendEmail.isDisplayed();
-        // "Subject" ve "Message" text boxlarına tıklar ve Text boxları doldurur
+
+        extentTest.info("\"Subject\" ve \"Message\" text boxlarını ve \"Send Email\" butonunu görür");
         manageUsersDDM.inputSubjectText.click();
         manageUsersDDM.inputSubjectText.sendKeys("merhaba" + Keys.TAB);
         manageUsersDDM.inputMessageText.sendKeys("merhaba");
+        extentTest.info("\"Subject\" ve \"Message\" text boxlarına tıklar ve Text boxları doldurur");
 
-        // "Send Email" butonuna tıklar
         manageUsersDDM.buttonSendEmail.click();
-        // Tüm kullanıcılara başarıyla mail gönderir
+        extentTest.info("\"Send Email\" butonuna tıklar");
+
         ReusableMethods.wait(2);
         softAssert.assertTrue(manageUsersDDM.alert.isDisplayed(),"Başarılı veya başarısız mesajı görüntülenmedi");
+        extentTest.info("Tüm kullanıcılara başarıyla mail gönderir");
         softAssert.assertAll();
         Driver.closeDriver();
     }

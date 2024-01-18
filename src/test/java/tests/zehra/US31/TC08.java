@@ -1,5 +1,6 @@
 package tests.zehra.US31;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -16,6 +17,7 @@ public class TC08 {
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
         Actions actions = new Actions(Driver.getDriver());
+        Faker faker = new Faker();
 
 
         // Browser'ı açar
@@ -40,12 +42,12 @@ public class TC08 {
 
        // İstenen bilgileri girer ve "save" butonuna tıklar
          adminDashBoard_manageFleetsPage.inputName.click();
-         actions.sendKeys("w bus").perform();
+         actions.sendKeys(faker.name().title()).perform();
         Select select1 = new Select(adminDashBoard_manageFleetsPage.selectSeat);
         select1.selectByVisibleText("2 x 2");
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).sendKeys("1")
-                .sendKeys(Keys.TAB).sendKeys("11")
+                .sendKeys(Keys.TAB).sendKeys(""+faker.number().numberBetween(0,15))
                 .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
                 .perform();
         ReusableMethods.wait(1);
@@ -57,12 +59,6 @@ public class TC08 {
         String expectedAlertMesaj = "Fleet type saved successfully";
         System.out.println(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText());
        softAssert.assertEquals(adminDashBoard_manageFleetsPage.alertAddNewMesagge.getText(),expectedAlertMesaj,"alert mesajı eşit değil");
-
-
-
-
-
-
 
         softAssert.assertAll();
         ReusableMethods.wait(2);

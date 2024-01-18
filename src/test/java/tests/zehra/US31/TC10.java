@@ -13,10 +13,9 @@ import utilities.TestBaseRapor;
 
 public class TC10 extends TestBaseRapor {
     @Test
-    public void negatifTest(){
+    public void negatifFleetTypeTest02(){
 
-        extentTest=extentReports.createTest("add New Negatif TEST", "Yanlış bilgilerle girilmemesi gerekiyor ");
-
+        extentTest=extentReports.createTest("ZEHRA_Add New Fleet Type Negatif TEST 2", "US_31  TC_10 Yanlış bilgilerle girilmemesi gerekiyor ");
 
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
@@ -26,6 +25,7 @@ public class TC10 extends TestBaseRapor {
         // Browser'ı açar
         // URL'e gider
         ReusableMethods.adminLoginMethod("admin11", "123123123");
+
         // Manage Fleets'e tıklar
         adminDashBoard_manageFleetsPage.linkManageFleets.click();
 
@@ -41,12 +41,12 @@ public class TC10 extends TestBaseRapor {
         // 9'dan küçük 50'ten büyük bir sayı girer
 
         adminDashBoard_manageFleetsPage.inputName.click();
-        actions.sendKeys("f bus").perform();
+        actions.sendKeys("KL bus").perform();
         Select select1 = new Select(adminDashBoard_manageFleetsPage.selectSeat);
         select1.selectByVisibleText("2 x 2");
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).sendKeys("1")
-                .sendKeys(Keys.TAB).sendKeys("100")
+                .sendKeys(Keys.TAB).sendKeys("105")
                 .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
                 .perform();
         ReusableMethods.wait(1);

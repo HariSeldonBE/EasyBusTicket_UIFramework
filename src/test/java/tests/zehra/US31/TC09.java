@@ -1,5 +1,6 @@
 package tests.zehra.US31;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -13,13 +14,13 @@ import utilities.TestBaseRapor;
 
 public class TC09 extends TestBaseRapor {
     @Test
-    public void negatifTest01(){
-        extentTest=extentReports.createTest("addNew negatif TEST", "Yanlış bilgilerle yeni giriş yapılmaması gerekiyor");
+    public void negatifFleetTypeTest(){
+        extentTest=extentReports.createTest("ZEHRA_Add New Fleet Type Negatif TEST", "US_31  TC_09  Yanlış bilgilerle yeni giriş yapılmaması gerekiyor");
 
         SoftAssert softAssert = new SoftAssert();
         AdminDashBoard_ManageFleetsPage adminDashBoard_manageFleetsPage = new AdminDashBoard_ManageFleetsPage();
         Actions actions = new Actions(Driver.getDriver());
-
+        Faker faker = new Faker();
 
         // Browser'ı açar
         // URL'e gider
@@ -37,15 +38,15 @@ public class TC09 extends TestBaseRapor {
 
        // "Add Fleet Type" penceresindeki "No of Deck" kısmına 3'ten büyük bir sayı girer
         adminDashBoard_manageFleetsPage.inputName.click();
-        actions.sendKeys("f bus").perform();
+        actions.sendKeys(faker.name().title()).perform();
         Select select1 = new Select(adminDashBoard_manageFleetsPage.selectSeat);
-        select1.selectByVisibleText("2 x 2");
+        select1.selectByVisibleText("2 x 1");
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.TAB).sendKeys("4")
-                .sendKeys(Keys.TAB).sendKeys("11")
-                .sendKeys(Keys.TAB).sendKeys("11")
-                .sendKeys(Keys.TAB).sendKeys("11")
-                .sendKeys(Keys.TAB).sendKeys("11")
+                .sendKeys(Keys.TAB).sendKeys(""+faker.number().numberBetween(1,100))
+                .sendKeys(Keys.TAB).sendKeys(""+faker.number().numberBetween(1,100))
+                .sendKeys(Keys.TAB).sendKeys(""+faker.number().numberBetween(1,100))
+                .sendKeys(Keys.TAB).sendKeys(""+faker.number().numberBetween(1,100))
                 .sendKeys(Keys.TAB).sendKeys(Keys.TAB)
                 .perform();
         ReusableMethods.wait(1);
