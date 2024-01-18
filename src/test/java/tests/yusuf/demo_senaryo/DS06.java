@@ -21,9 +21,10 @@ public class DS06 extends TestBaseRapor {
     @Test
     public void DS06 (){
 
+
         extentTest=extentReports.createTest("Contact Us support message TEST", "User tests the contact button");
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
         ReusableMethods.wait(1);
@@ -48,8 +49,8 @@ public class DS06 extends TestBaseRapor {
 
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
-        findTicketsPage.dateOfJourneySelection.click();
-        Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
+        findTicketsPage.dateOfJourney.sendKeys(ConfigReader.getProperty("date"));
+       // Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
         ReusableMethods.wait(2);
 
         // 12-"Find Tickets" butonu tıklanır
@@ -63,37 +64,43 @@ public class DS06 extends TestBaseRapor {
         findTicketsPage.selectSeatButton.click();
         ReusableMethods.wait(2);
         SelectSeatPage selectSeatPage = new SelectSeatPage();
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+       // actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait(1);
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-
+       // actions.sendKeys(Keys.PAGE_DOWN).perform();
+        js.executeScript("window.scrollBy(0,arguments[0])",500);
+        ReusableMethods.wait(1);
         // - Cinsiyet seçimi yapılır
-
         selectSeatPage.femaleCheckbox.click();
+       // js.executeScript("arguments[0].click",selectSeatPage.femaleCheckbox);
+
+
+
+      //  selectSeatPage.femaleCheckbox.click();
 
 
 
         // - Koltuk seçimi yapılır
-
-        selectSeatPage.seats.get(19).click();
+       selectSeatPage.seats.get(0).click();
+       // js.executeScript("arguments[0].click",selectSeatPage.seats.get(0));
 
 
         ReusableMethods.wait(2);
-        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
+
 
         // 26-"Continue" butonu tıklanır
         ReusableMethods.wait(2);
+       // js.executeScript("arguments[0].click",selectSeatPage.continueButton);
         selectSeatPage.continueButton.click();
         // 30-"Confirm" butonu tıklanır
+        //js.executeScript("arguments[0].click",selectSeatPage.confirmBookingButton);
         selectSeatPage.confirmBookingButton.click();
         ReusableMethods.wait(2);
        UserLoginPage userLoginPage=new UserLoginPage();
        Faker faker=new Faker();
-       actions.sendKeys(Keys.PAGE_DOWN).perform();
+       //actions.sendKeys(Keys.PAGE_DOWN).perform();
        ReusableMethods.wait(1);
        userLoginPage.signUpButton.click();
+       // js.executeScript("arguments[0].click",userLoginPage.signUpButton);
 
         extentTest.info("User presses the signUp button");
 
@@ -124,16 +131,14 @@ public class DS06 extends TestBaseRapor {
 
         ReusableMethods.wait(1);
         extentTest.info("1 seconds wait");
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-        extentTest.info("Page down");
+       // actions.sendKeys(Keys.PAGE_DOWN).perform();
+       // extentTest.info("Page down");
         ReusableMethods.wait(1);
         extentTest.info("1 seconds wait");
 
-
-        signUpPage.acceptCheckButon.click();
+        js.executeScript("arguments[0].click",signUpPage.acceptCheckButon);
         extentTest.info("Sign Up accept check box clicked");
-
-        signUpPage.signUpbutton.click();
+        js.executeScript("arguments[0].click",signUpPage.signUpbutton);
         extentTest.info("Sign Up button  clicked");
         ReusableMethods.wait(1);
 
@@ -142,60 +147,55 @@ public class DS06 extends TestBaseRapor {
 
         UserDashBoardPage userDashBoardPage = new UserDashBoardPage();
         ReusableMethods.wait(1);
-        userDashBoardPage.bookingDdm.click();
+        js.executeScript("arguments[0].click",userDashBoardPage.bookingDdm);
+
         ReusableMethods.wait(2);
         // 8-"Booking" açılır menüsü açıldığında "Buy Ticket" butonu tıklanır
-        userDashBoardPage.buyTicket.click();
-        ReusableMethods.wait(1);
-
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        js.executeScript("arguments[0].click",userDashBoardPage.buyTicket);
         ReusableMethods.wait(1);
 
         // 9-"Pick Up Point" dropbox undan herhangi bir yer seçilir
-        findTicketsPage.pickupPoint.click();
+        js.executeScript("arguments[0].click", findTicketsPage.pickupPoint);
+
 
         ReusableMethods.wait(2);
 
 
-        findTicketsPage.pickupPointSelection.click();
+        js.executeScript("arguments[0].click", findTicketsPage.pickupPointSelection);
         ReusableMethods.wait(2);
-        Object selectedPickups= findTicketsPage.pickupPointSelection.getText();
+        //Object selectedPickups= findTicketsPage.pickupPointSelection.getText();
         // 10-"Dropping Point" dropbox undan farklı yer seçilir
-        findTicketsPage.droppingPoint.click();
-        findTicketsPage.droppingPointSelection.click();
-        Object selectedDroppings=findTicketsPage.droppingPointSelection.getText();
+        js.executeScript("arguments[0].click", findTicketsPage.droppingPoint);
+        js.executeScript("arguments[0].click", findTicketsPage.droppingPointSelection);
+
+        // Object selectedDroppings=findTicketsPage.droppingPointSelection.getText();
 
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
-        findTicketsPage.dateOfJourney.click();
-        findTicketsPage.dateOfJourneySelection.click();
-        Object selectedDates= findTicketsPage.dateOfJourneySelection.getText();
+        js.executeScript("arguments[0].click", findTicketsPage.dateOfJourney);
+        findTicketsPage.dateOfJourney.sendKeys(ConfigReader.getProperty("date"));
+
+       // Object selectedDates= findTicketsPage.dateOfJourneySelection.getText();
         ReusableMethods.wait(2);
 
         // 12-"Find Tickets" butonu tıklanır
-        findTicketsPage.findTicketsButton.click();
+        js.executeScript("arguments[0].click", findTicketsPage.findTicketsButton);
 
-        ReusableMethods.wait(1);
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
 
         ReusableMethods.wait(1);
         // 13- Select Seat butonu tıklanır
-        findTicketsPage.selectSeatButton.click();
+        js.executeScript("arguments[0].click", findTicketsPage.selectSeatButton);
+
         ReusableMethods.wait(2);
 
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-        ReusableMethods.wait(1);
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-
-        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
-
         // - Cinsiyet seçimi yapılır
+        js.executeScript("arguments[0].click", selectSeatPage.femaleCheckbox);
 
-        selectSeatPage.femaleCheckbox.click();
 
 
 
         // - Koltuk seçimi yapılır
-
+        js.executeScript("arguments[0].click", selectSeatPage.seats.get(6));
         selectSeatPage.seats.get(17).click();
 
 
@@ -205,24 +205,28 @@ public class DS06 extends TestBaseRapor {
 
         // 26-"Continue" butonu tıklanır
         ReusableMethods.wait(2);
-        selectSeatPage.continueButton.click();
+        js.executeScript("arguments[0].click", selectSeatPage.continueButton);
+
         // 30-"Confirm" butonu tıklanır
-        selectSeatPage.confirmBookingButton.click();
+        js.executeScript("arguments[0].click", selectSeatPage.confirmBookingButton);
+
         ReusableMethods.wait(1);
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
 
         ReusableMethods.wait(1);
         //32- "Pay Now" butonu tıklanır
-        selectSeatPage.paymentMethodsPayNowButton.click();
+        js.executeScript("arguments[0].click", selectSeatPage.paymentMethodsPayNowButton);
+
         ReusableMethods.wait(2);
 
         //28-"Confirm" butonu tıklanır
-        selectSeatPage.paymentByStripeHostedConfirm.click();
-        ReusableMethods.wait(1);
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        js.executeScript("arguments[0].click", selectSeatPage.paymentByStripeHostedConfirm);
+
+
         ReusableMethods.wait(1);
         //32-"pay now" butonu tıklanır
-        selectSeatPage.paymentReviewPayNowButton.click();
+        js.executeScript("arguments[0].click", selectSeatPage.paymentReviewPayNowButton);
+
 
         //9-"Name on Card" textbox ına isim soyisim yazılır
         selectSeatPage.nameOnCard.sendKeys(ConfigReader.getProperty("nameOnCard"));
@@ -242,7 +246,7 @@ public class DS06 extends TestBaseRapor {
 
 
 
-        jse.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",selectSeatPage.paymentConfirmPayNowButton);
+
 
         actions.sendKeys(Keys.PAGE_UP).perform();
         ReusableMethods.wait(1);
