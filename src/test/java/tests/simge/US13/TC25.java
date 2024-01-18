@@ -102,9 +102,9 @@ public class TC25 extends TestBaseRapor {
         selectSeatPage.femaleCheckbox.click();
         extentTest.info("Cinsiyet seçimi yapılır");
         // 12 - Koltuk seçimi yapılır
-         ReusableMethods.seatSelectionMethod();
-        // selectSeatPage.seats.get(0).click();
-       // selectSeatPage.seats.get(1).click();
+         //ReusableMethods.seatSelectionMethod();
+        selectSeatPage.seats.get(0).click();
+        selectSeatPage.seats.get(1).click();
          ReusableMethods.wait(1);
 
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
@@ -237,9 +237,9 @@ public class TC25 extends TestBaseRapor {
         selectSeatPage.femaleCheckbox.click();
         extentTest.info("Cinsiyet seçimi yapılır");
         // 37 - Koltuk seçimi yapılır
-         ReusableMethods.seatSelectionMethod();
-       // selectSeatPage.seats.get(4).click();
-      //  selectSeatPage.seats.get(8).click();
+         //ReusableMethods.seatSelectionMethod();
+        selectSeatPage.seats.get(4).click();
+        selectSeatPage.seats.get(8).click();
 
         js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
         ReusableMethods.wait(1);
