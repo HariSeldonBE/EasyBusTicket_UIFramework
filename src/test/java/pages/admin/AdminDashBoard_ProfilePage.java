@@ -31,5 +31,8 @@ public class AdminDashBoard_ProfilePage {
     @FindBy(xpath = "(//input[@class='form-control'])[2]")
     public WebElement textboxEmail;
 
+    @FindBy(xpath = "(//button[@class='btn btn--primary btn-block btn-lg'])[1]")
+    public WebElement SaveChangesButton;
+
 
 }
