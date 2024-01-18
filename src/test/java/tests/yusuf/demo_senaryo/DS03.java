@@ -26,12 +26,14 @@ public class DS03 extends TestBaseRapor {
         SoftAssert softAssert=new SoftAssert();
 
 
+
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         extentTest.info("User goes to \"Easy Bus Ticket\" home page");
         EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
         extentTest.info("User presses the accept cookies ");
         Actions actions=new Actions(Driver.getDriver());
+
 
 
 
@@ -57,6 +59,8 @@ public class DS03 extends TestBaseRapor {
         extentTest.info("1 seconds wait");
 
 
+
+        Actions actions=new Actions(Driver.getDriver());
         JavascriptExecutor jse= (JavascriptExecutor) Driver.getDriver();
 
 
@@ -177,6 +181,9 @@ public class DS03 extends TestBaseRapor {
 
         // - Cinsiyet seçimi yapılır
 
+        // 21-Cinsiyet seçimi yapılır
+
+
         selectSeatPage.femaleCheckbox.click();
 
 
@@ -184,6 +191,11 @@ public class DS03 extends TestBaseRapor {
         // - Koltuk seçimi yapılır
 
         selectSeatPage.seats.get(14).click();
+
+        // 24 - Koltuk seçimi yapılır
+
+        selectSeatPage.seats.get(4).click();
+
 
 
         ReusableMethods.wait(2);
@@ -235,6 +247,7 @@ public class DS03 extends TestBaseRapor {
         ReusableMethods.wait(1);
         //18-"PAY NOW" butonu tıklanır
         selectSeatPage.paymentConfirmPayNowButton.click();
+
         softAssert.assertTrue(selectSeatPage.successfulPayment.isDisplayed(),"Successful payment görüntülenmedi");
         // 47-Booking History sayfasının açıldığı doğrulanır
         softAssert.assertTrue(selectSeatPage.bookingHistoryTitle.isDisplayed(),"Booking History sayfası açılmadı");
@@ -262,9 +275,18 @@ public class DS03 extends TestBaseRapor {
         String mainWindowHandle = Driver.getDriver().getWindowHandle();
         Set<String> allWindowHandles = Driver.getDriver().getWindowHandles();
 
+BookingHistoryPage bookingHistoryPage=new BookingHistoryPage();
+        String mainWindowHandle=Driver.getDriver().getWindowHandle();
+        ReusableMethods.wait(1);
+        selectSeatPage.yaziciIkonu.click();
+        Set<String> allWindowHandles=Driver.getDriver().getWindowHandles();
+
+
+
         for (String handle : allWindowHandles) {
             if (!handle.equals(mainWindowHandle)) {
                 Driver.getDriver().switchTo().window(handle);
+
                 // Şu anda açık olan pencerede e-bilet sayfasının olduğunu doğrula
                 // Bu doğrulamayı, e-bilet sayfasının belirli bir locator'ı ile yapabilirsiniz
                 softAssert.assertTrue(bookingHistoryPage.downloadTicket.isDisplayed(),"Download Ticket butonu görüntülenmedi");
@@ -300,4 +322,36 @@ ReusableMethods.wait(5);
 
 
 
+
+                // Bu doğrulamayı, e-bilet sayfasının belirli bir locator'ı ile yapabilirsiniz
+                Assert.assertTrue(bookingHistoryPage.downloadTicket.isDisplayed());
+                Assert.assertTrue(bookingHistoryPage.downloadTicket.isEnabled());
+                // 57-Download Ticket tıklanır
+                bookingHistoryPage.downloadTicket.click();
+
+                break;
+            }
+
+        }
+
+
+        Driver.closeDriver();
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 

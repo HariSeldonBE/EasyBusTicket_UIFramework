@@ -46,10 +46,11 @@ public class EasyBusTicketPage {
     @FindBy(xpath = "(//h4[@class='title'])[1]")
     public WebElement homePageChooseYourTicketPanelText;
 
-    @FindBy(xpath = "(//span[@class='select2-selection__arrow'])[1]")
+    //@FindBy(xpath = "(//span[@class='select2-selection__arrow'])[1]")
+    @FindBy(xpath = "/html/body/section[1]/div[1]/div/div[1]/div/div/form/div[2]/div/select")
     public WebElement homePagePickUpPointContainer;
 
-    @FindBy(xpath = "(//span[@class='select2-selection__arrow'])[2]")
+    @FindBy(xpath = "/html/body/section[1]/div[1]/div/div[1]/div/div/form/div[3]/div/select")
     public WebElement homePageDroppingPointContainer;
 
 

@@ -10,7 +10,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class TC02 {
-/*
+
     @Test
 
     public void chooseYourTicketPanelAktiflikTesti() {
@@ -28,16 +28,18 @@ public class TC02 {
         softAssert.assertEquals(actualUrl,exceptedUrl);
 
 
-        ReusableMethods.wait(3);
+
         Select pickUpPointSelect = new Select(easyBusTicketPage.homePagePickUpPointContainer);
-        pickUpPointSelect.selectByIndex(1);
+        pickUpPointSelect.selectByVisibleText("Austin");
+
+        ReusableMethods.wait(1);
 
         Select droppingPointSelect = new Select(easyBusTicketPage.homePageDroppingPointContainer);
-        droppingPointSelect.selectByIndex(2);
+        droppingPointSelect.selectByVisibleText("Dallas");
 
         easyBusTicketPage.homePageFindTicketButton.click();
 
-        String EBTticketPageExpectedUrl = "https://easybusticket.com/tickets";
+        String EBTticketPageExpectedUrl = "https://qa.easybusticket.com/ticket/search?pickup=1&destination=2&date_of_journey=";
         String EBTTicketPageActualUrl = Driver.getDriver().getCurrentUrl();
         softAssert.assertTrue(EBTTicketPageActualUrl.contains(EBTticketPageExpectedUrl));
 
@@ -61,5 +63,7 @@ public class TC02 {
 
     }
 
-     */
+
+
+
 }

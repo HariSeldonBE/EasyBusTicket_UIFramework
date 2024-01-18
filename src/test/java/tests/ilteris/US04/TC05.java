@@ -10,7 +10,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class TC05 {
-/*
+
     @Test
     public void footerContactInfoGorunurlukVeAktiflikTesti() {
 
@@ -33,36 +33,40 @@ public class TC05 {
         js.executeScript("arguments[0].scrollIntoView()",easyBusTicketPage.easyBusTicketFooterLogo);
         ReusableMethods.wait(0);
 
-        // "Privacy Policy" için aktifliği test edin
+
         softAssert.assertTrue(easyBusTicketPage.footerAdresText.isDisplayed());
         ReusableMethods.wait(1);
-        easyBusTicketPage.footerAdresText.click();
-        //String exceptedAdressURL = "https://qa.easybusticket.com/policy/69/privacy-policy";
-        //String actualAdressURL = Driver.getDriver().getCurrentUrl();
-        //softAssert.assertEquals(actualAdressURL,exceptedAdressURL);
 
-        js.executeScript("window.history.go(-1);");
+
+        //js.executeScript("window.history.go(-1);");
         //Driver.getDriver().navigate().back();
 
-        // "Terms and Conditions" için aktifliği test edin
-        softAssert.assertTrue(easyBusTicketPage.footerContactNumber.isDisplayed());
-        easyBusTicketPage.footerContactNumber.click();
-        String exceptedTermsConditionsURL = "https://qa.easybusticket.com/policy/71/terms-and-conditions";
-        String actualTermsConditionsURL = Driver.getDriver().getCurrentUrl();
-        softAssert.assertEquals(actualTermsConditionsURL,exceptedTermsConditionsURL);
 
-        Driver.getDriver().navigate().back();
-
-        //"Ticket Policies" için aktifliği test edin
-        softAssert.assertTrue(easyBusTicketPage.footerContactEmail.isDisplayed());
-        easyBusTicketPage.footerContactEmail.click();
-        String exceptedBTicketPoliciesURL = "https://qa.easybusticket.com/policy/90/ticket-policies";
-        String actualTicketPoliciesURL = Driver.getDriver().getCurrentUrl();
-        softAssert.assertEquals(actualTicketPoliciesURL,exceptedBTicketPoliciesURL);
-
-        Driver.getDriver().navigate().back();
+        // Phone Number in Footer Display Test
+        softAssert.assertTrue(easyBusTicketPage.footerTelNumber.isDisplayed(), "Phone number in footer is not displayed");
+        softAssert.assertTrue(easyBusTicketPage.footerTelNumber.isEnabled(), "Phone number in footer is not enabled");
+        softAssert.assertTrue(easyBusTicketPage.footerTelNumber.getAttribute("href").contains("tel:"), "Phone number in footer does not look for an external phone app");
 
 
+
+
+
+
+        softAssert.assertTrue(easyBusTicketPage.footerAdresText.isDisplayed(), "Address Info in Home Page Footer is not displayed");
+
+        // Address Info in Home Page Footer Enable Test - click to go Google Map
+        softAssert.assertTrue(easyBusTicketPage.footerAdresText.isEnabled(), "Address Info in Home Page Footer is not enabled");
+
+
+        // Address Info in Home Page Footer Google Map test
+        String hrefAttribute = easyBusTicketPage.footerAdresText.getAttribute("href");
+        if (hrefAttribute == null) {
+            hrefAttribute = "no href";
+        }
+        else {
+
+        }
+        softAssert.assertFalse(hrefAttribute.contains("no href"), "Address Info in Footer is not a Google Map link");
 
 
         softAssert.assertAll();
@@ -71,5 +75,5 @@ public class TC05 {
 
     }
 
- */
+
 }

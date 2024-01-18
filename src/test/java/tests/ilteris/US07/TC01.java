@@ -33,17 +33,17 @@ public class TC01 {
         String EBTTicketPageActualUrl = Driver.getDriver().getCurrentUrl();
         softAssert.assertEquals(EBTTicketPageActualUrl,EBTticketPageExpectedUrl);
 
-        softAssert.assertTrue(blogPage.blogPost1.isDisplayed());
-        softAssert.assertTrue(blogPage.blogPost2.isDisplayed());
-        softAssert.assertTrue(blogPage.blogPost3.isDisplayed());
-        softAssert.assertTrue(blogPage.blogPost4.isDisplayed());
-        softAssert.assertTrue(blogPage.blogPost5.isDisplayed());
-        softAssert.assertTrue(blogPage.blogPost6.isDisplayed());
-        softAssert.assertTrue(blogPage.blogPost7.isDisplayed());
+        softAssert.assertTrue(BlogPage.blogPost1.isDisplayed());
+        softAssert.assertTrue(BlogPage.blogPost2.isDisplayed());
+        softAssert.assertTrue(BlogPage.blogPost3.isDisplayed());
+        softAssert.assertTrue(BlogPage.blogPost4.isDisplayed());
+        softAssert.assertTrue(BlogPage.blogPost5.isDisplayed());
+        softAssert.assertTrue(BlogPage.blogPost6.isDisplayed());
+        softAssert.assertTrue(BlogPage.blogPost7.isDisplayed());
         softAssert.assertTrue(blogPage.recentBlogPostHeader.isDisplayed());
-        softAssert.assertTrue(blogPage.recentBlogPost1.isDisplayed());
-        softAssert.assertTrue(blogPage.recentBlogPost2.isDisplayed());
-        softAssert.assertTrue(blogPage.recentBlogPost3.isDisplayed());
+        softAssert.assertTrue(BlogPage.recentBlogPost1.isDisplayed());
+        softAssert.assertTrue(BlogPage.recentBlogPost2.isDisplayed());
+        softAssert.assertTrue(BlogPage.recentBlogPost3.isDisplayed());
 
 
 

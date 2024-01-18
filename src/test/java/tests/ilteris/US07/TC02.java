@@ -12,7 +12,7 @@ import utilities.ReusableMethods;
 public class TC02 {
 
     @Test
-    public void headerBlogPageGörüntülemeTesti(){
+    public void headerBlogPageAktiflikTesti(){
 
         //https://easybusticket.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
