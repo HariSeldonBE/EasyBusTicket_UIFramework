@@ -53,6 +53,8 @@ public class ContactPage {
     @FindBy (xpath = "//h2[@class='title']")
     public WebElement contactUsText;
 
+    @FindBy(xpath = "//button[@type='button'] ")
+    public WebElement succesclosebutton;
 
 
 
