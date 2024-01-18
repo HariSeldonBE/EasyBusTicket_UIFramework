@@ -30,4 +30,7 @@ public class UserLoginPage {
     @FindBy(xpath= "//*[@class='iziToast-message slideIn']")
     public WebElement slideInBox;
 
+    @FindBy(xpath = "//a[text()='Sign Up']")
+    public WebElement signUpButton;
+
 }

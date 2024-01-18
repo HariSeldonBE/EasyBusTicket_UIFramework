@@ -315,4 +315,9 @@ public class EasyBusTicketPage {
 
     @FindBy(xpath = "//*[@class='las la-chevron-up']")
     public WebElement toTheTop;
+
+    @FindBy(xpath = "//a[@class='cmn--btn ']")
+    public WebElement getTicketNowButton;
+
+
 }

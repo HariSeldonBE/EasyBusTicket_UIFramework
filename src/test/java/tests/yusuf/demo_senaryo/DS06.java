@@ -17,75 +17,84 @@ import utilities.TestBaseRapor;
 
 import java.util.Set;
 
-public class DS03 extends TestBaseRapor {
+public class DS06 extends TestBaseRapor {
     @Test
-    public void DS03 (){
-
+    public void DS06 (){
 
         extentTest=extentReports.createTest("Contact Us support message TEST", "User tests the contact button");
+        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
+
+        EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
+        easyBusTicketPage.cookiesButton.click();
+        ReusableMethods.wait(1);
+
+        easyBusTicketPage.getTicketNowButton.click();
+        ReusableMethods.wait(1);
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        FindTicketsPage findTicketsPage = new FindTicketsPage();
+        findTicketsPage.pickupPoint.click();
+
+        ReusableMethods.wait(2);
         SoftAssert softAssert=new SoftAssert();
 
+        findTicketsPage.pickupPointSelection.click();
+        ReusableMethods.wait(2);
+        Object selectedPickup = findTicketsPage.pickupPointSelection.getText();
+        // 10-"Dropping Point" dropbox undan farklı yer seçilir
+        findTicketsPage.droppingPoint.click();
+        findTicketsPage.droppingPointSelection.click();
+        Object selectedDropping=findTicketsPage.droppingPointSelection.getText();
 
-
-        Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
-        extentTest.info("User goes to \"Easy Bus Ticket\" home page");
-        EasyBusTicketPage easyBusTicketPage=new EasyBusTicketPage();
-        easyBusTicketPage.cookiesButton.click();
-        extentTest.info("User presses the accept cookies ");
-        Actions actions=new Actions(Driver.getDriver());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        easyBusTicketPage.contactButton.click();
-        extentTest.info("User presses the contact button");
-
-        ContactPage contactPage=new ContactPage();
-        ReusableMethods.wait(1);
-        extentTest.info("1 seconds wait");
-
-
-
-        Actions actions=new Actions(Driver.getDriver());
-        JavascriptExecutor jse= (JavascriptExecutor) Driver.getDriver();
-
-
-        jse.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",contactPage.nameTextBox);
-        ReusableMethods.wait(1);
-        Faker faker=new Faker();
-        actions.click(contactPage.nameTextBox)
-                .sendKeys(faker.name().firstName())
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.internet().emailAddress())
-                .sendKeys(Keys.TAB)
-                .sendKeys(ConfigReader.getProperty("fakesubject"))
-                .sendKeys(Keys.TAB)
-                .sendKeys(ConfigReader.getProperty("fakemessage"))
-                .perform();
-        extentTest.info("Fills boxes with appropriate criteria");
-        contactPage.sendUsButton.click();
-        extentTest.info("\"send us button\" Click");
-        ReusableMethods.wait(1);
-        contactPage.succesclosebutton.click();
+        // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
+        findTicketsPage.dateOfJourney.click();
+        findTicketsPage.dateOfJourneySelection.click();
+        Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
         ReusableMethods.wait(2);
 
+        // 12-"Find Tickets" butonu tıklanır
+        findTicketsPage.findTicketsButton.click();
+
+        ReusableMethods.wait(1);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+        ReusableMethods.wait(1);
+        // 13- Select Seat butonu tıklanır
+        findTicketsPage.selectSeatButton.click();
+        ReusableMethods.wait(2);
+        SelectSeatPage selectSeatPage = new SelectSeatPage();
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.wait(1);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
+        // - Cinsiyet seçimi yapılır
+
+        selectSeatPage.femaleCheckbox.click();
 
 
-        easyBusTicketPage.signUpButton.click();
+
+        // - Koltuk seçimi yapılır
+
+        selectSeatPage.seats.get(19).click();
+
+
+        ReusableMethods.wait(2);
+        js.executeScript("arguments[0].scrollIntoView()",selectSeatPage.continueButton);
+
+        // 26-"Continue" butonu tıklanır
+        ReusableMethods.wait(2);
+        selectSeatPage.continueButton.click();
+        // 30-"Confirm" butonu tıklanır
+        selectSeatPage.confirmBookingButton.click();
+        ReusableMethods.wait(2);
+       UserLoginPage userLoginPage=new UserLoginPage();
+       Faker faker=new Faker();
+       actions.sendKeys(Keys.PAGE_DOWN).perform();
+       ReusableMethods.wait(1);
+       userLoginPage.signUpButton.click();
+
         extentTest.info("User presses the signUp button");
 
         SignUpPage signUpPage = new SignUpPage();
@@ -141,7 +150,7 @@ public class DS03 extends TestBaseRapor {
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait(1);
-        FindTicketsPage findTicketsPage=new FindTicketsPage();
+
         // 9-"Pick Up Point" dropbox undan herhangi bir yer seçilir
         findTicketsPage.pickupPoint.click();
 
@@ -150,16 +159,16 @@ public class DS03 extends TestBaseRapor {
 
         findTicketsPage.pickupPointSelection.click();
         ReusableMethods.wait(2);
-        Object selectedPickup= findTicketsPage.pickupPointSelection.getText();
+        Object selectedPickups= findTicketsPage.pickupPointSelection.getText();
         // 10-"Dropping Point" dropbox undan farklı yer seçilir
         findTicketsPage.droppingPoint.click();
         findTicketsPage.droppingPointSelection.click();
-        Object selectedDropping=findTicketsPage.droppingPointSelection.getText();
+        Object selectedDroppings=findTicketsPage.droppingPointSelection.getText();
 
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
         findTicketsPage.dateOfJourneySelection.click();
-        Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
+        Object selectedDates= findTicketsPage.dateOfJourneySelection.getText();
         ReusableMethods.wait(2);
 
         // 12-"Find Tickets" butonu tıklanır
@@ -172,17 +181,14 @@ public class DS03 extends TestBaseRapor {
         // 13- Select Seat butonu tıklanır
         findTicketsPage.selectSeatButton.click();
         ReusableMethods.wait(2);
-        SelectSeatPage selectSeatPage = new SelectSeatPage();
+
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
 
         // - Cinsiyet seçimi yapılır
-
-        // 21-Cinsiyet seçimi yapılır
-
 
         selectSeatPage.femaleCheckbox.click();
 
@@ -190,12 +196,7 @@ public class DS03 extends TestBaseRapor {
 
         // - Koltuk seçimi yapılır
 
-        selectSeatPage.seats.get(14).click();
-
-        // 24 - Koltuk seçimi yapılır
-
-        selectSeatPage.seats.get(4).click();
-
+        selectSeatPage.seats.get(17).click();
 
 
         ReusableMethods.wait(2);
@@ -247,7 +248,6 @@ public class DS03 extends TestBaseRapor {
         ReusableMethods.wait(1);
         //18-"PAY NOW" butonu tıklanır
         selectSeatPage.paymentConfirmPayNowButton.click();
-
         softAssert.assertTrue(selectSeatPage.successfulPayment.isDisplayed(),"Successful payment görüntülenmedi");
         // 47-Booking History sayfasının açıldığı doğrulanır
         softAssert.assertTrue(selectSeatPage.bookingHistoryTitle.isDisplayed(),"Booking History sayfası açılmadı");
@@ -275,18 +275,9 @@ public class DS03 extends TestBaseRapor {
         String mainWindowHandle = Driver.getDriver().getWindowHandle();
         Set<String> allWindowHandles = Driver.getDriver().getWindowHandles();
 
-BookingHistoryPage bookingHistoryPage=new BookingHistoryPage();
-        String mainWindowHandle=Driver.getDriver().getWindowHandle();
-        ReusableMethods.wait(1);
-        selectSeatPage.yaziciIkonu.click();
-        Set<String> allWindowHandles=Driver.getDriver().getWindowHandles();
-
-
-
         for (String handle : allWindowHandles) {
             if (!handle.equals(mainWindowHandle)) {
                 Driver.getDriver().switchTo().window(handle);
-
                 // Şu anda açık olan pencerede e-bilet sayfasının olduğunu doğrula
                 // Bu doğrulamayı, e-bilet sayfasının belirli bir locator'ı ile yapabilirsiniz
                 softAssert.assertTrue(bookingHistoryPage.downloadTicket.isDisplayed(),"Download Ticket butonu görüntülenmedi");
@@ -297,7 +288,7 @@ BookingHistoryPage bookingHistoryPage=new BookingHistoryPage();
 
                 break;
             }
-ReusableMethods.wait(5);
+            ReusableMethods.wait(5);
 
         }
         softAssert.assertAll();
@@ -306,7 +297,7 @@ ReusableMethods.wait(5);
     }
 
 
-    }
+}
 
 
 
@@ -322,36 +313,4 @@ ReusableMethods.wait(5);
 
 
 
-
-                // Bu doğrulamayı, e-bilet sayfasının belirli bir locator'ı ile yapabilirsiniz
-                Assert.assertTrue(bookingHistoryPage.downloadTicket.isDisplayed());
-                Assert.assertTrue(bookingHistoryPage.downloadTicket.isEnabled());
-                // 57-Download Ticket tıklanır
-                bookingHistoryPage.downloadTicket.click();
-
-                break;
-            }
-
-        }
-
-
-        Driver.closeDriver();
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
 
