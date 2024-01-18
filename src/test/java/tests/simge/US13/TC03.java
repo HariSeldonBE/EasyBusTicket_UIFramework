@@ -30,12 +30,12 @@ public class TC03 {
         ReusableMethods.wait(2);
         findTicketsPage.pickupPointSelection.click();
         ReusableMethods.wait(2);
-        // 10-"Dropping Point" dropbox undan farklı yer seçilir
+        // 10-"Dropping Point" dropbox undan aynı yer seçilir
         findTicketsPage.droppingPoint.click();
         findTicketsPage.droppingPointNegatifSelection.click();
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
-        findTicketsPage.dateOfJourneySelection.click();
+        findTicketsPage.dateOfJourney.sendKeys(ConfigReader.getProperty("date"));
         ReusableMethods.wait(2);
         // 12-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();

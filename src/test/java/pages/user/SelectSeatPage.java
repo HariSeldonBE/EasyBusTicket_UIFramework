@@ -51,7 +51,7 @@ public class SelectSeatPage {public SelectSeatPage(){PageFactory.initElements(Dr
     public WebElement genderSelectError;
     @FindBy(xpath = "//div[@class='selected-seat-details']")
     public WebElement selectedSeatDetails;
-    @FindBy(xpath = "(//a[@data-bs-toggle='modal'])[1]")
+    @FindBy(xpath = "//a[@data-name=\"Stripe Hosted\"]")
     public WebElement paymentMethodsPayNowButton;
     @FindBy(xpath = "//h5[@id='depositModalLabel']")
     public WebElement paymentByStripeHostedTitle;
@@ -119,6 +119,8 @@ public class SelectSeatPage {public SelectSeatPage(){PageFactory.initElements(Dr
     public WebElement logo;
     @FindBy(xpath = "//span[@data-seat=\"1-F1\"]")
     public WebElement F1;
+    @FindBy(xpath= "//*[@class='iziToast-message slideIn']")
+    public WebElement depositError;
 
 
 }

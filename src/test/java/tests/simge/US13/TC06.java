@@ -40,9 +40,9 @@ public class TC06 {
         Object selectedDropping=findTicketsPage.droppingPointSelection.getText();
         // 11-"Date of Journey" dropbox undan sonraki tarih seçilir
         findTicketsPage.dateOfJourney.click();
-        findTicketsPage.dateOfJourneySelection.click();
-        Object selectedDate = findTicketsPage.dateOfJourneySelection.getText();
-        ReusableMethods.wait(2);
+        findTicketsPage.dateOfJourney.sendKeys(ConfigReader.getProperty("date"));
+
+        ReusableMethods.wait(1);
         // 12-"Find Tickets" butonu tıklanır
         findTicketsPage.findTicketsButton.click();
         // 13- Select Seat butonu tıklanır
@@ -50,8 +50,7 @@ public class TC06 {
         ReusableMethods.wait(2);
         SelectSeatPage selectSeatPage =new SelectSeatPage();
         // 14- Journey Date doğru mu kontrol edilir
-        selectSeatPage.seatJourneyDateBox.click();
-        softAssert.assertEquals(selectSeatPage.firstSelectedDate.getText(),selectedDate,"Secilen tarih uyusmuyor");
+        softAssert.assertEquals(selectSeatPage.seatJourneyDateBox.getAttribute("value"),ConfigReader.getProperty("date"),"Find Ticket Page'de secilen tarih ile Select Seat Page'ki journey date uyusmuyor");
         // 15- Pickup Point doğru mu kontrol edilir
         softAssert.assertEquals(selectSeatPage.seatPickup.getText(),selectedPickup,"Secilen pickup point uyusmuyor");
         // 16- Dropping Point doğru mu kontrol edilir
