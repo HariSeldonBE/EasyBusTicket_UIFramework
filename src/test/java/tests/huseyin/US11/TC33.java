@@ -1,5 +1,6 @@
 package tests.huseyin.US11;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
@@ -8,6 +9,8 @@ import pages.user.UserLoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+
 
 public class TC33 {
     @Test
@@ -85,6 +88,19 @@ public class TC33 {
 
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
+
+        // To the Top Arrow Display Test
+        softAssert.assertTrue(easyBusTicketPage.toTheTop.isDisplayed(), "To the Top Arrow is not displayed");
+        softAssert.assertTrue(easyBusTicketPage.toTheTop.isEnabled(), "To the Top Arrow is not enabled");
+
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
+        js.executeScript("arguments[0].click();",easyBusTicketPage.toTheTop);
+        Long actualOffSet = (Long) js.executeScript("return window.pageYOffset;");
+        Long expectedOffSet = 0L;
+
+        softAssert.assertEquals(actualOffSet,expectedOffSet, "To the Top Arrow is not functional");
+
 
 
         softAssert.assertAll();

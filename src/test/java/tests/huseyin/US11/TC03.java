@@ -85,11 +85,17 @@ public class TC03 {
 
         // Easy Bus Ticket Home Page Url Test
         softAssert.assertEquals(actualEBTUrl,expectedEBTUrl, "Easy Bus Ticket Home Page is not displayed");
-        // Home Page Phone Number Display Test
+
+        // Phone Number in Header Display Test
         softAssert.assertTrue(easyBusTicketPage.headerMobileNumberLinki.isDisplayed(), "Phone number in header is not displayed");
+        softAssert.assertTrue(easyBusTicketPage.headerMobileNumberLinki.isEnabled(), "Phone number in header is not enabled");
+
+        // When clicking on phone number link, an external phone app starts to run or not
+        softAssert.assertTrue(easyBusTicketPage.headerMobileNumberLinki.getAttribute("href").contains("tel:"), "Phone number in header does not look for an external phone app");
 
 
-        softAssert.assertAll();
         Driver.closeDriver();
+        softAssert.assertAll();
+
     }
 }
