@@ -375,6 +375,29 @@ public class AdminDashBoardPage {
     @FindBy(xpath = "(//button[@class='btn btn--primary'])[2]")
     public WebElement avUpdatePopUpUpdateButton;
 
+    @FindBy(xpath = "(//a[@class='dropdown-menu__item d-flex align-items-center px-3 py-2'])[2]")
+    public WebElement adminProfilePasswordButton;
+
+    @FindBy(xpath = "(//a[@class='dropdown-menu__item d-flex align-items-center px-3 py-2'])[3]")
+    public WebElement adminProfileLogoutButton;
+
+
+    @FindBy(xpath = "(//a[@class='btn btn-sm btn--primary box--shadow1 text--small'])[1]")
+    public WebElement adminProfilePasswordSettingButton;
+
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement adminPasswordPasswordBox;
+
+    @FindBy(xpath = "(//input[@class='form-control'])[2]")
+    public WebElement adminPasswordNewPasswordBox;
+
+    @FindBy(xpath = "(//input[@class='form-control'])[3]")
+    public WebElement adminPasswordConfirmPasswordBox;
+
+    @FindBy(xpath = "(//button[@class='btn btn--primary btn-block btn-lg'])[1]")
+    public WebElement adminPasswordSaveChangesButton;
+
+
 
 
 
