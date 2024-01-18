@@ -72,7 +72,10 @@ public class TC07 {
         selectSeatPage.femaleCheckbox.click();
 
         // 18 - Koltuk seçimi yapılır
-        ReusableMethods.seatSelectionMethod();
+        //ReusableMethods.seatSelectionMethod();
+        selectSeatPage.seats.get(5).click();
+        selectSeatPage.seats.get(6).click();
+
         ReusableMethods.wait(1);
         js.executeScript("arguments[0].scrollIntoView()", selectSeatPage.continueButton);
         ReusableMethods.wait(1);
