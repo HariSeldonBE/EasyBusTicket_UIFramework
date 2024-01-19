@@ -14,7 +14,13 @@ import utilities.ReusableMethods;
 public class TC03 {
 
     @Test
-    public void test01() {
+    public void dashboardisActiveTesti() {
+
+        // US22 / TC03
+        // Admin Dahsboar'da bulunan:
+        // Latest Booking History Tablosu'nun görünür olduğu doğrulanmalı.
+        // "Details" Butonu tıklandığında, Booked History sayfasına ulaşılabildiği doğrulanmalı.
+
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
         AdminLoginPage adminLoginPage = new AdminLoginPage();
         adminLoginPage.usernameBox.sendKeys("admin12");
@@ -23,10 +29,6 @@ public class TC03 {
         ReusableMethods.wait(1);
         adminLoginPage.loginButton.click(); // Admin Dashboard sayfasına ulaştık.
 
-        // US22 / TC03
-        //Admin Dahsboar'da bulunan:
-        // Latest Booking History Tablosu'nun görünür olduğu doğrulanmalı.
-        // "Details" Butonu tıklandığında, Booked History sayfasına ulaşılabildiği doğrulanmalı.
         AdminDashboardUS22 adminDashboardUS22 = new AdminDashboardUS22();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(adminDashboardUS22.latestBookingHistoryCard.isDisplayed());
@@ -55,6 +57,7 @@ public class TC03 {
 
 
         ReusableMethods.wait(2);
+        softAssert.assertAll();
         Driver.closeDriver();
 
     }

@@ -17,4 +17,6 @@ public class AccountRecoveryPage {
     @FindBy(xpath = "//input[@placeholder='Enter Your username']")
     public WebElement verificationCodePlaceholderYazisi;
 
+    @FindBy(xpath = "(//div[@class='col-lg-12'])[2]")
+    public WebElement resetPasswordMessage;
 }

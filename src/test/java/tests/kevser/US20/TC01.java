@@ -1,7 +1,9 @@
 package tests.kevser.US20;
 
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.ResetPasswordPage;
 import utilities.ConfigReader;
@@ -17,23 +19,29 @@ public class TC01 {
             *** Açılan yeni sayfada "Reset Password" yazısının görünür olduğu doğrulanarak,
                 beklenen sayfaya ulaşıldığı onaylanır.
         */
-
     @Test
-    public void test01() {
+    public void resetPasswordPageTest() {
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
 
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
         easyBusTicketPage.signInButton.click();
         ReusableMethods.wait(2);
-        Assert.assertTrue(easyBusTicketPage.forgotPasswordLink.isDisplayed());
+        SoftAssert softAssert =new SoftAssert();
+        softAssert.assertTrue(easyBusTicketPage.forgotPasswordLink.isDisplayed());
         easyBusTicketPage.forgotPasswordLink.click();
 
         // Beklenen sayfaya ulaşıldı. Açılan sayfada "Reset Password" yazısının görüldüğü doğrulandı.
         ResetPasswordPage resetPasswordPage = new ResetPasswordPage();
-        Assert.assertTrue(resetPasswordPage.resetPasswordYazisi.isDisplayed());
+        softAssert.assertTrue(resetPasswordPage.resetPasswordYazisi.isDisplayed());
+
+        String expectedUrl = "https://qa.easybusticket.com/password/reset";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedUrl);
+
         ReusableMethods.wait(2);
 
+        softAssert.assertAll();
         Driver.closeDriver();
 
 

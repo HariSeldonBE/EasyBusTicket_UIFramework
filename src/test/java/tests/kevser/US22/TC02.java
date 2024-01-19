@@ -11,7 +11,10 @@ import utilities.ReusableMethods;
 public class TC02 {
 
     @Test
-    public void test01() {
+    public void dashboardisVisibleTest() {
+        // ---> TC02
+        // Admin Dashboard'da yeralan, US22'de istenen Webelementlerin, View All Buton'larının aktif olduğu doğrulanmalı
+
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
         AdminLoginPage adminLoginPage = new AdminLoginPage();
         adminLoginPage.usernameBox.sendKeys("admin12");
@@ -20,9 +23,6 @@ public class TC02 {
         ReusableMethods.wait(1);
         adminLoginPage.loginButton.click(); // Admin Dashboard sayfasına ulaştık.
 
-
-        // ---> TC02
-        // Admin Dashboard'da yeralan, US22'de istenen Webelementlerin, View All Buton'larının aktif olduğu doğrulanmalı
         AdminDashboardUS22 adminDashboardUS22 = new AdminDashboardUS22();
         SoftAssert softAssert = new SoftAssert();
 
@@ -38,6 +38,7 @@ public class TC02 {
         softAssert.assertTrue(adminDashboardUS22.totalCounterViewButton.isEnabled());
 
         ReusableMethods.wait(2);
+        softAssert.assertAll();
         Driver.closeDriver();
 
 
