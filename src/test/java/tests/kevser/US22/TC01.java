@@ -11,7 +11,10 @@ import utilities.ReusableMethods;
 public class TC01 {
 
     @Test
-    public void test01(){
+    public void adminDashboardAccess(){
+
+        // --> TC01
+        // Admin Dashboard'daki, US22'de istenen elementlerin görüntülenebilir olduğunun doğrulanması:
 
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
         AdminLoginPage adminLoginPage = new AdminLoginPage();
@@ -20,9 +23,6 @@ public class TC01 {
         adminLoginPage.passwordBox.sendKeys("123123123");
         ReusableMethods.wait(1);
         adminLoginPage.loginButton.click(); // Admin Dashboard sayfasına ulaştık.
-
-        // --> TC01
-        // Admin Dashboard'daki, US22'de istenen elementlerin görüntülenebilir olduğunun doğrulanması:
 
         AdminDashboardUS22 adminDashboardUS22 = new AdminDashboardUS22();
         SoftAssert softAssert = new SoftAssert();
@@ -38,6 +38,7 @@ public class TC01 {
         softAssert.assertTrue(adminDashboardUS22.totalCounter.isDisplayed());
 
         ReusableMethods.wait(3);
+        softAssert.assertAll();
         Driver.closeDriver();
 
 

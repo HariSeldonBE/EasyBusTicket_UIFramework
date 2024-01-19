@@ -3,6 +3,7 @@ package tests.kevser.US20;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.ResetPasswordPage;
 import utilities.ConfigReader;
@@ -42,10 +43,11 @@ public class TC06 {
         //Geçersiz Username ile "Accoun Recovery" sayfasına ulaşılamadığı doğrulanır.
         String expectedUrl = "https://qa.easybusticket.com/password/reset";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-
-        Assert.assertEquals(actualUrl,expectedUrl);
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(actualUrl,expectedUrl,"Geçersiz Username ile şifre sıfırlanamıyor.");
 
         ReusableMethods.wait(3);
+        softAssert.assertAll();
         Driver.closeDriver();
     }
 }

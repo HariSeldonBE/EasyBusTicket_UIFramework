@@ -3,6 +3,7 @@ package tests.kevser.US20;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.EasyBusTicketPage;
 import pages.user.AccountRecoveryPage;
 import pages.user.ResetPasswordPage;
@@ -27,12 +28,13 @@ public class TC02 {
     //Kayıtlı kullanıcı;
     //Browser'ı açar, Url'e gider, Cokies'i kabul eder, "Sign in"i tıklar, "Forgot Password?" linkini tıklar
     @Test
-    public void test01() {
+    public void accountRecoveryPageTest() {
         Driver.getDriver().get(ConfigReader.getProperty("eBTUrl"));
         EasyBusTicketPage easyBusTicketPage = new EasyBusTicketPage();
         easyBusTicketPage.cookiesButton.click();
         easyBusTicketPage.signInButton.click();
-        Assert.assertTrue(easyBusTicketPage.forgotPasswordLink.isDisplayed());
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(easyBusTicketPage.forgotPasswordLink.isDisplayed());
         easyBusTicketPage.forgotPasswordLink.click();
 
         // TC02 yukarıdaki adımlardan sonra başlıyor.
@@ -51,9 +53,9 @@ public class TC02 {
 
         //"Accoun Recovery" sayfasına ulaşıldığı doğrulanır.
         AccountRecoveryPage accountRecoveryPage = new AccountRecoveryPage();
-        Assert.assertTrue(accountRecoveryPage.labelAccountRecovery.isDisplayed());
-        ReusableMethods.wait(3);
+        softAssert.assertTrue(accountRecoveryPage.labelAccountRecovery.isDisplayed());
 
+        softAssert.assertAll();
         Driver.closeDriver();
 
 

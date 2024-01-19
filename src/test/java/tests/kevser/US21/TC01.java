@@ -9,7 +9,7 @@ import utilities.ReusableMethods;
 
 public class TC01 {
     @Test
-    public void test01(){
+    public void adminLoginTest(){
 
         //1-https://www.easybusticket.com/admin linki ile admin Login sayfasına ulaşabilmeliyim
         Driver.getDriver().get(ConfigReader.getProperty("eBTAdminUrl"));
